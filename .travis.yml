@@ -1,2 +1,11 @@
 language: cpp
 compiler: gcc
+
+install: true
+
+script:
+- mkdir bin
+- cd bin
+- cmake ../
+- make
+- ./test/emulator_test/emulator_test
