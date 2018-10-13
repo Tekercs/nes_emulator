@@ -1,0 +1,5 @@
+.idea/
+.kdev4/
+bin/
+nes_emulator.kdev4
+cmake-build-debug/
