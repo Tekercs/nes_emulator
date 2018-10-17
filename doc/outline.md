@@ -36,4 +36,18 @@ The documentation phase of the project will be tightly coupled with development 
 
 ## Evaluation
 
+The result software evaluation will be executed in multiple steps. With the Incremental development the aim is to reach and satisfy given evaluation stages. With each satisfied evaluation stage all the previoulsy completed stage must not be changed.
+
+* Running 6502 assembly code and programs written with it.
+* Running programs loaded in form the NES virtual cartdige format.
+* Displaying sample text and minimal static images on the screen with the Help of the PPU
+* Displaying minimal dynamic content
+* Run and display minimal not complex NES games. (e.g. Donkey Kong)
+* Run and display graphically more Complex games, involves at least one way of scrolling.
+* Running most of the titles with pixel perfection and high cycle accuracy.
+
 ## Marking scheme
+
+The project would follow the Software Development Based marking scheme as the project focus is on the actuall implementation of the NES emulator.
+
+
