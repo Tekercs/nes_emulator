@@ -12,13 +12,27 @@ The aim of this project is to develop a software which makes the users able to r
 
 ## Objectives
 
+### Milestones
+
 Key milestones of the project in order:
 
-1. Implement the memory map of the system
-2. CPU implementation (capability to execute all official 6502 opcodes)
-3. Basic cartridge mapper implementation
-4. PPU implementation and GUI for I/O purposes
-5. 
+1. Implement the memory map of the system ( ~>1week)
+2. CPU implementation (capability to execute all official 6502 opcodes) (~3week)
+3. Basic cartridge mapper implementation (~1week)
+4. PPU implementation and GUI for I/O purposes (~3-4 week)
+
+Possible advanced features for future development beyond the previoulsy mentioned.
+These features implementation will be done when the key milestones completed and also well tested and documented.
+
+* Pixel perfect and properly synced CPU PPU emulation
+* Online multiplayer support
+* Additional mapper implementation
+* Rapsbery Pi & Usb controller support
+
+### Development plan
+
+The project feature development will be deliverd with Incremental Development Model and Behavior driven testing.
+The documentation phase of the project will be tightly coupled with development and carryed out simultaniously.
 
 ## Evaluation
 
