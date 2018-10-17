@@ -48,6 +48,6 @@ The result software evaluation will be executed in multiple steps. With the Incr
 
 ## Marking scheme
 
-The project would follow the Software Development Based marking scheme as the project focus is on the actuall implementation of the NES emulator.
+The project would follow the Software Development Based marking scheme as the project focus is on the actuall implementation of the NES emulator and to provide an accurate software based reproduction of the original hardware. 
 
 
