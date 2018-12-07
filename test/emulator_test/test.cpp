@@ -1,6 +1,6 @@
 #define CATCH_CONFIG_MAIN
-#include <library.h>
 #include <catch.hpp>
+#include <iostream>
 
 TEST_CASE("Testing the test setup" )
 {
