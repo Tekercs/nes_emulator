@@ -13,7 +13,7 @@ namespace Emulator
     public:
         Memory();
         
-        void setMemoryAt(uint16_t address, uint8_t value);
-        uint8_t getMemoryFrom(uint16_t address);
+        void setAt(uint16_t address, uint8_t value);
+        uint8_t getFrom(uint16_t address);
     };
 }

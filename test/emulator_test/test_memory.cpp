@@ -9,7 +9,7 @@ SCENARIO("when reading memory", "[Memory]")
         
         WHEN("reading a valid address")
         {
-            uint8_t value = memory->getMemoryFrom(0x00ff);
+            uint8_t value = memory->getFrom(0x00ff);
             
             THEN("result should be 0")
             {
@@ -26,11 +26,11 @@ SCENARIO("when reading memory", "[Memory]")
         const uint8_t VALUE = 12;
         
         Emulator::Memory* mem = new Emulator::Memory();
-        mem->setMemoryAt(ADDRESS, VALUE);
+        mem->setAt(ADDRESS, VALUE);
         
         WHEN("memory accessed at 0x0012")
         {
-            uint8_t value = mem->getMemoryFrom(ADDRESS);
+            uint8_t value = mem->getFrom(ADDRESS);
             
             THEN("value 12 returned")
             {
