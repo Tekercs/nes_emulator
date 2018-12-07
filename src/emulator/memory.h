@@ -2,6 +2,8 @@
 #include <cstdint>
 
 #define MEMORY_SIZE 65535
+#define MEM_FIRST 0x0000
+#define MEM_LAST 0xFFFF
 
 namespace Emulator
 {
