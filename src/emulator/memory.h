@@ -1,7 +1,7 @@
 #pragma once
 #include <cstdint>
 
-#define MEMORY_SIZE 65535
+#define MEMORY_SIZE 0x10000
 
 namespace Emulator
 {
