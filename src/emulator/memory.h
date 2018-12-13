@@ -8,7 +8,7 @@ namespace Emulator
     class Memory 
     {
     private:
-        uint8_t memory[MEMORY_SIZE];
+        uint8_t* memory[MEMORY_SIZE];
         
     public:
         Memory();
