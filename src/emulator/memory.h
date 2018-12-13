@@ -23,6 +23,8 @@ namespace Emulator
     private:
         uint8_t* memory[MEMORY_SIZE];
 
+        void generateRAM();
+
     public:
         Memory();
 
