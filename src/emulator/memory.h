@@ -8,6 +8,7 @@
 #define RAM_MIRROR          0x0800
 
 #define IO_REGISTERS        0x2000
+#define IO_REGISTERS_SIZE   8
 #define IO_REGISTERS_MIRROR 0x2008
 #define IO_REGISTERS_SEC    0x4000
 
@@ -24,6 +25,7 @@ namespace Emulator
         uint8_t* memory[MEMORY_SIZE];
 
         void generateRAM();
+        void generateIORegisters();
 
     public:
         Memory();
