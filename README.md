@@ -4,3 +4,7 @@
 University of Strathclyde 4th year individual project.
 
 Bence Sebestyén
+
+## External Sources
+* https://www.youtube.com/watch?v=mnUXYl5B9Qs&t=2177s
+* http://www.nesdev.com/NESDoc.pdf
