@@ -5,7 +5,7 @@ SCENARIO("when reading memory", "[Memory]")
 {
     GIVEN("an empty memory")
     {
-        Emulator::Memory* memory = new Emulator::Memory();
+        auto * memory = new Emulator::Memory();
 
         WHEN("reading a valid address")
         {
@@ -25,7 +25,7 @@ SCENARIO("when reading memory", "[Memory]")
         const uint16_t ADDRESS = 0x0012;
         const uint8_t VALUE = 12;
 
-        Emulator::Memory* mem = new Emulator::Memory();
+        auto * mem = new Emulator::Memory();
         mem->setAt(ADDRESS, VALUE);
 
         WHEN("memory accessed at 0x0012")
@@ -43,7 +43,7 @@ SCENARIO("when reading memory", "[Memory]")
 
     GIVEN("a memory with value 13 at 0x0000")
     {
-        Emulator::Memory* mem = new Emulator::Memory();
+        auto * mem = new Emulator::Memory();
         mem->setAt(0x0000, 13);
 
         WHEN("accessing memory at 0x0800 ")
@@ -53,6 +53,29 @@ SCENARIO("when reading memory", "[Memory]")
             THEN("value is 13")
             {
                 REQUIRE(value == 13);
+            }
+        }
+
+        delete mem;
+    }
+
+    GIVEN("empty memory")
+    {
+        auto * mem = new Emulator::Memory();
+
+        WHEN("writing to mirrored memory position 0x0000")
+        {
+            mem->setAt(0x0000, 0x01);
+
+            THEN("01 should appear 4 times in the memory")
+            {
+                auto totalAppearance = 0;
+                for(uint16_t i = 0x0000; i <= MEMORY_SIZE -1; ++i)
+                    if (mem->getFrom(i) == 0x01)
+                        ++totalAppearance;
+
+
+                REQUIRE(totalAppearance == 4);
             }
         }
 
