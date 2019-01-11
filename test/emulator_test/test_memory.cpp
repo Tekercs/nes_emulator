@@ -1,5 +1,6 @@
 #include <catch.hpp>
 #include <memory.h>
+#include <iostream>
 
 SCENARIO("when reading memory", "[Memory]")
 {
@@ -70,9 +71,12 @@ SCENARIO("when reading memory", "[Memory]")
             THEN("01 should appear 4 times in the memory")
             {
                 auto totalAppearance = 0;
-                for(uint16_t i = 0x0000; i <= MEMORY_SIZE -1; ++i)
+                for(auto i = 0; i < MEMORY_SIZE; ++i)
+                {
                     if (mem->getFrom(i) == 0x01)
                         ++totalAppearance;
+                }
+
 
 
                 REQUIRE(totalAppearance == 4);
