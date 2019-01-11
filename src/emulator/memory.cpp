@@ -15,8 +15,8 @@ Emulator::Memory::Memory()
 void Emulator::Memory::generateRAM()
 {
     uint8_t* ram[RAM_MIRROR] = {};
-    for (auto *i : ram)
-        i = new uint8_t(0);
+    for (auto i = 0; i < RAM_MIRROR; i++)
+        ram[i] = new uint8_t(0);
 
     std::copy(std::begin(ram), std::end(ram), std::begin(this->memory));
     std::copy(std::begin(ram), std::end(ram), std::begin(this->memory) + RAM_MIRROR);
