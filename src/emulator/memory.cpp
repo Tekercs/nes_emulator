@@ -27,7 +27,6 @@ void Emulator::Memory::generateRAM()
 void Emulator::Memory::generateIORegisters()
 {
     uint8_t* ioRegisters[IO_REGISTERS_SIZE];
-    std::fill_n(ioRegisters, IO_REGISTERS_SIZE, new uint8_t(0));
     for (auto &i : ioRegisters)
         i = new uint8_t(0);
 
