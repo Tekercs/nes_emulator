@@ -7,7 +7,8 @@ Bence Sebestyén
 
 ## API Doc
 For code documentation please visit the following github page:
-https://tekercs.github.io/nes_emulator/doc/html/
+
+https://tekercs.github.io/nes_emulator/doc/api/html/
 
 ## External Sources
 * https://www.youtube.com/watch?v=mnUXYl5B9Qs&t=2177s
