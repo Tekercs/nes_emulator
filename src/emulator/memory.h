@@ -39,6 +39,14 @@ namespace Emulator
     private:
         uint8_t* memory[MEMORY_SIZE];
 
+        /**
+         * @brief Implementing the RAM section mirroring
+         *
+         * @details RAM section mirroring Zero-page, Stack, RAM
+         * sections after each other (0x0000 - 0x07FF) mirrored
+         * in the Memory (0x8000 - 0x2000) 3 times.
+         * In total each section is presented in the Memory 4 times.
+         */
         void generateRAM();
         void generateIORegisters();
 
