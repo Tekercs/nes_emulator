@@ -64,6 +64,17 @@ namespace Emulator
          * with 16 bit unsigned integer value.
          */
         void setAt(uint16_t address, uint8_t value);
+
+        /**
+         * @brief Get accessor function for memory slots.
+         *
+         * @param address for the target memory location
+         * @return the stored value at address
+         *
+         * @details Return the 8 Bit unsinged integer value
+         * which is stored at the address (16 bit unsgined integer) location in
+         * the memory
+         */
         uint8_t getFrom(uint16_t address);
     };
 }
