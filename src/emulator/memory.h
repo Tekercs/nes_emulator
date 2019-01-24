@@ -37,6 +37,16 @@ namespace Emulator
     class Memory
     {
     private:
+        /**
+         * @var memory
+         *
+         * @brief Represents the physical NES memory module.
+         *
+         * @details It is a 0x10000 long 8bit unsinged integer
+         * pointer array. The size defined by the actual NES
+         * memory module meanwhile the pointer aspect was used
+         * to make the mirroring implementation easier.
+         */
         uint8_t* memory[MEMORY_SIZE];
 
         /**
