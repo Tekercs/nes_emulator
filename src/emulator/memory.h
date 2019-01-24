@@ -48,6 +48,13 @@ namespace Emulator
          * In total each section is presented in the Memory 4 times.
          */
         void generateRAM();
+
+        /**
+         * @brief Implementing IO Register mirroring
+         *
+         * @details IO register (0x2000 - 0x2007) are mirrored up
+         * to fill up space between 0x2008 - 0x4000 in the Memory.
+         */
         void generateIORegisters();
 
     public:
