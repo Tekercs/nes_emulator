@@ -69,6 +69,8 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classEmulator_1_1Memory-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Emulator::Memory Class Reference</div>  </div>
@@ -88,9 +90,24 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aff751399b7f6a01a6d5ae9afb15e6a16"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEmulator_1_1Memory.html#aff751399b7f6a01a6d5ae9afb15e6a16">setAt</a> (uint16_t address, uint8_t value)</td></tr>
 <tr class="memdesc:aff751399b7f6a01a6d5ae9afb15e6a16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set accessor function for memory slots.  <a href="#aff751399b7f6a01a6d5ae9afb15e6a16">More...</a><br /></td></tr>
 <tr class="separator:aff751399b7f6a01a6d5ae9afb15e6a16"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa16722b654e6e8ae4b1135b42affdbce"><td class="memItemLeft" align="right" valign="top"><a id="aa16722b654e6e8ae4b1135b42affdbce"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>getFrom</b> (uint16_t address)</td></tr>
+<tr class="memitem:aa16722b654e6e8ae4b1135b42affdbce"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEmulator_1_1Memory.html#aa16722b654e6e8ae4b1135b42affdbce">getFrom</a> (uint16_t address)</td></tr>
+<tr class="memdesc:aa16722b654e6e8ae4b1135b42affdbce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get accessor function for memory slots.  <a href="#aa16722b654e6e8ae4b1135b42affdbce">More...</a><br /></td></tr>
 <tr class="separator:aa16722b654e6e8ae4b1135b42affdbce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:aa8cdb15186330436a12f1c16560f0710"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEmulator_1_1Memory.html#aa8cdb15186330436a12f1c16560f0710">generateRAM</a> ()</td></tr>
+<tr class="memdesc:aa8cdb15186330436a12f1c16560f0710"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementing the RAM section mirroring.  <a href="#aa8cdb15186330436a12f1c16560f0710">More...</a><br /></td></tr>
+<tr class="separator:aa8cdb15186330436a12f1c16560f0710"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a193306c39f044c5f68f8555dd6e60f93"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEmulator_1_1Memory.html#a193306c39f044c5f68f8555dd6e60f93">generateIORegisters</a> ()</td></tr>
+<tr class="memdesc:a193306c39f044c5f68f8555dd6e60f93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementing IO Register mirroring.  <a href="#a193306c39f044c5f68f8555dd6e60f93">More...</a><br /></td></tr>
+<tr class="separator:a193306c39f044c5f68f8555dd6e60f93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a36581a3b03e0f9bc308cdea041c590a4"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEmulator_1_1Memory.html#a36581a3b03e0f9bc308cdea041c590a4">memory</a> [<a class="el" href="memory_8h.html#a5ad3f75a4e38fd9bbed917c71ca4e9e0">MEMORY_SIZE</a>]</td></tr>
+<tr class="memdesc:a36581a3b03e0f9bc308cdea041c590a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the physical NES memory module.  <a href="#a36581a3b03e0f9bc308cdea041c590a4">More...</a><br /></td></tr>
+<tr class="separator:a36581a3b03e0f9bc308cdea041c590a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>NES <a class="el" href="classEmulator_1_1Memory.html" title="NES Memory module representation.">Memory</a> module representation. </p>
@@ -117,6 +134,90 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>getFrom</b> (uint1
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a193306c39f044c5f68f8555dd6e60f93"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a193306c39f044c5f68f8555dd6e60f93">&#9670;&nbsp;</a></span>generateIORegisters()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Emulator::Memory::generateIORegisters </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implementing IO Register mirroring. </p>
+<p>IO register (0x2000 - 0x2007) are mirrored up to fill up space between 0x2008 - 0x4000 in the <a class="el" href="classEmulator_1_1Memory.html" title="NES Memory module representation.">Memory</a>. </p>
+
+</div>
+</div>
+<a id="aa8cdb15186330436a12f1c16560f0710"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8cdb15186330436a12f1c16560f0710">&#9670;&nbsp;</a></span>generateRAM()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Emulator::Memory::generateRAM </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implementing the RAM section mirroring. </p>
+<p>RAM section mirroring Zero-page, Stack, RAM sections after each other (0x0000 - 0x07FF) mirrored in the <a class="el" href="classEmulator_1_1Memory.html" title="NES Memory module representation.">Memory</a> (0x8000 - 0x2000) 3 times. In total each section is presented in the <a class="el" href="classEmulator_1_1Memory.html" title="NES Memory module representation.">Memory</a> 4 times. </p>
+
+</div>
+</div>
+<a id="aa16722b654e6e8ae4b1135b42affdbce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa16722b654e6e8ae4b1135b42affdbce">&#9670;&nbsp;</a></span>getFrom()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Emulator::Memory::getFrom </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>address</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get accessor function for memory slots. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">address</td><td>for the target memory location </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the stored value at address</dd></dl>
+<p>Return the 8 Bit unsinged integer value which is stored at the address (16 bit unsgined integer) location in the memory </p>
+
+</div>
+</div>
 <a id="aff751399b7f6a01a6d5ae9afb15e6a16"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aff751399b7f6a01a6d5ae9afb15e6a16">&#9670;&nbsp;</a></span>setAt()</h2>
 
@@ -155,9 +256,35 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>getFrom</b> (uint1
 
 </div>
 </div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a36581a3b03e0f9bc308cdea041c590a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36581a3b03e0f9bc308cdea041c590a4">&#9670;&nbsp;</a></span>memory</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Emulator::Memory::memory</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Represents the physical NES memory module. </p>
+<p>It is a 0x10000 long 8bit unsinged integer pointer array. The size defined by the actual NES memory module meanwhile the pointer aspect was used to make the mirroring implementation easier. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/emulator/<a class="el" href="memory_8h_source.html">memory.h</a></li>
-<li>src/emulator/memory.cpp</li>
+<li>src/emulator/<a class="el" href="memory_8cpp.html">memory.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
