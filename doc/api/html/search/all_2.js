@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['memory',['Memory',['../classEmulator_1_1Memory.html',1,'Emulator::Memory'],['../classEmulator_1_1Memory.html#aa93b532d516c278207368a2c92503924',1,'Emulator::Memory::Memory()']]]
+  ['dec',['DEC',['../3_813_81_2CompilerIdC_2CMakeCCompilerId_8c.html#ad1280362da42492bbc11aa78cbf776ad',1,'DEC():&#160;CMakeCCompilerId.c'],['../3_813_81_2CompilerIdCXX_2CMakeCXXCompilerId_8cpp.html#ad1280362da42492bbc11aa78cbf776ad',1,'DEC():&#160;CMakeCXXCompilerId.cpp'],['../3_813_82_2CompilerIdC_2CMakeCCompilerId_8c.html#ad1280362da42492bbc11aa78cbf776ad',1,'DEC():&#160;CMakeCCompilerId.c'],['../3_813_82_2CompilerIdCXX_2CMakeCXXCompilerId_8cpp.html#ad1280362da42492bbc11aa78cbf776ad',1,'DEC():&#160;CMakeCXXCompilerId.cpp'],['../3_813_83_2CompilerIdC_2CMakeCCompilerId_8c.html#ad1280362da42492bbc11aa78cbf776ad',1,'DEC():&#160;CMakeCCompilerId.c'],['../3_813_83_2CompilerIdCXX_2CMakeCXXCompilerId_8cpp.html#ad1280362da42492bbc11aa78cbf776ad',1,'DEC():&#160;CMakeCXXCompilerId.cpp']]],
+  ['docs',['DOCS',['../md_doc_init.html',1,'']]]
 ];

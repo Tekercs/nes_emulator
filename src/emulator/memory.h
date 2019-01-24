@@ -37,9 +37,34 @@ namespace Emulator
     class Memory
     {
     private:
+        /**
+         * @var memory
+         *
+         * @brief Represents the physical NES memory module.
+         *
+         * @details It is a 0x10000 long 8bit unsinged integer
+         * pointer array. The size defined by the actual NES
+         * memory module meanwhile the pointer aspect was used
+         * to make the mirroring implementation easier.
+         */
         uint8_t* memory[MEMORY_SIZE];
 
+        /**
+         * @brief Implementing the RAM section mirroring
+         *
+         * @details RAM section mirroring Zero-page, Stack, RAM
+         * sections after each other (0x0000 - 0x07FF) mirrored
+         * in the Memory (0x8000 - 0x2000) 3 times.
+         * In total each section is presented in the Memory 4 times.
+         */
         void generateRAM();
+
+        /**
+         * @brief Implementing IO Register mirroring
+         *
+         * @details IO register (0x2000 - 0x2007) are mirrored up
+         * to fill up space between 0x2008 - 0x4000 in the Memory.
+         */
         void generateIORegisters();
 
     public:
@@ -64,6 +89,17 @@ namespace Emulator
          * with 16 bit unsigned integer value.
          */
         void setAt(uint16_t address, uint8_t value);
+
+        /**
+         * @brief Get accessor function for memory slots.
+         *
+         * @param address for the target memory location
+         * @return the stored value at address
+         *
+         * @details Return the 8 Bit unsinged integer value
+         * which is stored at the address (16 bit unsgined integer) location in
+         * the memory
+         */
         uint8_t getFrom(uint16_t address);
     };
 }
