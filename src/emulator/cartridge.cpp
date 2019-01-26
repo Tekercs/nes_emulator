@@ -4,12 +4,18 @@
 #include <iterator>
 #include <algorithm>
 #include <iostream>
+#include <vector>
 
 Emulator::Cartridge::Cartridge(const std::string &path)
 {
     std::ifstream input(path, std::ios::binary);
+    input.seekg(0, input.end);
+    auto length = input.tellg();
+    input.seekg(0, input.beg);
 
-    std::istream_iterator<uint8_t> iterator(input);
+    std::cout << length << std::endl;
+
+    std::istreambuf_iterator<char> iterator(input);
 
     // read the header
     uint8_t header[HEADER_LENGTH];
@@ -62,4 +68,18 @@ Emulator::Cartridge::Cartridge(const std::string &path)
         i = *iterator;
         ++iterator;
     }
+
+    // calc miscrom size
+    auto miscRomSize = length - input.tellg();
+    uint8_t miscRom[miscRomSize];
+
+    // read in the actual misc rom
+    for (uint8_t &i : miscRom)
+    {
+        i = *iterator;
+        ++iterator;
+    }
+
+    std::cout << "for breakpoint" << std::endl;
+    input.close();
 }
