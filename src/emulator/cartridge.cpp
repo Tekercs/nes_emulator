@@ -21,34 +21,9 @@ Emulator::Cartridge::Cartridge(const std::string &path)
     this->readHeader(&input);
     this->parseHeader();
 
+    this->readTrainer(&input);
 
-
-    // read the PRG rom size
-    uint16_t prgRomSize16KBBatch = 0;
-    uint32_t prgRomSize = 0;
-    prgRomSize16KBBatch = this->rawHeader[9] & 0b00001111; // first 4 bit from this->rawHeader byte 9 as MSB
-    if (prgRomSize16KBBatch == 0xF)
-    {
-        uint8_t exponent = (this->rawHeader[4] & 0b11111100) >> 2;
-        uint8_t multipiler = this->rawHeader[4] & 0b00000011;
-
-        prgRomSize = std::pow(2, exponent) * (multipiler * 2 + 1);
-    }
-    else
-    {
-        prgRomSize16KBBatch = prgRomSize16KBBatch << 8;
-        prgRomSize16KBBatch += this->rawHeader[4]; // the while this->rawHeader byte 4 as LSB
-
-        prgRomSize = 16384 * prgRomSize16KBBatch;
-    }
-
-    // read the actual PRG rom content
-    uint8_t prgRom[prgRomSize];
-    for (uint8_t &i : prgRom)
-    {
-        i = *iterator;
-        ++iterator;
-    }
+    this->readPRGRom(&input);
 
     // read the CHR rom size
     uint32_t chrRomSize = 0;
@@ -119,6 +94,45 @@ void Emulator::Cartridge::readTrainer(std::ifstream* file)
             i = *iterator;
             ++iterator;
         }
+    }
+}
+
+void Emulator::Cartridge::readPRGRom(std::ifstream *file)
+{
+    auto prgRomPosition = 0 + HEADER_LENGTH;
+    if (this->isTrainerPresent)
+        prgRomPosition += TRAINER_LENGTH;
+
+    file->seekg(prgRomPosition, ifstream::beg);
+    istreambuf_iterator<char> iterator(*file);
+
+    auto prgRomSize = this->calcPRGRomSize();
+    this->prgRom = new uint8_t[prgRomSize];
+    for (auto i = 0; i < prgRomSize; ++i)
+    {
+        this->prgRom[i] = *iterator;
+        ++iterator;
+    }
+
+}
+
+uint32_t Emulator::Cartridge::calcPRGRomSize()
+{
+    uint16_t prgRomSize16KBBatch = 0;
+    prgRomSize16KBBatch = this->rawHeader[9] & 0b00001111;
+    if (prgRomSize16KBBatch == 0xF)
+    {
+        uint8_t exponent = (this->rawHeader[4] & 0b11111100) >> 2;
+        uint8_t multipiler = this->rawHeader[4] & 0b00000011;
+
+        return std::pow(2, exponent) * (multipiler * 2 + 1);
+    }
+    else
+    {
+        prgRomSize16KBBatch = prgRomSize16KBBatch << 8;
+        prgRomSize16KBBatch += this->rawHeader[4];
+
+        return 16384 * prgRomSize16KBBatch;
     }
 }
 
