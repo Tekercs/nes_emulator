@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['features',['features',['../feature__tests_8c.html#a1582568e32f689337602a16bf8a5bff0',1,'features():&#160;feature_tests.c'],['../feature__tests_8cxx.html#a1582568e32f689337602a16bf8a5bff0',1,'features():&#160;feature_tests.cxx']]]
+  ['chrrom',['chrRom',['../classEmulator_1_1Cartridge.html#abe28cdc465ffaf7d2bba4fba90d3c7fb',1,'Emulator::Cartridge']]]
 ];

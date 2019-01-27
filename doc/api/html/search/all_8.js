@@ -5,5 +5,6 @@ var searchData=
   ['memory',['Memory',['../classEmulator_1_1Memory.html',1,'Emulator::Memory'],['../classEmulator_1_1Memory.html#aa93b532d516c278207368a2c92503924',1,'Emulator::Memory::Memory()'],['../classEmulator_1_1Memory.html#a36581a3b03e0f9bc308cdea041c590a4',1,'Emulator::Memory::memory()']]],
   ['memory_2ecpp',['memory.cpp',['../memory_8cpp.html',1,'']]],
   ['memory_2eh',['memory.h',['../memory_8h.html',1,'']]],
-  ['memory_5fsize',['MEMORY_SIZE',['../memory_8h.html#a5ad3f75a4e38fd9bbed917c71ca4e9e0',1,'memory.h']]]
+  ['memory_5fsize',['MEMORY_SIZE',['../memory_8h.html#a5ad3f75a4e38fd9bbed917c71ca4e9e0',1,'memory.h']]],
+  ['miscrom',['miscRom',['../classEmulator_1_1Cartridge.html#a264ed86bec409582e7b9836e07694a83',1,'Emulator::Cartridge']]]
 ];
