@@ -3,7 +3,6 @@
 #include <fstream>
 #include <iterator>
 #include <algorithm>
-#include <iostream>
 #include <vector>
 #include <cmath>
 
@@ -13,8 +12,6 @@ Emulator::Cartridge::Cartridge(const std::string &path)
     input.seekg(0, input.end);
     auto length = input.tellg();
     input.seekg(0, input.beg);
-
-    std::cout << length << std::endl;
 
     std::istreambuf_iterator<char> iterator(input);
 
@@ -103,6 +100,5 @@ Emulator::Cartridge::Cartridge(const std::string &path)
         ++iterator;
     }
 
-    std::cout << "for breakpoint" << std::endl;
     input.close();
 }
