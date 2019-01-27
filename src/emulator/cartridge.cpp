@@ -5,6 +5,9 @@
 #include <algorithm>
 #include <vector>
 #include <cmath>
+#include <iostream>
+
+using namespace std;
 
 Emulator::Cartridge::Cartridge(const std::string &path)
 {
@@ -15,16 +18,10 @@ Emulator::Cartridge::Cartridge(const std::string &path)
 
     std::istreambuf_iterator<char> iterator(input);
 
-    // read the header
-    uint8_t header[HEADER_LENGTH];
-    for (uint8_t &i : header)
-    {
-        i = *iterator;
-        ++iterator;
-    }
+    this->readHeader(&input);
 
     // read the trainer
-    bool isTrainerPresented = ((header[6] & 0x04 ) > 0);
+    bool isTrainerPresented = ((this->rawHeader[6] & 0x04 ) > 0);
     if (isTrainerPresented)
     {
         uint8_t trainer[TRAINER_LENGTH];
@@ -38,18 +35,18 @@ Emulator::Cartridge::Cartridge(const std::string &path)
     // read the PRG rom size
     uint16_t prgRomSize16KBBatch = 0;
     uint32_t prgRomSize = 0;
-    prgRomSize16KBBatch = header[9] & 0b00001111; // first 4 bit from header byte 9 as MSB
+    prgRomSize16KBBatch = this->rawHeader[9] & 0b00001111; // first 4 bit from this->rawHeader byte 9 as MSB
     if (prgRomSize16KBBatch == 0xF)
     {
-        uint8_t exponent = (header[4] & 0b11111100) >> 2;
-        uint8_t multipiler = header[4] & 0b00000011;
+        uint8_t exponent = (this->rawHeader[4] & 0b11111100) >> 2;
+        uint8_t multipiler = this->rawHeader[4] & 0b00000011;
 
         prgRomSize = std::pow(2, exponent) * (multipiler * 2 + 1);
     }
     else
     {
         prgRomSize16KBBatch = prgRomSize16KBBatch << 8;
-        prgRomSize16KBBatch += header[4]; // the while header byte 4 as LSB
+        prgRomSize16KBBatch += this->rawHeader[4]; // the while this->rawHeader byte 4 as LSB
 
         prgRomSize = 16384 * prgRomSize16KBBatch;
     }
@@ -65,18 +62,18 @@ Emulator::Cartridge::Cartridge(const std::string &path)
     // read the CHR rom size
     uint32_t chrRomSize = 0;
     uint16_t chrRomSize8KByteBatch = 0;
-    chrRomSize8KByteBatch = header[9] & 0b11110000; // last 4 bit from header byte 9 as MSB
+    chrRomSize8KByteBatch = this->rawHeader[9] & 0b11110000; // last 4 bit from this->rawHeader byte 9 as MSB
     if ((chrRomSize8KByteBatch >> 4) == 0xF)
     {
-        uint8_t exponent = (header[5] & 0b11111100) >> 2;
-        uint8_t multipiler = header[5] & 0b00000011;
+        uint8_t exponent = (this->rawHeader[5] & 0b11111100) >> 2;
+        uint8_t multipiler = this->rawHeader[5] & 0b00000011;
 
         chrRomSize = std::pow(2, exponent) * (multipiler * 2 + 1);
     }
     else
     {
         chrRomSize8KByteBatch = chrRomSize8KByteBatch << 4;
-        chrRomSize8KByteBatch += header[5]; // the while header byte 6 as LSB
+        chrRomSize8KByteBatch += this->rawHeader[5]; // the while header byte 6 as LSB
 
         chrRomSize = 8192 * chrRomSize8KByteBatch;
     }
@@ -102,3 +99,16 @@ Emulator::Cartridge::Cartridge(const std::string &path)
 
     input.close();
 }
+
+void Emulator::Cartridge::readHeader(std::ifstream* file)
+{
+    file->seekg(HEADER_STARTS, ifstream::beg);
+    istreambuf_iterator<char> iterator(*file);
+
+    for (uint8_t &i : this->rawHeader)
+    {
+        i = *iterator;
+        ++iterator;
+    }
+}
+
