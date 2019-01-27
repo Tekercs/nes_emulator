@@ -65,13 +65,24 @@ Emulator::Cartridge::Cartridge(const std::string &path)
         ++iterator;
     }
 
-     // read the CHR rom size
+    // read the CHR rom size
+    uint32_t chrRomSize = 0;
     uint16_t chrRomSize8KByteBatch = 0;
     chrRomSize8KByteBatch = header[9] & 0b11110000; // last 4 bit from header byte 9 as MSB
-    chrRomSize8KByteBatch = chrRomSize8KByteBatch << 8;
-    chrRomSize8KByteBatch += header[5]; // the while header byte 6 as LSB
+    if ((chrRomSize8KByteBatch >> 4) == 0xF)
+    {
+        uint8_t exponent = (header[5] & 0b11111100) >> 2;
+        uint8_t multipiler = header[5] & 0b00000011;
 
-    int chrRomSize = 8192 * chrRomSize8KByteBatch;
+        chrRomSize = std::pow(2, exponent) * (multipiler * 2 + 1);
+    }
+    else
+    {
+        chrRomSize8KByteBatch = chrRomSize8KByteBatch << 4;
+        chrRomSize8KByteBatch += header[5]; // the while header byte 6 as LSB
+
+        chrRomSize = 8192 * chrRomSize8KByteBatch;
+    }
 
     // read the actual CHR rom content
     uint8_t chrRom[chrRomSize];
