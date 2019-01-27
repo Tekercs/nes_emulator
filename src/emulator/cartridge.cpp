@@ -1,22 +1,13 @@
 #include "cartridge.h"
 
 #include <fstream>
-#include <iterator>
-#include <algorithm>
-#include <vector>
 #include <cmath>
-#include <iostream>
 
 using namespace std;
 
 Emulator::Cartridge::Cartridge(const std::string &path)
 {
-    std::ifstream input(path, std::ios::binary);
-    input.seekg(0, input.end);
-    auto length = input.tellg();
-    input.seekg(0, input.beg);
-
-    std::istreambuf_iterator<char> iterator(input);
+    ifstream input(path, ios::binary);
 
     this->readHeader(&input);
     this->parseHeader();
@@ -89,7 +80,7 @@ uint32_t Emulator::Cartridge::calcPRGRomSize()
         uint8_t exponent = (this->rawHeader[4] & 0b11111100) >> 2;
         uint8_t multipiler = this->rawHeader[4] & 0b00000011;
 
-        return std::pow(2, exponent) * (multipiler * 2 + 1);
+        return pow(2, exponent) * (multipiler * 2 + 1);
     }
     else
     {
@@ -127,7 +118,7 @@ uint32_t Emulator::Cartridge::calcCHRRomSize()
         uint8_t exponent = (this->rawHeader[5] & 0b11111100) >> 2;
         uint8_t multipiler = this->rawHeader[5] & 0b00000011;
 
-        return std::pow(2, exponent) * (multipiler * 2 + 1);
+        return pow(2, exponent) * (multipiler * 2 + 1);
     }
     else
     {
