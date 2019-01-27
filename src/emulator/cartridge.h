@@ -15,12 +15,14 @@ namespace Emulator
         uint8_t trainer[TRAINER_LENGTH];
         uint8_t* prgRom;
         uint8_t* chrRom;
+        uint8_t* miscRom;
         bool isTrainerPresent;
 
         void readHeader(std::ifstream* file);
         void readTrainer(std::ifstream* file);
         void readPRGRom(std::ifstream* file);
         void readCHRRom(std::ifstream* file);
+        void readMiscRom(std::ifstream* file);
         void parseHeader();
 
         uint32_t calcPRGRomSize();

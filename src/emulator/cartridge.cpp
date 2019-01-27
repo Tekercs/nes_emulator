@@ -24,19 +24,8 @@ Emulator::Cartridge::Cartridge(const std::string &path)
     this->readTrainer(&input);
 
     this->readPRGRom(&input);
-
-    
-    // calc miscrom size
-    auto miscRomSize = length - input.tellg();
-    uint8_t miscRom[miscRomSize];
-
-    // read in the actual misc rom
-    for (uint8_t &i : miscRom)
-    {
-        i = *iterator;
-        ++iterator;
-    }
-   
+    this->readCHRRom(&input);
+    this->readMiscRom(&input);
 
     input.close();
 }
@@ -146,6 +135,27 @@ uint32_t Emulator::Cartridge::calcCHRRomSize()
         chrRomSize8KByteBatch += this->rawHeader[5];
 
         return 8192 * chrRomSize8KByteBatch;
+    }
+}
+
+void Emulator::Cartridge::readMiscRom(std::ifstream *file)
+{
+    auto miscRomPosition = 0 + HEADER_LENGTH + this->calcPRGRomSize() + this->calcCHRRomSize();
+    if (this->isTrainerPresent)
+        miscRomPosition += TRAINER_LENGTH;
+
+    file->seekg(0, ifstream::end);
+    auto length = file->tellg();
+
+    file->seekg(miscRomPosition, ifstream::beg);
+    istreambuf_iterator<char> iterator(*file);
+
+    auto miscRomSize = length - file->tellg();
+    this->miscRom = new uint8_t[miscRomSize];
+    for (auto i = 0; i < miscRomSize; ++i)
+    {
+        this->miscRom[i] = *iterator;
+        ++iterator;
     }
 }
 
