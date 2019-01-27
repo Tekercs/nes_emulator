@@ -12,9 +12,11 @@ namespace Emulator
     {
     private:
         uint8_t rawHeader[HEADER_LENGTH];
+        uint8_t trainer[TRAINER_LENGTH];
         bool isTrainerPresent;
 
         void readHeader(std::ifstream* file);
+        void readTrainer(std::ifstream* file);
         void parseHeader();
 
     public:

@@ -21,17 +21,7 @@ Emulator::Cartridge::Cartridge(const std::string &path)
     this->readHeader(&input);
     this->parseHeader();
 
-    // read the trainer
-    bool isTrainerPresented = ((this->rawHeader[6] & 0x04 ) > 0);
-    if (isTrainerPresented)
-    {
-        uint8_t trainer[TRAINER_LENGTH];
-        for (uint8_t &i : trainer)
-        {
-            i = *iterator;
-            ++iterator;
-        }
-    }
+
 
     // read the PRG rom size
     uint16_t prgRomSize16KBBatch = 0;
@@ -116,5 +106,19 @@ void Emulator::Cartridge::readHeader(std::ifstream* file)
 void Emulator::Cartridge::parseHeader()
 {
     this->isTrainerPresent = ((this->rawHeader[6] & 0x04 ) > 0);
+}
+
+void Emulator::Cartridge::readTrainer(std::ifstream* file)
+{
+    if (this->isTrainerPresent)
+    {
+        file->seekg(0 + HEADER_LENGTH, ifstream::beg);
+        istreambuf_iterator iterator(*file);
+        for (uint8_t &i : this->trainer)
+        {
+            i = *iterator;
+            ++iterator;
+        }
+    }
 }
 
