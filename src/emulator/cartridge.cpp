@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <iostream>
 #include <vector>
+#include <cmath>
 
 Emulator::Cartridge::Cartridge(const std::string &path)
 {
@@ -39,11 +40,22 @@ Emulator::Cartridge::Cartridge(const std::string &path)
 
     // read the PRG rom size
     uint16_t prgRomSize16KBBatch = 0;
+    uint32_t prgRomSize = 0;
     prgRomSize16KBBatch = header[9] & 0b00001111; // first 4 bit from header byte 9 as MSB
-    prgRomSize16KBBatch = prgRomSize16KBBatch << 8;
-    prgRomSize16KBBatch += header[4]; // the while header byte 4 as LSB
+    if (prgRomSize16KBBatch == 0xF)
+    {
+        uint8_t exponent = (header[4] & 0b11111100) >> 2;
+        uint8_t multipiler = header[4] & 0b00000011;
 
-    int prgRomSize = 16384 * prgRomSize16KBBatch;
+        prgRomSize = std::pow(2, exponent) * (multipiler * 2 + 1);
+    }
+    else
+    {
+        prgRomSize16KBBatch = prgRomSize16KBBatch << 8;
+        prgRomSize16KBBatch += header[4]; // the while header byte 4 as LSB
+
+        prgRomSize = 16384 * prgRomSize16KBBatch;
+    }
 
     // read the actual PRG rom content
     uint8_t prgRom[prgRomSize];
@@ -55,7 +67,7 @@ Emulator::Cartridge::Cartridge(const std::string &path)
 
      // read the CHR rom size
     uint16_t chrRomSize8KByteBatch = 0;
-    chrRomSize8KByteBatch = header[9] & 0b11110000; // first 4 bit from header byte 9 as MSB
+    chrRomSize8KByteBatch = header[9] & 0b11110000; // last 4 bit from header byte 9 as MSB
     chrRomSize8KByteBatch = chrRomSize8KByteBatch << 8;
     chrRomSize8KByteBatch += header[5]; // the while header byte 6 as LSB
 
