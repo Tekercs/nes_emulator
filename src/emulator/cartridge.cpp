@@ -19,6 +19,7 @@ Emulator::Cartridge::Cartridge(const std::string &path)
     std::istreambuf_iterator<char> iterator(input);
 
     this->readHeader(&input);
+    this->parseHeader();
 
     // read the trainer
     bool isTrainerPresented = ((this->rawHeader[6] & 0x04 ) > 0);
@@ -110,5 +111,10 @@ void Emulator::Cartridge::readHeader(std::ifstream* file)
         i = *iterator;
         ++iterator;
     }
+}
+
+void Emulator::Cartridge::parseHeader()
+{
+    this->isTrainerPresent = ((this->rawHeader[6] & 0x04 ) > 0);
 }
 

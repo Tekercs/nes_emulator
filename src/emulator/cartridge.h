@@ -12,8 +12,10 @@ namespace Emulator
     {
     private:
         uint8_t rawHeader[HEADER_LENGTH];
+        bool isTrainerPresent;
 
         void readHeader(std::ifstream* file);
+        void parseHeader();
 
     public:
         Cartridge(const std::string& path);
