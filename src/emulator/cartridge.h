@@ -14,14 +14,17 @@ namespace Emulator
         uint8_t rawHeader[HEADER_LENGTH];
         uint8_t trainer[TRAINER_LENGTH];
         uint8_t* prgRom;
+        uint8_t* chrRom;
         bool isTrainerPresent;
 
         void readHeader(std::ifstream* file);
         void readTrainer(std::ifstream* file);
         void readPRGRom(std::ifstream* file);
+        void readCHRRom(std::ifstream* file);
         void parseHeader();
 
         uint32_t calcPRGRomSize();
+        uint32_t calcCHRRomSize();
 
     public:
         Cartridge(const std::string& path);

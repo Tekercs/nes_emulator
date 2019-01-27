@@ -25,33 +25,7 @@ Emulator::Cartridge::Cartridge(const std::string &path)
 
     this->readPRGRom(&input);
 
-    // read the CHR rom size
-    uint32_t chrRomSize = 0;
-    uint16_t chrRomSize8KByteBatch = 0;
-    chrRomSize8KByteBatch = this->rawHeader[9] & 0b11110000; // last 4 bit from this->rawHeader byte 9 as MSB
-    if ((chrRomSize8KByteBatch >> 4) == 0xF)
-    {
-        uint8_t exponent = (this->rawHeader[5] & 0b11111100) >> 2;
-        uint8_t multipiler = this->rawHeader[5] & 0b00000011;
-
-        chrRomSize = std::pow(2, exponent) * (multipiler * 2 + 1);
-    }
-    else
-    {
-        chrRomSize8KByteBatch = chrRomSize8KByteBatch << 4;
-        chrRomSize8KByteBatch += this->rawHeader[5]; // the while header byte 6 as LSB
-
-        chrRomSize = 8192 * chrRomSize8KByteBatch;
-    }
-
-    // read the actual CHR rom content
-    uint8_t chrRom[chrRomSize];
-    for (uint8_t &i : chrRom)
-    {
-        i = *iterator;
-        ++iterator;
-    }
-
+    
     // calc miscrom size
     auto miscRomSize = length - input.tellg();
     uint8_t miscRom[miscRomSize];
@@ -62,6 +36,7 @@ Emulator::Cartridge::Cartridge(const std::string &path)
         i = *iterator;
         ++iterator;
     }
+   
 
     input.close();
 }
@@ -133,6 +108,44 @@ uint32_t Emulator::Cartridge::calcPRGRomSize()
         prgRomSize16KBBatch += this->rawHeader[4];
 
         return 16384 * prgRomSize16KBBatch;
+    }
+}
+
+void Emulator::Cartridge::readCHRRom(std::ifstream *file)
+{
+    auto chrRomPosition = 0 + HEADER_LENGTH + this->calcPRGRomSize();
+    if (this->isTrainerPresent)
+        chrRomPosition += TRAINER_LENGTH;
+
+    file->seekg(chrRomPosition, ifstream::beg);
+    istreambuf_iterator<char> iterator(*file);
+    
+    auto chrRomSize = this->calcCHRRomSize();
+    this->chrRom = new uint8_t[chrRomSize];
+    for(auto i = 0; i < chrRomSize; ++i)
+    {
+        chrRom[i] = *iterator;
+        ++iterator;
+    }
+}
+
+uint32_t Emulator::Cartridge::calcCHRRomSize()
+{
+    uint16_t chrRomSize8KByteBatch = 0;
+    chrRomSize8KByteBatch = this->rawHeader[9] & 0b11110000;
+    if ((chrRomSize8KByteBatch >> 4) == 0xF)
+    {
+        uint8_t exponent = (this->rawHeader[5] & 0b11111100) >> 2;
+        uint8_t multipiler = this->rawHeader[5] & 0b00000011;
+
+        return std::pow(2, exponent) * (multipiler * 2 + 1);
+    }
+    else
+    {
+        chrRomSize8KByteBatch = chrRomSize8KByteBatch << 4;
+        chrRomSize8KByteBatch += this->rawHeader[5];
+
+        return 8192 * chrRomSize8KByteBatch;
     }
 }
 
