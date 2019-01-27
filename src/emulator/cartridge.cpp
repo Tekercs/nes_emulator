@@ -43,7 +43,7 @@ void Emulator::Cartridge::readTrainer(std::ifstream* file)
     if (this->isTrainerPresent)
     {
         file->seekg(0 + HEADER_LENGTH, ifstream::beg);
-        istreambuf_iterator iterator(*file);
+        istreambuf_iterator<char> iterator(*file);
         for (uint8_t &i : this->trainer)
         {
             i = *iterator;
