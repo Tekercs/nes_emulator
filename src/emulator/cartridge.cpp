@@ -150,3 +150,23 @@ void Emulator::ROM::Cartridge::readMiscRom(std::ifstream *file)
     }
 }
 
+uint8_t *Emulator::ROM::Cartridge::getRawHeader()
+{
+    return this->rawHeader;
+}
+
+uint8_t *Emulator::ROM::Cartridge::getMiscRom()
+{
+    return this->miscRom;
+}
+
+uint8_t *Emulator::ROM::Cartridge::getPrgRom()
+{
+    return this->prgRom;
+}
+
+uint8_t *Emulator::ROM::Cartridge::getChrRom()
+{
+    return this->chrRom;
+}
+

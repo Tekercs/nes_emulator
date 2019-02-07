@@ -209,5 +209,13 @@ namespace Emulator::ROM
          */
         uint32_t calcCHRRomSize();
 
+        uint8_t* getRawHeader();
+
+        uint8_t* getMiscRom();
+
+        uint8_t* getPrgRom();
+
+        uint8_t* getChrRom();
+
     };
 }
