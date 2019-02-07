@@ -22,7 +22,12 @@
  *
  * @brief This namespace groups emulator classes.
  */
-namespace Emulator
+/**
+ * @namespace Emulator::Memory
+ *
+ * @brief This namespace groups code regarding the memory emulation.
+*/
+namespace Emulator::Memory
 {
 
     /**

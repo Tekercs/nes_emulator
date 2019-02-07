@@ -6,7 +6,7 @@ SCENARIO("when reading memory", "[Memory]")
 {
     GIVEN("an empty memory")
     {
-        auto * memory = new Emulator::Memory();
+        auto * memory = new Emulator::Memory::Memory();
 
         WHEN("reading a valid address")
         {
@@ -26,7 +26,7 @@ SCENARIO("when reading memory", "[Memory]")
         const uint16_t ADDRESS = 0x0012;
         const uint8_t VALUE = 12;
 
-        auto * mem = new Emulator::Memory();
+        auto * mem = new Emulator::Memory::Memory();
         mem->setAt(ADDRESS, VALUE);
 
         WHEN("memory accessed at 0x0012")
@@ -44,7 +44,7 @@ SCENARIO("when reading memory", "[Memory]")
 
     GIVEN("a memory with value 13 at 0x0000")
     {
-        auto * mem = new Emulator::Memory();
+        auto * mem = new Emulator::Memory::Memory();
         mem->setAt(0x0000, 13);
 
         WHEN("accessing memory at 0x0800 ")
@@ -62,7 +62,7 @@ SCENARIO("when reading memory", "[Memory]")
 
     GIVEN("empty memory")
     {
-        auto * mem = new Emulator::Memory();
+        auto * mem = new Emulator::Memory::Memory();
 
         WHEN("writing to mirrored memory position 0x0000")
         {
