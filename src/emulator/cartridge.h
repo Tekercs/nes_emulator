@@ -6,7 +6,12 @@
 #define HEADER_LENGTH 16
 #define TRAINER_LENGTH 512
 
-namespace Emulator
+/**
+ * @namespace Emulator::ROM
+ *
+ * @brief This namespace groups code regarding the ROM emulation.
+*/
+namespace Emulator::ROM
 {
     /**
      * @class Cartridge
