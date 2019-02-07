@@ -17,3 +17,8 @@ https://tekercs.github.io/nes_emulator/doc/api/html/
 * https://www.youtube.com/watch?v=D9ZbqnffS7c
 * http://yizhang82.me/nes-emu-overview
 * https://wiki.nesdev.com/w/index.php/NES_2.0
+
+## Acknowledgement
+
+Test roms at test/emultor_test/test_roms/blargg created and owned
+by Blargg! 
