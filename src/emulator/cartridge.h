@@ -156,6 +156,19 @@ namespace Emulator::ROM
          */
         void readMiscRom(std::ifstream* file);
 
+
+    public:
+        /**
+         * @param path to the .nes cartridge file.
+         *
+         * @brief opens the file with the given path and reads it.
+         *
+         * @details open the file at the given path in binary mode
+         * and reads and populates the fields of this class with the
+         * data.
+         */
+        Cartridge(const std::string& path);
+
         /**
          * @brief calculates the program rom size.
          *
@@ -196,17 +209,5 @@ namespace Emulator::ROM
          */
         uint32_t calcCHRRomSize();
 
-    public:
-
-        /**
-         * @param path to the .nes cartridge file.
-         *
-         * @brief opens the file with the given path and reads it.
-         *
-         * @details open the file at the given path in binary mode
-         * and reads and populates the fields of this class with the
-         * data.
-         */
-        Cartridge(const std::string& path);
     };
 }
