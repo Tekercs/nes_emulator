@@ -1,12 +1,12 @@
 var searchData=
 [
   ['c_5fdialect',['C_DIALECT',['../3_813_81_2CompilerIdC_2CMakeCCompilerId_8c.html#a07f8e5783674099cd7f5110e22a78cdb',1,'C_DIALECT():&#160;CMakeCCompilerId.c'],['../3_813_82_2CompilerIdC_2CMakeCCompilerId_8c.html#a07f8e5783674099cd7f5110e22a78cdb',1,'C_DIALECT():&#160;CMakeCCompilerId.c'],['../3_813_83_2CompilerIdC_2CMakeCCompilerId_8c.html#a07f8e5783674099cd7f5110e22a78cdb',1,'C_DIALECT():&#160;CMakeCCompilerId.c']]],
-  ['calcchrromsize',['calcCHRRomSize',['../classEmulator_1_1Cartridge.html#a43da881455444018503f2f972881517a',1,'Emulator::Cartridge']]],
-  ['calcprgromsize',['calcPRGRomSize',['../classEmulator_1_1Cartridge.html#a1bbb7b431014f129e1ccb0cef77a4c9f',1,'Emulator::Cartridge']]],
-  ['cartridge',['Cartridge',['../classEmulator_1_1Cartridge.html',1,'Emulator::Cartridge'],['../classEmulator_1_1Cartridge.html#ae4da1797b1507b92112aea0b7b4807b2',1,'Emulator::Cartridge::Cartridge()']]],
+  ['calcchrromsize',['calcCHRRomSize',['../classEmulator_1_1ROM_1_1Cartridge.html#aaf6c73f9cfe15fe4531b11125fcf776b',1,'Emulator::ROM::Cartridge']]],
+  ['calcprgromsize',['calcPRGRomSize',['../classEmulator_1_1ROM_1_1Cartridge.html#ab8b6ed4cf1ba31d1315ac170b79a83f8',1,'Emulator::ROM::Cartridge']]],
+  ['cartridge',['Cartridge',['../classEmulator_1_1ROM_1_1Cartridge.html',1,'Emulator::ROM::Cartridge'],['../classEmulator_1_1ROM_1_1Cartridge.html#a1218fe291538bcbe72bdd99fc43d7081',1,'Emulator::ROM::Cartridge::Cartridge()']]],
   ['cartridge_2ecpp',['cartridge.cpp',['../cartridge_8cpp.html',1,'']]],
   ['cartridge_2eh',['cartridge.h',['../cartridge_8h.html',1,'']]],
-  ['chrrom',['chrRom',['../classEmulator_1_1Cartridge.html#abe28cdc465ffaf7d2bba4fba90d3c7fb',1,'Emulator::Cartridge']]],
+  ['chrrom',['chrRom',['../classEmulator_1_1ROM_1_1Cartridge.html#aab28563fc2a411fa18802dbd7fb8127a',1,'Emulator::ROM::Cartridge']]],
   ['cmakeccompilerid_2ec',['CMakeCCompilerId.c',['../3_813_81_2CompilerIdC_2CMakeCCompilerId_8c.html',1,'(Global Namespace)'],['../3_813_82_2CompilerIdC_2CMakeCCompilerId_8c.html',1,'(Global Namespace)'],['../3_813_83_2CompilerIdC_2CMakeCCompilerId_8c.html',1,'(Global Namespace)']]],
   ['cmakecxxcompilerid_2ecpp',['CMakeCXXCompilerId.cpp',['../3_813_81_2CompilerIdCXX_2CMakeCXXCompilerId_8cpp.html',1,'(Global Namespace)'],['../3_813_82_2CompilerIdCXX_2CMakeCXXCompilerId_8cpp.html',1,'(Global Namespace)'],['../3_813_83_2CompilerIdCXX_2CMakeCXXCompilerId_8cpp.html',1,'(Global Namespace)']]],
   ['compiler_5fid',['COMPILER_ID',['../3_813_81_2CompilerIdC_2CMakeCCompilerId_8c.html#a81dee0709ded976b2e0319239f72d174',1,'COMPILER_ID():&#160;CMakeCCompilerId.c'],['../3_813_81_2CompilerIdCXX_2CMakeCXXCompilerId_8cpp.html#a81dee0709ded976b2e0319239f72d174',1,'COMPILER_ID():&#160;CMakeCXXCompilerId.cpp'],['../3_813_82_2CompilerIdC_2CMakeCCompilerId_8c.html#a81dee0709ded976b2e0319239f72d174',1,'COMPILER_ID():&#160;CMakeCCompilerId.c'],['../3_813_82_2CompilerIdCXX_2CMakeCXXCompilerId_8cpp.html#a81dee0709ded976b2e0319239f72d174',1,'COMPILER_ID():&#160;CMakeCXXCompilerId.cpp'],['../3_813_83_2CompilerIdC_2CMakeCCompilerId_8c.html#a81dee0709ded976b2e0319239f72d174',1,'COMPILER_ID():&#160;CMakeCCompilerId.c'],['../3_813_83_2CompilerIdCXX_2CMakeCXXCompilerId_8cpp.html#a81dee0709ded976b2e0319239f72d174',1,'COMPILER_ID():&#160;CMakeCXXCompilerId.cpp']]],

@@ -5,7 +5,7 @@
 
 using namespace std;
 
-Emulator::Cartridge::Cartridge(const std::string &path)
+Emulator::ROM::Cartridge::Cartridge(const std::string &path)
 {
     ifstream input(path, ios::binary);
 
@@ -21,7 +21,7 @@ Emulator::Cartridge::Cartridge(const std::string &path)
     input.close();
 }
 
-void Emulator::Cartridge::readHeader(std::ifstream* file)
+void Emulator::ROM::Cartridge::readHeader(std::ifstream* file)
 {
     file->seekg(HEADER_STARTS, ifstream::beg);
     istreambuf_iterator<char> iterator(*file);
@@ -33,12 +33,12 @@ void Emulator::Cartridge::readHeader(std::ifstream* file)
     }
 }
 
-void Emulator::Cartridge::parseHeader()
+void Emulator::ROM::Cartridge::parseHeader()
 {
     this->isTrainerPresent = ((this->rawHeader[6] & 0x04 ) > 0);
 }
 
-void Emulator::Cartridge::readTrainer(std::ifstream* file)
+void Emulator::ROM::Cartridge::readTrainer(std::ifstream* file)
 {
     if (this->isTrainerPresent)
     {
@@ -52,7 +52,7 @@ void Emulator::Cartridge::readTrainer(std::ifstream* file)
     }
 }
 
-void Emulator::Cartridge::readPRGRom(std::ifstream *file)
+void Emulator::ROM::Cartridge::readPRGRom(std::ifstream *file)
 {
     auto prgRomPosition = 0 + HEADER_LENGTH;
     if (this->isTrainerPresent)
@@ -71,7 +71,7 @@ void Emulator::Cartridge::readPRGRom(std::ifstream *file)
 
 }
 
-uint32_t Emulator::Cartridge::calcPRGRomSize()
+uint32_t Emulator::ROM::Cartridge::calcPRGRomSize()
 {
     uint16_t prgRomSize16KBBatch = 0;
     prgRomSize16KBBatch = this->rawHeader[9] & 0b00001111;
@@ -91,7 +91,7 @@ uint32_t Emulator::Cartridge::calcPRGRomSize()
     }
 }
 
-void Emulator::Cartridge::readCHRRom(std::ifstream *file)
+void Emulator::ROM::Cartridge::readCHRRom(std::ifstream *file)
 {
     auto chrRomPosition = 0 + HEADER_LENGTH + this->calcPRGRomSize();
     if (this->isTrainerPresent)
@@ -109,7 +109,7 @@ void Emulator::Cartridge::readCHRRom(std::ifstream *file)
     }
 }
 
-uint32_t Emulator::Cartridge::calcCHRRomSize()
+uint32_t Emulator::ROM::Cartridge::calcCHRRomSize()
 {
     uint16_t chrRomSize8KByteBatch = 0;
     chrRomSize8KByteBatch = this->rawHeader[9] & 0b11110000;
@@ -129,7 +129,7 @@ uint32_t Emulator::Cartridge::calcCHRRomSize()
     }
 }
 
-void Emulator::Cartridge::readMiscRom(std::ifstream *file)
+void Emulator::ROM::Cartridge::readMiscRom(std::ifstream *file)
 {
     auto miscRomPosition = 0 + HEADER_LENGTH + this->calcPRGRomSize() + this->calcCHRRomSize();
     if (this->isTrainerPresent)

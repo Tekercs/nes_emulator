@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['memory',['memory',['../classEmulator_1_1Memory.html#a36581a3b03e0f9bc308cdea041c590a4',1,'Emulator::Memory']]],
-  ['miscrom',['miscRom',['../classEmulator_1_1Cartridge.html#a264ed86bec409582e7b9836e07694a83',1,'Emulator::Cartridge']]]
+  ['memory',['memory',['../classEmulator_1_1Memory_1_1Memory.html#a5b33042b0678224887dcdd64326d8d12',1,'Emulator::Memory::Memory']]],
+  ['miscrom',['miscRom',['../classEmulator_1_1ROM_1_1Cartridge.html#a39e08be4e2b7be70dde7eafbe01c6597',1,'Emulator::ROM::Cartridge']]]
 ];
