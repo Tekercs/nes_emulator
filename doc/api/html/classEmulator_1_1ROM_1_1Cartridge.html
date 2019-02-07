@@ -87,6 +87,24 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1218fe291538bcbe72bdd99fc43d7081"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEmulator_1_1ROM_1_1Cartridge.html#a1218fe291538bcbe72bdd99fc43d7081">Cartridge</a> (const std::string &amp;path)</td></tr>
 <tr class="memdesc:a1218fe291538bcbe72bdd99fc43d7081"><td class="mdescLeft">&#160;</td><td class="mdescRight">opens the file with the given path and reads it.  <a href="#a1218fe291538bcbe72bdd99fc43d7081">More...</a><br /></td></tr>
 <tr class="separator:a1218fe291538bcbe72bdd99fc43d7081"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8b6ed4cf1ba31d1315ac170b79a83f8"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEmulator_1_1ROM_1_1Cartridge.html#ab8b6ed4cf1ba31d1315ac170b79a83f8">calcPRGRomSize</a> ()</td></tr>
+<tr class="memdesc:ab8b6ed4cf1ba31d1315ac170b79a83f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">calculates the program rom size.  <a href="#ab8b6ed4cf1ba31d1315ac170b79a83f8">More...</a><br /></td></tr>
+<tr class="separator:ab8b6ed4cf1ba31d1315ac170b79a83f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf6c73f9cfe15fe4531b11125fcf776b"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEmulator_1_1ROM_1_1Cartridge.html#aaf6c73f9cfe15fe4531b11125fcf776b">calcCHRRomSize</a> ()</td></tr>
+<tr class="memdesc:aaf6c73f9cfe15fe4531b11125fcf776b"><td class="mdescLeft">&#160;</td><td class="mdescRight">calculates the character rom size.  <a href="#aaf6c73f9cfe15fe4531b11125fcf776b">More...</a><br /></td></tr>
+<tr class="separator:aaf6c73f9cfe15fe4531b11125fcf776b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17c76c7f76528da01d58348e955ddb44"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEmulator_1_1ROM_1_1Cartridge.html#a17c76c7f76528da01d58348e955ddb44">getRawHeader</a> ()</td></tr>
+<tr class="memdesc:a17c76c7f76528da01d58348e955ddb44"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accessor function for rawHeader field.  <a href="#a17c76c7f76528da01d58348e955ddb44">More...</a><br /></td></tr>
+<tr class="separator:a17c76c7f76528da01d58348e955ddb44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c6530e6da9fc8f4de833c85b84b564b"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEmulator_1_1ROM_1_1Cartridge.html#a0c6530e6da9fc8f4de833c85b84b564b">getMiscRom</a> ()</td></tr>
+<tr class="memdesc:a0c6530e6da9fc8f4de833c85b84b564b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accessor function for miscRom field.  <a href="#a0c6530e6da9fc8f4de833c85b84b564b">More...</a><br /></td></tr>
+<tr class="separator:a0c6530e6da9fc8f4de833c85b84b564b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2a218bb948eb1290f5ce41e4906cbf0"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEmulator_1_1ROM_1_1Cartridge.html#ac2a218bb948eb1290f5ce41e4906cbf0">getPrgRom</a> ()</td></tr>
+<tr class="memdesc:ac2a218bb948eb1290f5ce41e4906cbf0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accessor function for prgRom field.  <a href="#ac2a218bb948eb1290f5ce41e4906cbf0">More...</a><br /></td></tr>
+<tr class="separator:ac2a218bb948eb1290f5ce41e4906cbf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9074dacf9b7e40cf5e88e38c14eae81"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEmulator_1_1ROM_1_1Cartridge.html#ac9074dacf9b7e40cf5e88e38c14eae81">getChrRom</a> ()</td></tr>
+<tr class="memdesc:ac9074dacf9b7e40cf5e88e38c14eae81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accessor function for chrRom field.  <a href="#ac9074dacf9b7e40cf5e88e38c14eae81">More...</a><br /></td></tr>
+<tr class="separator:ac9074dacf9b7e40cf5e88e38c14eae81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -108,12 +126,6 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:a1815344bf46d8110d2b19e6a30d092fb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEmulator_1_1ROM_1_1Cartridge.html#a1815344bf46d8110d2b19e6a30d092fb">readMiscRom</a> (std::ifstream *file)</td></tr>
 <tr class="memdesc:a1815344bf46d8110d2b19e6a30d092fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">this function reads the misc rom data if presented.  <a href="#a1815344bf46d8110d2b19e6a30d092fb">More...</a><br /></td></tr>
 <tr class="separator:a1815344bf46d8110d2b19e6a30d092fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab8b6ed4cf1ba31d1315ac170b79a83f8"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEmulator_1_1ROM_1_1Cartridge.html#ab8b6ed4cf1ba31d1315ac170b79a83f8">calcPRGRomSize</a> ()</td></tr>
-<tr class="memdesc:ab8b6ed4cf1ba31d1315ac170b79a83f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">calculates the program rom size.  <a href="#ab8b6ed4cf1ba31d1315ac170b79a83f8">More...</a><br /></td></tr>
-<tr class="separator:ab8b6ed4cf1ba31d1315ac170b79a83f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf6c73f9cfe15fe4531b11125fcf776b"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEmulator_1_1ROM_1_1Cartridge.html#aaf6c73f9cfe15fe4531b11125fcf776b">calcCHRRomSize</a> ()</td></tr>
-<tr class="memdesc:aaf6c73f9cfe15fe4531b11125fcf776b"><td class="mdescLeft">&#160;</td><td class="mdescRight">calculates the character rom size.  <a href="#aaf6c73f9cfe15fe4531b11125fcf776b">More...</a><br /></td></tr>
-<tr class="separator:aaf6c73f9cfe15fe4531b11125fcf776b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -173,9 +185,6 @@ Private Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">uint32_t Emulator::ROM::Cartridge::calcCHRRomSize </td>
@@ -184,11 +193,6 @@ Private Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>calculates the character rom size. </p>
@@ -202,9 +206,6 @@ Private Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">uint32_t Emulator::ROM::Cartridge::calcPRGRomSize </td>
@@ -213,16 +214,91 @@ Private Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>calculates the program rom size. </p>
 <p>Based on the rawHeader data calculates the program rom size. Using the rawHeader 4th byte as LSB and bits 0-3 of rawHeader 9th byte as MSB (12 bits in total). If the 4 MSB bits are 1111 then using the exponent-multiplier notation therefore size = 1111 EEEE EEMM |||| ||++- Multiplier, actual value is MM*2+1 (1,3,5,7) ++++-++&mdash; Exponent (2^E), 0-63 else: BBBB BBBB BBBB ++++-++++-++++- PRG-ROM size in 16 KiB units, values $000-$EFF for 0..62,898,176 bytes</p>
 <dl class="section return"><dt>Returns</dt><dd>the actual size of the prgRom in bytes. </dd></dl>
+
+</div>
+</div>
+<a id="ac9074dacf9b7e40cf5e88e38c14eae81"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9074dacf9b7e40cf5e88e38c14eae81">&#9670;&nbsp;</a></span>getChrRom()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t * Emulator::ROM::Cartridge::getChrRom </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Accessor function for chrRom field. </p>
+<dl class="section return"><dt>Returns</dt><dd>pointer to the chrRom field of the given <a class="el" href="classEmulator_1_1ROM_1_1Cartridge.html" title="This class represents a virtualized cartridge parser.">Cartridge</a> class. </dd></dl>
+
+</div>
+</div>
+<a id="a0c6530e6da9fc8f4de833c85b84b564b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c6530e6da9fc8f4de833c85b84b564b">&#9670;&nbsp;</a></span>getMiscRom()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t * Emulator::ROM::Cartridge::getMiscRom </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Accessor function for miscRom field. </p>
+<dl class="section return"><dt>Returns</dt><dd>pointer to the miscRom field of the given <a class="el" href="classEmulator_1_1ROM_1_1Cartridge.html" title="This class represents a virtualized cartridge parser.">Cartridge</a> class. </dd></dl>
+
+</div>
+</div>
+<a id="ac2a218bb948eb1290f5ce41e4906cbf0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2a218bb948eb1290f5ce41e4906cbf0">&#9670;&nbsp;</a></span>getPrgRom()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t * Emulator::ROM::Cartridge::getPrgRom </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Accessor function for prgRom field. </p>
+<dl class="section return"><dt>Returns</dt><dd>pointer to the prgRom field of the given <a class="el" href="classEmulator_1_1ROM_1_1Cartridge.html" title="This class represents a virtualized cartridge parser.">Cartridge</a> class. </dd></dl>
+
+</div>
+</div>
+<a id="a17c76c7f76528da01d58348e955ddb44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17c76c7f76528da01d58348e955ddb44">&#9670;&nbsp;</a></span>getRawHeader()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t * Emulator::ROM::Cartridge::getRawHeader </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Accessor function for rawHeader field. </p>
+<dl class="section return"><dt>Returns</dt><dd>pointer to the rawHeader field of the given <a class="el" href="classEmulator_1_1ROM_1_1Cartridge.html" title="This class represents a virtualized cartridge parser.">Cartridge</a> class. </dd></dl>
 
 </div>
 </div>

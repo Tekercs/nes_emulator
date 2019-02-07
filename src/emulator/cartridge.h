@@ -209,12 +209,32 @@ namespace Emulator::ROM
          */
         uint32_t calcCHRRomSize();
 
+        /**
+         * @brief Accessor function for rawHeader field.
+         *
+         * @return pointer to the rawHeader field of the given Cartridge class.
+         */
         uint8_t* getRawHeader();
 
+        /**
+         * @brief Accessor function for miscRom field.
+         *
+         * @return pointer to the miscRom field of the given Cartridge class.
+         */
         uint8_t* getMiscRom();
 
+        /**
+         * @brief Accessor function for prgRom field.
+         *
+         * @return pointer to the prgRom field of the given Cartridge class.
+         */
         uint8_t* getPrgRom();
 
+        /**
+         * @brief Accessor function for chrRom field.
+         *
+         * @return pointer to the chrRom field of the given Cartridge class.
+         */
         uint8_t* getChrRom();
 
     };
