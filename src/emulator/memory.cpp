@@ -3,9 +3,11 @@
 #include <iostream>
 #include <algorithm>
 
+using namespace std;
+
 Emulator::Memory::Memory()
 {
-    std::generate(std::begin(this->memory), std::end(this->memory), []() { return new uint8_t(0); });
+    generate(begin(this->memory), end(this->memory), []() { return new uint8_t(0); });
 
     this->generateRAM();
     this->generateIORegisters();
@@ -14,22 +16,22 @@ Emulator::Memory::Memory()
 void Emulator::Memory::generateRAM()
 {
     uint8_t* ram[RAM_MIRROR] = {};
-    std::generate(std::begin(ram), std::end(ram), []() { return new uint8_t(0); });
+    generate(begin(ram), end(ram), []() { return new uint8_t(0); });
 
-    std::copy(std::begin(ram), std::end(ram), std::begin(this->memory));
-    std::copy(std::begin(ram), std::end(ram), std::begin(this->memory) + RAM_MIRROR);
-    std::copy(std::begin(ram), std::end(ram), std::begin(this->memory) + (RAM_MIRROR *2));
-    std::copy(std::begin(ram), std::end(ram), std::begin(this->memory) + (RAM_MIRROR *3));
+    copy(begin(ram), end(ram), begin(this->memory));
+    copy(begin(ram), end(ram), begin(this->memory) + RAM_MIRROR);
+    copy(begin(ram), end(ram), begin(this->memory) + (RAM_MIRROR *2));
+    copy(begin(ram), end(ram), begin(this->memory) + (RAM_MIRROR *3));
 }
 
 void Emulator::Memory::generateIORegisters()
 {
     uint8_t* ioRegisters[IO_REGISTERS_SIZE];
-    std::generate(std::begin(ioRegisters), std::end(ioRegisters), []() { return new uint8_t(0); });
+    generate(begin(ioRegisters), end(ioRegisters), []() { return new uint8_t(0); });
 
-    std::copy(std::begin(ioRegisters), std::end(ioRegisters), std::begin(this->memory) + IO_REGISTERS);
+    copy(begin(ioRegisters), end(ioRegisters), begin(this->memory) + IO_REGISTERS);
     for(auto i = IO_REGISTERS_MIRROR; i < IO_REGISTERS_SEC; i += IO_REGISTERS_SIZE)
-        std::copy(std::begin(ioRegisters), std::end(ioRegisters), std::begin(this->memory) + i);
+        copy(begin(ioRegisters), end(ioRegisters), begin(this->memory) + i);
 }
 
 
