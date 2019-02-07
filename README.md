@@ -11,6 +11,7 @@ For code documentation please visit the following github page:
 https://tekercs.github.io/nes_emulator/doc/api/html/
 
 ## External Sources
+
 * https://www.youtube.com/watch?v=mnUXYl5B9Qs&t=2177s
 * http://www.nesdev.com/NESDoc.pdf
 * https://www.youtube.com/watch?v=D9ZbqnffS7c
