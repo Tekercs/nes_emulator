@@ -1,7 +1,6 @@
 #include <catch.hpp>
 #include <fstream>
 #include <cstdio>
-#include <iostream>
 
 #include <cartridge.h>
 
@@ -23,6 +22,18 @@ SCENARIO("reading cartridges from given file")
 
             auto rawHeader = cartridge1.getRawHeader();
             tempOut.write(reinterpret_cast<const char *>(rawHeader), HEADER_LENGTH);
+
+            auto trainer  = cartridge1.getTrainer();
+            tempOut.write(reinterpret_cast<const char *>(trainer), TRAINER_LENGTH);
+
+            auto prgRom = cartridge1.getPrgRom();
+            tempOut.write(reinterpret_cast<const char *>(prgRom), cartridge1.calcPRGRomSize());
+
+            auto chrRom = cartridge1.getChrRom();
+            tempOut.write(reinterpret_cast<const char *>(chrRom), cartridge1.calcCHRRomSize());
+
+            auto miscRom = cartridge1.getMiscRom();
+            tempOut.write(reinterpret_cast<const char *>(miscRom), cartridge1.getMiscRomSize());
 
             tempOut.close();
         }
