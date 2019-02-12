@@ -26,11 +26,14 @@ void Emulator::ROM::Cartridge::readHeader(std::ifstream* file)
     file->seekg(HEADER_STARTS, ifstream::beg);
     istreambuf_iterator<char> iterator(*file);
 
-    for (uint8_t &i : this->rawHeader)
+    uint8_t rawHeader[HEADER_LENGTH];
+    for (uint8_t &i : rawHeader)
     {
         i = *iterator;
         ++iterator;
     }
+
+    this->rawHeader = rawHeader;
 }
 
 void Emulator::ROM::Cartridge::parseHeader()
@@ -44,11 +47,15 @@ void Emulator::ROM::Cartridge::readTrainer(std::ifstream* file)
     {
         file->seekg(0 + HEADER_LENGTH, ifstream::beg);
         istreambuf_iterator<char> iterator(*file);
-        for (uint8_t &i : this->trainer)
+
+        uint8_t trainer[TRAINER_LENGTH];
+        for (uint8_t &i : trainer)
         {
             i = *iterator;
             ++iterator;
         }
+
+        this->trainer = trainer;
     }
 }
 
@@ -71,7 +78,7 @@ void Emulator::ROM::Cartridge::readPRGRom(std::ifstream *file)
 
 }
 
-uint32_t Emulator::ROM::Cartridge::calcPRGRomSize()
+uint32_t Emulator::ROM::Cartridge::calcPRGRomSize() const
 {
     uint16_t prgRomSize16KBBatch = 0;
     prgRomSize16KBBatch = this->rawHeader[9] & 0b00001111;
@@ -109,7 +116,7 @@ void Emulator::ROM::Cartridge::readCHRRom(std::ifstream *file)
     }
 }
 
-uint32_t Emulator::ROM::Cartridge::calcCHRRomSize()
+uint32_t Emulator::ROM::Cartridge::calcCHRRomSize() const
 {
     uint16_t chrRomSize8KByteBatch = 0;
     chrRomSize8KByteBatch = this->rawHeader[9] & 0b11110000;
@@ -150,37 +157,37 @@ void Emulator::ROM::Cartridge::readMiscRom(std::ifstream *file)
     }
 }
 
-uint8_t *Emulator::ROM::Cartridge::getRawHeader()
+uint8_t* Emulator::ROM::Cartridge::getRawHeader() const
 {
     return this->rawHeader;
 }
 
-uint8_t *Emulator::ROM::Cartridge::getMiscRom()
+uint8_t* Emulator::ROM::Cartridge::getMiscRom() const
 {
     return this->miscRom;
 }
 
-uint8_t *Emulator::ROM::Cartridge::getPrgRom()
+uint8_t* Emulator::ROM::Cartridge::getPrgRom() const
 {
     return this->prgRom;
 }
 
-uint8_t *Emulator::ROM::Cartridge::getChrRom()
+uint8_t* Emulator::ROM::Cartridge::getChrRom() const
 {
     return this->chrRom;
 }
 
-uint8_t *Emulator::ROM::Cartridge::getTrainer()
+uint8_t* Emulator::ROM::Cartridge::getTrainer() const
 {
     return this->trainer;
 }
 
-uint32_t Emulator::ROM::Cartridge::getMiscRomSize()
+uint32_t Emulator::ROM::Cartridge::getMiscRomSize() const
 {
     return this->miscRomSize;
 }
 
-bool Emulator::ROM::Cartridge::trainerExists()
+bool Emulator::ROM::Cartridge::trainerExists() const
 {
     return this->isTrainerPresent;
 }

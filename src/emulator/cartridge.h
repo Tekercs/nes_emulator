@@ -35,7 +35,7 @@ namespace Emulator::ROM
          * which contains flags and size information about the given
          * cartridge.
          */
-        uint8_t rawHeader[HEADER_LENGTH];
+        uint8_t* rawHeader;
 
         /**
          * @var trainer
@@ -46,7 +46,7 @@ namespace Emulator::ROM
          * compatibility reasons such as emulators and
          * other intrepters.
          */
-        uint8_t trainer[TRAINER_LENGTH];
+        uint8_t* trainer;
 
         /**
          * @var prgRom
@@ -196,7 +196,7 @@ namespace Emulator::ROM
          *
          * @return the actual size of the prgRom in bytes.
          */
-        uint32_t calcPRGRomSize();
+        uint32_t calcPRGRomSize() const;
 
         /**
          * @brief calculates the character rom size.
@@ -216,56 +216,56 @@ namespace Emulator::ROM
          *
          * @return the actual size of the chrRom in bytes.
          */
-        uint32_t calcCHRRomSize();
+        uint32_t calcCHRRomSize() const;
 
         /**
          * @brief Accessor function for rawHeader field.
          *
          * @return pointer to the rawHeader field of the given Cartridge class.
          */
-        uint8_t* getRawHeader();
+        uint8_t* getRawHeader() const;
 
         /**
          * @brief Accessor function for miscRom field.
          *
          * @return pointer to the miscRom field of the given Cartridge class.
          */
-        uint8_t* getMiscRom();
+        uint8_t* getMiscRom() const;
 
         /**
          * @brief Accessor function for prgRom field.
          *
          * @return pointer to the prgRom field of the given Cartridge class.
          */
-        uint8_t* getPrgRom();
+        uint8_t* getPrgRom() const;
 
         /**
          * @brief Accessor function for chrRom field.
          *
          * @return pointer to the chrRom field of the given Cartridge class.
          */
-        uint8_t* getChrRom();
+        uint8_t* getChrRom() const;
 
         /**
          * @brief Accessor function for trainer field.
          *
          * @return pointer to trainer field of the given Cartridge class.
          */
-        uint8_t* getTrainer();
+        uint8_t* getTrainer() const;
 
         /**
          * @brief Accessor function for miscRomSize.
          *
          * @return returns the size of the miscRom as a 32bit unsigned integer.
          */
-        uint32_t getMiscRomSize();
+        uint32_t getMiscRomSize() const;
 
         /**
          * @brief Accessor function for isTrainerPresent
          *
          * @return bool value based on if the trainer area present in the Cartridge;
          */
-        bool trainerExists();
+        bool trainerExists() const;
 
     };
 }
