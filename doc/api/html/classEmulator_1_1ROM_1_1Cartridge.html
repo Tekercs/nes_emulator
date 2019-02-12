@@ -108,6 +108,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1c3e8eb8b986e1fe761f78e3808e8323"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEmulator_1_1ROM_1_1Cartridge.html#a1c3e8eb8b986e1fe761f78e3808e8323">getTrainer</a> ()</td></tr>
 <tr class="memdesc:a1c3e8eb8b986e1fe761f78e3808e8323"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accessor function for trainer field.  <a href="#a1c3e8eb8b986e1fe761f78e3808e8323">More...</a><br /></td></tr>
 <tr class="separator:a1c3e8eb8b986e1fe761f78e3808e8323"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7b20b534f67e55c473ee0e66ed85ddb"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEmulator_1_1ROM_1_1Cartridge.html#ab7b20b534f67e55c473ee0e66ed85ddb">getMiscRomSize</a> ()</td></tr>
+<tr class="memdesc:ab7b20b534f67e55c473ee0e66ed85ddb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accessor function for miscRomSize.  <a href="#ab7b20b534f67e55c473ee0e66ed85ddb">More...</a><br /></td></tr>
+<tr class="separator:ab7b20b534f67e55c473ee0e66ed85ddb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -144,6 +147,9 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:aab28563fc2a411fa18802dbd7fb8127a"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEmulator_1_1ROM_1_1Cartridge.html#aab28563fc2a411fa18802dbd7fb8127a">chrRom</a></td></tr>
 <tr class="memdesc:aab28563fc2a411fa18802dbd7fb8127a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sprite and graphics data of the game.  <a href="#aab28563fc2a411fa18802dbd7fb8127a">More...</a><br /></td></tr>
 <tr class="separator:aab28563fc2a411fa18802dbd7fb8127a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace76b43e86707858c895e24665ad448e"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEmulator_1_1ROM_1_1Cartridge.html#ace76b43e86707858c895e24665ad448e">miscRomSize</a></td></tr>
+<tr class="memdesc:ace76b43e86707858c895e24665ad448e"><td class="mdescLeft">&#160;</td><td class="mdescRight">size of the miscRom  <a href="#ace76b43e86707858c895e24665ad448e">More...</a><br /></td></tr>
+<tr class="separator:ace76b43e86707858c895e24665ad448e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a39e08be4e2b7be70dde7eafbe01c6597"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEmulator_1_1ROM_1_1Cartridge.html#a39e08be4e2b7be70dde7eafbe01c6597">miscRom</a></td></tr>
 <tr class="memdesc:a39e08be4e2b7be70dde7eafbe01c6597"><td class="mdescLeft">&#160;</td><td class="mdescRight">additional rom data  <a href="#a39e08be4e2b7be70dde7eafbe01c6597">More...</a><br /></td></tr>
 <tr class="separator:a39e08be4e2b7be70dde7eafbe01c6597"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -262,6 +268,26 @@ Private Attributes</h2></td></tr>
 
 <p>Accessor function for miscRom field. </p>
 <dl class="section return"><dt>Returns</dt><dd>pointer to the miscRom field of the given <a class="el" href="classEmulator_1_1ROM_1_1Cartridge.html" title="This class represents a virtualized cartridge parser.">Cartridge</a> class. </dd></dl>
+
+</div>
+</div>
+<a id="ab7b20b534f67e55c473ee0e66ed85ddb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7b20b534f67e55c473ee0e66ed85ddb">&#9670;&nbsp;</a></span>getMiscRomSize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t Emulator::ROM::Cartridge::getMiscRomSize </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Accessor function for miscRomSize. </p>
+<dl class="section return"><dt>Returns</dt><dd>returns the size of the miscRom as a 32bit unsigned integer. </dd></dl>
 
 </div>
 </div>
@@ -601,6 +627,31 @@ Private Attributes</h2></td></tr>
 
 <p>additional rom data </p>
 <p>this is barely used only a few mapper utilizes this rom type. </p>
+
+</div>
+</div>
+<a id="ace76b43e86707858c895e24665ad448e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace76b43e86707858c895e24665ad448e">&#9670;&nbsp;</a></span>miscRomSize</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Emulator::ROM::Cartridge::miscRomSize</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>size of the miscRom </p>
+<p>Size of the miscRom calculated at file parsing. </p>
 
 </div>
 </div>
