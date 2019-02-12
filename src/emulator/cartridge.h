@@ -237,5 +237,12 @@ namespace Emulator::ROM
          */
         uint8_t* getChrRom();
 
+        /**
+         * @brief Accessor function for trainer field.
+         *
+         * @return pointer to trainer field of the given Cartridge class.
+         */
+        uint8_t* getTrainer();
+
     };
 }

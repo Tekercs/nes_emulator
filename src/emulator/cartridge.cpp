@@ -170,3 +170,8 @@ uint8_t *Emulator::ROM::Cartridge::getChrRom()
     return this->chrRom;
 }
 
+uint8_t *Emulator::ROM::Cartridge::getTrainer()
+{
+    return this->trainer;
+}
+
