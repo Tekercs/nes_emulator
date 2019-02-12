@@ -20,22 +20,18 @@ SCENARIO("reading cartridges from given file")
         {
             ofstream tempOut(tempFileName, ios::binary);
 
-            auto rawHeader = cartridge1.getRawHeader();
-            tempOut.write(reinterpret_cast<const char *>(rawHeader), HEADER_LENGTH);
+            tempOut.write(reinterpret_cast<const char *>(cartridge1.getRawHeader()), HEADER_LENGTH);
 
-            auto trainer  = cartridge1.getTrainer();
-            tempOut.write(reinterpret_cast<const char *>(trainer), TRAINER_LENGTH);
+            if (cartridge1.trainerExists())
+                tempOut.write(reinterpret_cast<const char *>(cartridge1.getTrainer()), TRAINER_LENGTH);
 
-            auto prgRom = cartridge1.getPrgRom();
-            tempOut.write(reinterpret_cast<const char *>(prgRom), cartridge1.calcPRGRomSize());
-
-            auto chrRom = cartridge1.getChrRom();
-            tempOut.write(reinterpret_cast<const char *>(chrRom), cartridge1.calcCHRRomSize());
-
-            auto miscRom = cartridge1.getMiscRom();
-            tempOut.write(reinterpret_cast<const char *>(miscRom), cartridge1.getMiscRomSize());
+            tempOut.write(reinterpret_cast<const char *>(cartridge1.getPrgRom()), cartridge1.calcPRGRomSize());
+            tempOut.write(reinterpret_cast<const char *>(cartridge1.getChrRom()), cartridge1.calcCHRRomSize());
+            tempOut.write(reinterpret_cast<const char *>(cartridge1.getMiscRom()), cartridge1.getMiscRomSize());
 
             tempOut.close();
+
+            Cartridge cartridge2(tempFileName);
         }
     }
 }
