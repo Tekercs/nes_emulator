@@ -141,9 +141,9 @@ void Emulator::ROM::Cartridge::readMiscRom(std::ifstream *file)
     file->seekg(miscRomPosition, ifstream::beg);
     istreambuf_iterator<char> iterator(*file);
 
-    auto miscRomSize = length - file->tellg();
-    this->miscRom = new uint8_t[miscRomSize];
-    for (auto i = 0; i < miscRomSize; ++i)
+    this->miscRomSize = length - file->tellg();
+    this->miscRom = new uint8_t[this->miscRomSize];
+    for (auto i = 0; i < this->miscRomSize; ++i)
     {
         this->miscRom[i] = *iterator;
         ++iterator;
@@ -173,5 +173,10 @@ uint8_t *Emulator::ROM::Cartridge::getChrRom()
 uint8_t *Emulator::ROM::Cartridge::getTrainer()
 {
     return this->trainer;
+}
+
+uint32_t Emulator::ROM::Cartridge::getMiscRomSize()
+{
+    return this->miscRomSize;
 }
 

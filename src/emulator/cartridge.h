@@ -72,6 +72,15 @@ namespace Emulator::ROM
         uint8_t* chrRom;
 
         /**
+         * @var miscRomSize
+         *
+         * @brief size of the miscRom
+         *
+         * @details Size of the miscRom calculated at file parsing.
+         */
+        uint32_t miscRomSize;
+
+        /**
          * @var miscRom
          *
          * @brief additional rom data
@@ -243,6 +252,13 @@ namespace Emulator::ROM
          * @return pointer to trainer field of the given Cartridge class.
          */
         uint8_t* getTrainer();
+
+        /**
+         * @brief Accessor function for miscRomSize.
+         *
+         * @return returns the size of the miscRom as a 32bit unsigned integer.
+         */
+        uint32_t getMiscRomSize();
 
     };
 }
