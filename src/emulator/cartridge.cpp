@@ -26,14 +26,11 @@ void Emulator::ROM::Cartridge::readHeader(std::ifstream* file)
     file->seekg(HEADER_STARTS, ifstream::beg);
     istreambuf_iterator<char> iterator(*file);
 
-    uint8_t rawHeader[HEADER_LENGTH];
     for (uint8_t &i : rawHeader)
     {
         i = *iterator;
         ++iterator;
     }
-
-    this->rawHeader = rawHeader;
 }
 
 void Emulator::ROM::Cartridge::parseHeader()
@@ -48,14 +45,11 @@ void Emulator::ROM::Cartridge::readTrainer(std::ifstream* file)
         file->seekg(0 + HEADER_LENGTH, ifstream::beg);
         istreambuf_iterator<char> iterator(*file);
 
-        uint8_t trainer[TRAINER_LENGTH];
         for (uint8_t &i : trainer)
         {
             i = *iterator;
             ++iterator;
         }
-
-        this->trainer = trainer;
     }
 }
 
@@ -157,27 +151,27 @@ void Emulator::ROM::Cartridge::readMiscRom(std::ifstream *file)
     }
 }
 
-uint8_t* Emulator::ROM::Cartridge::getRawHeader() const
+const uint8_t* Emulator::ROM::Cartridge::getRawHeader() const
 {
     return this->rawHeader;
 }
 
-uint8_t* Emulator::ROM::Cartridge::getMiscRom() const
+const uint8_t* Emulator::ROM::Cartridge::getMiscRom() const
 {
     return this->miscRom;
 }
 
-uint8_t* Emulator::ROM::Cartridge::getPrgRom() const
+const uint8_t* Emulator::ROM::Cartridge::getPrgRom() const
 {
     return this->prgRom;
 }
 
-uint8_t* Emulator::ROM::Cartridge::getChrRom() const
+const uint8_t* Emulator::ROM::Cartridge::getChrRom() const
 {
     return this->chrRom;
 }
 
-uint8_t* Emulator::ROM::Cartridge::getTrainer() const
+const uint8_t* Emulator::ROM::Cartridge::getTrainer() const
 {
     return this->trainer;
 }

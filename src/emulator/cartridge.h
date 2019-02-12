@@ -35,7 +35,7 @@ namespace Emulator::ROM
          * which contains flags and size information about the given
          * cartridge.
          */
-        uint8_t* rawHeader;
+        uint8_t rawHeader[HEADER_LENGTH];
 
         /**
          * @var trainer
@@ -46,7 +46,7 @@ namespace Emulator::ROM
          * compatibility reasons such as emulators and
          * other intrepters.
          */
-        uint8_t* trainer;
+        uint8_t trainer[TRAINER_LENGTH];
 
         /**
          * @var prgRom
@@ -223,35 +223,35 @@ namespace Emulator::ROM
          *
          * @return pointer to the rawHeader field of the given Cartridge class.
          */
-        uint8_t* getRawHeader() const;
+        const uint8_t* getRawHeader() const;
 
         /**
          * @brief Accessor function for miscRom field.
          *
          * @return pointer to the miscRom field of the given Cartridge class.
          */
-        uint8_t* getMiscRom() const;
+        const uint8_t* getMiscRom() const;
 
         /**
          * @brief Accessor function for prgRom field.
          *
          * @return pointer to the prgRom field of the given Cartridge class.
          */
-        uint8_t* getPrgRom() const;
+        const uint8_t* getPrgRom() const;
 
         /**
          * @brief Accessor function for chrRom field.
          *
          * @return pointer to the chrRom field of the given Cartridge class.
          */
-        uint8_t* getChrRom() const;
+        const uint8_t* getChrRom() const;
 
         /**
          * @brief Accessor function for trainer field.
          *
          * @return pointer to trainer field of the given Cartridge class.
          */
-        uint8_t* getTrainer() const;
+        const uint8_t* getTrainer() const;
 
         /**
          * @brief Accessor function for miscRomSize.
