@@ -260,5 +260,12 @@ namespace Emulator::ROM
          */
         uint32_t getMiscRomSize();
 
+        /**
+         * @brief Accessor function for isTrainerPresent
+         *
+         * @return bool value based on if the trainer area present in the Cartridge;
+         */
+        bool trainerExists();
+
     };
 }

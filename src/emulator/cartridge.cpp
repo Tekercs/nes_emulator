@@ -180,3 +180,8 @@ uint32_t Emulator::ROM::Cartridge::getMiscRomSize()
     return this->miscRomSize;
 }
 
+bool Emulator::ROM::Cartridge::trainerExists()
+{
+    return this->isTrainerPresent;
+}
+
