@@ -33,7 +33,25 @@ SCENARIO("reading cartridges from given file")
 
             Cartridge cartridge2(tempFileName);
 
+            uint32_t i;
+            for (i = 0; i < HEADER_LENGTH; ++i)
+                REQUIRE(cartridge1.getRawHeader()[i] == cartridge1.getRawHeader()[i]);
 
+            REQUIRE(cartridge1.trainerExists() == cartridge2.trainerExists());
+            if (cartridge1.trainerExists() && cartridge1.trainerExists() == cartridge2.trainerExists())
+                for (i = 0; i < TRAINER_LENGTH; ++i)
+                    REQUIRE(cartridge1.getTrainer()[i] == cartridge1.getTrainer()[i]);
+
+            for (i = 0; i < cartridge1.calcPRGRomSize(); ++i)
+                REQUIRE(cartridge1.getPrgRom()[i] == cartridge1.getPrgRom()[i]);
+
+            for (i = 0; i < cartridge1.calcCHRRomSize(); ++i)
+                REQUIRE(cartridge1.getChrRom()[i] == cartridge1.getChrRom()[i]);
+
+            REQUIRE(cartridge1.getMiscRomSize() == cartridge2.getMiscRomSize());
+
+            for (i = 0; i < cartridge1.getMiscRomSize(); ++i)
+                REQUIRE(cartridge1.getMiscRom()[i] == cartridge1.getMiscRom()[i]);
         }
     }
 }
