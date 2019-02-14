@@ -1,6 +1,7 @@
 #include <catch.hpp>
 #include <fstream>
 #include <cstdio>
+#include <iostream>
 
 #include <cartridge.h>
 
@@ -11,26 +12,60 @@ SCENARIO("reading cartridges from given file")
 {
     string path = "../../../test/emulator_test/test_roms/blargg/02-implied.nes";
 
-    GIVEN("parsed nrom .nes file into a Cartrdige type and a temporary file")
+    GIVEN("parsed nrom .nes file into a Cartrdige type saved in a temporary file")
     {
         Cartridge cartridge1(path);
         string tempFileName = tmpnam(nullptr);
 
-        THEN("save and reread check if equal")
+        ofstream tempOut(tempFileName, ios::binary);
+
+        tempOut.write(reinterpret_cast<const char *>(cartridge1.getRawHeader()), HEADER_LENGTH);
+
+        if (cartridge1.trainerExists())
+            tempOut.write(reinterpret_cast<const char *>(cartridge1.getTrainer()), TRAINER_LENGTH);
+
+        tempOut.write(reinterpret_cast<const char *>(cartridge1.getPrgRom()), cartridge1.calcPRGRomSize());
+        tempOut.write(reinterpret_cast<const char *>(cartridge1.getChrRom()), cartridge1.calcCHRRomSize());
+        tempOut.write(reinterpret_cast<const char *>(cartridge1.getMiscRom()), cartridge1.getMiscRomSize());
+
+        tempOut.close();
+
+        THEN ("check if two .nes file equals")
         {
-            ofstream tempOut(tempFileName, ios::binary);
+            ifstream input(path, ios::binary);
+            ifstream tempInput(tempFileName, ios::binary);
 
-            tempOut.write(reinterpret_cast<const char *>(cartridge1.getRawHeader()), HEADER_LENGTH);
+            input.seekg(0, ifstream::end);
+            auto inputLength = input.tellg();
+            input.seekg(0, ifstream::beg);
 
-            if (cartridge1.trainerExists())
-                tempOut.write(reinterpret_cast<const char *>(cartridge1.getTrainer()), TRAINER_LENGTH);
+            tempInput.seekg(0, ifstream::end);
+            auto tempInputLength = tempInput.tellg();
+            tempInput.seekg(0, ifstream::beg);
 
-            tempOut.write(reinterpret_cast<const char *>(cartridge1.getPrgRom()), cartridge1.calcPRGRomSize());
-            tempOut.write(reinterpret_cast<const char *>(cartridge1.getChrRom()), cartridge1.calcCHRRomSize());
-            tempOut.write(reinterpret_cast<const char *>(cartridge1.getMiscRom()), cartridge1.getMiscRomSize());
+            REQUIRE(inputLength == tempInputLength);
 
-            tempOut.close();
+            istreambuf_iterator<char> iterator(input);
+            istreambuf_iterator<char> tempIterator(tempInput);
 
+            char inputRead, tempInputRead;
+            for (auto i = 0; i < inputLength; ++i)
+            {
+                inputRead = *iterator;
+                tempInputRead = *tempIterator;
+
+                REQUIRE(inputRead == tempInputRead);
+
+                ++iterator;
+                ++tempIterator;
+            }
+
+            input.close();
+            tempInput.close();
+        }
+
+        THEN("check if equal")
+        {
             Cartridge cartridge2(tempFileName);
 
             uint32_t i;
