@@ -4,8 +4,6 @@
 
 #include <cartridge.h>
 
-#include "helpers/test_cartridge_helpers.h"
-
 using namespace std;
 using namespace Emulator::ROM;
 
@@ -20,9 +18,22 @@ SCENARIO("reading cartridges from given file")
 
         THEN("save and reread check if equal")
         {
-            writeCartridgeToFile(cartridge1, tempFileName);
+            ofstream tempOut(tempFileName, ios::binary);
+
+            tempOut.write(reinterpret_cast<const char *>(cartridge1.getRawHeader()), HEADER_LENGTH);
+
+            if (cartridge1.trainerExists())
+                tempOut.write(reinterpret_cast<const char *>(cartridge1.getTrainer()), TRAINER_LENGTH);
+
+            tempOut.write(reinterpret_cast<const char *>(cartridge1.getPrgRom()), cartridge1.calcPRGRomSize());
+            tempOut.write(reinterpret_cast<const char *>(cartridge1.getChrRom()), cartridge1.calcCHRRomSize());
+            tempOut.write(reinterpret_cast<const char *>(cartridge1.getMiscRom()), cartridge1.getMiscRomSize());
+
+            tempOut.close();
 
             Cartridge cartridge2(tempFileName);
+
+
         }
     }
 }
