@@ -72,6 +72,15 @@ namespace Emulator::ROM
         uint8_t* chrRom;
 
         /**
+         * @var miscRomSize
+         *
+         * @brief size of the miscRom
+         *
+         * @details Size of the miscRom calculated at file parsing.
+         */
+        uint32_t miscRomSize;
+
+        /**
          * @var miscRom
          *
          * @brief additional rom data
@@ -156,6 +165,19 @@ namespace Emulator::ROM
          */
         void readMiscRom(std::ifstream* file);
 
+
+    public:
+        /**
+         * @param path to the .nes cartridge file.
+         *
+         * @brief opens the file with the given path and reads it.
+         *
+         * @details open the file at the given path in binary mode
+         * and reads and populates the fields of this class with the
+         * data.
+         */
+        Cartridge(const std::string& path);
+
         /**
          * @brief calculates the program rom size.
          *
@@ -174,7 +196,7 @@ namespace Emulator::ROM
          *
          * @return the actual size of the prgRom in bytes.
          */
-        uint32_t calcPRGRomSize();
+        uint32_t calcPRGRomSize() const;
 
         /**
          * @brief calculates the character rom size.
@@ -194,19 +216,56 @@ namespace Emulator::ROM
          *
          * @return the actual size of the chrRom in bytes.
          */
-        uint32_t calcCHRRomSize();
-
-    public:
+        uint32_t calcCHRRomSize() const;
 
         /**
-         * @param path to the .nes cartridge file.
+         * @brief Accessor function for rawHeader field.
          *
-         * @brief opens the file with the given path and reads it.
-         *
-         * @details open the file at the given path in binary mode
-         * and reads and populates the fields of this class with the
-         * data.
+         * @return pointer to the rawHeader field of the given Cartridge class.
          */
-        Cartridge(const std::string& path);
+        const uint8_t* getRawHeader() const;
+
+        /**
+         * @brief Accessor function for miscRom field.
+         *
+         * @return pointer to the miscRom field of the given Cartridge class.
+         */
+        const uint8_t* getMiscRom() const;
+
+        /**
+         * @brief Accessor function for prgRom field.
+         *
+         * @return pointer to the prgRom field of the given Cartridge class.
+         */
+        const uint8_t* getPrgRom() const;
+
+        /**
+         * @brief Accessor function for chrRom field.
+         *
+         * @return pointer to the chrRom field of the given Cartridge class.
+         */
+        const uint8_t* getChrRom() const;
+
+        /**
+         * @brief Accessor function for trainer field.
+         *
+         * @return pointer to trainer field of the given Cartridge class.
+         */
+        const uint8_t* getTrainer() const;
+
+        /**
+         * @brief Accessor function for miscRomSize.
+         *
+         * @return returns the size of the miscRom as a 32bit unsigned integer.
+         */
+        uint32_t getMiscRomSize() const;
+
+        /**
+         * @brief Accessor function for isTrainerPresent
+         *
+         * @return bool value based on if the trainer area present in the Cartridge;
+         */
+        bool trainerExists() const;
+
     };
 }
