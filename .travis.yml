@@ -15,4 +15,5 @@ script:
 - cd bin
 - cmake ../
 - make
-- ./test/emulator_test/emulator_test
+- cd test/emulator_test
+- ./emulator_test
