@@ -5,9 +5,9 @@ Emulator::Cpu::Cpu::Cpu()
     this->accumulator = 0;
     this->indexRegisterX = 0;
     this->indexRegisterY = 0;
-    this->statusFlags = 0;
-    this->programCounter = 0;
-    this->stackPointerOffset = 0;
+    this->statusFlags = 0x34;
+    this->programCounter = 0xFFFC;
+    this->stackPointerOffset = 0xFD;
 }
 
 bool Emulator::Cpu::Cpu::isCarryRemain() const
