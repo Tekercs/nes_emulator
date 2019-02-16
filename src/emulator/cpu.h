@@ -29,6 +29,8 @@ namespace Emulator::Cpu
 
         std::shared_ptr<Emulator::Memory::Memory> memory;
 
+        uint8_t pullStack();
+
         bool isCarryRemain() const;
         bool isZeroResult() const;
         bool isInterruptsDisabled() const;

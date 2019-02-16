@@ -48,3 +48,11 @@ bool Emulator::Cpu::Cpu::isOverflowHappened() const
 {
     return (this->statusFlags & FLAGMASK_OVERFLOW) != 0;
 }
+
+uint8_t Emulator::Cpu::Cpu::pullStack()
+{
+    uint16_t stackPointer = STACK_POINTER + this->stackPointerOffset;
+    ++this->stackPointerOffset;
+
+    return this->memory->getFrom(stackPointer);
+}
