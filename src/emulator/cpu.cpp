@@ -56,3 +56,11 @@ uint8_t Emulator::Cpu::Cpu::pullStack()
 
     return this->memory->getFrom(stackPointer);
 }
+
+void Emulator::Cpu::Cpu::pushStack(uint8_t value)
+{
+    --this->stackPointerOffset;
+    uint16_t stackPointer = STACK_POINTER + this->stackPointerOffset;
+
+    this->memory->setAt(stackPointer, value);
+}

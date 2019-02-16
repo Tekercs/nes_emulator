@@ -30,6 +30,7 @@ namespace Emulator::Cpu
         std::shared_ptr<Emulator::Memory::Memory> memory;
 
         uint8_t pullStack();
+        void pushStack(uint8_t value);
 
         bool isCarryRemain() const;
         bool isZeroResult() const;
