@@ -22,7 +22,15 @@ namespace Emulator::Cpu
         uint8_t accumulator;
         uint8_t indexRegisterX;
         uint8_t indexRegisterY;
-        uint8_t processorStatus;
+        uint8_t statusFlags;
+
+        bool isCarryRemain() const;
+        bool isZeroResult() const;
+        bool isInterruptsDisabled() const;
+        bool isDecimalModeOn() const;
+        bool isBreakExecuted() const;
+        bool isOverflowHappened() const;
+        bool isNegativeFlagSet() const;
 
     public:
         Cpu();
