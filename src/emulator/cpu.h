@@ -1,6 +1,9 @@
 #pragma once
 
 #include <cstdint>
+#include <memory>
+
+#include <memory.h>
 
 #define STACK_POINTER 0x0100
 
@@ -24,6 +27,8 @@ namespace Emulator::Cpu
         uint8_t indexRegisterY;
         uint8_t statusFlags;
 
+        std::shared_ptr<Emulator::Memory::Memory> memory;
+
         bool isCarryRemain() const;
         bool isZeroResult() const;
         bool isInterruptsDisabled() const;
@@ -33,7 +38,7 @@ namespace Emulator::Cpu
         bool isNegativeFlagSet() const;
 
     public:
-        Cpu();
+        Cpu(std::shared_ptr<Emulator::Memory::Memory> memory);
 
     };
 }

@@ -1,7 +1,11 @@
 #include "cpu.h"
 
-Emulator::Cpu::Cpu::Cpu()
+#include <memory>
+
+Emulator::Cpu::Cpu::Cpu(std::shared_ptr<Emulator::Memory::Memory> memory)
 {
+    this->memory = memory;
+
     this->accumulator = 0;
     this->indexRegisterX = 0;
     this->indexRegisterY = 0;
