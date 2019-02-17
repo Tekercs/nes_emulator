@@ -52,16 +52,16 @@ bool Cpu::isOverflowHappened() const
 
 uint8_t Cpu::pullStack()
 {
-    uint16_t stackPointer = STACK_POINTER + this->stackPointerOffset;
     ++this->stackPointerOffset;
+    uint16_t stackPointer = STACK_POINTER + this->stackPointerOffset;
 
     return this->memory->getFrom(stackPointer);
 }
 
 void Cpu::pushStack(uint8_t value)
 {
-    --this->stackPointerOffset;
     uint16_t stackPointer = STACK_POINTER + this->stackPointerOffset;
+    --this->stackPointerOffset;
 
     this->memory->setAt(stackPointer, value);
 }
