@@ -1,18 +1,17 @@
+#include <utility>
+
 #include "cpu.h"
 
 #include <memory>
 
-Emulator::Cpu::Cpu::Cpu(std::shared_ptr<Emulator::Memory::Memory> memory)
-{
-    this->memory = memory;
-
-    this->accumulator = INITVAL_ACCUMULATOR;
-    this->indexRegisterX = INITVAL_INDEXREGISTERX;
-    this->indexRegisterY = INITVAL_INDEXREGISTERY;
-    this->statusFlags = INITVAL_STATUSFLAGS;
-    this->programCounter = INITVAL_PROGRAMCOUNTER;
-    this->stackPointerOffset = INITVAL_STACKPOINTEROFFSET;
-}
+Emulator::Cpu::Cpu::Cpu(std::shared_ptr<Emulator::Memory::Memory> memory) : memory(std::move(memory))
+, accumulator(INITVAL_ACCUMULATOR)
+, indexRegisterX(INITVAL_INDEXREGISTERX)
+, indexRegisterY(INITVAL_INDEXREGISTERY)
+, statusFlags(INITVAL_STATUSFLAGS)
+, programCounter(INITVAL_PROGRAMCOUNTER)
+, stackPointerOffset(INITVAL_STACKPOINTEROFFSET)
+{}
 
 bool Emulator::Cpu::Cpu::isCarryRemain() const
 {
