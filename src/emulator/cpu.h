@@ -49,7 +49,7 @@ namespace Emulator::Cpu
         bool isNegativeFlagSet() const;
 
     public:
-        Cpu(std::shared_ptr<Emulator::Memory::Memory> memory);
+        explicit Cpu(std::shared_ptr<Emulator::Memory::Memory> memory);
 
     };
 }
