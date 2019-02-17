@@ -1,10 +1,12 @@
-#include <utility>
-
 #include "cpu.h"
 
+#include <utility>
 #include <memory>
 
-Emulator::Cpu::Cpu::Cpu(std::shared_ptr<Emulator::Memory::Memory> memory) : memory(std::move(memory))
+using namespace std;
+using namespace Emulator::Cpu;
+
+Cpu::Cpu(std::shared_ptr<Emulator::Memory::Memory> memory) : memory(move(memory))
 , accumulator(INITVAL_ACCUMULATOR)
 , indexRegisterX(INITVAL_INDEXREGISTERX)
 , indexRegisterY(INITVAL_INDEXREGISTERY)
@@ -13,42 +15,42 @@ Emulator::Cpu::Cpu::Cpu(std::shared_ptr<Emulator::Memory::Memory> memory) : memo
 , stackPointerOffset(INITVAL_STACKPOINTEROFFSET)
 {}
 
-bool Emulator::Cpu::Cpu::isCarryRemain() const
+bool Cpu::isCarryRemain() const
 {
     return (this->statusFlags & FLAGMASK_CARRY) != 0;
 }
 
-bool Emulator::Cpu::Cpu::isZeroResult() const
+bool Cpu::isZeroResult() const
 {
     return (this->statusFlags & FLAGMASK_ZERO) != 0;
 }
 
-bool Emulator::Cpu::Cpu::isInterruptsDisabled() const
+bool Cpu::isInterruptsDisabled() const
 {
     return (this->statusFlags & FLAGMASK_INTERRUPT) != 0;
 }
 
-bool Emulator::Cpu::Cpu::isDecimalModeOn() const
+bool Cpu::isDecimalModeOn() const
 {
     return (this->statusFlags & FLAGMASK_DECMODE) != 0;
 }
 
-bool Emulator::Cpu::Cpu::isBreakExecuted() const
+bool Cpu::isBreakExecuted() const
 {
     return (this->statusFlags & FLAGMASK_BREAK) != 0;
 }
 
-bool Emulator::Cpu::Cpu::isNegativeFlagSet() const
+bool Cpu::isNegativeFlagSet() const
 {
     return (this->statusFlags & FLAGMASK_NEGATIVE) != 0;
 }
 
-bool Emulator::Cpu::Cpu::isOverflowHappened() const
+bool Cpu::isOverflowHappened() const
 {
     return (this->statusFlags & FLAGMASK_OVERFLOW) != 0;
 }
 
-uint8_t Emulator::Cpu::Cpu::pullStack()
+uint8_t Cpu::pullStack()
 {
     uint16_t stackPointer = STACK_POINTER + this->stackPointerOffset;
     ++this->stackPointerOffset;
@@ -56,7 +58,7 @@ uint8_t Emulator::Cpu::Cpu::pullStack()
     return this->memory->getFrom(stackPointer);
 }
 
-void Emulator::Cpu::Cpu::pushStack(uint8_t value)
+void Cpu::pushStack(uint8_t value)
 {
     --this->stackPointerOffset;
     uint16_t stackPointer = STACK_POINTER + this->stackPointerOffset;
