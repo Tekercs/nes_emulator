@@ -13,7 +13,9 @@ Cpu::Cpu(std::shared_ptr<Emulator::Memory::Memory> memory) : memory(move(memory)
 , statusFlags(INITVAL_STATUSFLAGS)
 , programCounter(INITVAL_PROGRAMCOUNTER)
 , stackPointerOffset(INITVAL_STACKPOINTEROFFSET)
-{}
+{
+    this->initInstructionMap();
+}
 
 bool Cpu::isCarryRemain() const
 {
@@ -65,3 +67,9 @@ void Cpu::pushStack(uint8_t value)
 
     this->memory->setAt(stackPointer, value);
 }
+
+void Cpu::initInstructionMap()
+{
+
+}
+

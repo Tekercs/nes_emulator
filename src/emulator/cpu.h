@@ -2,6 +2,7 @@
 
 #include <cstdint>
 #include <memory>
+#include <map>
 
 #include <memory.h>
 
@@ -25,6 +26,8 @@
 
 namespace Emulator::Cpu
 {
+    typedef void (*CpuInstruction)();
+
     class Cpu
     {
     private:
@@ -36,6 +39,9 @@ namespace Emulator::Cpu
         uint8_t statusFlags;
 
         std::shared_ptr<Emulator::Memory::Memory> memory;
+        std::map<uint8_t, Emulator::Cpu::CpuInstruction> instructions;
+
+        void initInstructionMap();
 
         uint8_t pullStack();
         void pushStack(uint8_t value);
