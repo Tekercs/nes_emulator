@@ -23,7 +23,7 @@
 #define INITVAL_PROGRAMCOUNTER     0xFFFC
 #define INITVAL_STACKPOINTEROFFSET 0xFD
 
-
+// TODO valoszinuleg a registereket kilehetne szedni kulon classba
 namespace Emulator::Cpu
 {
     typedef void (*CpuInstruction)();
