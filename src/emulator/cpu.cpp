@@ -74,39 +74,44 @@ void Cpu::initInstructionMap()
     this->instructions[0x68] = [&]() { this->PLA(); };
 }
 
+void Cpu::setFlagBit(uint8_t flagBit, bool value)
+{
+    this->statusFlags ^= (-(uint8_t)value ^ this->statusFlags) & (0x01 << flagBit);
+}
+
 void Cpu::setCarryRemain(bool value)
 {
-    this->statusFlags ^= (-(uint8_t)value ^ this->statusFlags) & (0x01 << FLAGBIT_CARRY);
+    this->setFlagBit(FLAGBIT_CARRY, value);
 }
 
 void Cpu::setZeroResult(bool value)
 {
-    this->statusFlags ^= (-(uint8_t)value ^ this->statusFlags) & (0x01 << FLAGBIT_ZERO);
+    this->setFlagBit(FLAGBIT_ZERO, value);
 }
 
 void Cpu::setInterruptsDisabled(bool value)
 {
-    this->statusFlags ^= (-(uint8_t)value ^ this->statusFlags) & (0x01 << FLAGBIT_INTERRUPT);
+    this->setFlagBit(FLAGBIT_INTERRUPT, value);
 }
 
 void Cpu::setDecimalModeOn(bool value)
 {
-    this->statusFlags ^= (-(uint8_t)value ^ this->statusFlags) & (0x01 << FLAGBIT_DECMODE);
+    this->setFlagBit(FLAGBIT_DECMODE, value);
 }
 
 void Cpu::setBreakExecuted(bool value)
 {
-    this->statusFlags ^= (-(uint8_t)value ^ this->statusFlags) & (0x01 << FLAGBIT_BREAK);
+    this->setFlagBit(FLAGBIT_BREAK);
 }
 
 void Cpu::setOverflowHappened(bool value)
 {
-    this->statusFlags ^= (-(uint8_t)value ^ this->statusFlags) & (0x01 << FLAGBIT_OVERFLOW);
+    this->setFlagBit(FLAGBIT_OVERFLOW, value);
 }
 
 void Cpu::setNegativeFlagSet(bool value)
 {
-    this->statusFlags ^= (-(uint8_t)value ^ this->statusFlags) & (0x01 << FLAGBIT_NEGATIVE);
+    this->setFlagBit(FLAGBIT_NEGATIVE, value);
 }
 
 void Cpu::PHA()
@@ -121,3 +126,5 @@ void Cpu::PLA()
     this->setZeroResult(this->accumulator == 0);
     this->setZeroResult((this->accumulator & FLAGMASK_NEGATIVE) != 0);
 }
+
+

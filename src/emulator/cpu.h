@@ -61,6 +61,7 @@ namespace Emulator::Cpu
         bool isOverflowHappened() const;
         bool isNegativeFlagSet() const;
 
+        void setFlagBit(uint8_t flagBit, bool value);
         void setCarryRemain(bool value);
         void setZeroResult(bool value);
         void setInterruptsDisabled(bool value);
