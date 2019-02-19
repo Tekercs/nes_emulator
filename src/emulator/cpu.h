@@ -3,6 +3,7 @@
 #include <cstdint>
 #include <memory>
 #include <map>
+#include <functional>
 
 #include <memory.h>
 
@@ -51,7 +52,7 @@ namespace Emulator::Cpu
         uint8_t statusFlags;
 
         std::shared_ptr<Emulator::Memory::Memory> memory;
-        std::map<uint8_t, Emulator::Cpu::CpuInstruction> instructions;
+        std::map<uint8_t, std::function<void()>> instructions;
 
         void initInstructionMap();
 
@@ -73,6 +74,8 @@ namespace Emulator::Cpu
         void setBreakExecuted(bool value);
         void setOverflowHappened(bool value);
         void setNegativeFlagSet(bool value);
+
+        void PHA();
 
     public:
         explicit Cpu(std::shared_ptr<Emulator::Memory::Memory> memory);

@@ -70,7 +70,10 @@ void Cpu::pushStack(uint8_t value)
 
 void Cpu::initInstructionMap()
 {
-
+    this->instructions[0x48] = [&]()
+    {
+        this->PHA();
+    };
 }
 
 void Cpu::setCarryRemain(bool value)
@@ -106,5 +109,10 @@ void Cpu::setOverflowHappened(bool value)
 void Cpu::setNegativeFlagSet(bool value)
 {
     this->statusFlags ^= (-(uint8_t)value ^ this->statusFlags) & (0x01 << FLAGBIT_NEGATIVE);
+}
+
+void Cpu::PHA()
+{
+    this->pushStack(this->accumulator);
 }
 
