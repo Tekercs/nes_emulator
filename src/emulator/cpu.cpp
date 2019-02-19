@@ -85,6 +85,7 @@ void Cpu::initInstructionMap()
     this->instructions[0x18] = [&]() { this->CLC(); };
     this->instructions[0xD8] = [&]() { this->CLD(); };
     this->instructions[0x58] = [&]() { this->CLI(); };
+    this->instructions[0xB8] = [&]() { this->CLV(); };
 }
 
 void Cpu::setFlagBit(uint8_t flagBit, bool value)
@@ -178,4 +179,9 @@ void Cpu::CLD()
 void Cpu::CLI()
 {
     this->setInterruptsDisabled(false);
+}
+
+void Cpu::CLV()
+{
+    this->setOverflowHappened(false);
 }
