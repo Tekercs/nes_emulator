@@ -67,6 +67,7 @@ namespace Emulator::Cpu
         void PLA();
         void PHP();
         void PLP();
+        void SEC();
 
     public:
         explicit Cpu(std::shared_ptr<Emulator::Memory::Memory> memory);
