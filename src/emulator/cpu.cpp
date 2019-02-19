@@ -80,6 +80,7 @@ void Cpu::initInstructionMap()
     this->instructions[0x08] = [&]() { this->PHP(); };
     this->instructions[0x28] = [&]() { this->PLP(); };
     this->instructions[0x38] = [&]() { this->SEC(); };
+    this->instructions[0xF8] = [&]() { this->SED(); };
 }
 
 void Cpu::setFlagBit(uint8_t flagBit, bool value)
@@ -148,4 +149,9 @@ void Cpu::PLP()
 void Cpu::SEC()
 {
     this->setCarryRemain(true);
+}
+
+void Cpu::SED()
+{
+    this->setDecimalModeOn(true);
 }
