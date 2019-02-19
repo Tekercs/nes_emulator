@@ -88,6 +88,7 @@ void Cpu::initInstructionMap()
     this->instructions[0xB8] = [&]() { this->CLV(); };
     this->instructions[0xA9] = [&]() { this->LDA(this->immediateAddressing()); };
     this->instructions[0xA5] = [&]() { this->LDA(this->zeroPageAddressing()); };
+    this->instructions[0xB5] = [&]() { this->LDA(this->zeroPageXAddressing()); };
 }
 
 void Cpu::setFlagBit(uint8_t flagBit, bool value)
@@ -206,5 +207,13 @@ uint8_t Cpu::zeroPageAddressing()
 {
     this->programCounter++;
     uint8_t zeroPageAddress = this->memory->getFrom(this->programCounter);
+    return this->memory->getFrom(zeroPageAddress);
+}
+
+uint8_t Cpu::zeroPageXAddressing()
+{
+    this->programCounter++;
+    uint8_t zeroPageAddress = this->memory->getFrom(this->programCounter);
+    zeroPageAddress += this->indexRegisterX;
     return this->memory->getFrom(zeroPageAddress);
 }
