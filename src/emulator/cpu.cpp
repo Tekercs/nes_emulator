@@ -77,6 +77,7 @@ void Cpu::initInstructionMap()
 {
     this->instructions[0x48] = [&]() { this->PHA(); };
     this->instructions[0x68] = [&]() { this->PLA(); };
+    this->instructions[0x08] = [&]() { this->PHP(); };
 }
 
 void Cpu::setFlagBit(uint8_t flagBit, bool value)
@@ -130,4 +131,9 @@ void Cpu::PLA()
 
     this->setZeroResult(this->accumulator == 0);
     this->setZeroResult((this->accumulator & 0B10000000) != 0);
+}
+
+void Cpu::PHP()
+{
+    this->pushStack(this->statusFlags);
 }
