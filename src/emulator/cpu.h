@@ -35,12 +35,6 @@
 // TODO valoszinuleg a registereket kilehetne szedni kulon classba
 namespace Emulator::Cpu
 {
-    typedef void (*CpuInstruction)();
-    typedef void (*CpuInstructionWithAddress)(uint16_t);
-    typedef void (*CpuInstructionWithValue)(uint8_t);
-    typedef CpuInstruction (*AddressingModeWithAddress)(CpuInstructionWithAddress);
-    typedef CpuInstruction (*AddressingModeWithValue)(CpuInstructionWithValue);
-
     class Cpu
     {
     private:
