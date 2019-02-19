@@ -77,6 +77,7 @@ namespace Emulator::Cpu
         void LDA(uint8_t value);
 
         uint8_t immediateAddressing();
+        uint8_t zeroPageAddressing();
 
     public:
         explicit Cpu(std::shared_ptr<Emulator::Memory::Memory> memory);
