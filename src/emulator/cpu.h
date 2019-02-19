@@ -69,6 +69,7 @@ namespace Emulator::Cpu
         void PLP();
         void SEC();
         void SED();
+        void SEI();
 
     public:
         explicit Cpu(std::shared_ptr<Emulator::Memory::Memory> memory);

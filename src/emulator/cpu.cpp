@@ -81,6 +81,7 @@ void Cpu::initInstructionMap()
     this->instructions[0x28] = [&]() { this->PLP(); };
     this->instructions[0x38] = [&]() { this->SEC(); };
     this->instructions[0xF8] = [&]() { this->SED(); };
+    this->instructions[0x78] = [&]() { this->SEI(); };
 }
 
 void Cpu::setFlagBit(uint8_t flagBit, bool value)
@@ -154,4 +155,9 @@ void Cpu::SEC()
 void Cpu::SED()
 {
     this->setDecimalModeOn(true);
+}
+
+void Cpu::SEI()
+{
+    this->setInterruptsDisabled(true);
 }
