@@ -72,6 +72,7 @@ namespace Emulator::Cpu
         void SEI();
         void CLC();
         void CLD();
+        void CLI();
 
     public:
         explicit Cpu(std::shared_ptr<Emulator::Memory::Memory> memory);
