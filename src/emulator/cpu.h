@@ -9,14 +9,6 @@
 
 #define STACK_POINTER              0x0100
 
-#define FLAGMASK_CARRY             0B00000001
-#define FLAGMASK_ZERO              0B00000010
-#define FLAGMASK_INTERRUPT         0B00000100
-#define FLAGMASK_DECMODE           0B00001000
-#define FLAGMASK_BREAK             0B00010000
-#define FLAGMASK_OVERFLOW          0B01000000
-#define FLAGMASK_NEGATIVE          0B10000000
-
 #define FLAGBIT_CARRY              0
 #define FLAGBIT_ZERO               1
 #define FLAGBIT_INTERRUPT          2
@@ -53,6 +45,7 @@ namespace Emulator::Cpu
         uint8_t pullStack();
         void pushStack(uint8_t value);
 
+        bool checkFlagBit(uint8_t flagBit) const;
         bool isCarryRemain() const;
         bool isZeroResult() const;
         bool isInterruptsDisabled() const;

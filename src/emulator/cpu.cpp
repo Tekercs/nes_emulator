@@ -17,39 +17,44 @@ Cpu::Cpu(std::shared_ptr<Emulator::Memory::Memory> memory) : memory(move(memory)
     this->initInstructionMap();
 }
 
+bool Cpu::checkFlagBit(uint8_t flagBit) const
+{
+    return (this->statusFlags & (0x01 << flagBit)) != 0;
+}
+
 bool Cpu::isCarryRemain() const
 {
-    return (this->statusFlags & FLAGMASK_CARRY) != 0;
+    return this->checkFlagBit(FLAGBIT_CARRY);
 }
 
 bool Cpu::isZeroResult() const
 {
-    return (this->statusFlags & FLAGMASK_ZERO) != 0;
+    return this->checkFlagBit(FLAGBIT_ZERO);
 }
 
 bool Cpu::isInterruptsDisabled() const
 {
-    return (this->statusFlags & FLAGMASK_INTERRUPT) != 0;
+    return this->checkFlagBit(FLAGBIT_INTERRUPT);
 }
 
 bool Cpu::isDecimalModeOn() const
 {
-    return (this->statusFlags & FLAGMASK_DECMODE) != 0;
+    return this->checkFlagBit(FLAGBIT_DECMODE);
 }
 
 bool Cpu::isBreakExecuted() const
 {
-    return (this->statusFlags & FLAGMASK_BREAK) != 0;
+    return this->checkFlagBit(FLAGBIT_BREAK);
 }
 
 bool Cpu::isNegativeFlagSet() const
 {
-    return (this->statusFlags & FLAGMASK_NEGATIVE) != 0;
+    return this->checkFlagBit(FLAGBIT_NEGATIVE);
 }
 
 bool Cpu::isOverflowHappened() const
 {
-    return (this->statusFlags & FLAGMASK_OVERFLOW) != 0;
+    return this->checkFlagBit(FLAGBIT_OVERFLOW);
 }
 
 uint8_t Cpu::pullStack()
@@ -101,7 +106,7 @@ void Cpu::setDecimalModeOn(bool value)
 
 void Cpu::setBreakExecuted(bool value)
 {
-    this->setFlagBit(FLAGBIT_BREAK);
+    this->setFlagBit(FLAGBIT_BREAK, value);
 }
 
 void Cpu::setOverflowHappened(bool value)
@@ -124,7 +129,5 @@ void Cpu::PLA()
     this->accumulator = this->pullStack();
 
     this->setZeroResult(this->accumulator == 0);
-    this->setZeroResult((this->accumulator & FLAGMASK_NEGATIVE) != 0);
+    this->setZeroResult((this->accumulator & 0B10000000) != 0);
 }
-
-
