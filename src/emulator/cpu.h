@@ -74,6 +74,9 @@ namespace Emulator::Cpu
         void CLD();
         void CLI();
         void CLV();
+        void LDA(uint8_t value);
+
+        uint8_t immediateAddressing();
 
     public:
         explicit Cpu(std::shared_ptr<Emulator::Memory::Memory> memory);

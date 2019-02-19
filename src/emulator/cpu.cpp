@@ -86,6 +86,7 @@ void Cpu::initInstructionMap()
     this->instructions[0xD8] = [&]() { this->CLD(); };
     this->instructions[0x58] = [&]() { this->CLI(); };
     this->instructions[0xB8] = [&]() { this->CLV(); };
+    this->instructions[0xA9] = [&]() { this->LDA(this->immediateAddressing()); };
 }
 
 void Cpu::setFlagBit(uint8_t flagBit, bool value)
@@ -184,4 +185,18 @@ void Cpu::CLI()
 void Cpu::CLV()
 {
     this->setOverflowHappened(false);
+}
+
+void Cpu::LDA(uint8_t value)
+{
+    this->accumulator = value;
+
+    this->setZeroResult(this->accumulator == 0);
+    this->setZeroResult((this->accumulator & 0B10000000) != 0);
+}
+
+uint8_t Cpu::immediateAddressing()
+{
+    this->programCounter++;
+    return this->memory->getFrom(this->programCounter);
 }
