@@ -16,6 +16,14 @@
 #define FLAGMASK_OVERFLOW          0B01000000
 #define FLAGMASK_NEGATIVE          0B10000000
 
+#define FLAGBIT_CARRY              0
+#define FLAGBIT_ZERO               1
+#define FLAGBIT_INTERRUPT          2
+#define FLAGBIT_DECMODE            3
+#define FLAGBIT_BREAK              4
+#define FLAGBIT_OVERFLOW           6
+#define FLAGBIT_NEGATIVE           7
+
 #define INITVAL_ACCUMULATOR        0
 #define INITVAL_INDEXREGISTERX     0
 #define INITVAL_INDEXREGISTERY     0
@@ -57,6 +65,14 @@ namespace Emulator::Cpu
         bool isBreakExecuted() const;
         bool isOverflowHappened() const;
         bool isNegativeFlagSet() const;
+
+        void setCarryRemain(bool value);
+        void setZeroResult(bool value);
+        void setInterruptsDisabled(bool value);
+        void setDecimalModeOn(bool value);
+        void setBreakExecuted(bool value);
+        void setOverflowHappened(bool value);
+        void setNegativeFlagSet(bool value);
 
     public:
         explicit Cpu(std::shared_ptr<Emulator::Memory::Memory> memory);

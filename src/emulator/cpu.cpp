@@ -73,3 +73,38 @@ void Cpu::initInstructionMap()
 
 }
 
+void Cpu::setCarryRemain(bool value)
+{
+    this->statusFlags ^= (-(uint8_t)value ^ this->statusFlags) & (0x01 << FLAGBIT_CARRY);
+}
+
+void Cpu::setZeroResult(bool value)
+{
+    this->statusFlags ^= (-(uint8_t)value ^ this->statusFlags) & (0x01 << FLAGBIT_ZERO);
+}
+
+void Cpu::setInterruptsDisabled(bool value)
+{
+    this->statusFlags ^= (-(uint8_t)value ^ this->statusFlags) & (0x01 << FLAGBIT_INTERRUPT);
+}
+
+void Cpu::setDecimalModeOn(bool value)
+{
+    this->statusFlags ^= (-(uint8_t)value ^ this->statusFlags) & (0x01 << FLAGBIT_DECMODE);
+}
+
+void Cpu::setBreakExecuted(bool value)
+{
+    this->statusFlags ^= (-(uint8_t)value ^ this->statusFlags) & (0x01 << FLAGBIT_BREAK);
+}
+
+void Cpu::setOverflowHappened(bool value)
+{
+    this->statusFlags ^= (-(uint8_t)value ^ this->statusFlags) & (0x01 << FLAGBIT_OVERFLOW);
+}
+
+void Cpu::setNegativeFlagSet(bool value)
+{
+    this->statusFlags ^= (-(uint8_t)value ^ this->statusFlags) & (0x01 << FLAGBIT_NEGATIVE);
+}
+
