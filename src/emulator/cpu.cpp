@@ -82,6 +82,7 @@ void Cpu::initInstructionMap()
     this->instructions[0x38] = [&]() { this->SEC(); };
     this->instructions[0xF8] = [&]() { this->SED(); };
     this->instructions[0x78] = [&]() { this->SEI(); };
+    this->instructions[0x18] = [&]() { this->CLC(); };
 }
 
 void Cpu::setFlagBit(uint8_t flagBit, bool value)
@@ -160,4 +161,9 @@ void Cpu::SED()
 void Cpu::SEI()
 {
     this->setInterruptsDisabled(true);
+}
+
+void Cpu::CLC()
+{
+    this->setCarryRemain(false);
 }
