@@ -70,6 +70,7 @@ namespace Emulator::Cpu
         void setNegativeFlagSet(bool value);
 
         void PHA();
+        void PLA();
 
     public:
         explicit Cpu(std::shared_ptr<Emulator::Memory::Memory> memory);

@@ -70,10 +70,8 @@ void Cpu::pushStack(uint8_t value)
 
 void Cpu::initInstructionMap()
 {
-    this->instructions[0x48] = [&]()
-    {
-        this->PHA();
-    };
+    this->instructions[0x48] = [&]() { this->PHA(); };
+    this->instructions[0x68] = [&]() { this->PLA(); };
 }
 
 void Cpu::setCarryRemain(bool value)
@@ -116,3 +114,10 @@ void Cpu::PHA()
     this->pushStack(this->accumulator);
 }
 
+void Cpu::PLA()
+{
+    this->accumulator = this->pullStack();
+
+    this->setZeroResult(this->accumulator == 0);
+    this->setZeroResult((this->accumulator & FLAGMASK_NEGATIVE) != 0);
+}
