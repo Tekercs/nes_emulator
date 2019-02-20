@@ -79,6 +79,7 @@ namespace Emulator::Cpu
         uint8_t immediateAddressing();
         uint8_t zeroPageAddressing();
         uint8_t zeroPageXAddressing();
+        uint8_t absoluteAddressing();
 
     public:
         explicit Cpu(std::shared_ptr<Emulator::Memory::Memory> memory);
