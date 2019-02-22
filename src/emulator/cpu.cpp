@@ -269,6 +269,16 @@ uint8_t Cpu::absoluteValueAddressing()
     return this->memory->getFrom(this->absoluteLocationAddressing());
 }
 
+uint8_t Cpu::absoluteXValueAddressing()
+{
+    return this->memory->getFrom(this->absoluteXLocationAddressing());
+}
+
+uint8_t Cpu::absoluteYValueAddressing()
+{
+    return this->memory->getFrom(this->absoluteYLocationAddressing());
+}
+
 uint16_t Cpu::absoluteLocationAddressing()
 {
     uint16_t address = 0x0000;

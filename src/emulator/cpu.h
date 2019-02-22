@@ -83,6 +83,8 @@ namespace Emulator::Cpu
         uint8_t zeroPageAddressing();
         uint8_t zeroPageXAddressing();
         uint8_t absoluteValueAddressing();
+        uint8_t absoluteXValueAddressing();
+        uint8_t absoluteYValueAddressing();
         uint16_t absoluteLocationAddressing();
         uint16_t absoluteXLocationAddressing();
         uint16_t absoluteYLocationAddressing();
