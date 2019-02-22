@@ -90,15 +90,21 @@ void Cpu::initInstructionMap()
     this->instructions[0xA5] = [&]() { this->LDA(this->zeroPageAddressing()); };
     this->instructions[0xB5] = [&]() { this->LDA(this->zeroPageXAddressing()); };
     this->instructions[0xAD] = [&]() { this->LDA(this->absoluteValueAddressing()); };
+    this->instructions[0xBD] = [&]() { this->LDA(this->absoluteXValueAddressing()); };
+    this->instructions[0xB9] = [&]() { this->LDA(this->absoluteYValueAddressing()); };
     this->instructions[0x4C] = [&]() { this->JMP(this->absoluteLocationAddressing()); };
     this->instructions[0x69] = [&]() { this->ADC(this->immediateAddressing()); };
     this->instructions[0x65] = [&]() { this->ADC(this->zeroPageAddressing()); };
     this->instructions[0x75] = [&]() { this->ADC(this->zeroPageXAddressing()); };
     this->instructions[0x6D] = [&]() { this->ADC(this->absoluteValueAddressing()); };
+    this->instructions[0x7D] = [&]() { this->ADC(this->absoluteXValueAddressing()); };
+    this->instructions[0x79] = [&]() { this->ADC(this->absoluteYValueAddressing()); };
     this->instructions[0xE9] = [&]() { this->SBC(this->immediateAddressing()); };
     this->instructions[0xE5] = [&]() { this->SBC(this->zeroPageAddressing()); };
     this->instructions[0xF5] = [&]() { this->SBC(this->zeroPageXAddressing()); };
     this->instructions[0xED] = [&]() { this->SBC(this->absoluteValueAddressing()); };
+    this->instructions[0xFD] = [&]() { this->SBC(this->absoluteXValueAddressing()); };
+    this->instructions[0xF9] = [&]() { this->SBC(this->absoluteYValueAddressing()); };
 }
 
 void Cpu::setFlagBit(uint8_t flagBit, bool value)
