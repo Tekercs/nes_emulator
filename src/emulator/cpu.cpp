@@ -289,6 +289,10 @@ uint16_t Cpu::absoluteXLocationAddressing()
     return this->absoluteLocationAddressing() + this->indexRegisterX;
 }
 
+uint16_t Cpu::absoluteYLocationAddressing()
+{
+    return this->absoluteLocationAddressing() + this->indexRegisterY;
+}
 
 void Cpu::operator++()
 {
