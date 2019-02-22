@@ -89,7 +89,8 @@ void Cpu::initInstructionMap()
     this->instructions[0xA9] = [&]() { this->LDA(this->immediateAddressing()); };
     this->instructions[0xA5] = [&]() { this->LDA(this->zeroPageAddressing()); };
     this->instructions[0xB5] = [&]() { this->LDA(this->zeroPageXAddressing()); };
-    this->instructions[0xAD] = [&]() { this->LDA(this->absoluteAddressing()); };
+    this->instructions[0xAD] = [&]() { this->LDA(this->absoluteValueAddressing()); };
+    this->instructions[0x4C] = [&]() { this->JMP(this->absoluteLocationAddressing()); };
 }
 
 void Cpu::setFlagBit(uint8_t flagBit, bool value)
@@ -198,6 +199,11 @@ void Cpu::LDA(uint8_t value)
     this->setZeroResult((this->accumulator & 0B10000000) != 0);
 }
 
+void Cpu::JMP(uint16_t address)
+{
+    this->programCounter = address;
+}
+
 uint8_t Cpu::immediateAddressing()
 {
     this->programCounter++;
@@ -219,7 +225,7 @@ uint8_t Cpu::zeroPageXAddressing()
     return this->memory->getFrom(zeroPageAddress);
 }
 
-uint8_t Cpu::absoluteAddressing()
+uint8_t Cpu::absoluteValueAddressing()
 {
     uint16_t address = 0x0000;
 
@@ -232,4 +238,19 @@ uint8_t Cpu::absoluteAddressing()
     address = (addressMostSingicant << 8) + addressLeastSignificant;
 
     return this->memory->getFrom(address);
+}
+
+uint16_t Cpu::absoluteLocationAddressing()
+{
+    uint16_t address = 0x0000;
+
+    this->programCounter++;
+    uint16_t addressLeastSignificant = 0x0000 + this->memory->getFrom(this->programCounter);
+
+    this->programCounter++;
+    uint16_t addressMostSingicant = 0x0000 + this->memory->getFrom(this->programCounter);
+
+    address = (addressMostSingicant << 8) + addressLeastSignificant;
+
+    return address;
 }
