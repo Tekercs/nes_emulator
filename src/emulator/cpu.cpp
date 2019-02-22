@@ -92,6 +92,7 @@ void Cpu::initInstructionMap()
     this->instructions[0xAD] = [&]() { this->LDA(this->absoluteValueAddressing()); };
     this->instructions[0x4C] = [&]() { this->JMP(this->absoluteLocationAddressing()); };
     this->instructions[0x69] = [&]() { this->ADC(this->immediateAddressing()); };
+    this->instructions[0xE9] = [&]() { this->SBC(this->immediateAddressing()); };
 }
 
 void Cpu::setFlagBit(uint8_t flagBit, bool value)
@@ -231,6 +232,11 @@ void Cpu::ADC(uint8_t value)
     ++this->programCounter;
 }
 
+void Cpu::SBC(uint8_t value)
+{
+    this->ADC(~(value));
+}
+
 uint8_t Cpu::immediateAddressing()
 {
     this->programCounter++;
@@ -287,3 +293,5 @@ void Cpu::operator++()
     uint8_t opcode = this->memory->getFrom(this->programCounter);
     (this->instructions[opcode])();
 }
+
+
