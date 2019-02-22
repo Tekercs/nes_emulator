@@ -266,17 +266,7 @@ uint8_t Cpu::zeroPageXAddressing()
 
 uint8_t Cpu::absoluteValueAddressing()
 {
-    uint16_t address = 0x0000;
-
-    this->programCounter++;
-    uint16_t addressLeastSignificant = 0x0000 + this->memory->getFrom(this->programCounter);
-
-    this->programCounter++;
-    uint16_t addressMostSingicant = 0x0000 + this->memory->getFrom(this->programCounter);
-
-    address = (addressMostSingicant << 8) + addressLeastSignificant;
-
-    return this->memory->getFrom(address);
+    return this->memory->getFrom(this->absoluteLocationAddressing());
 }
 
 uint16_t Cpu::absoluteLocationAddressing()
