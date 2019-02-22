@@ -92,7 +92,13 @@ void Cpu::initInstructionMap()
     this->instructions[0xAD] = [&]() { this->LDA(this->absoluteValueAddressing()); };
     this->instructions[0x4C] = [&]() { this->JMP(this->absoluteLocationAddressing()); };
     this->instructions[0x69] = [&]() { this->ADC(this->immediateAddressing()); };
+    this->instructions[0x65] = [&]() { this->ADC(this->zeroPageAddressing()); };
+    this->instructions[0x75] = [&]() { this->ADC(this->zeroPageXAddressing()); };
+    this->instructions[0x6D] = [&]() { this->ADC(this->absoluteValueAddressing()); };
     this->instructions[0xE9] = [&]() { this->SBC(this->immediateAddressing()); };
+    this->instructions[0xE5] = [&]() { this->SBC(this->zeroPageAddressing()); };
+    this->instructions[0xF5] = [&]() { this->SBC(this->zeroPageXAddressing()); };
+    this->instructions[0xED] = [&]() { this->SBC(this->absoluteValueAddressing()); };
 }
 
 void Cpu::setFlagBit(uint8_t flagBit, bool value)
