@@ -91,6 +91,7 @@ void Cpu::initInstructionMap()
     this->instructions[0xB5] = [&]() { this->LDA(this->zeroPageXAddressing()); };
     this->instructions[0xAD] = [&]() { this->LDA(this->absoluteValueAddressing()); };
     this->instructions[0x4C] = [&]() { this->JMP(this->absoluteLocationAddressing()); };
+    this->instructions[0x69] = [&]() { this->ADC(this->immediateAddressing()); };
 }
 
 void Cpu::setFlagBit(uint8_t flagBit, bool value)
@@ -213,6 +214,21 @@ void Cpu::LDA(uint8_t value)
 void Cpu::JMP(uint16_t address)
 {
     this->programCounter = address;
+}
+
+void Cpu::ADC(uint8_t value)
+{
+    uint32_t result = this->accumulator + value + this->isCarryRemain();
+
+    if (result > 0xFF)
+        this->setCarryRemain(true);
+
+    this->setZeroResult(result == 0);
+    this->setOverflowHappened(~(this->accumulator ^ value) & (this->accumulator ^ result) & 0B10000000);
+
+    this->accumulator = static_cast<uint8_t>(result);
+
+    ++this->programCounter;
 }
 
 uint8_t Cpu::immediateAddressing()

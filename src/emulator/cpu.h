@@ -74,6 +74,7 @@ namespace Emulator::Cpu
         void CLD();
         void CLI();
         void CLV();
+        void ADC(uint8_t value);
         void JMP(uint16_t address);
         void LDA(uint8_t value);
 
