@@ -284,10 +284,15 @@ uint16_t Cpu::absoluteLocationAddressing()
     return address;
 }
 
+uint16_t Cpu::absoluteXLocationAddressing()
+{
+    return this->absoluteLocationAddressing() + this->indexRegisterX;
+}
+
+
 void Cpu::operator++()
 {
     uint8_t opcode = this->memory->getFrom(this->programCounter);
     (this->instructions[opcode])();
 }
-
 
