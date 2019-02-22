@@ -86,5 +86,6 @@ namespace Emulator::Cpu
     public:
         explicit Cpu(std::shared_ptr<Emulator::Memory::Memory> memory);
 
+        void operator++();
     };
 }

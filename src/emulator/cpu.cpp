@@ -149,46 +149,55 @@ void Cpu::PLA()
 void Cpu::PHP()
 {
     this->pushStack(this->statusFlags);
+    ++this->programCounter;
 }
 
 void Cpu::PLP()
 {
     this->statusFlags = this->pullStack();
+    ++this->programCounter;
 }
 
 void Cpu::SEC()
 {
     this->setCarryRemain(true);
+    ++this->programCounter;
 }
 
 void Cpu::SED()
 {
     this->setDecimalModeOn(true);
+    ++this->programCounter;
 }
 
 void Cpu::SEI()
 {
     this->setInterruptsDisabled(true);
+    ++this->programCounter;
 }
 
 void Cpu::CLC()
 {
     this->setCarryRemain(false);
+    ++this->programCounter;
 }
 
 void Cpu::CLD()
 {
     this->setCarryRemain(false);
+    ++this->programCounter;
 }
 
 void Cpu::CLI()
 {
     this->setInterruptsDisabled(false);
+    ++this->programCounter;
 }
 
 void Cpu::CLV()
 {
     this->setOverflowHappened(false);
+    ++this->programCounter;
 }
 
 void Cpu::LDA(uint8_t value)
@@ -197,6 +206,8 @@ void Cpu::LDA(uint8_t value)
 
     this->setZeroResult(this->accumulator == 0);
     this->setZeroResult((this->accumulator & 0B10000000) != 0);
+
+    ++this->programCounter;
 }
 
 void Cpu::JMP(uint16_t address)
@@ -253,4 +264,10 @@ uint16_t Cpu::absoluteLocationAddressing()
     address = (addressMostSingicant << 8) + addressLeastSignificant;
 
     return address;
+}
+
+void Cpu::operator++()
+{
+    uint8_t opcode = this->memory->getFrom(this->programCounter);
+    (this->instructions[opcode])();
 }
