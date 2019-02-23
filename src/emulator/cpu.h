@@ -75,6 +75,7 @@ namespace Emulator::Cpu
         void CLI();
         void CLV();
         void STA(uint16_t address);
+        void STX(uint16_t address);
         void ADC(uint8_t value);
         void SBC(uint8_t value);
         void JMP(uint16_t address);
@@ -83,6 +84,7 @@ namespace Emulator::Cpu
         uint8_t immediateAddressing();
         uint8_t zeroPageAddressing();
         uint8_t zeroPageXAddressing();
+        uint8_t zeroPageYAddressing();
         uint8_t zeroPageValueAddressing();
         uint8_t zeroPageXValueAddressing();
         uint8_t absoluteValueAddressing();

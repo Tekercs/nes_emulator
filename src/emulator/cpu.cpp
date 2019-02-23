@@ -110,6 +110,9 @@ void Cpu::initInstructionMap()
     this->instructions[0x8D] = [&]() { this->STA(this->absoluteLocationAddressing()); };
     this->instructions[0x9D] = [&]() { this->STA(this->absoluteYLocationAddressing()); };
     this->instructions[0x99] = [&]() { this->STA(this->absoluteYLocationAddressing()); };
+    this->instructions[0x86] = [&]() { this->STX(this->zeroPageAddressing()); };
+    this->instructions[0x96] = [&]() { this->STX(this->zeroPageYAddressing()); };
+    this->instructions[0x8E] = [&]() { this->STX(this->absoluteLocationAddressing()); };
 }
 
 void Cpu::setFlagBit(uint8_t flagBit, bool value)
@@ -260,6 +263,12 @@ void Cpu::STA(uint16_t address)
     ++this->programCounter;
 }
 
+void Cpu::STX(uint16_t address)
+{
+    this->memory->setAt(address, this->indexRegisterX);
+    ++this->programCounter;
+}
+
 uint8_t Cpu::immediateAddressing()
 {
     this->programCounter++;
@@ -278,6 +287,14 @@ uint8_t Cpu::zeroPageXAddressing()
     uint8_t zeroPageAddress = this->memory->getFrom(this->programCounter);
 
     return zeroPageAddress + this->indexRegisterX;
+}
+
+uint8_t Cpu::zeroPageYAddressing()
+{
+    this->programCounter++;
+    uint8_t zeroPageAddress = this->memory->getFrom(this->programCounter);
+
+    return zeroPageAddress + this->indexRegisterY;
 }
 
 uint8_t Cpu::zeroPageValueAddressing()
