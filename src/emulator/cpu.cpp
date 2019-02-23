@@ -117,6 +117,7 @@ void Cpu::initInstructionMap()
     this->instructions[0x94] = [&]() { this->STY(this->zeroPageXAddressing()); };
     this->instructions[0x8C] = [&]() { this->STY(this->absoluteLocationAddressing()); };
     this->instructions[0xAA] = [&]() { this->TAX(); };
+    this->instructions[0xA8] = [&]() { this->TAY(); };
 }
 
 void Cpu::setFlagBit(uint8_t flagBit, bool value)
@@ -285,6 +286,16 @@ void Cpu::TAX()
 
     this->setZeroResult(this->indexRegisterX == 0);
     this->setNegativeFlagSet((this->indexRegisterX & 0B10000000) > 0);
+
+    ++this->programCounter;
+}
+
+void Cpu::TAY()
+{
+    this->indexRegisterY = this->accumulator;
+
+    this->setZeroResult(this->indexRegisterY == 0);
+    this->setNegativeFlagSet((this->indexRegisterY & 0B10000000) > 0);
 
     ++this->programCounter;
 }
