@@ -116,6 +116,7 @@ void Cpu::initInstructionMap()
     this->instructions[0x84] = [&]() { this->STY(this->zeroPageAddressing()); };
     this->instructions[0x94] = [&]() { this->STY(this->zeroPageXAddressing()); };
     this->instructions[0x8C] = [&]() { this->STY(this->absoluteLocationAddressing()); };
+    this->instructions[0xAA] = [&]() { this->TAX(); };
 }
 
 void Cpu::setFlagBit(uint8_t flagBit, bool value)
@@ -275,6 +276,16 @@ void Cpu::STX(uint16_t address)
 void Cpu::STY(uint16_t address)
 {
     this->memory->setAt(address, this->indexRegisterY);
+    ++this->programCounter;
+}
+
+void Cpu::TAX()
+{
+    this->indexRegisterX = this->accumulator;
+
+    this->setZeroResult(this->indexRegisterX == 0);
+    this->setNegativeFlagSet((this->indexRegisterX & 0B10000000) > 0);
+
     ++this->programCounter;
 }
 
