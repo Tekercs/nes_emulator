@@ -91,6 +91,7 @@ void Cpu::initInstructionMap()
     this->instructions[0x39] = [&]() { this->AND(this->absoluteYValueAddressing()); };
     this->instructions[0x21] = [&]() { this->AND(this->indexedIndirectValue()); };
     this->instructions[0x31] = [&]() { this->AND(this->indirectIndexedValue()); };
+    this->instructions[0xEA] = [&]() { this->NOP(); };
 
 
 
@@ -361,6 +362,11 @@ void Cpu::AND(uint8_t value)
     this->setZeroResult(this->accumulator == 0);
     this->setNegativeFlagSet((this->accumulator & 0B10000000) > 0);
 
+    ++this->programCounter;
+}
+
+void Cpu::NOP()
+{
     ++this->programCounter;
 }
 
