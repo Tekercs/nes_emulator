@@ -91,10 +91,15 @@ void Cpu::initInstructionMap()
     this->instructions[0x39] = [&]() { this->AND(this->absoluteYValueAddressing()); };
     this->instructions[0x21] = [&]() { this->AND(this->indexedIndirectValue()); };
     this->instructions[0x31] = [&]() { this->AND(this->indirectIndexedValue()); };
+    this->instructions[0x0A] = [&]() { this->ASLAccumulator(); };
+    this->instructions[0x06] = [&]() { this->ASL(this->zeroPageAddressing()); };
+    this->instructions[0x16] = [&]() { this->ASL(this->zeroPageXAddressing()); };
+    this->instructions[0x0E] = [&]() { this->ASL(this->absoluteLocationAddressing()); };
+    this->instructions[0x1E] = [&]() { this->ASL(this->absoluteXLocationAddressing()); };
+    
+
+
     this->instructions[0xEA] = [&]() { this->NOP(); };
-
-
-
     this->instructions[0x48] = [&]() { this->PHA(); };
     this->instructions[0x68] = [&]() { this->PLA(); };
     this->instructions[0x08] = [&]() { this->PHP(); };
@@ -367,6 +372,32 @@ void Cpu::AND(uint8_t value)
 
 void Cpu::NOP()
 {
+    ++this->programCounter;
+}
+
+void Cpu::ASL(uint16_t address)
+{
+    uint8_t value = this->memory->getFrom(address);
+    uint16_t shiftResult = value << 1;
+    value = shiftResult;
+
+    this->setCarryRemain(shiftResult > 0xFF);
+    this->setZeroResult(value == 0);
+    this->setNegativeFlagSet((value & 0B10000000) > 0);
+
+    this->memory->setAt(address, value);
+    ++this->programCounter;
+}
+
+void Cpu::ASLAccumulator()
+{
+    uint16_t shiftResult = this->accumulator << 1;
+    this->accumulator = shiftResult;
+
+    this->setCarryRemain(shiftResult > 0xFF);
+    this->setZeroResult(this->accumulator == 0);
+    this->setNegativeFlagSet((this->accumulator & 0B10000000) > 0);
+
     ++this->programCounter;
 }
 

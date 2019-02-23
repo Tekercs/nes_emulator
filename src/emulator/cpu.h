@@ -81,6 +81,8 @@ namespace Emulator::Cpu
         void TXS();
         void TYA();
         void NOP();
+        void ASLAccumulator();
+        void ASL(uint16_t address);
         void AND(uint8_t value);
         void STA(uint16_t address);
         void STX(uint16_t address);
