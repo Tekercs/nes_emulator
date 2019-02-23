@@ -79,6 +79,7 @@ namespace Emulator::Cpu
         void TSX();
         void TXA();
         void TXS();
+        void TYA();
         void STA(uint16_t address);
         void STX(uint16_t address);
         void STY(uint16_t address);
