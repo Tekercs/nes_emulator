@@ -119,6 +119,7 @@ void Cpu::initInstructionMap()
     this->instructions[0xAA] = [&]() { this->TAX(); };
     this->instructions[0xA8] = [&]() { this->TAY(); };
     this->instructions[0xBA] = [&]() { this->TSX(); };
+    this->instructions[0x8A] = [&]() { this->TXA(); };
 }
 
 void Cpu::setFlagBit(uint8_t flagBit, bool value)
@@ -307,6 +308,16 @@ void Cpu::TSX()
 
     this->setZeroResult(this->indexRegisterX == 0);
     this->setNegativeFlagSet((this->indexRegisterX & 0B10000000) > 0);
+
+    ++this->programCounter;
+}
+
+void Cpu::TXA()
+{
+    this->accumulator = this->indexRegisterX;
+
+    this->setZeroResult(this->accumulator == 0);
+    this->setNegativeFlagSet((this->accumulator & 0B10000000) > 0);
 
     ++this->programCounter;
 }
