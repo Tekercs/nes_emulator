@@ -419,6 +419,42 @@ uint16_t Cpu::absoluteYLocationAddressing()
     return this->absoluteLocationAddressing() + this->indexRegisterY;
 }
 
+uint16_t Cpu::indexedIndirectAddress()
+{
+    ++this->programCounter;
+    uint8_t zeroPageAddress = this->memory->getFrom(this->programCounter);
+
+    zeroPageAddress += this->indexRegisterX;
+
+    uint16_t address = 0x0000;
+    uint16_t addressLeastSignificant = 0x0000 + this->memory->getFrom(zeroPageAddress);
+
+    ++zeroPageAddress;
+    uint16_t addressMostSingicant = 0x0000 + this->memory->getFrom(zeroPageAddress);
+
+    address = (addressMostSingicant << 8) + addressLeastSignificant;
+
+    return address;
+}
+
+uint16_t Cpu::indirectIndexedAddress()
+{
+    ++this->programCounter;
+    uint8_t zeroPageAddress = this->memory->getFrom(this->programCounter);
+
+    zeroPageAddress += this->indexRegisterY;
+
+    uint16_t address = 0x0000;
+    uint16_t addressLeastSignificant = 0x0000 + this->memory->getFrom(zeroPageAddress);
+
+    ++zeroPageAddress;
+    uint16_t addressMostSingicant = 0x0000 + this->memory->getFrom(zeroPageAddress);
+
+    address = (addressMostSingicant << 8) + addressLeastSignificant;
+
+    return address;
+}
+
 void Cpu::operator++()
 {
     uint8_t opcode = this->memory->getFrom(this->programCounter);

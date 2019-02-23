@@ -100,6 +100,8 @@ namespace Emulator::Cpu
         uint16_t absoluteLocationAddressing();
         uint16_t absoluteXLocationAddressing();
         uint16_t absoluteYLocationAddressing();
+        uint16_t indexedIndirectAddress();
+        uint16_t indirectIndexedAddress();
 
     public:
         explicit Cpu(std::shared_ptr<Emulator::Memory::Memory> memory);
