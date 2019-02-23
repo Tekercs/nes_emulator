@@ -83,6 +83,14 @@ void Cpu::initInstructionMap()
     this->instructions[0x79] = [&]() { this->ADC(this->absoluteYValueAddressing()); };
     this->instructions[0x61] = [&]() { this->ADC(this->indexedIndirectValue()); };
     this->instructions[0x71] = [&]() { this->ADC(this->indirectIndexedValue()); };
+    this->instructions[0x29] = [&]() { this->AND(this->immediateAddressing()); };
+    this->instructions[0x25] = [&]() { this->AND(this->zeroPageValueAddressing()); };
+    this->instructions[0x35] = [&]() { this->AND(this->zeroPageXValueAddressing()); };
+    this->instructions[0x2D] = [&]() { this->AND(this->absoluteValueAddressing()); };
+    this->instructions[0x3D] = [&]() { this->AND(this->absoluteXValueAddressing()); };
+    this->instructions[0x39] = [&]() { this->AND(this->absoluteYValueAddressing()); };
+    this->instructions[0x21] = [&]() { this->AND(this->indexedIndirectValue()); };
+    this->instructions[0x31] = [&]() { this->AND(this->indirectIndexedValue()); };
 
 
 
@@ -339,6 +347,16 @@ void Cpu::TXS()
 void Cpu::TYA()
 {
     this->accumulator = this->indexRegisterY;
+
+    this->setZeroResult(this->accumulator == 0);
+    this->setNegativeFlagSet((this->accumulator & 0B10000000) > 0);
+
+    ++this->programCounter;
+}
+
+void Cpu::AND(uint8_t value)
+{
+    this->accumulator = this->accumulator & value;
 
     this->setZeroResult(this->accumulator == 0);
     this->setNegativeFlagSet((this->accumulator & 0B10000000) > 0);
