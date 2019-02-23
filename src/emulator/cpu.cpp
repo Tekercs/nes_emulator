@@ -87,24 +87,29 @@ void Cpu::initInstructionMap()
     this->instructions[0x58] = [&]() { this->CLI(); };
     this->instructions[0xB8] = [&]() { this->CLV(); };
     this->instructions[0xA9] = [&]() { this->LDA(this->immediateAddressing()); };
-    this->instructions[0xA5] = [&]() { this->LDA(this->zeroPageAddressing()); };
-    this->instructions[0xB5] = [&]() { this->LDA(this->zeroPageXAddressing()); };
+    this->instructions[0xA5] = [&]() { this->LDA(this->zeroPageValueAddressing()); };
+    this->instructions[0xB5] = [&]() { this->LDA(this->zeroPageXValueAddressing()); };
     this->instructions[0xAD] = [&]() { this->LDA(this->absoluteValueAddressing()); };
     this->instructions[0xBD] = [&]() { this->LDA(this->absoluteXValueAddressing()); };
     this->instructions[0xB9] = [&]() { this->LDA(this->absoluteYValueAddressing()); };
     this->instructions[0x4C] = [&]() { this->JMP(this->absoluteLocationAddressing()); };
     this->instructions[0x69] = [&]() { this->ADC(this->immediateAddressing()); };
-    this->instructions[0x65] = [&]() { this->ADC(this->zeroPageAddressing()); };
-    this->instructions[0x75] = [&]() { this->ADC(this->zeroPageXAddressing()); };
+    this->instructions[0x65] = [&]() { this->ADC(this->zeroPageValueAddressing()); };
+    this->instructions[0x75] = [&]() { this->ADC(this->zeroPageXValueAddressing()); };
     this->instructions[0x6D] = [&]() { this->ADC(this->absoluteValueAddressing()); };
     this->instructions[0x7D] = [&]() { this->ADC(this->absoluteXValueAddressing()); };
     this->instructions[0x79] = [&]() { this->ADC(this->absoluteYValueAddressing()); };
     this->instructions[0xE9] = [&]() { this->SBC(this->immediateAddressing()); };
-    this->instructions[0xE5] = [&]() { this->SBC(this->zeroPageAddressing()); };
-    this->instructions[0xF5] = [&]() { this->SBC(this->zeroPageXAddressing()); };
+    this->instructions[0xE5] = [&]() { this->SBC(this->zeroPageValueAddressing()); };
+    this->instructions[0xF5] = [&]() { this->SBC(this->zeroPageXValueAddressing()); };
     this->instructions[0xED] = [&]() { this->SBC(this->absoluteValueAddressing()); };
     this->instructions[0xFD] = [&]() { this->SBC(this->absoluteXValueAddressing()); };
     this->instructions[0xF9] = [&]() { this->SBC(this->absoluteYValueAddressing()); };
+    this->instructions[0x85] = [&]() { this->STA(this->zeroPageAddressing()); };
+    this->instructions[0x95] = [&]() { this->STA(this->zeroPageXAddressing()); };
+    this->instructions[0x8D] = [&]() { this->STA(this->absoluteLocationAddressing()); };
+    this->instructions[0x9D] = [&]() { this->STA(this->absoluteYLocationAddressing()); };
+    this->instructions[0x99] = [&]() { this->STA(this->absoluteYLocationAddressing()); };
 }
 
 void Cpu::setFlagBit(uint8_t flagBit, bool value)
@@ -249,6 +254,12 @@ void Cpu::SBC(uint8_t value)
     this->ADC(~(value));
 }
 
+void Cpu::STA(uint16_t address)
+{
+    this->memory->setAt(address, this->accumulator);
+    ++this->programCounter;
+}
+
 uint8_t Cpu::immediateAddressing()
 {
     this->programCounter++;
@@ -258,16 +269,25 @@ uint8_t Cpu::immediateAddressing()
 uint8_t Cpu::zeroPageAddressing()
 {
     this->programCounter++;
-    uint8_t zeroPageAddress = this->memory->getFrom(this->programCounter);
-    return this->memory->getFrom(zeroPageAddress);
+    return this->memory->getFrom(this->programCounter);
 }
 
 uint8_t Cpu::zeroPageXAddressing()
 {
     this->programCounter++;
     uint8_t zeroPageAddress = this->memory->getFrom(this->programCounter);
-    zeroPageAddress += this->indexRegisterX;
-    return this->memory->getFrom(zeroPageAddress);
+
+    return zeroPageAddress + this->indexRegisterX;
+}
+
+uint8_t Cpu::zeroPageValueAddressing()
+{
+    return this->memory->getFrom(this->zeroPageAddressing());
+}
+
+uint8_t Cpu::zeroPageXValueAddressing()
+{
+    return this->memory->getFrom(this->zeroPageXAddressing());
 }
 
 uint8_t Cpu::absoluteValueAddressing()
@@ -315,4 +335,3 @@ void Cpu::operator++()
     uint8_t opcode = this->memory->getFrom(this->programCounter);
     (this->instructions[opcode])();
 }
-
