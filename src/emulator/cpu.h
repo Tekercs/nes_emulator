@@ -76,6 +76,7 @@ namespace Emulator::Cpu
         void CLV();
         void STA(uint16_t address);
         void STX(uint16_t address);
+        void STY(uint16_t address);
         void ADC(uint8_t value);
         void SBC(uint8_t value);
         void JMP(uint16_t address);
