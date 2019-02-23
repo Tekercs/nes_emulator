@@ -75,6 +75,17 @@ void Cpu::pushStack(uint8_t value)
 
 void Cpu::initInstructionMap()
 {
+    this->instructions[0x69] = [&]() { this->ADC(this->immediateAddressing()); };
+    this->instructions[0x65] = [&]() { this->ADC(this->zeroPageValueAddressing()); };
+    this->instructions[0x75] = [&]() { this->ADC(this->zeroPageXValueAddressing()); };
+    this->instructions[0x6D] = [&]() { this->ADC(this->absoluteValueAddressing()); };
+    this->instructions[0x7D] = [&]() { this->ADC(this->absoluteXValueAddressing()); };
+    this->instructions[0x79] = [&]() { this->ADC(this->absoluteYValueAddressing()); };
+    this->instructions[0x61] = [&]() { this->ADC(this->indexedIndirectValue()); };
+    this->instructions[0x71] = [&]() { this->ADC(this->indirectIndexedValue()); };
+
+
+
     this->instructions[0x48] = [&]() { this->PHA(); };
     this->instructions[0x68] = [&]() { this->PLA(); };
     this->instructions[0x08] = [&]() { this->PHP(); };
@@ -93,12 +104,6 @@ void Cpu::initInstructionMap()
     this->instructions[0xBD] = [&]() { this->LDA(this->absoluteXValueAddressing()); };
     this->instructions[0xB9] = [&]() { this->LDA(this->absoluteYValueAddressing()); };
     this->instructions[0x4C] = [&]() { this->JMP(this->absoluteLocationAddressing()); };
-    this->instructions[0x69] = [&]() { this->ADC(this->immediateAddressing()); };
-    this->instructions[0x65] = [&]() { this->ADC(this->zeroPageValueAddressing()); };
-    this->instructions[0x75] = [&]() { this->ADC(this->zeroPageXValueAddressing()); };
-    this->instructions[0x6D] = [&]() { this->ADC(this->absoluteValueAddressing()); };
-    this->instructions[0x7D] = [&]() { this->ADC(this->absoluteXValueAddressing()); };
-    this->instructions[0x79] = [&]() { this->ADC(this->absoluteYValueAddressing()); };
     this->instructions[0xE9] = [&]() { this->SBC(this->immediateAddressing()); };
     this->instructions[0xE5] = [&]() { this->SBC(this->zeroPageValueAddressing()); };
     this->instructions[0xF5] = [&]() { this->SBC(this->zeroPageXValueAddressing()); };
@@ -453,6 +458,16 @@ uint16_t Cpu::indirectIndexedAddress()
     address = (addressMostSingicant << 8) + addressLeastSignificant;
 
     return address;
+}
+
+uint8_t Cpu::indexedIndirectValue()
+{
+    return this->memory->getFrom(this->indexedIndirectAddress());
+}
+
+uint8_t Cpu::indirectIndexedValue()
+{
+    return this->memory->getFrom(this->indirectIndexedAddress());
 }
 
 void Cpu::operator++()
