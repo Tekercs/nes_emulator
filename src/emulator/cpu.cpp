@@ -118,6 +118,15 @@ void Cpu::initInstructionMap()
     this->instructions[0xFE] = [&]() { this->INC(this->absoluteXLocationAddressing()); };
     this->instructions[0xE8] = [&]() { this->INX(); };
     this->instructions[0xC8] = [&]() { this->INY(); };
+    this->instructions[0xA9] = [&]() { this->LDA(this->immediateAddressing()); };
+    this->instructions[0xA5] = [&]() { this->LDA(this->zeroPageValueAddressing()); };
+    this->instructions[0xB5] = [&]() { this->LDA(this->zeroPageXValueAddressing()); };
+    this->instructions[0xAD] = [&]() { this->LDA(this->absoluteValueAddressing()); };
+    this->instructions[0xBD] = [&]() { this->LDA(this->absoluteXValueAddressing()); };
+    this->instructions[0xB9] = [&]() { this->LDA(this->absoluteYValueAddressing()); };
+    this->instructions[0xA1] = [&]() { this->LDA(this->indexedIndirectValue()); };
+    this->instructions[0xB1] = [&]() { this->LDA(this->indirectIndexedValue()); };
+
 
 
 
@@ -133,12 +142,6 @@ void Cpu::initInstructionMap()
     this->instructions[0xD8] = [&]() { this->CLD(); };
     this->instructions[0x58] = [&]() { this->CLI(); };
     this->instructions[0xB8] = [&]() { this->CLV(); };
-    this->instructions[0xA9] = [&]() { this->LDA(this->immediateAddressing()); };
-    this->instructions[0xA5] = [&]() { this->LDA(this->zeroPageValueAddressing()); };
-    this->instructions[0xB5] = [&]() { this->LDA(this->zeroPageXValueAddressing()); };
-    this->instructions[0xAD] = [&]() { this->LDA(this->absoluteValueAddressing()); };
-    this->instructions[0xBD] = [&]() { this->LDA(this->absoluteXValueAddressing()); };
-    this->instructions[0xB9] = [&]() { this->LDA(this->absoluteYValueAddressing()); };
     this->instructions[0x4C] = [&]() { this->JMP(this->absoluteLocationAddressing()); };
     this->instructions[0xE9] = [&]() { this->SBC(this->immediateAddressing()); };
     this->instructions[0xE5] = [&]() { this->SBC(this->zeroPageValueAddressing()); };
