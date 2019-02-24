@@ -99,6 +99,9 @@ void Cpu::initInstructionMap()
     this->instructions[0x90] = [&]() { this->BCC(this->immediateAddressing()); };
     this->instructions[0xB0] = [&]() { this->BCS(this->immediateAddressing()); };
     this->instructions[0xF0] = [&]() { this->BEQ(this->immediateAddressing()); };
+    this->instructions[0x24] = [&]() { this->BIT(this->zeroPageValueAddressing()); };
+    this->instructions[0x2C] = [&]() { this->BIT(this->absoluteValueAddressing()); };
+
 
 
 
@@ -424,6 +427,17 @@ void Cpu::BEQ(int8_t value)
 {
     if (this->isZeroResult())
         this->programCounter += value;
+
+    ++this->programCounter;
+}
+
+void Cpu::BIT(uint8_t value)
+{
+    uint8_t result = this->accumulator & value;
+
+    this->setNegativeFlagSet((result & 0B10000000));
+    this->setOverflowHappened((result & 0B01000000));
+    this->setZeroResult(result == 0);
 
     ++this->programCounter;
 }
