@@ -136,12 +136,6 @@ void Cpu::initInstructionMap()
     this->instructions[0xB4] = [&]() { this->LDY(this->zeroPageXValueAddressing()); };
     this->instructions[0xAC] = [&]() { this->LDY(this->absoluteValueAddressing()); };
     this->instructions[0xBC] = [&]() { this->LDY(this->absoluteXValueAddressing()); };
-
-
-
-
-
-    this->instructions[0xEA] = [&]() { this->NOP(); };
     this->instructions[0x48] = [&]() { this->PHA(); };
     this->instructions[0x68] = [&]() { this->PLA(); };
     this->instructions[0x08] = [&]() { this->PHP(); };
@@ -153,7 +147,17 @@ void Cpu::initInstructionMap()
     this->instructions[0xD8] = [&]() { this->CLD(); };
     this->instructions[0x58] = [&]() { this->CLI(); };
     this->instructions[0xB8] = [&]() { this->CLV(); };
+    this->instructions[0xAA] = [&]() { this->TAX(); };
+    this->instructions[0xA8] = [&]() { this->TAY(); };
+    this->instructions[0xBA] = [&]() { this->TSX(); };
+    this->instructions[0x8A] = [&]() { this->TXA(); };
+    this->instructions[0x9A] = [&]() { this->TXS(); };
+    this->instructions[0x98] = [&]() { this->TYA(); };
     this->instructions[0x4C] = [&]() { this->JMP(this->absoluteLocationAddressing()); };
+    this->instructions[0x6C] = [&]() { this->JMP(this->indirectAddress()); };
+
+
+
     this->instructions[0xE9] = [&]() { this->SBC(this->immediateAddressing()); };
     this->instructions[0xE5] = [&]() { this->SBC(this->zeroPageValueAddressing()); };
     this->instructions[0xF5] = [&]() { this->SBC(this->zeroPageXValueAddressing()); };
@@ -171,12 +175,7 @@ void Cpu::initInstructionMap()
     this->instructions[0x84] = [&]() { this->STY(this->zeroPageAddressing()); };
     this->instructions[0x94] = [&]() { this->STY(this->zeroPageXAddressing()); };
     this->instructions[0x8C] = [&]() { this->STY(this->absoluteLocationAddressing()); };
-    this->instructions[0xAA] = [&]() { this->TAX(); };
-    this->instructions[0xA8] = [&]() { this->TAY(); };
-    this->instructions[0xBA] = [&]() { this->TSX(); };
-    this->instructions[0x8A] = [&]() { this->TXA(); };
-    this->instructions[0x9A] = [&]() { this->TXS(); };
-    this->instructions[0x98] = [&]() { this->TYA(); };
+
 }
 
 void Cpu::setFlagBit(uint8_t flagBit, bool value)
@@ -679,6 +678,28 @@ uint16_t Cpu::absoluteXLocationAddressing()
 uint16_t Cpu::absoluteYLocationAddressing()
 {
     return this->absoluteLocationAddressing() + this->indexRegisterY;
+}
+
+uint16_t Cpu::indirectAddress()
+{
+    uint16_t address = 0x0000;
+
+    ++this->programCounter;
+    uint16_t addressLeastSignificant = 0x0000 + this->memory->getFrom(this->programCounter);
+
+    ++this->programCounter;
+    uint16_t addressMostSingicant = 0x0000 + this->memory->getFrom(this->programCounter);
+
+    address = (addressMostSingicant << 8) + addressLeastSignificant;
+
+    addressLeastSignificant = 0x0000 + this->memory->getFrom(address);
+    ++address;
+    addressMostSingicant = 0x0000 + this->memory->getFrom(address);
+
+    address = (addressMostSingicant << 8) + addressLeastSignificant;
+
+    return address;
+
 }
 
 uint16_t Cpu::indexedIndirectAddress()
