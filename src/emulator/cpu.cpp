@@ -111,6 +111,7 @@ void Cpu::initInstructionMap()
     this->instructions[0xCE] = [&]() { this->DEC(this->absoluteLocationAddressing()); };
     this->instructions[0xDE] = [&]() { this->DEC(this->absoluteXLocationAddressing()); };
     this->instructions[0xCA] = [&]() { this->DEX(); };
+    this->instructions[0x88] = [&]() { this->DEY(); };
 
 
 
@@ -504,6 +505,13 @@ void Cpu::DEC(uint16_t address)
 void Cpu::DEX()
 {
     --this->indexRegisterX;
+
+    ++this->programCounter;
+}
+
+void Cpu::DEY()
+{
+    --this->indexRegisterY;
 
     ++this->programCounter;
 }
