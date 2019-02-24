@@ -105,6 +105,7 @@ namespace Emulator::Cpu
         void JMP(uint16_t address);
         void LDA(uint8_t value);
         void LDX(uint8_t value);
+        void LDY(uint8_t value);
         void DEC(uint16_t address);
         void INC(uint16_t address);
 

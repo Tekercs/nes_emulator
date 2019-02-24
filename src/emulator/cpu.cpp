@@ -126,11 +126,16 @@ void Cpu::initInstructionMap()
     this->instructions[0xB9] = [&]() { this->LDA(this->absoluteYValueAddressing()); };
     this->instructions[0xA1] = [&]() { this->LDA(this->indexedIndirectValue()); };
     this->instructions[0xB1] = [&]() { this->LDA(this->indirectIndexedValue()); };
-    this->instructions[0xA9] = [&]() { this->LDX(this->immediateAddressing()); };
-    this->instructions[0xA5] = [&]() { this->LDX(this->zeroPageValueAddressing()); };
-    this->instructions[0xB5] = [&]() { this->LDX(this->zeroPageYValueAddressing()); };
-    this->instructions[0xAD] = [&]() { this->LDX(this->absoluteValueAddressing()); };
-    this->instructions[0xB9] = [&]() { this->LDX(this->absoluteYValueAddressing()); };
+    this->instructions[0xA2] = [&]() { this->LDX(this->immediateAddressing()); };
+    this->instructions[0xA6] = [&]() { this->LDX(this->zeroPageValueAddressing()); };
+    this->instructions[0xB6] = [&]() { this->LDX(this->zeroPageYValueAddressing()); };
+    this->instructions[0xAE] = [&]() { this->LDX(this->absoluteValueAddressing()); };
+    this->instructions[0xBE] = [&]() { this->LDX(this->absoluteYValueAddressing()); };
+    this->instructions[0xA0] = [&]() { this->LDY(this->immediateAddressing()); };
+    this->instructions[0xA4] = [&]() { this->LDY(this->zeroPageValueAddressing()); };
+    this->instructions[0xB4] = [&]() { this->LDY(this->zeroPageXValueAddressing()); };
+    this->instructions[0xAC] = [&]() { this->LDY(this->absoluteValueAddressing()); };
+    this->instructions[0xBC] = [&]() { this->LDY(this->absoluteXValueAddressing()); };
 
 
 
@@ -297,6 +302,16 @@ void Cpu::LDX(uint8_t value)
 
     this->setZeroResult(this->indexRegisterX == 0);
     this->setZeroResult((this->indexRegisterX & 0B10000000) != 0);
+
+    ++this->programCounter;
+}
+
+void Cpu::LDY(uint8_t value)
+{
+    this->indexRegisterY = value;
+
+    this->setZeroResult(this->indexRegisterY == 0);
+    this->setZeroResult((this->indexRegisterY & 0B10000000) != 0);
 
     ++this->programCounter;
 }
