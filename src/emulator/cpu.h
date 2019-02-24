@@ -82,6 +82,7 @@ namespace Emulator::Cpu
         void TYA();
         void NOP();
         void BCC(int8_t value);
+        void BCS(int8_t value);
         void ASLAccumulator();
         void ASL(uint16_t address);
         void AND(uint8_t value);
