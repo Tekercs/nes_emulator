@@ -163,13 +163,13 @@ void Cpu::initInstructionMap()
     this->instructions[0xF9] = [&]() { this->SBC(this->absoluteYValueAddressing()); };
     this->instructions[0xE1] = [&]() { this->SBC(this->indexedIndirectValue()); };
     this->instructions[0xF1] = [&]() { this->SBC(this->indirectIndexedValue()); };
-
-
     this->instructions[0x85] = [&]() { this->STA(this->zeroPageAddressing()); };
     this->instructions[0x95] = [&]() { this->STA(this->zeroPageXAddressing()); };
     this->instructions[0x8D] = [&]() { this->STA(this->absoluteLocationAddressing()); };
     this->instructions[0x9D] = [&]() { this->STA(this->absoluteYLocationAddressing()); };
     this->instructions[0x99] = [&]() { this->STA(this->absoluteYLocationAddressing()); };
+    this->instructions[0x81] = [&]() { this->STA(this->indexedIndirectAddress()); };
+    this->instructions[0x91] = [&]() { this->STA(this->indirectIndexedAddress()); };
     this->instructions[0x86] = [&]() { this->STX(this->zeroPageAddressing()); };
     this->instructions[0x96] = [&]() { this->STX(this->zeroPageYAddressing()); };
     this->instructions[0x8E] = [&]() { this->STX(this->absoluteLocationAddressing()); };
