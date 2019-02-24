@@ -110,8 +110,9 @@ void Cpu::initInstructionMap()
     this->instructions[0xD6] = [&]() { this->DEC(this->zeroPageXAddressing()); };
     this->instructions[0xCE] = [&]() { this->DEC(this->absoluteLocationAddressing()); };
     this->instructions[0xDE] = [&]() { this->DEC(this->absoluteXLocationAddressing()); };
+    this->instructions[0xCA] = [&]() { this->DEX(); };
 
-    
+
 
     this->instructions[0xEA] = [&]() { this->NOP(); };
     this->instructions[0x48] = [&]() { this->PHA(); };
@@ -496,6 +497,13 @@ void Cpu::DEC(uint16_t address)
     --value;
 
     this->memory->setAt(address, value);
+
+    ++this->programCounter;
+}
+
+void Cpu::DEX()
+{
+    --this->indexRegisterX;
 
     ++this->programCounter;
 }

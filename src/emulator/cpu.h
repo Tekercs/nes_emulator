@@ -81,6 +81,7 @@ namespace Emulator::Cpu
         void TXS();
         void TYA();
         void NOP();
+        void DEX();
         void BIT(uint8_t value);
         void BCC(int8_t value);
         void BCS(int8_t value);
