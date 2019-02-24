@@ -112,6 +112,10 @@ void Cpu::initInstructionMap()
     this->instructions[0xDE] = [&]() { this->DEC(this->absoluteXLocationAddressing()); };
     this->instructions[0xCA] = [&]() { this->DEX(); };
     this->instructions[0x88] = [&]() { this->DEY(); };
+    this->instructions[0xE6] = [&]() { this->INC(this->zeroPageAddressing()); };
+    this->instructions[0xF6] = [&]() { this->INC(this->zeroPageXAddressing()); };
+    this->instructions[0xEE] = [&]() { this->INC(this->absoluteLocationAddressing()); };
+    this->instructions[0xFE] = [&]() { this->INC(this->absoluteXLocationAddressing()); };
 
 
 
@@ -496,6 +500,19 @@ void Cpu::DEC(uint16_t address)
 {
     uint8_t value = this->memory->getFrom(address);
     --value;
+
+    this->setZeroResult(value == 0);
+    this->setNegativeFlagSet(value & 0B10000000);
+
+    this->memory->setAt(address, value);
+
+    ++this->programCounter;
+}
+
+void Cpu::INC(uint16_t address)
+{
+    uint8_t value = this->memory->getFrom(address);
+    ++value;
 
     this->setZeroResult(value == 0);
     this->setNegativeFlagSet(value & 0B10000000);
