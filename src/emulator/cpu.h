@@ -104,6 +104,7 @@ namespace Emulator::Cpu
         void SBC(uint8_t value);
         void JMP(uint16_t address);
         void LDA(uint8_t value);
+        void LDX(uint8_t value);
         void DEC(uint16_t address);
         void INC(uint16_t address);
 
@@ -113,6 +114,7 @@ namespace Emulator::Cpu
         uint8_t zeroPageYAddressing();
         uint8_t zeroPageValueAddressing();
         uint8_t zeroPageXValueAddressing();
+        uint8_t zeroPageYValueAddressing();
         uint8_t absoluteValueAddressing();
         uint8_t absoluteXValueAddressing();
         uint8_t absoluteYValueAddressing();

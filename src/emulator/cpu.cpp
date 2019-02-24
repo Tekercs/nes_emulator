@@ -126,6 +126,12 @@ void Cpu::initInstructionMap()
     this->instructions[0xB9] = [&]() { this->LDA(this->absoluteYValueAddressing()); };
     this->instructions[0xA1] = [&]() { this->LDA(this->indexedIndirectValue()); };
     this->instructions[0xB1] = [&]() { this->LDA(this->indirectIndexedValue()); };
+    this->instructions[0xA9] = [&]() { this->LDX(this->immediateAddressing()); };
+    this->instructions[0xA5] = [&]() { this->LDX(this->zeroPageValueAddressing()); };
+    this->instructions[0xB5] = [&]() { this->LDX(this->zeroPageYValueAddressing()); };
+    this->instructions[0xAD] = [&]() { this->LDX(this->absoluteValueAddressing()); };
+    this->instructions[0xB9] = [&]() { this->LDX(this->absoluteYValueAddressing()); };
+
 
 
 
@@ -281,6 +287,16 @@ void Cpu::LDA(uint8_t value)
 
     this->setZeroResult(this->accumulator == 0);
     this->setZeroResult((this->accumulator & 0B10000000) != 0);
+
+    ++this->programCounter;
+}
+
+void Cpu::LDX(uint8_t value)
+{
+    this->indexRegisterX = value;
+
+    this->setZeroResult(this->indexRegisterX == 0);
+    this->setZeroResult((this->indexRegisterX & 0B10000000) != 0);
 
     ++this->programCounter;
 }
@@ -603,6 +619,11 @@ uint8_t Cpu::zeroPageValueAddressing()
 uint8_t Cpu::zeroPageXValueAddressing()
 {
     return this->memory->getFrom(this->zeroPageXAddressing());
+}
+
+uint8_t Cpu::zeroPageYValueAddressing()
+{
+    return this->memory->getFrom(this->zeroPageYAddressing());
 }
 
 uint8_t Cpu::absoluteValueAddressing()
