@@ -117,6 +117,7 @@ void Cpu::initInstructionMap()
     this->instructions[0xEE] = [&]() { this->INC(this->absoluteLocationAddressing()); };
     this->instructions[0xFE] = [&]() { this->INC(this->absoluteXLocationAddressing()); };
     this->instructions[0xE8] = [&]() { this->INX(); };
+    this->instructions[0xC8] = [&]() { this->INY(); };
 
 
 
@@ -546,6 +547,16 @@ void Cpu::INX()
 void Cpu::DEY()
 {
     --this->indexRegisterY;
+
+    this->setZeroResult(this->indexRegisterY == 0);
+    this->setNegativeFlagSet(this->indexRegisterY & 0B10000000);
+
+    ++this->programCounter;
+}
+
+void Cpu::INY()
+{
+    ++this->indexRegisterY;
 
     this->setZeroResult(this->indexRegisterY == 0);
     this->setNegativeFlagSet(this->indexRegisterY & 0B10000000);
