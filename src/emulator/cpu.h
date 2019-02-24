@@ -88,6 +88,7 @@ namespace Emulator::Cpu
         void BEQ(int8_t value);
         void BNE(int8_t value);
         void BPL(int8_t value);
+        void BVC(int8_t value);
         void ASLAccumulator();
         void ASL(uint16_t address);
         void AND(uint8_t value);

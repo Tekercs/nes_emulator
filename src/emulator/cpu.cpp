@@ -104,6 +104,7 @@ void Cpu::initInstructionMap()
     this->instructions[0x30] = [&]() { this->BMI(this->immediateAddressing()); };
     this->instructions[0xD0] = [&]() { this->BNE(this->immediateAddressing()); };
     this->instructions[0x10] = [&]() { this->BPL(this->immediateAddressing()); };
+    this->instructions[0x50] = [&]() { this->BVC(this->immediateAddressing()); };
 
 
 
@@ -454,6 +455,14 @@ void Cpu::BNE(int8_t value)
 void Cpu::BPL(int8_t value)
 {
     if (!this->isNegativeFlagSet())
+        this->programCounter += value;
+
+    ++this->programCounter;
+}
+
+void Cpu::BVC(int8_t value)
+{
+    if (!this->isOverflowHappened())
         this->programCounter += value;
 
     ++this->programCounter;
