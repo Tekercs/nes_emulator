@@ -116,6 +116,7 @@ void Cpu::initInstructionMap()
     this->instructions[0xF6] = [&]() { this->INC(this->zeroPageXAddressing()); };
     this->instructions[0xEE] = [&]() { this->INC(this->absoluteLocationAddressing()); };
     this->instructions[0xFE] = [&]() { this->INC(this->absoluteXLocationAddressing()); };
+    this->instructions[0xE8] = [&]() { this->INX(); };
 
 
 
@@ -525,6 +526,16 @@ void Cpu::INC(uint16_t address)
 void Cpu::DEX()
 {
     --this->indexRegisterX;
+
+    this->setZeroResult(this->indexRegisterX == 0);
+    this->setNegativeFlagSet(this->indexRegisterX & 0B10000000);
+
+    ++this->programCounter;
+}
+
+void Cpu::INX()
+{
+    ++this->indexRegisterX;
 
     this->setZeroResult(this->indexRegisterX == 0);
     this->setNegativeFlagSet(this->indexRegisterX & 0B10000000);
