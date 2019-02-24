@@ -96,7 +96,8 @@ void Cpu::initInstructionMap()
     this->instructions[0x16] = [&]() { this->ASL(this->zeroPageXAddressing()); };
     this->instructions[0x0E] = [&]() { this->ASL(this->absoluteLocationAddressing()); };
     this->instructions[0x1E] = [&]() { this->ASL(this->absoluteXLocationAddressing()); };
-    
+    this->instructions[0x90] = [&]() { this->BCC(this->immediateAddressing()); };
+
 
 
     this->instructions[0xEA] = [&]() { this->NOP(); };
@@ -397,6 +398,14 @@ void Cpu::ASLAccumulator()
     this->setCarryRemain(shiftResult > 0xFF);
     this->setZeroResult(this->accumulator == 0);
     this->setNegativeFlagSet((this->accumulator & 0B10000000) > 0);
+
+    ++this->programCounter;
+}
+
+void Cpu::BCC(int8_t value)
+{
+    if (!this->isCarryRemain())
+        this->programCounter += value;
 
     ++this->programCounter;
 }
