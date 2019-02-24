@@ -98,6 +98,7 @@ void Cpu::initInstructionMap()
     this->instructions[0x1E] = [&]() { this->ASL(this->absoluteXLocationAddressing()); };
     this->instructions[0x90] = [&]() { this->BCC(this->immediateAddressing()); };
     this->instructions[0xB0] = [&]() { this->BCS(this->immediateAddressing()); };
+    this->instructions[0xF0] = [&]() { this->BEQ(this->immediateAddressing()); };
 
 
 
@@ -414,6 +415,14 @@ void Cpu::BCC(int8_t value)
 void Cpu::BCS(int8_t value)
 {
     if (this->isCarryRemain())
+        this->programCounter += value;
+
+    ++this->programCounter;
+}
+
+void Cpu::BEQ(int8_t value)
+{
+    if (this->isZeroResult())
         this->programCounter += value;
 
     ++this->programCounter;
