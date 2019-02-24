@@ -100,6 +100,7 @@ namespace Emulator::Cpu
         void SBC(uint8_t value);
         void JMP(uint16_t address);
         void LDA(uint8_t value);
+        void DEC(uint16_t address);
 
         uint8_t immediateAddressing();
         uint8_t zeroPageAddressing();
