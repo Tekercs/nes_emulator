@@ -497,6 +497,9 @@ void Cpu::DEC(uint16_t address)
     uint8_t value = this->memory->getFrom(address);
     --value;
 
+    this->setZeroResult(value == 0);
+    this->setNegativeFlagSet(value & 0B10000000);
+
     this->memory->setAt(address, value);
 
     ++this->programCounter;
@@ -506,12 +509,18 @@ void Cpu::DEX()
 {
     --this->indexRegisterX;
 
+    this->setZeroResult(this->indexRegisterX == 0);
+    this->setNegativeFlagSet(this->indexRegisterX & 0B10000000);
+
     ++this->programCounter;
 }
 
 void Cpu::DEY()
 {
     --this->indexRegisterY;
+
+    this->setZeroResult(this->indexRegisterY == 0);
+    this->setNegativeFlagSet(this->indexRegisterY & 0B10000000);
 
     ++this->programCounter;
 }
