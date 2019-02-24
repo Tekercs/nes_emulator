@@ -105,6 +105,7 @@ void Cpu::initInstructionMap()
     this->instructions[0xD0] = [&]() { this->BNE(this->immediateAddressing()); };
     this->instructions[0x10] = [&]() { this->BPL(this->immediateAddressing()); };
     this->instructions[0x50] = [&]() { this->BVC(this->immediateAddressing()); };
+    this->instructions[0x70] = [&]() { this->BVS(this->immediateAddressing()); };
 
 
 
@@ -463,6 +464,14 @@ void Cpu::BPL(int8_t value)
 void Cpu::BVC(int8_t value)
 {
     if (!this->isOverflowHappened())
+        this->programCounter += value;
+
+    ++this->programCounter;
+}
+
+void Cpu::BVS(int8_t value)
+{
+    if (this->isOverflowHappened())
         this->programCounter += value;
 
     ++this->programCounter;
