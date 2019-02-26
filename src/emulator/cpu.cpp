@@ -200,6 +200,12 @@ void Cpu::initInstructionMap()
     this->instructions[0xD9] = [&]() { this->CMP(this->absoluteYValueAddressing()); };
     this->instructions[0xC1] = [&]() { this->CMP(this->indexedIndirectValue()); };
     this->instructions[0xD1] = [&]() { this->CMP(this->indirectIndexedValue()); };
+    this->instructions[0xE0] = [&]() { this->CPX(this->immediateAddressing()); };
+    this->instructions[0xE4] = [&]() { this->CPX(this->zeroPageValueAddressing()); };
+    this->instructions[0xEC] = [&]() { this->CPX(this->absoluteValueAddressing()); };
+    this->instructions[0xC0] = [&]() { this->CPY(this->immediateAddressing()); };
+    this->instructions[0xC4] = [&]() { this->CPY(this->zeroPageValueAddressing()); };
+    this->instructions[0xCC] = [&]() { this->CPY(this->absoluteValueAddressing()); };
 
 }
 
@@ -724,6 +730,26 @@ void Cpu::CMP(uint8_t value)
     this->setZeroResult(this->accumulator == value);
 
     this->setNegativeFlagSet((this->accumulator - value) & 0B10000000);
+
+    ++this->programCounter;
+}
+
+void Cpu::CPX(uint8_t value)
+{
+    this->setCarryRemain(this->indexRegisterX >= value);
+    this->setZeroResult(this->indexRegisterX == value);
+
+    this->setNegativeFlagSet((this->indexRegisterX - value) & 0B10000000);
+
+    ++this->programCounter;
+}
+
+void Cpu::CPY(uint8_t value)
+{
+    this->setCarryRemain(this->indexRegisterY >= value);
+    this->setZeroResult(this->indexRegisterY == value);
+
+    this->setNegativeFlagSet((this->indexRegisterY - value) & 0B10000000);
 
     ++this->programCounter;
 }
