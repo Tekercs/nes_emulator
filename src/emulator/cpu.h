@@ -119,6 +119,7 @@ namespace Emulator::Cpu
         void CPY(uint8_t value);
         void EOR(uint8_t value);
         void ORA(uint8_t value);
+        void JSR(uint16_t address);
 
         uint8_t immediateAddressing();
         uint8_t zeroPageAddressing();

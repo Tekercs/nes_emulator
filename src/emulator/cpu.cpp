@@ -222,7 +222,7 @@ void Cpu::initInstructionMap()
     this->instructions[0x1D] = [&]() { this->ORA(this->absoluteYValueAddressing()); };
     this->instructions[0x01] = [&]() { this->ORA(this->indexedIndirectValue()); };
     this->instructions[0x11] = [&]() { this->ORA(this->indirectIndexedValue()); };
-
+    this->instructions[0x20] = [&]() { this->JSR(this->absoluteLocationAddressing()); };
 }
 
 void Cpu::setFlagBit(uint8_t flagBit, bool value)
@@ -788,6 +788,17 @@ void Cpu::ORA(uint8_t value)
     this->setNegativeFlagSet((this->accumulator & 0B10000000) > 0);
 
     ++this->programCounter;
+}
+
+void Cpu::JSR(uint16_t address)
+{
+    uint8_t highByte = this->programCounter >> 8;
+    uint8_t lowByte = this->programCounter;
+
+    this->pushStack(highByte);
+    this->pushStack(lowByte);
+
+    this->programCounter = address;
 }
 
 uint8_t Cpu::immediateAddressing()
