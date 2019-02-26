@@ -17,6 +17,10 @@ https://tekercs.github.io/nes_emulator/doc/api/html/
 * https://www.youtube.com/watch?v=D9ZbqnffS7c
 * http://yizhang82.me/nes-emu-overview
 * https://wiki.nesdev.com/w/index.php/NES_2.0
+* http://www.oxyron.de/html/opcodes02.html
+* https://wiki.nesdev.com/w/index.php/CPU_unofficial_opcodes
+* http://obelisk.me.uk/6502/reference.html
+* http://obelisk.me.uk/6502/addressing.html
 
 ## Acknowledgement
 
