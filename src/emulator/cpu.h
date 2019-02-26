@@ -24,6 +24,9 @@
 #define INITVAL_PROGRAMCOUNTER     0xFFFC
 #define INITVAL_STACKPOINTEROFFSET 0xFD
 
+#define IRQ_INTERRUPT_VECTOR_LOW   0xFFFE
+#define IRQ_INTERRUPT_VECTOR_HIGH  0xFFFF
+
 // TODO valoszinuleg a registereket kilehetne szedni kulon classba
 namespace Emulator::Cpu
 {
@@ -122,6 +125,7 @@ namespace Emulator::Cpu
         void JSR(uint16_t address);
         void RTS();
         void RTI();
+        void BRK();
 
         uint8_t immediateAddressing();
         uint8_t zeroPageAddressing();

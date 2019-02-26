@@ -225,6 +225,7 @@ void Cpu::initInstructionMap()
     this->instructions[0x20] = [&]() { this->JSR(this->absoluteLocationAddressing()); };
     this->instructions[0x60] = [&]() { this->RTS(); };
     this->instructions[0x40] = [&]() { this->RTI(); };
+    this->instructions[0x00] = [&]() { this->BRK(); };
 }
 
 void Cpu::setFlagBit(uint8_t flagBit, bool value)
@@ -823,6 +824,32 @@ void Cpu::RTI()
 
     this->programCounter = highByte << 8;
     this->programCounter += lowByte;
+
+    ++this->programCounter;
+}
+
+void Cpu::BRK()
+{
+    uint8_t highByte = this->programCounter >> 8;
+    uint8_t lowByte = this->programCounter;
+
+    this->pushStack(highByte);
+    this->pushStack(lowByte);
+    this->pushStack(this->statusFlags);
+
+    this->setBreakExecuted(true);
+
+    uint16_t address = 0x0000;
+
+    this->programCounter++;
+    uint16_t addressLeastSignificant = 0x0000 + this->memory->getFrom(IRQ_INTERRUPT_VECTOR_LOW);
+
+    this->programCounter++;
+    uint16_t addressMostSingicant = 0x0000 + this->memory->getFrom(IRQ_INTERRUPT_VECTOR_HIGH);
+
+    address = (addressMostSingicant << 8) + addressLeastSignificant;
+
+    this->programCounter = address;
 }
 
 uint8_t Cpu::immediateAddressing()
