@@ -176,6 +176,7 @@ void Cpu::initInstructionMap()
     this->instructions[0x84] = [&]() { this->STY(this->zeroPageAddressing()); };
     this->instructions[0x94] = [&]() { this->STY(this->zeroPageXAddressing()); };
     this->instructions[0x8C] = [&]() { this->STY(this->absoluteLocationAddressing()); };
+    this->instructions[0xEA] = [&]() { this->NOP(); };
 
 }
 
