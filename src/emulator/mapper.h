@@ -6,6 +6,8 @@
 #include <memory.h>
 #include <cpu.h>
 
+#define MAPPER_NROM 0
+
 namespace Emulator::ROM
 {
     class Mapper
