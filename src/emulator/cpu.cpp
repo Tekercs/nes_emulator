@@ -192,6 +192,14 @@ void Cpu::initInstructionMap()
     this->instructions[0x56] = [&]() { this->LSR(this->zeroPageXAddressing()); };
     this->instructions[0x4E] = [&]() { this->LSR(this->absoluteLocationAddressing()); };
     this->instructions[0x5E] = [&]() { this->LSR(this->absoluteXLocationAddressing()); };
+    this->instructions[0xC9] = [&]() { this->CMP(this->immediateAddressing()); };
+    this->instructions[0xC5] = [&]() { this->CMP(this->zeroPageValueAddressing()); };
+    this->instructions[0xD5] = [&]() { this->CMP(this->zeroPageXValueAddressing()); };
+    this->instructions[0xCD] = [&]() { this->CMP(this->absoluteValueAddressing()); };
+    this->instructions[0xDD] = [&]() { this->CMP(this->absoluteXValueAddressing()); };
+    this->instructions[0xD9] = [&]() { this->CMP(this->absoluteYValueAddressing()); };
+    this->instructions[0xC1] = [&]() { this->CMP(this->indexedIndirectValue()); };
+    this->instructions[0xD1] = [&]() { this->CMP(this->indirectIndexedValue()); };
 
 }
 
@@ -710,6 +718,16 @@ void Cpu::LSR(uint16_t address)
     ++this->programCounter;
 }
 
+void Cpu::CMP(uint8_t value)
+{
+    this->setCarryRemain(this->accumulator >= value);
+    this->setZeroResult(this->accumulator == value);
+
+    this->setNegativeFlagSet((this->accumulator - value) & 0B10000000);
+
+    ++this->programCounter;
+}
+
 uint8_t Cpu::immediateAddressing()
 {
     this->programCounter++;
@@ -838,8 +856,6 @@ uint16_t Cpu::indirectIndexedAddress()
     ++this->programCounter;
     uint8_t zeroPageAddress = this->memory->getFrom(this->programCounter);
 
-    zeroPageAddress += this->indexRegisterY;
-
     uint16_t address = 0x0000;
     uint16_t addressLeastSignificant = 0x0000 + this->memory->getFrom(zeroPageAddress);
 
@@ -847,6 +863,7 @@ uint16_t Cpu::indirectIndexedAddress()
     uint16_t addressMostSingicant = 0x0000 + this->memory->getFrom(zeroPageAddress);
 
     address = (addressMostSingicant << 8) + addressLeastSignificant;
+    address += this->indexRegisterY;
 
     return address;
 }

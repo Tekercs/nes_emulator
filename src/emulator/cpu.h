@@ -114,6 +114,7 @@ namespace Emulator::Cpu
         void ROR(uint16_t address);
         void LSRAccumulator();
         void LSR(uint16_t address);
+        void CMP(uint8_t value);
 
         uint8_t immediateAddressing();
         uint8_t zeroPageAddressing();
