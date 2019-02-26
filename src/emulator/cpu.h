@@ -120,6 +120,7 @@ namespace Emulator::Cpu
         void EOR(uint8_t value);
         void ORA(uint8_t value);
         void JSR(uint16_t address);
+        void RTS();
 
         uint8_t immediateAddressing();
         uint8_t zeroPageAddressing();
