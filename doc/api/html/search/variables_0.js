@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['chrrom',['chrRom',['../classEmulator_1_1ROM_1_1Cartridge.html#aab28563fc2a411fa18802dbd7fb8127a',1,'Emulator::ROM::Cartridge']]]
+  ['accumulator',['accumulator',['../classEmulator_1_1Cpu_1_1Cpu.html#a2d56f4f8d39385a980b1213cf53deff4',1,'Emulator::Cpu::Cpu']]]
 ];

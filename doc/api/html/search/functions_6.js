@@ -1,4 +1,20 @@
 var searchData=
 [
-  ['trainerexists',['trainerExists',['../classEmulator_1_1ROM_1_1Cartridge.html#a95e88e1276770d1afd5453a6d1ded555',1,'Emulator::ROM::Cartridge']]]
+  ['immediateaddressing',['immediateAddressing',['../classEmulator_1_1Cpu_1_1Cpu.html#a1c5d347f276517b6eda939c0eba71b9e',1,'Emulator::Cpu::Cpu']]],
+  ['inc',['INC',['../classEmulator_1_1Cpu_1_1Cpu.html#ae5ff027ba440b31cc672f7b9954df3c5',1,'Emulator::Cpu::Cpu']]],
+  ['indexedindirectaddress',['indexedIndirectAddress',['../classEmulator_1_1Cpu_1_1Cpu.html#a63e7a259f291063a29d88fbecc57c5f7',1,'Emulator::Cpu::Cpu']]],
+  ['indexedindirectvalue',['indexedIndirectValue',['../classEmulator_1_1Cpu_1_1Cpu.html#ab212a33b33370410c7f2776d1830829b',1,'Emulator::Cpu::Cpu']]],
+  ['indirectaddress',['indirectAddress',['../classEmulator_1_1Cpu_1_1Cpu.html#a1b1cde7f84794846c9319fabe451eb16',1,'Emulator::Cpu::Cpu']]],
+  ['indirectindexedaddress',['indirectIndexedAddress',['../classEmulator_1_1Cpu_1_1Cpu.html#a902acb3ab01eef908ab633de7bc7eee5',1,'Emulator::Cpu::Cpu']]],
+  ['indirectindexedvalue',['indirectIndexedValue',['../classEmulator_1_1Cpu_1_1Cpu.html#a8e8c6143224faac894ab6ae7b56de352',1,'Emulator::Cpu::Cpu']]],
+  ['initinstructionmap',['initInstructionMap',['../classEmulator_1_1Cpu_1_1Cpu.html#a345cc8c7f453b6ac254c4e463b40e56d',1,'Emulator::Cpu::Cpu']]],
+  ['inx',['INX',['../classEmulator_1_1Cpu_1_1Cpu.html#a00b1bd50ae813ecceb05819c35906c2b',1,'Emulator::Cpu::Cpu']]],
+  ['iny',['INY',['../classEmulator_1_1Cpu_1_1Cpu.html#a6e322904c4a300ad513077b932a29c67',1,'Emulator::Cpu::Cpu']]],
+  ['isbreakexecuted',['isBreakExecuted',['../classEmulator_1_1Cpu_1_1Cpu.html#a5c6a8e0e5407fd58c9ec4f10f332cd6d',1,'Emulator::Cpu::Cpu']]],
+  ['iscarryremain',['isCarryRemain',['../classEmulator_1_1Cpu_1_1Cpu.html#a3abf3b6861a8baebe887afd2fead9e6f',1,'Emulator::Cpu::Cpu']]],
+  ['isdecimalmodeon',['isDecimalModeOn',['../classEmulator_1_1Cpu_1_1Cpu.html#a628b611e0d914acc27593d6b717e14a8',1,'Emulator::Cpu::Cpu']]],
+  ['isinterruptsdisabled',['isInterruptsDisabled',['../classEmulator_1_1Cpu_1_1Cpu.html#a36cbc65c63f337e53947b499d44f3e46',1,'Emulator::Cpu::Cpu']]],
+  ['isnegativeflagset',['isNegativeFlagSet',['../classEmulator_1_1Cpu_1_1Cpu.html#a80f29d9b80b580be070c82b1198508c2',1,'Emulator::Cpu::Cpu']]],
+  ['isoverflowhappened',['isOverflowHappened',['../classEmulator_1_1Cpu_1_1Cpu.html#a9c28e4ce5e8579e3d57af7d07cf67c1c',1,'Emulator::Cpu::Cpu']]],
+  ['iszeroresult',['isZeroResult',['../classEmulator_1_1Cpu_1_1Cpu.html#a6a18355d8cca53c85812df3f0d80c9e3',1,'Emulator::Cpu::Cpu']]]
 ];
