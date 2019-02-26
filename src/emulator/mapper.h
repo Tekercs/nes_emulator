@@ -12,17 +12,17 @@ namespace Emulator::ROM
 {
     class Mapper
     {
-    private:
+    protected:
         const Cartridge& cartridge;
-        const Memory::Memory& memory;
-        const Cpu::Cpu& cpu;
+        Memory::Memory& memory;
+        Cpu::Cpu& cpu;
 
     public:
-        Mapper(const Cartridge& cartridge, const Memory::Memory& memory,  const Cpu::Cpu& cpu);
+        Mapper(const Cartridge& cartridge, Memory::Memory& memory, Cpu::Cpu& cpu);
 
         virtual void map() = 0;
 
     };
 
-    std::shared_ptr<Mapper> createMapper(const Cartridge& cartridge, const Memory::Memory& memory,  const Cpu::Cpu& cpu);
+    std::shared_ptr<Mapper> createMapper(const Cartridge& cartridge, Memory::Memory& memory, Cpu::Cpu& cpu);
 }

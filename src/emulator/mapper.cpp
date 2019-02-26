@@ -10,22 +10,22 @@ using namespace Emulator::Memory;
 using namespace Emulator::ROM;
 
 Mapper::Mapper(const Cartridge &cartridge
-        , const Emulator::Memory::Memory &memory
-        , const Emulator::Cpu::Cpu &cpu)
+        , Emulator::Memory::Memory &memory
+        , Emulator::Cpu::Cpu &cpu)
 : cpu(cpu)
 , cartridge(cartridge)
 , memory(memory)
 { }
 
-shared_ptr<Mapper> createMapper(const Cartridge &cartridge
-        , const Memory &memory
-        , const Cpu &cpu)
+shared_ptr<Mapper> Emulator::ROM::createMapper(const Cartridge &cartridge
+        , Emulator::Memory::Memory &memory
+        , Emulator::Cpu::Cpu &cpu)
 {
+    auto laci = cartridge.getMapperNumber();
+
     switch (cartridge.getMapperNumber())
     {
-        case MAPPER_NROM: make_shared<MapperNrom>(cartridge, memory, cpu);
+        case MAPPER_NROM: return make_shared<MapperNrom>(cartridge, memory, cpu);
         default:break;
     }
-
-    return shared_ptr<Mapper>();
 }
