@@ -108,6 +108,8 @@ namespace Emulator::Cpu
         void LDY(uint8_t value);
         void DEC(uint16_t address);
         void INC(uint16_t address);
+        void ROL(uint16_t address);
+        void ROLAccumulator();
 
         uint8_t immediateAddressing();
         uint8_t zeroPageAddressing();

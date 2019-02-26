@@ -177,6 +177,11 @@ void Cpu::initInstructionMap()
     this->instructions[0x94] = [&]() { this->STY(this->zeroPageXAddressing()); };
     this->instructions[0x8C] = [&]() { this->STY(this->absoluteLocationAddressing()); };
     this->instructions[0xEA] = [&]() { this->NOP(); };
+    this->instructions[0x2A] = [&]() { this->ROLAccumulator(); };
+    this->instructions[0x26] = [&]() { this->ROL(this->zeroPageAddressing()); };
+    this->instructions[0x36] = [&]() { this->ROL(this->zeroPageXAddressing()); };
+    this->instructions[0x2E] = [&]() { this->ROL(this->absoluteLocationAddressing()); };
+    this->instructions[0x3E] = [&]() { this->ROL(this->absoluteXLocationAddressing()); };
 
 }
 
@@ -595,6 +600,34 @@ void Cpu::INY()
 
     this->setZeroResult(this->indexRegisterY == 0);
     this->setNegativeFlagSet(this->indexRegisterY & 0B10000000);
+
+    ++this->programCounter;
+}
+
+void Cpu::ROLAccumulator()
+{
+    uint16_t newValue = this->accumulator;
+    newValue = newValue << 1;
+
+    if (this->isCarryRemain())
+        ++newValue;
+
+    this->setCarryRemain(newValue & 0B100000000);
+    this->accumulator = newValue;
+
+    ++this->programCounter;
+}
+
+void Cpu::ROL(uint16_t address)
+{
+    uint16_t newValue = this->memory->getFrom(address);
+    newValue = newValue << 1;
+
+    if (this->isCarryRemain())
+        ++newValue;
+
+    this->setCarryRemain(newValue & 0B100000000);
+    this->memory->setAt(address, newValue);
 
     ++this->programCounter;
 }
