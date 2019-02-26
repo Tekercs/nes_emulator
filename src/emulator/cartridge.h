@@ -267,5 +267,13 @@ namespace Emulator::ROM
          */
         bool trainerExists() const;
 
+        /**
+         * @brief Accessor function for mapper number
+         *
+         * @details Fetching the mapper number from rawHeader byte 6 and 7.
+         *
+         * @return
+         */
+        uint8_t getMapperNumber() const;
     };
 }

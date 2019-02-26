@@ -114,6 +114,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a95e88e1276770d1afd5453a6d1ded555"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEmulator_1_1ROM_1_1Cartridge.html#a95e88e1276770d1afd5453a6d1ded555">trainerExists</a> () const</td></tr>
 <tr class="memdesc:a95e88e1276770d1afd5453a6d1ded555"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accessor function for isTrainerPresent.  <a href="#a95e88e1276770d1afd5453a6d1ded555">More...</a><br /></td></tr>
 <tr class="separator:a95e88e1276770d1afd5453a6d1ded555"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d4f0fc0b6d828eeebc698bc0db356f7"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEmulator_1_1ROM_1_1Cartridge.html#a5d4f0fc0b6d828eeebc698bc0db356f7">getMapperNumber</a> () const</td></tr>
+<tr class="memdesc:a5d4f0fc0b6d828eeebc698bc0db356f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accessor function for mapper number.  <a href="#a5d4f0fc0b6d828eeebc698bc0db356f7">More...</a><br /></td></tr>
+<tr class="separator:a5d4f0fc0b6d828eeebc698bc0db356f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -251,6 +254,27 @@ Private Attributes</h2></td></tr>
 
 <p>Accessor function for chrRom field. </p>
 <dl class="section return"><dt>Returns</dt><dd>pointer to the chrRom field of the given <a class="el" href="classEmulator_1_1ROM_1_1Cartridge.html" title="This class represents a virtualized cartridge parser.">Cartridge</a> class. </dd></dl>
+
+</div>
+</div>
+<a id="a5d4f0fc0b6d828eeebc698bc0db356f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d4f0fc0b6d828eeebc698bc0db356f7">&#9670;&nbsp;</a></span>getMapperNumber()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Emulator::ROM::Cartridge::getMapperNumber </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Accessor function for mapper number. </p>
+<p>Fetching the mapper number from rawHeader byte 6 and 7.</p>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
 </div>
 </div>

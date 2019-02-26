@@ -186,3 +186,13 @@ bool Emulator::ROM::Cartridge::trainerExists() const
     return this->isTrainerPresent;
 }
 
+uint8_t Emulator::ROM::Cartridge::getMapperNumber() const
+{
+    uint8_t mapperNumber = 0x00;
+
+    mapperNumber = this->rawHeader[7] & 0b11110000;
+    mapperNumber += this->rawHeader[6] & 0b00001111;
+
+    return mapperNumber;
+}
+

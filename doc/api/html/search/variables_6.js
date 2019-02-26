@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['trainer',['trainer',['../classEmulator_1_1ROM_1_1Cartridge.html#a4e21670c5796d10df7a24de6a24b3dc1',1,'Emulator::ROM::Cartridge']]]
+  ['rawheader',['rawHeader',['../classEmulator_1_1ROM_1_1Cartridge.html#a20e06f0ef444dda8b2004df9a16a7813',1,'Emulator::ROM::Cartridge']]]
 ];

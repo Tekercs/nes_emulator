@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['features',['features',['../bin_2CMakeFiles_2feature__tests_8c.html#a1582568e32f689337602a16bf8a5bff0',1,'features():&#160;feature_tests.c'],['../bin_2CMakeFiles_2feature__tests_8cxx.html#a1582568e32f689337602a16bf8a5bff0',1,'features():&#160;feature_tests.cxx'],['../cmake-build-debug_2CMakeFiles_2feature__tests_8c.html#a1582568e32f689337602a16bf8a5bff0',1,'features():&#160;feature_tests.c'],['../cmake-build-debug_2CMakeFiles_2feature__tests_8cxx.html#a1582568e32f689337602a16bf8a5bff0',1,'features():&#160;feature_tests.cxx']]]
+  ['cartridge',['cartridge',['../classEmulator_1_1ROM_1_1Mapper.html#af5cf70b8c0d1ddc1a264ca7d44b38987',1,'Emulator::ROM::Mapper']]],
+  ['chrrom',['chrRom',['../classEmulator_1_1ROM_1_1Cartridge.html#aab28563fc2a411fa18802dbd7fb8127a',1,'Emulator::ROM::Cartridge']]],
+  ['cpu',['cpu',['../classEmulator_1_1ROM_1_1Mapper.html#aa6178824cc6ed54b9b2bcb2dfe8375e1',1,'Emulator::ROM::Mapper']]]
 ];
