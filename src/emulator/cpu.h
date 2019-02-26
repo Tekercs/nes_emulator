@@ -117,6 +117,8 @@ namespace Emulator::Cpu
         void CMP(uint8_t value);
         void CPX(uint8_t value);
         void CPY(uint8_t value);
+        void EOR(uint8_t value);
+        void ORA(uint8_t value);
 
         uint8_t immediateAddressing();
         uint8_t zeroPageAddressing();

@@ -206,6 +206,22 @@ void Cpu::initInstructionMap()
     this->instructions[0xC0] = [&]() { this->CPY(this->immediateAddressing()); };
     this->instructions[0xC4] = [&]() { this->CPY(this->zeroPageValueAddressing()); };
     this->instructions[0xCC] = [&]() { this->CPY(this->absoluteValueAddressing()); };
+    this->instructions[0x49] = [&]() { this->EOR(this->immediateAddressing()); };
+    this->instructions[0x45] = [&]() { this->EOR(this->zeroPageValueAddressing()); };
+    this->instructions[0x55] = [&]() { this->EOR(this->zeroPageXValueAddressing()); };
+    this->instructions[0x4D] = [&]() { this->EOR(this->absoluteValueAddressing()); };
+    this->instructions[0x5D] = [&]() { this->EOR(this->absoluteXValueAddressing()); };
+    this->instructions[0x59] = [&]() { this->EOR(this->absoluteYValueAddressing()); };
+    this->instructions[0x41] = [&]() { this->EOR(this->indexedIndirectValue()); };
+    this->instructions[0x51] = [&]() { this->EOR(this->indirectIndexedValue()); };
+    this->instructions[0x09] = [&]() { this->ORA(this->immediateAddressing()); };
+    this->instructions[0x05] = [&]() { this->ORA(this->zeroPageValueAddressing()); };
+    this->instructions[0x15] = [&]() { this->ORA(this->zeroPageXValueAddressing()); };
+    this->instructions[0x0D] = [&]() { this->ORA(this->absoluteValueAddressing()); };
+    this->instructions[0x5D] = [&]() { this->ORA(this->absoluteXValueAddressing()); };
+    this->instructions[0x1D] = [&]() { this->ORA(this->absoluteYValueAddressing()); };
+    this->instructions[0x01] = [&]() { this->ORA(this->indexedIndirectValue()); };
+    this->instructions[0x11] = [&]() { this->ORA(this->indirectIndexedValue()); };
 
 }
 
@@ -750,6 +766,26 @@ void Cpu::CPY(uint8_t value)
     this->setZeroResult(this->indexRegisterY == value);
 
     this->setNegativeFlagSet((this->indexRegisterY - value) & 0B10000000);
+
+    ++this->programCounter;
+}
+
+void Cpu::EOR(uint8_t value)
+{
+    this->accumulator = this->accumulator ^ value;
+
+    this->setZeroResult(this->accumulator == 0);
+    this->setNegativeFlagSet((this->accumulator & 0B10000000) > 0);
+
+    ++this->programCounter;
+}
+
+void Cpu::ORA(uint8_t value)
+{
+    this->accumulator = this->accumulator | value;
+
+    this->setZeroResult(this->accumulator == 0);
+    this->setNegativeFlagSet((this->accumulator & 0B10000000) > 0);
 
     ++this->programCounter;
 }
