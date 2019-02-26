@@ -187,6 +187,11 @@ void Cpu::initInstructionMap()
     this->instructions[0x76] = [&]() { this->ROR(this->zeroPageXAddressing()); };
     this->instructions[0x6E] = [&]() { this->ROR(this->absoluteLocationAddressing()); };
     this->instructions[0x7E] = [&]() { this->ROR(this->absoluteXLocationAddressing()); };
+    this->instructions[0x4A] = [&]() { this->LSRAccumulator(); };
+    this->instructions[0x46] = [&]() { this->LSR(this->zeroPageAddressing()); };
+    this->instructions[0x56] = [&]() { this->LSR(this->zeroPageXAddressing()); };
+    this->instructions[0x4E] = [&]() { this->LSR(this->absoluteLocationAddressing()); };
+    this->instructions[0x5E] = [&]() { this->LSR(this->absoluteXLocationAddressing()); };
 
 }
 
@@ -638,6 +643,7 @@ void Cpu::ROL(uint16_t address)
     this->memory->setAt(address, newValue);
 
     this->setNegativeFlagSet(newValue & 0B10000000);
+    this->setZeroResult(newValue == 0);
 
     ++this->programCounter;
 }
@@ -669,6 +675,37 @@ void Cpu::ROR(uint16_t address)
     this->memory->setAt(address, newValue);
 
     this->setNegativeFlagSet(newValue & 0B10000000);
+    this->setZeroResult(newValue == 0);
+
+    ++this->programCounter;
+}
+
+void Cpu::LSRAccumulator()
+{
+    uint8_t newValue = this->accumulator;
+
+    this->setCarryRemain(newValue & 0b1);
+
+    newValue = newValue >> 1;
+    this->accumulator = newValue;
+
+    this->setZeroResult(this->accumulator == 0);
+    this->setNegativeFlagSet(newValue & 0B10000000);
+
+    ++this->programCounter;
+}
+
+void Cpu::LSR(uint16_t address)
+{
+    uint8_t newValue = this->memory->getFrom(address);
+
+    this->setCarryRemain(newValue & 0b1);
+
+    newValue = newValue >> 1;
+    this->memory->setAt(address, newValue);
+
+    this->setNegativeFlagSet(newValue & 0B10000000);
+    this->setZeroResult(newValue == 0);
 
     ++this->programCounter;
 }
