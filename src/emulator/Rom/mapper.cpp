@@ -2,7 +2,7 @@
 
 #include <memory>
 
-#include <mapper_nrom.h>
+#include <Rom/mapper_nrom.h>
 
 using namespace std;
 using namespace Emulator::Cpu;
