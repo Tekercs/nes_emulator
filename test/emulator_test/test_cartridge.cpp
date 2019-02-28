@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <iostream>
 
-#include <cartridge.h>
+#include <Rom/Cartridge.h>
 
 using namespace std;
 using namespace Emulator::ROM;

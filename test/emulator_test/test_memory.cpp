@@ -1,5 +1,5 @@
 #include <catch.hpp>
-#include <memory.h>
+#include <Memory/Memory.h>
 #include <iostream>
 
 SCENARIO("when reading memory", "[Memory]")
