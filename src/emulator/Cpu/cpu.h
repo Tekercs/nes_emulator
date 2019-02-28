@@ -41,9 +41,8 @@ namespace Emulator::Cpu
         uint8_t statusFlags;
 
         std::shared_ptr<Emulator::Memory::Memory> memory;
-        std::map<uint8_t, std::function<void()>> instructions;
 
-        void initInstructionMap();
+        void executeInstruction(uint8_t opcode);
 
         uint8_t pullStack();
         void pushStack(uint8_t value);
