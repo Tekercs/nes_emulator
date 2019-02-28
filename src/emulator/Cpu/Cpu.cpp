@@ -3,70 +3,35 @@
 #include <utility>
 #include <memory>
 
+#include <Memory/Memory.h>
+#include <Cpu/Registers.h>
+
 using namespace std;
 using namespace Emulator::Cpu;
+using namespace Emulator::Memory;
 
-Cpu::Cpu(std::shared_ptr<Emulator::Memory::Memory> memory) : memory(move(memory))
-, accumulator(INITVAL_ACCUMULATOR)
-, indexRegisterX(INITVAL_INDEXREGISTERX)
-, indexRegisterY(INITVAL_INDEXREGISTERY)
-, statusFlags(INITVAL_STATUSFLAGS)
-, programCounter(INITVAL_PROGRAMCOUNTER)
-, stackPointerOffset(INITVAL_STACKPOINTEROFFSET)
+Cpu::Cpu()
+: memory(make_shared<Memory::Memory>())
+, registers(make_shared<Registers>())
+{}
+
+Cpu::Cpu(std::shared_ptr<Emulator::Memory::Memory> memory, std::shared_ptr<Emulator::Cpu::Registers> registers)
+: memory(move(memory))
+, registers(move(registers))
 { }
-
-bool Cpu::checkFlagBit(uint8_t flagBit) const
-{
-    return (this->statusFlags & (0x01 << flagBit)) != 0;
-}
-
-bool Cpu::isCarryRemain() const
-{
-    return this->checkFlagBit(FLAGBIT_CARRY);
-}
-
-bool Cpu::isZeroResult() const
-{
-    return this->checkFlagBit(FLAGBIT_ZERO);
-}
-
-bool Cpu::isInterruptsDisabled() const
-{
-    return this->checkFlagBit(FLAGBIT_INTERRUPT);
-}
-
-bool Cpu::isDecimalModeOn() const
-{
-    return this->checkFlagBit(FLAGBIT_DECMODE);
-}
-
-bool Cpu::isBreakExecuted() const
-{
-    return this->checkFlagBit(FLAGBIT_BREAK);
-}
-
-bool Cpu::isNegativeFlagSet() const
-{
-    return this->checkFlagBit(FLAGBIT_NEGATIVE);
-}
-
-bool Cpu::isOverflowHappened() const
-{
-    return this->checkFlagBit(FLAGBIT_OVERFLOW);
-}
 
 uint8_t Cpu::pullStack()
 {
-    ++this->stackPointerOffset;
-    uint16_t stackPointer = STACK_POINTER + this->stackPointerOffset;
+    this->registers->incrementStackPointerOffset();
+    uint16_t stackPointer = STACK_POINTER + this->registers->getStackPointerOffset();
 
     return this->memory->getFrom(stackPointer);
 }
 
 void Cpu::pushStack(uint8_t value)
 {
-    uint16_t stackPointer = STACK_POINTER + this->stackPointerOffset;
-    --this->stackPointerOffset;
+    uint16_t stackPointer = STACK_POINTER + this->registers->getStackPointerOffset();
+    this->registers->decrementStackPointerOffset();
 
     this->memory->setAt(stackPointer, value);
 }
@@ -531,161 +496,124 @@ void Cpu::executeInstruction(uint8_t opcode)
     }
 }
 
-void Cpu::setFlagBit(uint8_t flagBit, bool value)
-{
-    this->statusFlags ^= (-(uint8_t)value ^ this->statusFlags) & (0x01 << flagBit);
-}
 
-void Cpu::setCarryRemain(bool value)
-{
-    this->setFlagBit(FLAGBIT_CARRY, value);
-}
-
-void Cpu::setZeroResult(bool value)
-{
-    this->setFlagBit(FLAGBIT_ZERO, value);
-}
-
-void Cpu::setInterruptsDisabled(bool value)
-{
-    this->setFlagBit(FLAGBIT_INTERRUPT, value);
-}
-
-void Cpu::setDecimalModeOn(bool value)
-{
-    this->setFlagBit(FLAGBIT_DECMODE, value);
-}
-
-void Cpu::setBreakExecuted(bool value)
-{
-    this->setFlagBit(FLAGBIT_BREAK, value);
-}
-
-void Cpu::setOverflowHappened(bool value)
-{
-    this->setFlagBit(FLAGBIT_OVERFLOW, value);
-}
-
-void Cpu::setNegativeFlagSet(bool value)
-{
-    this->setFlagBit(FLAGBIT_NEGATIVE, value);
-}
 
 void Cpu::PHA()
 {
-    this->pushStack(this->accumulator);
+    this->pushStack(this->registers->getAccumulator());
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::PLA()
 {
-    this->accumulator = this->pullStack();
+    this->registers->setAccumulator(this->pullStack());
 
-    this->setZeroResult(this->accumulator == 0);
-    this->setZeroResult((this->accumulator & 0B10000000) != 0);
+    this->registers->setZeroResult(this->registers->getAccumulator() == 0);
+    this->registers->setZeroResult((this->registers->getAccumulator() & 0B10000000) != 0);
 }
 
 void Cpu::PHP()
 {
-    this->pushStack(this->statusFlags);
-    ++this->programCounter;
+    this->pushStack(this->registers->getStatusFlags());
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::PLP()
 {
-    this->statusFlags = this->pullStack();
-    ++this->programCounter;
+    this->registers->setStatusFlags(this->pullStack());
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::SEC()
 {
-    this->setCarryRemain(true);
-    ++this->programCounter;
+    this->registers->setCarryRemain(true);
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::SED()
 {
-    this->setDecimalModeOn(true);
-    ++this->programCounter;
+    this->registers->setDecimalModeOn(true);
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::SEI()
 {
-    this->setInterruptsDisabled(true);
-    ++this->programCounter;
+    this->registers->setInterruptsDisabled(true);
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::CLC()
 {
-    this->setCarryRemain(false);
-    ++this->programCounter;
+    this->registers->setCarryRemain(false);
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::CLD()
 {
-    this->setCarryRemain(false);
-    ++this->programCounter;
+    this->registers->setCarryRemain(false);
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::CLI()
 {
-    this->setInterruptsDisabled(false);
-    ++this->programCounter;
+    this->registers->setInterruptsDisabled(false);
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::CLV()
 {
-    this->setOverflowHappened(false);
-    ++this->programCounter;
+    this->registers->setOverflowHappened(false);
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::LDA(uint8_t value)
 {
-    this->accumulator = value;
+    this->registers->setAccumulator(value);
 
-    this->setZeroResult(this->accumulator == 0);
-    this->setZeroResult((this->accumulator & 0B10000000) != 0);
+    this->registers->setZeroResult(this->registers->getAccumulator() == 0);
+    this->registers->setZeroResult((this->registers->getAccumulator() & 0B10000000) != 0);
 
-    ++this->programCounter;
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::LDX(uint8_t value)
 {
-    this->indexRegisterX = value;
+    this->registers->setIndexRegisterX(value);
 
-    this->setZeroResult(this->indexRegisterX == 0);
-    this->setZeroResult((this->indexRegisterX & 0B10000000) != 0);
+    this->registers->setZeroResult(this->registers->getIndexRegisterX() == 0);
+    this->registers->setZeroResult((this->registers->getIndexRegisterX() & 0B10000000) != 0);
 
-    ++this->programCounter;
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::LDY(uint8_t value)
 {
-    this->indexRegisterY = value;
+    this->registers->setIndexRegisterY(value);
 
-    this->setZeroResult(this->indexRegisterY == 0);
-    this->setZeroResult((this->indexRegisterY & 0B10000000) != 0);
+    this->registers->setZeroResult(this->registers->getIndexRegisterY() == 0);
+    this->registers->setZeroResult((this->registers->getIndexRegisterY() & 0B10000000) != 0);
 
-    ++this->programCounter;
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::JMP(uint16_t address)
 {
-    this->programCounter = address;
+    this->registers->setProgramCounter(address);
 }
 
 void Cpu::ADC(uint8_t value)
 {
-    uint32_t result = this->accumulator + value + this->isCarryRemain();
+    uint32_t result = this->registers->getAccumulator() + value + this->registers->isCarryRemain();
 
     if (result > 0xFF)
-        this->setCarryRemain(true);
+        this->registers->setCarryRemain(true);
 
-    this->setZeroResult(result == 0);
-    this->setOverflowHappened(~(this->accumulator ^ value) & (this->accumulator ^ result) & 0B10000000);
+    this->registers->setZeroResult(result == 0);
+    this->registers->setOverflowHappened(~(this->registers->getAccumulator() ^ value) & (this->registers->getAccumulator() ^ result) & 0B10000000);
 
-    this->accumulator = static_cast<uint8_t>(result);
+    this->registers->setAccumulator(static_cast<uint8_t>(result));
 
-    ++this->programCounter;
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::SBC(uint8_t value)
@@ -695,92 +623,92 @@ void Cpu::SBC(uint8_t value)
 
 void Cpu::STA(uint16_t address)
 {
-    this->memory->setAt(address, this->accumulator);
-    ++this->programCounter;
+    this->memory->setAt(address, this->registers->getAccumulator());
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::STX(uint16_t address)
 {
-    this->memory->setAt(address, this->indexRegisterX);
-    ++this->programCounter;
+    this->memory->setAt(address, this->registers->getIndexRegisterX());
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::STY(uint16_t address)
 {
-    this->memory->setAt(address, this->indexRegisterY);
-    ++this->programCounter;
+    this->memory->setAt(address, this->registers->getIndexRegisterY());
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::TAX()
 {
-    this->indexRegisterX = this->accumulator;
+    this->registers->setIndexRegisterX(this->registers->getAccumulator());
 
-    this->setZeroResult(this->indexRegisterX == 0);
-    this->setNegativeFlagSet((this->indexRegisterX & 0B10000000) > 0);
+    this->registers->setZeroResult(this->registers->getIndexRegisterX() == 0);
+    this->registers->setNegativeFlagSet((this->registers->getIndexRegisterX() & 0B10000000) > 0);
 
-    ++this->programCounter;
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::TAY()
 {
-    this->indexRegisterY = this->accumulator;
+    this->registers->setIndexRegisterY(this->registers->getAccumulator());
 
-    this->setZeroResult(this->indexRegisterY == 0);
-    this->setNegativeFlagSet((this->indexRegisterY & 0B10000000) > 0);
+    this->registers->setZeroResult(this->registers->getIndexRegisterY() == 0);
+    this->registers->setNegativeFlagSet((this->registers->getIndexRegisterY() & 0B10000000) > 0);
 
-    ++this->programCounter;
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::TSX()
 {
-    this->indexRegisterX = this->stackPointerOffset;
+    this->registers->setIndexRegisterX(this->registers->getStackPointerOffset());
 
-    this->setZeroResult(this->indexRegisterX == 0);
-    this->setNegativeFlagSet((this->indexRegisterX & 0B10000000) > 0);
+    this->registers->setZeroResult(this->registers->getIndexRegisterX() == 0);
+    this->registers->setNegativeFlagSet((this->registers->getIndexRegisterX() & 0B10000000) > 0);
 
-    ++this->programCounter;
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::TXA()
 {
-    this->accumulator = this->indexRegisterX;
+    this->registers->setAccumulator(this->registers->getIndexRegisterX());
 
-    this->setZeroResult(this->accumulator == 0);
-    this->setNegativeFlagSet((this->accumulator & 0B10000000) > 0);
+    this->registers->setZeroResult(this->registers->getAccumulator() == 0);
+    this->registers->setNegativeFlagSet((this->registers->getAccumulator() & 0B10000000) > 0);
 
-    ++this->programCounter;
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::TXS()
 {
-    this->stackPointerOffset = this->indexRegisterX;
+    this->registers->setStackPointerOffset(this->registers->getIndexRegisterX());
 
-    ++this->programCounter;
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::TYA()
 {
-    this->accumulator = this->indexRegisterY;
+    this->registers->setAccumulator(this->registers->getIndexRegisterY());
 
-    this->setZeroResult(this->accumulator == 0);
-    this->setNegativeFlagSet((this->accumulator & 0B10000000) > 0);
+    this->registers->setZeroResult(this->registers->getAccumulator() == 0);
+    this->registers->setNegativeFlagSet((this->registers->getAccumulator() & 0B10000000) > 0);
 
-    ++this->programCounter;
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::AND(uint8_t value)
 {
-    this->accumulator = this->accumulator & value;
+    this->registers->setAccumulator(this->registers->getAccumulator() & value);
 
-    this->setZeroResult(this->accumulator == 0);
-    this->setNegativeFlagSet((this->accumulator & 0B10000000) > 0);
+    this->registers->setZeroResult(this->registers->getAccumulator() == 0);
+    this->registers->setNegativeFlagSet((this->registers->getAccumulator() & 0B10000000) > 0);
 
-    ++this->programCounter;
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::NOP()
 {
-    ++this->programCounter;
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::ASL(uint16_t address)
@@ -789,99 +717,99 @@ void Cpu::ASL(uint16_t address)
     uint16_t shiftResult = value << 1;
     value = shiftResult;
 
-    this->setCarryRemain(shiftResult > 0xFF);
-    this->setZeroResult(value == 0);
-    this->setNegativeFlagSet((value & 0B10000000) > 0);
+    this->registers->setCarryRemain(shiftResult > 0xFF);
+    this->registers->setZeroResult(value == 0);
+    this->registers->setNegativeFlagSet((value & 0B10000000) > 0);
 
     this->memory->setAt(address, value);
-    ++this->programCounter;
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::ASLAccumulator()
 {
-    uint16_t shiftResult = this->accumulator << 1;
-    this->accumulator = shiftResult;
+    uint16_t shiftResult = this->registers->getAccumulator() << 1;
+    this->registers->setAccumulator(shiftResult);
 
-    this->setCarryRemain(shiftResult > 0xFF);
-    this->setZeroResult(this->accumulator == 0);
-    this->setNegativeFlagSet((this->accumulator & 0B10000000) > 0);
+    this->registers->setCarryRemain(shiftResult > 0xFF);
+    this->registers->setZeroResult(this->registers->getAccumulator() == 0);
+    this->registers->setNegativeFlagSet((this->registers->getAccumulator() & 0B10000000) > 0);
 
-    ++this->programCounter;
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::BCC(int8_t value)
 {
-    if (!this->isCarryRemain())
-        this->programCounter += value;
+    if (!this->registers->isCarryRemain())
+        this->registers->setProgramCounter(this->registers->getProgramCounter() + value);
 
-    ++this->programCounter;
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::BCS(int8_t value)
 {
-    if (this->isCarryRemain())
-        this->programCounter += value;
+    if (this->registers->isCarryRemain())
+        this->registers->setProgramCounter(this->registers->getProgramCounter() + value);
 
-    ++this->programCounter;
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::BEQ(int8_t value)
 {
-    if (this->isZeroResult())
-        this->programCounter += value;
+    if (this->registers->isZeroResult())
+        this->registers->setProgramCounter(this->registers->getProgramCounter() + value);
 
-    ++this->programCounter;
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::BMI(int8_t value)
 {
-    if (this->isNegativeFlagSet())
-        this->programCounter += value;
+    if (this->registers->isNegativeFlagSet())
+        this->registers->setProgramCounter(this->registers->getProgramCounter() + value);
 
-    ++this->programCounter;
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::BNE(int8_t value)
 {
-    if (!this->isZeroResult())
-        this->programCounter += value;
+    if (!this->registers->isZeroResult())
+        this->registers->setProgramCounter(this->registers->getProgramCounter() + value);
 
-    ++this->programCounter;
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::BPL(int8_t value)
 {
-    if (!this->isNegativeFlagSet())
-        this->programCounter += value;
+    if (!this->registers->isNegativeFlagSet())
+        this->registers->setProgramCounter(this->registers->getProgramCounter() + value);
 
-    ++this->programCounter;
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::BVC(int8_t value)
 {
-    if (!this->isOverflowHappened())
-        this->programCounter += value;
+    if (!this->registers->isOverflowHappened())
+        this->registers->setProgramCounter(this->registers->getProgramCounter() + value);
 
-    ++this->programCounter;
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::BVS(int8_t value)
 {
-    if (this->isOverflowHappened())
-        this->programCounter += value;
+    if (this->registers->isOverflowHappened())
+        this->registers->setProgramCounter(this->registers->getProgramCounter() + value);
 
-    ++this->programCounter;
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::BIT(uint8_t value)
 {
-    uint8_t result = this->accumulator & value;
+    uint8_t result = this->registers->getAccumulator() & value;
 
-    this->setNegativeFlagSet((result & 0B10000000));
-    this->setOverflowHappened((result & 0B01000000));
-    this->setZeroResult(result == 0);
+    this->registers->setNegativeFlagSet((result & 0B10000000));
+    this->registers->setOverflowHappened((result & 0B01000000));
+    this->registers->setZeroResult(result == 0);
 
-    ++this->programCounter;
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::DEC(uint16_t address)
@@ -889,12 +817,12 @@ void Cpu::DEC(uint16_t address)
     uint8_t value = this->memory->getFrom(address);
     --value;
 
-    this->setZeroResult(value == 0);
-    this->setNegativeFlagSet(value & 0B10000000);
+    this->registers->setZeroResult(value == 0);
+    this->registers->setNegativeFlagSet(value & 0B10000000);
 
     this->memory->setAt(address, value);
 
-    ++this->programCounter;
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::INC(uint16_t address)
@@ -902,69 +830,69 @@ void Cpu::INC(uint16_t address)
     uint8_t value = this->memory->getFrom(address);
     ++value;
 
-    this->setZeroResult(value == 0);
-    this->setNegativeFlagSet(value & 0B10000000);
+    this->registers->setZeroResult(value == 0);
+    this->registers->setNegativeFlagSet(value & 0B10000000);
 
     this->memory->setAt(address, value);
 
-    ++this->programCounter;
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::DEX()
 {
-    --this->indexRegisterX;
+    this->registers->setIndexRegisterX(this->registers->getIndexRegisterX() -1);
 
-    this->setZeroResult(this->indexRegisterX == 0);
-    this->setNegativeFlagSet(this->indexRegisterX & 0B10000000);
+    this->registers->setZeroResult(this->registers->getIndexRegisterX() == 0);
+    this->registers->setNegativeFlagSet(this->registers->getIndexRegisterX() & 0B10000000);
 
-    ++this->programCounter;
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::INX()
 {
-    ++this->indexRegisterX;
+    this->registers->setIndexRegisterX(this->registers->getIndexRegisterX() +1);
 
-    this->setZeroResult(this->indexRegisterX == 0);
-    this->setNegativeFlagSet(this->indexRegisterX & 0B10000000);
+    this->registers->setZeroResult(this->registers->getIndexRegisterX() == 0);
+    this->registers->setNegativeFlagSet(this->registers->getIndexRegisterX() & 0B10000000);
 
-    ++this->programCounter;
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::DEY()
 {
-    --this->indexRegisterY;
+    this->registers->setIndexRegisterY(this->registers->getIndexRegisterY() -1);
 
-    this->setZeroResult(this->indexRegisterY == 0);
-    this->setNegativeFlagSet(this->indexRegisterY & 0B10000000);
+    this->registers->setZeroResult(this->registers->getIndexRegisterY() == 0);
+    this->registers->setNegativeFlagSet(this->registers->getIndexRegisterY() & 0B10000000);
 
-    ++this->programCounter;
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::INY()
 {
-    ++this->indexRegisterY;
+    this->registers->setIndexRegisterY(this->registers->getIndexRegisterY() +1);
 
-    this->setZeroResult(this->indexRegisterY == 0);
-    this->setNegativeFlagSet(this->indexRegisterY & 0B10000000);
+    this->registers->setZeroResult(this->registers->getIndexRegisterY() == 0);
+    this->registers->setNegativeFlagSet(this->registers->getIndexRegisterY() & 0B10000000);
 
-    ++this->programCounter;
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::ROLAccumulator()
 {
-    uint16_t newValue = this->accumulator;
+    uint16_t newValue = this->registers->getAccumulator();
     newValue = newValue << 1;
 
-    if (this->isCarryRemain())
+    if (this->registers->isCarryRemain())
         ++newValue;
 
-    this->setCarryRemain(newValue & 0B100000000);
-    this->accumulator = newValue;
+    this->registers->setCarryRemain(newValue & 0B100000000);
+    this->registers->setAccumulator(newValue);
 
-    this->setNegativeFlagSet(this->accumulator & 0B10000000);
-    this->setZeroResult(this->accumulator == 0);
+    this->registers->setNegativeFlagSet(this->registers->getAccumulator() & 0B10000000);
+    this->registers->setZeroResult(this->registers->getAccumulator() == 0);
 
-    ++this->programCounter;
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::ROL(uint16_t address)
@@ -972,139 +900,139 @@ void Cpu::ROL(uint16_t address)
     uint16_t newValue = this->memory->getFrom(address);
     newValue = newValue << 1;
 
-    if (this->isCarryRemain())
+    if (this->registers->isCarryRemain())
         ++newValue;
 
-    this->setCarryRemain(newValue & 0B100000000);
+    this->registers->setCarryRemain(newValue & 0B100000000);
     this->memory->setAt(address, newValue);
 
-    this->setNegativeFlagSet(newValue & 0B10000000);
-    this->setZeroResult(newValue == 0);
+    this->registers->setNegativeFlagSet(newValue & 0B10000000);
+    this->registers->setZeroResult(newValue == 0);
 
-    ++this->programCounter;
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::RORAccumulator()
 {
-    uint16_t newValue = (this->isCarryRemain()) ? 1 << 8 : 0;
-    newValue += this->accumulator;
+    uint16_t newValue = (this->registers->isCarryRemain()) ? 1 << 8 : 0;
+    newValue += this->registers->getAccumulator();
 
-    this->setCarryRemain(newValue & 0b1);
+    this->registers->setCarryRemain(newValue & 0b1);
 
     newValue = newValue >> 1;
-    this->accumulator = newValue;
+    this->registers->setAccumulator(newValue);
 
-    this->setZeroResult(this->accumulator == 0);
-    this->setNegativeFlagSet(newValue & 0B10000000);
+    this->registers->setZeroResult(this->registers->getAccumulator() == 0);
+    this->registers->setNegativeFlagSet(newValue & 0B10000000);
 
-    ++this->programCounter;
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::ROR(uint16_t address)
 {
-    uint16_t newValue = (this->isCarryRemain()) ? 1 << 8 : 0;
+    uint16_t newValue = (this->registers->isCarryRemain()) ? 1 << 8 : 0;
     newValue += this->memory->getFrom(address);
 
-    this->setCarryRemain(newValue & 0b1);
+    this->registers->setCarryRemain(newValue & 0b1);
 
     newValue = newValue >> 1;
     this->memory->setAt(address, newValue);
 
-    this->setNegativeFlagSet(newValue & 0B10000000);
-    this->setZeroResult(newValue == 0);
+    this->registers->setNegativeFlagSet(newValue & 0B10000000);
+    this->registers->setZeroResult(newValue == 0);
 
-    ++this->programCounter;
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::LSRAccumulator()
 {
-    uint8_t newValue = this->accumulator;
+    uint8_t newValue = this->registers->getAccumulator();
 
-    this->setCarryRemain(newValue & 0b1);
+    this->registers->setCarryRemain(newValue & 0b1);
 
     newValue = newValue >> 1;
-    this->accumulator = newValue;
+    this->registers->setAccumulator(newValue);
 
-    this->setZeroResult(this->accumulator == 0);
-    this->setNegativeFlagSet(newValue & 0B10000000);
+    this->registers->setZeroResult(this->registers->getAccumulator() == 0);
+    this->registers->setNegativeFlagSet(newValue & 0B10000000);
 
-    ++this->programCounter;
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::LSR(uint16_t address)
 {
     uint8_t newValue = this->memory->getFrom(address);
 
-    this->setCarryRemain(newValue & 0b1);
+    this->registers->setCarryRemain(newValue & 0b1);
 
     newValue = newValue >> 1;
     this->memory->setAt(address, newValue);
 
-    this->setNegativeFlagSet(newValue & 0B10000000);
-    this->setZeroResult(newValue == 0);
+    this->registers->setNegativeFlagSet(newValue & 0B10000000);
+    this->registers->setZeroResult(newValue == 0);
 
-    ++this->programCounter;
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::CMP(uint8_t value)
 {
-    this->setCarryRemain(this->accumulator >= value);
-    this->setZeroResult(this->accumulator == value);
+    this->registers->setCarryRemain(this->registers->getAccumulator() >= value);
+    this->registers->setZeroResult(this->registers->getAccumulator() == value);
 
-    this->setNegativeFlagSet((this->accumulator - value) & 0B10000000);
+    this->registers->setNegativeFlagSet((this->registers->getAccumulator() - value) & 0B10000000);
 
-    ++this->programCounter;
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::CPX(uint8_t value)
 {
-    this->setCarryRemain(this->indexRegisterX >= value);
-    this->setZeroResult(this->indexRegisterX == value);
+    this->registers->setCarryRemain(this->registers->getIndexRegisterX() >= value);
+    this->registers->setZeroResult(this->registers->getIndexRegisterX() == value);
 
-    this->setNegativeFlagSet((this->indexRegisterX - value) & 0B10000000);
+    this->registers->setNegativeFlagSet((this->registers->getIndexRegisterX() - value) & 0B10000000);
 
-    ++this->programCounter;
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::CPY(uint8_t value)
 {
-    this->setCarryRemain(this->indexRegisterY >= value);
-    this->setZeroResult(this->indexRegisterY == value);
+    this->registers->setCarryRemain(this->registers->getIndexRegisterY() >= value);
+    this->registers->setZeroResult(this->registers->getIndexRegisterY() == value);
 
-    this->setNegativeFlagSet((this->indexRegisterY - value) & 0B10000000);
+    this->registers->setNegativeFlagSet((this->registers->getIndexRegisterY() - value) & 0B10000000);
 
-    ++this->programCounter;
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::EOR(uint8_t value)
 {
-    this->accumulator = this->accumulator ^ value;
+    this->registers->setAccumulator(this->registers->getAccumulator() ^ value);
 
-    this->setZeroResult(this->accumulator == 0);
-    this->setNegativeFlagSet((this->accumulator & 0B10000000) > 0);
+    this->registers->setZeroResult(this->registers->getAccumulator() == 0);
+    this->registers->setNegativeFlagSet((this->registers->getAccumulator() & 0B10000000) > 0);
 
-    ++this->programCounter;
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::ORA(uint8_t value)
 {
-    this->accumulator = this->accumulator | value;
+    this->registers->setAccumulator(this->registers->getAccumulator() | value);
 
-    this->setZeroResult(this->accumulator == 0);
-    this->setNegativeFlagSet((this->accumulator & 0B10000000) > 0);
+    this->registers->setZeroResult(this->registers->getAccumulator() == 0);
+    this->registers->setNegativeFlagSet((this->registers->getAccumulator() & 0B10000000) > 0);
 
-    ++this->programCounter;
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::JSR(uint16_t address)
 {
-    uint8_t highByte = this->programCounter >> 8;
-    uint8_t lowByte = this->programCounter;
+    uint8_t highByte = this->registers->getProgramCounter() >> 8;
+    uint8_t lowByte = this->registers->getProgramCounter();
 
     this->pushStack(highByte);
     this->pushStack(lowByte);
 
-    this->programCounter = address;
+    this->registers->setProgramCounter(address);
 }
 
 void Cpu::RTS()
@@ -1112,75 +1040,73 @@ void Cpu::RTS()
     uint8_t lowByte = this->pullStack();
     uint8_t highByte = this->pullStack();
 
-    this->programCounter = highByte << 8;
-    this->programCounter += lowByte;
+    this->registers->setProgramCounter((highByte << 8) + lowByte );
 
-    ++this->programCounter;
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::RTI()
 {
-    this->statusFlags = this->pullStack();
+    this->registers->setStatusFlags(this->pullStack());
 
     uint8_t lowByte = this->pullStack();
     uint8_t highByte = this->pullStack();
 
-    this->programCounter = highByte << 8;
-    this->programCounter += lowByte;
+    this->registers->setProgramCounter((highByte << 8) + lowByte );
 
-    ++this->programCounter;
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::BRK()
 {
-    uint8_t highByte = this->programCounter >> 8;
-    uint8_t lowByte = this->programCounter;
+    uint8_t highByte = this->registers->getProgramCounter() >> 8;
+    uint8_t lowByte = this->registers->getProgramCounter();
 
     this->pushStack(highByte);
     this->pushStack(lowByte);
-    this->pushStack(this->statusFlags);
+    this->pushStack(this->registers->getStatusFlags());
 
-    this->setBreakExecuted(true);
+    this->registers->setBreakExecuted(true);
 
     uint16_t address = 0x0000;
 
-    this->programCounter++;
+    this->registers->incrementProgramCounter();
     uint16_t addressLeastSignificant = 0x0000 + this->memory->getFrom(IRQ_INTERRUPT_VECTOR_LOW);
 
-    this->programCounter++;
+    this->registers->incrementProgramCounter();
     uint16_t addressMostSingicant = 0x0000 + this->memory->getFrom(IRQ_INTERRUPT_VECTOR_HIGH);
 
     address = (addressMostSingicant << 8) + addressLeastSignificant;
 
-    this->programCounter = address;
+    this->registers->setProgramCounter(address);
 }
 
 uint8_t Cpu::immediateAddressing()
 {
-    this->programCounter++;
-    return this->memory->getFrom(this->programCounter);
+    this->registers->incrementProgramCounter();
+    return this->memory->getFrom(this->registers->getProgramCounter());
 }
 
 uint8_t Cpu::zeroPageAddressing()
 {
-    this->programCounter++;
-    return this->memory->getFrom(this->programCounter);
+    this->registers->incrementProgramCounter();
+    return this->memory->getFrom(this->registers->getProgramCounter());
 }
 
 uint8_t Cpu::zeroPageXAddressing()
 {
-    this->programCounter++;
-    uint8_t zeroPageAddress = this->memory->getFrom(this->programCounter);
+    this->registers->incrementProgramCounter();
+    uint8_t zeroPageAddress = this->memory->getFrom(this->registers->getProgramCounter());
 
-    return zeroPageAddress + this->indexRegisterX;
+    return zeroPageAddress + this->registers->getIndexRegisterX();
 }
 
 uint8_t Cpu::zeroPageYAddressing()
 {
-    this->programCounter++;
-    uint8_t zeroPageAddress = this->memory->getFrom(this->programCounter);
+    this->registers->incrementProgramCounter();
+    uint8_t zeroPageAddress = this->memory->getFrom(this->registers->getProgramCounter());
 
-    return zeroPageAddress + this->indexRegisterY;
+    return zeroPageAddress + this->registers->getIndexRegisterY();
 }
 
 uint8_t Cpu::zeroPageValueAddressing()
@@ -1217,11 +1143,11 @@ uint16_t Cpu::absoluteLocationAddressing()
 {
     uint16_t address = 0x0000;
 
-    this->programCounter++;
-    uint16_t addressLeastSignificant = 0x0000 + this->memory->getFrom(this->programCounter);
+    this->registers->incrementProgramCounter();
+    uint16_t addressLeastSignificant = 0x0000 + this->memory->getFrom(this->registers->getProgramCounter());
 
-    this->programCounter++;
-    uint16_t addressMostSingicant = 0x0000 + this->memory->getFrom(this->programCounter);
+    this->registers->incrementProgramCounter();
+    uint16_t addressMostSingicant = 0x0000 + this->memory->getFrom(this->registers->getProgramCounter());
 
     address = (addressMostSingicant << 8) + addressLeastSignificant;
 
@@ -1230,23 +1156,23 @@ uint16_t Cpu::absoluteLocationAddressing()
 
 uint16_t Cpu::absoluteXLocationAddressing()
 {
-    return this->absoluteLocationAddressing() + this->indexRegisterX;
+    return this->absoluteLocationAddressing() + this->registers->getIndexRegisterX();
 }
 
 uint16_t Cpu::absoluteYLocationAddressing()
 {
-    return this->absoluteLocationAddressing() + this->indexRegisterY;
+    return this->absoluteLocationAddressing() + this->registers->getIndexRegisterY();
 }
 
 uint16_t Cpu::indirectAddress()
 {
     uint16_t address = 0x0000;
 
-    ++this->programCounter;
-    uint16_t addressLeastSignificant = 0x0000 + this->memory->getFrom(this->programCounter);
+    this->registers->incrementProgramCounter();
+    uint16_t addressLeastSignificant = 0x0000 + this->memory->getFrom(this->registers->getProgramCounter());
 
-    ++this->programCounter;
-    uint16_t addressMostSingicant = 0x0000 + this->memory->getFrom(this->programCounter);
+    this->registers->incrementProgramCounter();
+    uint16_t addressMostSingicant = 0x0000 + this->memory->getFrom(this->registers->getProgramCounter());
 
     address = (addressMostSingicant << 8) + addressLeastSignificant;
 
@@ -1262,10 +1188,10 @@ uint16_t Cpu::indirectAddress()
 
 uint16_t Cpu::indexedIndirectAddress()
 {
-    ++this->programCounter;
-    uint8_t zeroPageAddress = this->memory->getFrom(this->programCounter);
+    this->registers->incrementProgramCounter();
+    uint8_t zeroPageAddress = this->memory->getFrom(this->registers->getProgramCounter());
 
-    zeroPageAddress += this->indexRegisterX;
+    zeroPageAddress += this->registers->getIndexRegisterX();
 
     uint16_t address = 0x0000;
     uint16_t addressLeastSignificant = 0x0000 + this->memory->getFrom(zeroPageAddress);
@@ -1280,8 +1206,8 @@ uint16_t Cpu::indexedIndirectAddress()
 
 uint16_t Cpu::indirectIndexedAddress()
 {
-    ++this->programCounter;
-    uint8_t zeroPageAddress = this->memory->getFrom(this->programCounter);
+    this->registers->incrementProgramCounter();
+    uint8_t zeroPageAddress = this->memory->getFrom(this->registers->getProgramCounter());
 
     uint16_t address = 0x0000;
     uint16_t addressLeastSignificant = 0x0000 + this->memory->getFrom(zeroPageAddress);
@@ -1290,7 +1216,7 @@ uint16_t Cpu::indirectIndexedAddress()
     uint16_t addressMostSingicant = 0x0000 + this->memory->getFrom(zeroPageAddress);
 
     address = (addressMostSingicant << 8) + addressLeastSignificant;
-    address += this->indexRegisterY;
+    address += this->registers->getIndexRegisterY();
 
     return address;
 }
@@ -1307,6 +1233,6 @@ uint8_t Cpu::indirectIndexedValue()
 
 void Cpu::operator++()
 {
-    uint8_t opcode = this->memory->getFrom(this->programCounter);
+    uint8_t opcode = this->memory->getFrom(this->registers->getProgramCounter());
     executeInstruction(opcode);
 }
