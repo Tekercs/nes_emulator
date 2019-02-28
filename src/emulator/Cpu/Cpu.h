@@ -5,7 +5,7 @@
 #include <map>
 #include <functional>
 
-#include <Memory/memory.h>
+#include <Memory/Memory.h>
 
 #define STACK_POINTER              0x0100
 

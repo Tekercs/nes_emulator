@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Rom/mapper.h>
+#include <Rom/Mapper.h>
 
 namespace Emulator::ROM
 {

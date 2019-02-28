@@ -1,3 +1,3 @@
-add_library(emulator SHARED Memory/memory.cpp Memory/memory.h Rom/cartridge.cpp Rom/cartridge.h Cpu/cpu.cpp Cpu/cpu.h Rom/mapper.cpp Rom/mapper.h Rom/mapper_nrom.cpp Rom/mapper_nrom.h)
+add_library(emulator SHARED Memory/Memory.cpp Memory/Memory.h Rom/Cartridge.cpp Rom/Cartridge.h Cpu/Cpu.cpp Cpu/Cpu.h Rom/Mapper.cpp Rom/Mapper.h Rom/MapperNrom.cpp Rom/MapperNrom.h)
 
 target_include_directories (emulator PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})

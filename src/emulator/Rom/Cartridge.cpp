@@ -1,4 +1,4 @@
-#include "cartridge.h"
+#include "Cartridge.h"
 
 #include <fstream>
 #include <cmath>

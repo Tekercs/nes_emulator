@@ -1,4 +1,4 @@
-#include "mapper_nrom.h"
+#include "MapperNrom.h"
 
 #include <iostream>
 #include <iomanip>

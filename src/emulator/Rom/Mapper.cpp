@@ -1,8 +1,8 @@
-#include "mapper.h"
+#include "Mapper.h"
 
 #include <memory>
 
-#include <Rom/mapper_nrom.h>
+#include <Rom/MapperNrom.h>
 
 using namespace std;
 using namespace Emulator::Cpu;

@@ -2,9 +2,9 @@
 
 #include <memory>
 
-#include <Rom/cartridge.h>
-#include <Memory/memory.h>
-#include <Cpu/cpu.h>
+#include <Rom/Cartridge.h>
+#include <Memory/Memory.h>
+#include <Cpu/Cpu.h>
 
 #define MAPPER_NROM 0
 
