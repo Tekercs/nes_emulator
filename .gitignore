@@ -3,3 +3,5 @@
 bin/
 nes_emulator.kdev4
 cmake-build-debug/
+build/
+.vscode/
