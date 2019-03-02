@@ -15,459 +15,154 @@ std::string parseCurrentStateLog(const Emulator::Memory::Memory& memory, const E
     switch (registers.getProgramCounter())
     {
         case 0x69: sstream << "0x69 " << hex << memory.getFrom(registers.getProgramCounter() +1); break; 
-        /*
-        case 0x65:
-            this->ADC(this->zeroPageValueAddressing());
-            break;
-        case 0x75:
-            this->ADC(this->zeroPageXValueAddressing());
-            break;
-        case 0x6D:
-            this->ADC(this->absoluteValueAddressing());
-            break;
-        case 0x7D:
-            this->ADC(this->absoluteXValueAddressing());
-            break;
-        case 0x79:
-            this->ADC(this->absoluteYValueAddressing());
-            break;
-        case 0x61:
-            this->ADC(this->indexedIndirectValue());
-            break;
-        case 0x71:
-            this->ADC(this->indirectIndexedValue());
-            break;
-        case 0x29:
-            this->AND(this->immediateAddressing());
-            break;
-        case 0x25:
-            this->AND(this->zeroPageValueAddressing());
-            break;
-        case 0x35:
-            this->AND(this->zeroPageXValueAddressing());
-            break;
-        case 0x2D:
-            this->AND(this->absoluteValueAddressing());
-            break;
-        case 0x3D:
-            this->AND(this->absoluteXValueAddressing());
-            break;
-        case 0x39:
-            this->AND(this->absoluteYValueAddressing());
-            break;
-        case 0x21:
-            this->AND(this->indexedIndirectValue());
-            break;
-        case 0x31:
-            this->AND(this->indirectIndexedValue());
-            break;
-        case 0x0A:
-            this->ASLAccumulator();
-            break;
-        case 0x06:
-            this->ASL(this->zeroPageAddressing());
-            break;
-        case 0x16:
-            this->ASL(this->zeroPageXAddressing());
-            break;
-        case 0x0E:
-            this->ASL(this->absoluteLocationAddressing());
-            break;
-        case 0x1E:
-            this->ASL(this->absoluteXLocationAddressing());
-            break;
-        case 0x90:
-            this->BCC(this->immediateAddressing());
-            break;
-        case 0xB0:
-            this->BCS(this->immediateAddressing());
-            break;
-        case 0xF0:
-            this->BEQ(this->immediateAddressing());
-            break;
-        case 0x24:
-            this->BIT(this->zeroPageValueAddressing());
-            break;
-        case 0x2C:
-            this->BIT(this->absoluteValueAddressing());
-            break;
-        case 0x30:
-            this->BMI(this->immediateAddressing());
-            break;
-        case 0xD0:
-            this->BNE(this->immediateAddressing());
-            break;
-        case 0x10:
-            this->BPL(this->immediateAddressing());
-            break;
-        case 0x50:
-            this->BVC(this->immediateAddressing());
-            break;
-        case 0x70:
-            this->BVS(this->immediateAddressing());
-            break;
-        case 0xC6:
-            this->DEC(this->zeroPageAddressing());
-            break;
-        case 0xD6:
-            this->DEC(this->zeroPageXAddressing());
-            break;
-        case 0xCE:
-            this->DEC(this->absoluteLocationAddressing());
-            break;
-        case 0xDE:
-            this->DEC(this->absoluteXLocationAddressing());
-            break;
-        case 0xCA:
-            this->DEX();
-            break;
-        case 0x88:
-            this->DEY();
-            break;
-        case 0xE6:
-            this->INC(this->zeroPageAddressing());
-            break;
-        case 0xF6:
-            this->INC(this->zeroPageXAddressing());
-            break;
-        case 0xEE:
-            this->INC(this->absoluteLocationAddressing());
-            break;
-        case 0xFE:
-            this->INC(this->absoluteXLocationAddressing());
-            break;
-        case 0xE8:
-            this->INX();
-            break;
-        case 0xC8:
-            this->INY();
-            break;
-        case 0xA9:
-            this->LDA(this->immediateAddressing());
-            break;
-        case 0xA5:
-            this->LDA(this->zeroPageValueAddressing());
-            break;
-        case 0xB5:
-            this->LDA(this->zeroPageXValueAddressing());
-            break;
-        case 0xAD:
-            this->LDA(this->absoluteValueAddressing());
-            break;
-        case 0xBD:
-            this->LDA(this->absoluteXValueAddressing());
-            break;
-        case 0xB9:
-            this->LDA(this->absoluteYValueAddressing());
-            break;
-        case 0xA1:
-            this->LDA(this->indexedIndirectValue());
-            break;
-        case 0xB1:
-            this->LDA(this->indirectIndexedValue());
-            break;
-        case 0xA2:
-            this->LDX(this->immediateAddressing());
-            break;
-        case 0xA6:
-            this->LDX(this->zeroPageValueAddressing());
-            break;
-        case 0xB6:
-            this->LDX(this->zeroPageYValueAddressing());
-            break;
-        case 0xAE:
-            this->LDX(this->absoluteValueAddressing());
-            break;
-        case 0xBE:
-            this->LDX(this->absoluteYValueAddressing());
-            break;
-        case 0xA0:
-            this->LDY(this->immediateAddressing());
-            break;
-        case 0xA4:
-            this->LDY(this->zeroPageValueAddressing());
-            break;
-        case 0xB4:
-            this->LDY(this->zeroPageXValueAddressing());
-            break;
-        case 0xAC:
-            this->LDY(this->absoluteValueAddressing());
-            break;
-        case 0xBC:
-            this->LDY(this->absoluteXValueAddressing());
-            break;
-        case 0x48:
-            this->PHA();
-            break;
-        case 0x68:
-            this->PLA();
-            break;
-        case 0x08:
-            this->PHP();
-            break;
-        case 0x28:
-            this->PLP();
-            break;
-        case 0x38:
-            this->SEC();
-            break;
-        case 0xF8:
-            this->SED();
-            break;
-        case 0x78:
-            this->SEI();
-            break;
-        case 0x18:
-            this->CLC();
-            break;
-        case 0xD8:
-            this->CLD();
-            break;
-        case 0x58:
-            this->CLI();
-            break;
-        case 0xB8:
-            this->CLV();
-            break;
-        case 0xAA:
-            this->TAX();
-            break;
-        case 0xA8:
-            this->TAY();
-            break;
-        case 0xBA:
-            this->TSX();
-            break;
-        case 0x8A:
-            this->TXA();
-            break;
-        case 0x9A:
-            this->TXS();
-            break;
-        case 0x98:
-            this->TYA();
-            break;
-        case 0x4C:
-            this->JMP(this->absoluteLocationAddressing());
-            break;
-        case 0x6C:
-            this->JMP(this->indirectAddress());
-            break;
-        case 0xE9:
-            this->SBC(this->immediateAddressing());
-            break;
-        case 0xE5:
-            this->SBC(this->zeroPageValueAddressing());
-            break;
-        case 0xF5:
-            this->SBC(this->zeroPageXValueAddressing());
-            break;
-        case 0xED:
-            this->SBC(this->absoluteValueAddressing());
-            break;
-        case 0xFD:
-            this->SBC(this->absoluteXValueAddressing());
-            break;
-        case 0xF9:
-            this->SBC(this->absoluteYValueAddressing());
-            break;
-        case 0xE1:
-            this->SBC(this->indexedIndirectValue());
-            break;
-        case 0xF1:
-            this->SBC(this->indirectIndexedValue());
-            break;
-        case 0x85:
-            this->STA(this->zeroPageAddressing());
-            break;
-        case 0x95:
-            this->STA(this->zeroPageXAddressing());
-            break;
-        case 0x8D:
-            this->STA(this->absoluteLocationAddressing());
-            break;
-        case 0x9D:
-            this->STA(this->absoluteYLocationAddressing());
-            break;
-        case 0x99:
-            this->STA(this->absoluteYLocationAddressing());
-            break;
-        case 0x81:
-            this->STA(this->indexedIndirectAddress());
-            break;
-        case 0x91:
-            this->STA(this->indirectIndexedAddress());
-            break;
-        case 0x86:
-            this->STX(this->zeroPageAddressing());
-            break;
-        case 0x96:
-            this->STX(this->zeroPageYAddressing());
-            break;
-        case 0x8E:
-            this->STX(this->absoluteLocationAddressing());
-            break;
-        case 0x84:
-            this->STY(this->zeroPageAddressing());
-            break;
-        case 0x94:
-            this->STY(this->zeroPageXAddressing());
-            break;
-        case 0x8C:
-            this->STY(this->absoluteLocationAddressing());
-            break;
-        case 0xEA:
-            this->NOP();
-            break;
-        case 0x2A:
-            this->ROLAccumulator();
-            break;
-        case 0x26:
-            this->ROL(this->zeroPageAddressing());
-            break;
-        case 0x36:
-            this->ROL(this->zeroPageXAddressing());
-            break;
-        case 0x2E:
-            this->ROL(this->absoluteLocationAddressing());
-            break;
-        case 0x3E:
-            this->ROL(this->absoluteXLocationAddressing());
-            break;
-        case 0x6A:
-            this->RORAccumulator();
-            break;
-        case 0x66:
-            this->ROR(this->zeroPageAddressing());
-            break;
-        case 0x76:
-            this->ROR(this->zeroPageXAddressing());
-            break;
-        case 0x6E:
-            this->ROR(this->absoluteLocationAddressing());
-            break;
-        case 0x7E:
-            this->ROR(this->absoluteXLocationAddressing());
-            break;
-        case 0x4A:
-            this->LSRAccumulator();
-            break;
-        case 0x46:
-            this->LSR(this->zeroPageAddressing());
-            break;
-        case 0x56:
-            this->LSR(this->zeroPageXAddressing());
-            break;
-        case 0x4E:
-            this->LSR(this->absoluteLocationAddressing());
-            break;
-        case 0x5E:
-            this->LSR(this->absoluteXLocationAddressing());
-            break;
-        case 0xC9:
-            this->CMP(this->immediateAddressing());
-            break;
-        case 0xC5:
-            this->CMP(this->zeroPageValueAddressing());
-            break;
-        case 0xD5:
-            this->CMP(this->zeroPageXValueAddressing());
-            break;
-        case 0xCD:
-            this->CMP(this->absoluteValueAddressing());
-            break;
-        case 0xDD:
-            this->CMP(this->absoluteXValueAddressing());
-            break;
-        case 0xD9:
-            this->CMP(this->absoluteYValueAddressing());
-            break;
-        case 0xC1:
-            this->CMP(this->indexedIndirectValue());
-            break;
-        case 0xD1:
-            this->CMP(this->indirectIndexedValue());
-            break;
-        case 0xE0:
-            this->CPX(this->immediateAddressing());
-            break;
-        case 0xE4:
-            this->CPX(this->zeroPageValueAddressing());
-            break;
-        case 0xEC:
-            this->CPX(this->absoluteValueAddressing());
-            break;
-        case 0xC0:
-            this->CPY(this->immediateAddressing());
-            break;
-        case 0xC4:
-            this->CPY(this->zeroPageValueAddressing());
-            break;
-        case 0xCC:
-            this->CPY(this->absoluteValueAddressing());
-            break;
-        case 0x49:
-            this->EOR(this->immediateAddressing());
-            break;
-        case 0x45:
-            this->EOR(this->zeroPageValueAddressing());
-            break;
-        case 0x55:
-            this->EOR(this->zeroPageXValueAddressing());
-            break;
-        case 0x4D:
-            this->EOR(this->absoluteValueAddressing());
-            break;
-        case 0x5D:
-            this->EOR(this->absoluteXValueAddressing());
-            break;
-        case 0x59:
-            this->EOR(this->absoluteYValueAddressing());
-            break;
-        case 0x41:
-            this->EOR(this->indexedIndirectValue());
-            break;
-        case 0x51:
-            this->EOR(this->indirectIndexedValue());
-            break;
-        case 0x09:
-            this->ORA(this->immediateAddressing());
-            break;
-        case 0x05:
-            this->ORA(this->zeroPageValueAddressing());
-            break;
-        case 0x15:
-            this->ORA(this->zeroPageXValueAddressing());
-            break;
-        case 0x0D:
-            this->ORA(this->absoluteValueAddressing());
-            break;
-        case 0x1D:
-            this->ORA(this->absoluteXValueAddressing());
-            break;
-        case 0x19:
-            this->ORA(this->absoluteYValueAddressing());
-            break;
-        case 0x01:
-            this->ORA(this->indexedIndirectValue());
-            break;
-        case 0x11:
-            this->ORA(this->indirectIndexedValue());
-            break;
-        case 0x20:
-            this->JSR(this->absoluteLocationAddressing());
-            break;
-        case 0x60:
-            this->RTS();
-            break;
-        case 0x40:
-            this->RTI();
-            break;
-        case 0x00:
-            this->BRK();
-            break;
-
-        */
+        case 0x65: sstream << "0x65 " << hex << memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0x75: sstream << "0x75 " << hex << memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0x6D: sstream << "0x6D " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0x7D: sstream << "0x7D " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0x79: sstream << "0x79 " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0x61: sstream << "0x61 " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0x71: sstream << "0x71 " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0x29: sstream << "0x29 " << hex << memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0x25: sstream << "0x25 " << hex << memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0x35: sstream << "0x35 " << hex << memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0x2D: sstream << "0x2D " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0x3D: sstream << "0x3D " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0x39: sstream << "0x39 " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0x21: sstream << "0x21 " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0x31: sstream << "0x31 " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0x0A: sstream << "0x0A "; break; 
+        case 0x06: sstream << "0x06 " << hex << memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0x16: sstream << "0x16 " << hex << memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0x0E: sstream << "0x0E " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0x1E: sstream << "0x1E " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0x90: sstream << "0x90 " << hex << memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0xB0: sstream << "0xB0 " << hex << memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0xF0: sstream << "0xF0 " << hex << memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0x24: sstream << "0x24 " << hex << memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0x2C: sstream << "0x2C " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0x30: sstream << "0x30 " << hex << memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0xD0: sstream << "0xD0 " << hex << memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0x10: sstream << "0x10 " << hex << memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0x50: sstream << "0x50 " << hex << memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0x70: sstream << "0x70 " << hex << memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0xC6: sstream << "0xC6 " << hex << memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0xD6: sstream << "0xD6 " << hex << memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0xCE: sstream << "0xCE " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0xDE: sstream << "0xDE " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0xCA: sstream << "0xCA "; break; 
+        case 0x88: sstream << "0x88 "; break; 
+        case 0xE6: sstream << "0xE6 " << hex << memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0xF6: sstream << "0xF6 " << hex << memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0xEE: sstream << "0xEE " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0xFE: sstream << "0xFE " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0xE8: sstream << "0xE8 "; break; 
+        case 0xC8: sstream << "0xC8 "; break; 
+        case 0xA9: sstream << "0xA9 " << hex << memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0xA5: sstream << "0xA5 " << hex << memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0xB5: sstream << "0xB5 " << hex << memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0xAD: sstream << "0xAD " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0xBD: sstream << "0xBD " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0xB9: sstream << "0xB9 " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0xA1: sstream << "0xA1 " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0xB1: sstream << "0xB1 " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0xA2: sstream << "0xA2 " << hex << memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0xA6: sstream << "0xA6 " << hex << memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0xB6: sstream << "0xB6 " << hex << memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0xAE: sstream << "0xAE " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0xBE: sstream << "0xBE " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0xA0: sstream << "0xA0 " << hex << memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0xA4: sstream << "0xA4 " << hex << memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0xB4: sstream << "0xB4 " << hex << memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0xAC: sstream << "0xAC " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0xBC: sstream << "0xBC " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0x48: sstream << "0x48 "; break; 
+        case 0x68: sstream << "0x68 "; break; 
+        case 0x08: sstream << "0x08 "; break; 
+        case 0x28: sstream << "0x28 "; break; 
+        case 0x38: sstream << "0x38 "; break; 
+        case 0xF8: sstream << "0xf8 "; break; 
+        case 0x78: sstream << "0x78 "; break; 
+        case 0x18: sstream << "0x18 "; break; 
+        case 0xD8: sstream << "0xd8 "; break; 
+        case 0x58: sstream << "0x58 "; break; 
+        case 0xB8: sstream << "0xb8 "; break; 
+        case 0xAA: sstream << "0xAA "; break; 
+        case 0xBA: sstream << "0xBA "; break; 
+        case 0x8A: sstream << "0x8A "; break; 
+        case 0x9A: sstream << "0x9A "; break; 
+        case 0x98: sstream << "0x98 "; break; 
+        case 0x4C: sstream << "0x4C " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0x6C: sstream << "0x6C " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0xE9: sstream << "0xE9 " << hex << memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0xE5: sstream << "0xE5 " << hex << memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0xF5: sstream << "0xF5 " << hex << memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0xED: sstream << "0xED " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0xFD: sstream << "0xFD " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0xF9: sstream << "0xF9 " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0xE1: sstream << "0xE1 " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0xF1: sstream << "0xF1 " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0x85: sstream << "0x85 " << hex << memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0x8D: sstream << "0x8D " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0x9D: sstream << "0x9D " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0x99: sstream << "0x99 " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0x81: sstream << "0x81 " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0x91: sstream << "0x91 " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0x86: sstream << "0x86 " << hex << memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0x96: sstream << "0x96 " << hex << memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0x8E: sstream << "0x8E " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0x84: sstream << "0x84 " << hex << memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0x94: sstream << "0x94 " << hex << memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0x8C: sstream << "0x8C " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0xEA: sstream << "0xEA "; break; 
+        case 0x2A: sstream << "0x2A "; break; 
+        case 0x26: sstream << "0x26 " << hex << memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0x36: sstream << "0x36 " << hex << memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0x2E: sstream << "0x2E " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0x3E: sstream << "0x3E " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0x6A: sstream << "0x6A "; break; 
+        case 0x66: sstream << "0x66 " << hex << memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0x76: sstream << "0x76 " << hex << memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0x6E: sstream << "0x6E " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0x7E: sstream << "0x7E " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0x4A: sstream << "0x4A "; break; 
+        case 0x46: sstream << "0x46 " << hex << memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0x56: sstream << "0x56 " << hex << memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0x4E: sstream << "0x4E " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0x5E: sstream << "0x5E " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0xC9: sstream << "0xC9 " << hex << memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0xC5: sstream << "0xC5 " << hex << memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0xD5: sstream << "0xD5 " << hex << memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0xCD: sstream << "0xCD " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0xDD: sstream << "0xDD " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0xD9: sstream << "0xD9 " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0xC1: sstream << "0xC1 " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0xD1: sstream << "0xD1 " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0xE0: sstream << "0xE0 " << hex << memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0xE4: sstream << "0xE4 " << hex << memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0xEC: sstream << "0xEC " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0xC0: sstream << "0xC0 " << hex << memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0xC4: sstream << "0xC4 " << hex << memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0xCC: sstream << "0xCC " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0x49: sstream << "0x49 " << hex << memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0x45: sstream << "0x45 " << hex << memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0x55: sstream << "0x55 " << hex << memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0x4D: sstream << "0x4D " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0x5D: sstream << "0x5D " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0x59: sstream << "0x59 " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0x41: sstream << "0x41 " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0x51: sstream << "0x51 " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0x09: sstream << "0x09 " << hex << memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0x05: sstream << "0x05 " << hex << memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0x15: sstream << "0x15 " << hex << memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0x0D: sstream << "0x0D " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0x1D: sstream << "0x1D " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0x19: sstream << "0x19 " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0x01: sstream << "0x01 " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0x11: sstream << "0x11 " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0x20: sstream << "0x20 " << hex << memory.getFrom(registers.getProgramCounter() +1) << " " << hex << memory.getFrom(registers.getProgramCounter() +2); break;
+        case 0x60: sstream << "0x60 "; break; 
+        case 0x40: sstream << "0x40 "; break; 
+        case 0x00: sstream << "0x00 "; break; 
     }
 
     sstream << "A:" << hex << registers.getAccumulator();
