@@ -1,0 +1,2 @@
+* Talk about large switch statement problems when writing tit for test and errors caused by string formating when testing 
+and not actual aflioure
