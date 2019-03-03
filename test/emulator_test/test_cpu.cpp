@@ -27,6 +27,7 @@ SCENARIO("nestest.nes by kevtris")
         shared_ptr<Memory> memory = make_shared<Memory>();
         shared_ptr<Registers> registers = make_shared<Registers>();
         registers->setProgramCounter(0xC000);
+        registers->setStatusFlags(0x24);
 
         Cpu cpu(memory, registers);
 
