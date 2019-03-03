@@ -87,6 +87,7 @@ std::string parseCurrentStateLog(const Emulator::Memory::Memory& memory, const E
         case 0x58: sstream << "0x58"; break; 
         case 0xB8: sstream << "0xB8"; break; 
         case 0xAA: sstream << "0xAA"; break; 
+        case 0xA8: sstream << "0xA8"; break; 
         case 0xBA: sstream << "0xBA"; break; 
         case 0x8A: sstream << "0x8A"; break; 
         case 0x9A: sstream << "0x9A"; break; 
