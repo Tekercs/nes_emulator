@@ -166,10 +166,11 @@ std::string parseCurrentStateLog(const Emulator::Memory::Memory& memory, const E
     }
 
     sstream << " A:" << "0x" << setfill('0') << setw(2) << hex << (int)registers.getAccumulator();
-    sstream << " Y:" << "0x" << setfill('0') << setw(2) << hex << (int)registers.getIndexRegisterX();
     sstream << " X:" << "0x" << setfill('0') << setw(2) << hex << (int)registers.getIndexRegisterY();
+    sstream << " Y:" << "0x" << setfill('0') << setw(2) << hex << (int)registers.getIndexRegisterX();
     sstream << " P:" << "0x" << setfill('0') << setw(2) << hex << (int)registers.getStatusFlags();
     sstream << " SP:" << "0x" << setfill('0') << setw(2) << hex << (int)registers.getStackPointerOffset();
+    sstream << "\r";
 
     return sstream.str();
 }
