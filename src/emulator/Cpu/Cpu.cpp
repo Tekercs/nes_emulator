@@ -515,7 +515,7 @@ void Cpu::PLA()
 
 void Cpu::PHP()
 {
-    this->pushStack(this->registers->getStatusFlags());
+    this->pushStack(this->registers->getStatusFlags() | 0x10);
     this->registers->incrementProgramCounter();
 }
 
