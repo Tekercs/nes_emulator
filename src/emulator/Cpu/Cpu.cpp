@@ -551,7 +551,7 @@ void Cpu::CLC()
 
 void Cpu::CLD()
 {
-    this->registers->setCarryRemain(false);
+    this->registers->setDecimalModeOn(false);
     this->registers->incrementProgramCounter();
 }
 
