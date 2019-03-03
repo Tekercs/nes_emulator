@@ -521,7 +521,12 @@ void Cpu::PHP()
 
 void Cpu::PLP()
 {
-    this->registers->setStatusFlags(this->pullStack());
+    uint8_t pulledFlags = this->pullStack();
+    uint8_t currentFlags = this->registers->getStatusFlags();
+
+    uint8_t result = (pulledFlags & 0B11001111) + (currentFlags & 0B00110000);
+
+    this->registers->setStatusFlags(result);
     this->registers->incrementProgramCounter();
 }
 
@@ -1048,7 +1053,11 @@ void Cpu::RTS()
 
 void Cpu::RTI()
 {
-    this->registers->setStatusFlags(this->pullStack());
+    uint8_t pulledFlags = this->pullStack();
+    uint8_t currentFlags = this->registers->getStatusFlags();
+
+    uint8_t result = (pulledFlags & 0B11001111) + (currentFlags & 0B00110000);
+    this->registers->setStatusFlags(result);
 
     uint8_t lowByte = this->pullStack();
     uint8_t highByte = this->pullStack();
