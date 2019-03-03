@@ -80,12 +80,12 @@ std::string parseCurrentStateLog(const Emulator::Memory::Memory& memory, const E
         case 0x08: sstream << "0x08"; break; 
         case 0x28: sstream << "0x28"; break; 
         case 0x38: sstream << "0x38"; break; 
-        case 0xF8: sstream << "0xf8"; break; 
+        case 0xF8: sstream << "0xF8"; break; 
         case 0x78: sstream << "0x78"; break; 
         case 0x18: sstream << "0x18"; break; 
         case 0xD8: sstream << "0xd8"; break; 
         case 0x58: sstream << "0x58"; break; 
-        case 0xB8: sstream << "0xb8"; break; 
+        case 0xB8: sstream << "0xB8"; break; 
         case 0xAA: sstream << "0xAA"; break; 
         case 0xBA: sstream << "0xBA"; break; 
         case 0x8A: sstream << "0x8A"; break; 
