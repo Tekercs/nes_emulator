@@ -509,7 +509,7 @@ void Cpu::PLA()
     this->registers->setAccumulator(this->pullStack());
 
     this->registers->setZeroResult(this->registers->getAccumulator() == 0);
-    this->registers->setZeroResult((this->registers->getAccumulator() & 0B10000000) != 0);
+    this->registers->setNegativeFlagSet((this->registers->getAccumulator() & 0B10000000) != 0);
     this->registers->incrementProgramCounter();
 }
 
