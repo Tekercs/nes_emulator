@@ -571,7 +571,7 @@ void Cpu::LDA(uint8_t value)
     this->registers->setAccumulator(value);
 
     this->registers->setZeroResult(this->registers->getAccumulator() == 0);
-    this->registers->setZeroResult((this->registers->getAccumulator() & 0B10000000) != 0);
+    this->registers->setNegativeFlagSet((this->registers->getAccumulator() & 0B10000000) != 0);
 
     this->registers->incrementProgramCounter();
 }
@@ -581,7 +581,7 @@ void Cpu::LDX(uint8_t value)
     this->registers->setIndexRegisterX(value);
 
     this->registers->setZeroResult(this->registers->getIndexRegisterX() == 0);
-    this->registers->setZeroResult((this->registers->getIndexRegisterX() & 0B10000000) != 0);
+    this->registers->setNegativeFlagSet((this->registers->getIndexRegisterX() & 0B10000000) != 0);
 
     this->registers->incrementProgramCounter();
 }
@@ -591,7 +591,7 @@ void Cpu::LDY(uint8_t value)
     this->registers->setIndexRegisterY(value);
 
     this->registers->setZeroResult(this->registers->getIndexRegisterY() == 0);
-    this->registers->setZeroResult((this->registers->getIndexRegisterY() & 0B10000000) != 0);
+    this->registers->setNegativeFlagSet((this->registers->getIndexRegisterY() & 0B10000000) != 0);
 
     this->registers->incrementProgramCounter();
 }
