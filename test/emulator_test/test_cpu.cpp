@@ -17,8 +17,8 @@ using namespace Emulator::Cpu;
 using namespace Emulator::Memory;
 using namespace Emulator::ROM;
 
-#define PATH_NESTEST "../../../test/emulator_test/test_roms/kevtris/nestest.nes"
-#define PATH_NESTEST_LOG "../../../test/emulator_test/test_roms/kevtris/nestest.log"
+#define PATH_NESTEST "test/emulator_test/test_roms/kevtris/nestest.nes"
+#define PATH_NESTEST_LOG "test/emulator_test/test_roms/kevtris/nestest.log"
 
 SCENARIO("nestest.nes by kevtris")
 {

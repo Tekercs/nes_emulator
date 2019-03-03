@@ -10,7 +10,7 @@ using namespace Emulator::ROM;
 
 SCENARIO("reading cartridges from given file")
 {
-    string path = "../../../test/emulator_test/test_roms/blargg/02-implied.nes";
+    string path = "test/emulator_test/test_roms/blargg/02-implied.nes";
 
     GIVEN("parsed nrom .nes file into a Cartrdige type saved in a temporary file")
     {
