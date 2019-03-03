@@ -613,7 +613,7 @@ void Cpu::ADC(uint8_t value)
 
     this->registers->setCarryRemain(result > 0xFF);
 
-    this->registers->setZeroResult(result == 0);
+    this->registers->setZeroResult((result & 0xFF) == 0);
     this->registers->setOverflowHappened(~(this->registers->getAccumulator() ^ value) & (this->registers->getAccumulator() ^ result) & 0B10000000);
     this->registers->setNegativeFlagSet(result & 0B10000000);
 
