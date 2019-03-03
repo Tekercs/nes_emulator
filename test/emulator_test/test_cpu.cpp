@@ -41,10 +41,12 @@ SCENARIO("nestest.nes by kevtris")
         {
             string logLine;
             string currentState;
+            string prevLogLine;
             while(getline(logFile, logLine))
             {
                 currentState = parseCurrentStateLog(*memory.get(), *registers.get());
                 REQUIRE(logLine == currentState);
+                prevLogLine = logLine;
 
                 ++cpu;
             }
