@@ -510,6 +510,7 @@ void Cpu::PLA()
 
     this->registers->setZeroResult(this->registers->getAccumulator() == 0);
     this->registers->setZeroResult((this->registers->getAccumulator() & 0B10000000) != 0);
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::PHP()
