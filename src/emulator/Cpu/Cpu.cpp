@@ -811,8 +811,8 @@ void Cpu::BIT(uint8_t value)
 {
     uint8_t result = this->registers->getAccumulator() & value;
 
-    this->registers->setNegativeFlagSet((result & 0B10000000));
-    this->registers->setOverflowHappened((result & 0B01000000));
+    this->registers->setNegativeFlagSet((value & 0B10000000));
+    this->registers->setOverflowHappened((value & 0B01000000));
     this->registers->setZeroResult(result == 0);
 
     this->registers->incrementProgramCounter();
