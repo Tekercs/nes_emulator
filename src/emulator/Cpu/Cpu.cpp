@@ -1063,8 +1063,6 @@ void Cpu::RTI()
     uint8_t highByte = this->pullStack();
 
     this->registers->setProgramCounter((highByte << 8) + lowByte );
-
-    this->registers->incrementProgramCounter();
 }
 
 void Cpu::BRK()
