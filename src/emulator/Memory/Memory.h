@@ -105,6 +105,6 @@ namespace Emulator::Memory
          * which is stored at the address (16 bit unsgined integer) location in
          * the memory
          */
-        uint8_t getFrom(uint16_t address);
+        uint8_t getFrom(uint16_t address) const;
     };
 }

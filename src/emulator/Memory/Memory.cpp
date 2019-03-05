@@ -35,7 +35,7 @@ void Emulator::Memory::Memory::generateIORegisters()
 }
 
 
-uint8_t Emulator::Memory::Memory::getFrom(uint16_t address)
+uint8_t Emulator::Memory::Memory::getFrom(uint16_t address) const
 {
     return *this->memory[address];
 }

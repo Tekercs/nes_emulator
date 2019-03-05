@@ -314,7 +314,7 @@ void Cpu::executeInstruction(uint8_t opcode)
             this->STA(this->absoluteLocationAddressing());
             break;
         case 0x9D:
-            this->STA(this->absoluteYLocationAddressing());
+            this->STA(this->absoluteXLocationAddressing());
             break;
         case 0x99:
             this->STA(this->absoluteYLocationAddressing());
@@ -509,18 +509,24 @@ void Cpu::PLA()
     this->registers->setAccumulator(this->pullStack());
 
     this->registers->setZeroResult(this->registers->getAccumulator() == 0);
-    this->registers->setZeroResult((this->registers->getAccumulator() & 0B10000000) != 0);
+    this->registers->setNegativeFlagSet((this->registers->getAccumulator() & 0B10000000) != 0);
+    this->registers->incrementProgramCounter();
 }
 
 void Cpu::PHP()
 {
-    this->pushStack(this->registers->getStatusFlags());
+    this->pushStack(this->registers->getStatusFlags() | 0x10);
     this->registers->incrementProgramCounter();
 }
 
 void Cpu::PLP()
 {
-    this->registers->setStatusFlags(this->pullStack());
+    uint8_t pulledFlags = this->pullStack();
+    uint8_t currentFlags = this->registers->getStatusFlags();
+
+    uint8_t result = (pulledFlags & 0B11001111) + (currentFlags & 0B00110000);
+
+    this->registers->setStatusFlags(result);
     this->registers->incrementProgramCounter();
 }
 
@@ -550,7 +556,7 @@ void Cpu::CLC()
 
 void Cpu::CLD()
 {
-    this->registers->setCarryRemain(false);
+    this->registers->setDecimalModeOn(false);
     this->registers->incrementProgramCounter();
 }
 
@@ -571,7 +577,7 @@ void Cpu::LDA(uint8_t value)
     this->registers->setAccumulator(value);
 
     this->registers->setZeroResult(this->registers->getAccumulator() == 0);
-    this->registers->setZeroResult((this->registers->getAccumulator() & 0B10000000) != 0);
+    this->registers->setNegativeFlagSet((this->registers->getAccumulator() & 0B10000000) != 0);
 
     this->registers->incrementProgramCounter();
 }
@@ -581,7 +587,7 @@ void Cpu::LDX(uint8_t value)
     this->registers->setIndexRegisterX(value);
 
     this->registers->setZeroResult(this->registers->getIndexRegisterX() == 0);
-    this->registers->setZeroResult((this->registers->getIndexRegisterX() & 0B10000000) != 0);
+    this->registers->setNegativeFlagSet((this->registers->getIndexRegisterX() & 0B10000000) != 0);
 
     this->registers->incrementProgramCounter();
 }
@@ -591,7 +597,7 @@ void Cpu::LDY(uint8_t value)
     this->registers->setIndexRegisterY(value);
 
     this->registers->setZeroResult(this->registers->getIndexRegisterY() == 0);
-    this->registers->setZeroResult((this->registers->getIndexRegisterY() & 0B10000000) != 0);
+    this->registers->setNegativeFlagSet((this->registers->getIndexRegisterY() & 0B10000000) != 0);
 
     this->registers->incrementProgramCounter();
 }
@@ -605,11 +611,11 @@ void Cpu::ADC(uint8_t value)
 {
     uint32_t result = this->registers->getAccumulator() + value + this->registers->isCarryRemain();
 
-    if (result > 0xFF)
-        this->registers->setCarryRemain(true);
+    this->registers->setCarryRemain(result > 0xFF);
 
-    this->registers->setZeroResult(result == 0);
+    this->registers->setZeroResult((result & 0xFF) == 0);
     this->registers->setOverflowHappened(~(this->registers->getAccumulator() ^ value) & (this->registers->getAccumulator() ^ result) & 0B10000000);
+    this->registers->setNegativeFlagSet(result & 0B10000000);
 
     this->registers->setAccumulator(static_cast<uint8_t>(result));
 
@@ -805,8 +811,8 @@ void Cpu::BIT(uint8_t value)
 {
     uint8_t result = this->registers->getAccumulator() & value;
 
-    this->registers->setNegativeFlagSet((result & 0B10000000));
-    this->registers->setOverflowHappened((result & 0B01000000));
+    this->registers->setNegativeFlagSet((value & 0B10000000));
+    this->registers->setOverflowHappened((value & 0B01000000));
     this->registers->setZeroResult(result == 0);
 
     this->registers->incrementProgramCounter();
@@ -1047,14 +1053,16 @@ void Cpu::RTS()
 
 void Cpu::RTI()
 {
-    this->registers->setStatusFlags(this->pullStack());
+    uint8_t pulledFlags = this->pullStack();
+    uint8_t currentFlags = this->registers->getStatusFlags();
+
+    uint8_t result = (pulledFlags & 0B11001111) + (currentFlags & 0B00110000);
+    this->registers->setStatusFlags(result);
 
     uint8_t lowByte = this->pullStack();
     uint8_t highByte = this->pullStack();
 
     this->registers->setProgramCounter((highByte << 8) + lowByte );
-
-    this->registers->incrementProgramCounter();
 }
 
 void Cpu::BRK()
@@ -1177,7 +1185,13 @@ uint16_t Cpu::indirectAddress()
     address = (addressMostSingicant << 8) + addressLeastSignificant;
 
     addressLeastSignificant = 0x0000 + this->memory->getFrom(address);
-    ++address;
+
+    // this is for implementing the actual bug in the 6502 indirect JMP
+    if ((address & 0x00FF) == 0x00FF)
+        address = address & 0xFF00;
+    else
+        ++address;
+
     addressMostSingicant = 0x0000 + this->memory->getFrom(address);
 
     address = (addressMostSingicant << 8) + addressLeastSignificant;
