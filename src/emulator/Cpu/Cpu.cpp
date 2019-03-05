@@ -1186,6 +1186,7 @@ uint16_t Cpu::indirectAddress()
 
     addressLeastSignificant = 0x0000 + this->memory->getFrom(address);
 
+    // this is for implementing the actual bug in the 6502 indirect JMP
     if ((address & 0x00FF) == 0x00FF)
         address = address & 0xFF00;
     else
