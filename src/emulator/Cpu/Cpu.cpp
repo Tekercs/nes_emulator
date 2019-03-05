@@ -1185,7 +1185,12 @@ uint16_t Cpu::indirectAddress()
     address = (addressMostSingicant << 8) + addressLeastSignificant;
 
     addressLeastSignificant = 0x0000 + this->memory->getFrom(address);
-    ++address;
+
+    if ((address & 0x00FF) == 0x00FF)
+        address = address & 0xFF00;
+    else
+        ++address;
+
     addressMostSingicant = 0x0000 + this->memory->getFrom(address);
 
     address = (addressMostSingicant << 8) + addressLeastSignificant;
