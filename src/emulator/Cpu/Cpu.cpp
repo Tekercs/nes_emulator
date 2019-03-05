@@ -314,7 +314,7 @@ void Cpu::executeInstruction(uint8_t opcode)
             this->STA(this->absoluteLocationAddressing());
             break;
         case 0x9D:
-            this->STA(this->absoluteYLocationAddressing());
+            this->STA(this->absoluteXLocationAddressing());
             break;
         case 0x99:
             this->STA(this->absoluteYLocationAddressing());
