@@ -25,4 +25,4 @@ https://tekercs.github.io/nes_emulator/doc/api/html/
 ## Acknowledgement
 
 Test roms at test/emultor_test/test_roms/blargg created and owned
-by Blargg! 
+by Blargg!
