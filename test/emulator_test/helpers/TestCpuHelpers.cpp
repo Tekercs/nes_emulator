@@ -10,7 +10,7 @@ using namespace Emulator::Cpu;
 std::string parseCurrentStateLog(const Emulator::Memory::Memory& memory, const Emulator::Cpu::Registers& registers)
 {
     stringstream sstream;
-    sstream << uppercase << "0x" << setfill('0') << setw(2) << hex << (int)registers.getProgramCounter() << " ";
+    sstream << uppercase << "0x" << setfill('0') << setw(4) << hex << (int)registers.getProgramCounter() << " ";
     
     switch (memory.getFrom(registers.getProgramCounter()))
     {
@@ -103,6 +103,7 @@ std::string parseCurrentStateLog(const Emulator::Memory::Memory& memory, const E
         case 0xE1: sstream << "0xE1 " << "0x" << setfill('0') << setw(2) << hex << (int)memory.getFrom(registers.getProgramCounter() +1); break;
         case 0xF1: sstream << "0xF1 " << "0x" << setfill('0') << setw(2) << hex << (int)memory.getFrom(registers.getProgramCounter() +1); break;
         case 0x85: sstream << "0x85 " << "0x" << setfill('0') << setw(2) << hex << (int)memory.getFrom(registers.getProgramCounter() +1); break;
+        case 0x95: sstream << "0x95 " << "0x" << setfill('0') << setw(2) << hex << (int)memory.getFrom(registers.getProgramCounter() +1); break;
         case 0x8D: sstream << "0x8D " << "0x" << setfill('0') << setw(2) << hex << (int)memory.getFrom(registers.getProgramCounter() +1) << " " << "0x" << setfill('0') << setw(2) << hex << (int)memory.getFrom(registers.getProgramCounter() +2); break;
         case 0x9D: sstream << "0x9D " << "0x" << setfill('0') << setw(2) << hex << (int)memory.getFrom(registers.getProgramCounter() +1) << " " << "0x" << setfill('0') << setw(2) << hex << (int)memory.getFrom(registers.getProgramCounter() +2); break;
         case 0x99: sstream << "0x99 " << "0x" << setfill('0') << setw(2) << hex << (int)memory.getFrom(registers.getProgramCounter() +1) << " " << "0x" << setfill('0') << setw(2) << hex << (int)memory.getFrom(registers.getProgramCounter() +2); break;
