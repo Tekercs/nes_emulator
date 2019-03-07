@@ -77,6 +77,64 @@
       \verb https://wiki.nesdev.com/w/index.php/CPU
       \endverb
     \endentry
+    \entry{CRSH}{online}{}
+      \name{author}{1}{}{%
+        {{hash=2e57afd7c84b3e0dc289d904b95c30be}{%
+           family={Oxford},
+           familyi={O\bibinitperiod},
+           given={Nadia},
+           giveni={N\bibinitperiod}}}%
+      }
+      \strng{namehash}{2e57afd7c84b3e0dc289d904b95c30be}
+      \strng{fullhash}{2e57afd7c84b3e0dc289d904b95c30be}
+      \strng{bibnamehash}{2e57afd7c84b3e0dc289d904b95c30be}
+      \strng{authorbibnamehash}{2e57afd7c84b3e0dc289d904b95c30be}
+      \strng{authornamehash}{2e57afd7c84b3e0dc289d904b95c30be}
+      \strng{authorfullhash}{2e57afd7c84b3e0dc289d904b95c30be}
+      \field{sortinit}{O}
+      \field{sortinithash}{dad3efd0836470093a7b4a7bb756eb8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{21}
+      \field{month}{9}
+      \field{title}{TEN FACTS ABOUT THE GREAT VIDEO GAME CRASH OF '83}
+      \field{year}{2011}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://uk.ign.com/articles/2011/09/21/ten-facts-about-the-great-video-game-crash-of-83
+      \endverb
+      \verb{url}
+      \verb https://uk.ign.com/articles/2011/09/21/ten-facts-about-the-great-video-game-crash-of-83
+      \endverb
+    \endentry
+    \entry{HIST}{online}{}
+      \name{author}{1}{}{%
+        {{hash=9c677286866aad38f8e9b660f5411814}{%
+           family={Wikipedia},
+           familyi={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{9c677286866aad38f8e9b660f5411814}
+      \strng{fullhash}{9c677286866aad38f8e9b660f5411814}
+      \strng{bibnamehash}{9c677286866aad38f8e9b660f5411814}
+      \strng{authorbibnamehash}{9c677286866aad38f8e9b660f5411814}
+      \strng{authornamehash}{9c677286866aad38f8e9b660f5411814}
+      \strng{authorfullhash}{9c677286866aad38f8e9b660f5411814}
+      \field{sortinit}{W}
+      \field{sortinithash}{ecb89ff85896a47dc313960773ac311d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{7}
+      \field{month}{3}
+      \field{title}{Nintendo Entertainment System - Wikipedia}
+      \field{year}{2019}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://en.wikipedia.org/wiki/Nintendo_Entertainment_System
+      \endverb
+      \verb{url}
+      \verb https://en.wikipedia.org/wiki/Nintendo_Entertainment_System
+      \endverb
+    \endentry
   \enddatalist
 \endrefsection
 \endinput
