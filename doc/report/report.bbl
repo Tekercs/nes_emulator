@@ -1,0 +1,83 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.0 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{ZELD}{online}{}
+      \name{author}{1}{}{%
+        {{hash=1514fc67c04816dfd822d338077f0d5d}{%
+           family={Gerstmann},
+           familyi={G\bibinitperiod},
+           given={Jeff},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{1514fc67c04816dfd822d338077f0d5d}
+      \strng{fullhash}{1514fc67c04816dfd822d338077f0d5d}
+      \strng{bibnamehash}{1514fc67c04816dfd822d338077f0d5d}
+      \strng{authorbibnamehash}{1514fc67c04816dfd822d338077f0d5d}
+      \strng{authornamehash}{1514fc67c04816dfd822d338077f0d5d}
+      \strng{authorfullhash}{1514fc67c04816dfd822d338077f0d5d}
+      \field{sortinit}{G}
+      \field{sortinithash}{5e8d2bf9d38de41b1528bd307546008f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{22}
+      \field{month}{11}
+      \field{title}{The Legend of Zelda Review}
+      \field{year}{2006}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://www.gamespot.com/reviews/the-legend-of-zelda-review/1900-6162256/
+      \endverb
+      \verb{url}
+      \verb https://www.gamespot.com/reviews/the-legend-of-zelda-review/1900-6162256/
+      \endverb
+    \endentry
+    \entry{CPU}{online}{}
+      \name{author}{1}{}{%
+        {{hash=ab0748bdfbd23a354ccb0b1bd5ce56b6}{%
+           family={NesDev},
+           familyi={N\bibinitperiod}}}%
+      }
+      \strng{namehash}{ab0748bdfbd23a354ccb0b1bd5ce56b6}
+      \strng{fullhash}{ab0748bdfbd23a354ccb0b1bd5ce56b6}
+      \strng{bibnamehash}{ab0748bdfbd23a354ccb0b1bd5ce56b6}
+      \strng{authorbibnamehash}{ab0748bdfbd23a354ccb0b1bd5ce56b6}
+      \strng{authornamehash}{ab0748bdfbd23a354ccb0b1bd5ce56b6}
+      \strng{authorfullhash}{ab0748bdfbd23a354ccb0b1bd5ce56b6}
+      \field{sortinit}{N}
+      \field{sortinithash}{f7242c3ed3dc50029fca1be76c497c7c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{7}
+      \field{month}{3}
+      \field{title}{CPU - Nesdev wiki}
+      \field{year}{2019}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://wiki.nesdev.com/w/index.php/CPU
+      \endverb
+      \verb{url}
+      \verb https://wiki.nesdev.com/w/index.php/CPU
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
