@@ -6,6 +6,7 @@ addons:
     packages:
       - gcc-7
       - g++-7
+      - libsdl2-dev
 install: true
 
 script:
