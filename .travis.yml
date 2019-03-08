@@ -6,7 +6,11 @@ addons:
     packages:
       - gcc-7
       - g++-7
+      - libsdl2-2.0-0
       - libsdl2-dev
+      - libsdl2-gfx-dev
+      - libsdl2-image-2.0-0
+      - libsdl2-image-dev
 install: true
 
 script:
