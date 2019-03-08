@@ -50,6 +50,38 @@ However, these releases were concerning for Nintendo as '83 was also the year of
 
 
 \chapter{Project Goal}
+\paragraph{ }
+Main target of the project is to build and application which is able to run games developed for the original Nintendo Entertainment System. The main target platform for the emulator to support is 64bit Linux, but the project design allows easy implementation for other platforms too. This goal is achieved by emulating all the necessary hardware of the original NES system programmatically thus creating a medium for the game binaries to run without any modification at all to it. 
+\\ 
+However, as the sounds system (APU) is not necessary to be able to run the games this part of the system is not implemented.
+\\
+The project goal can be divided to multiple stages which are the core and other advanced stages.
+The main goal is to achieve the Minimal Core stage by the project deadline. However if the time allows it  advanced features will be implemented. 
+\paragraph{Core - Minimal}
+The emulator can emulate the perfectly the RAM and its mirroring an mapping behaviours properly. 
+\\
+The CPU capable to execute all the official operation codes, as the MOS 6502 has unofficial operation codes as well, also able to properly handle interrupts. 
+\\ 
+Graphics displayed on the screen with the usage of the PPU without any restriction about how it is doing it.
+\\ 
+The user capable to interact with the system with keyboard.
+\\ 
+Digitalized cartridge format (iNes) red and mapped with the basic NROM mapper (Mapper 0).
+\paragraph{Core - Full)}
+The graphics CPU and the whole system itself running with 100\% cycle accuracy compared to the original gaming console.
+Some games are heavily rely on cycle accuracy, especially to provide some nice graphics implementations and also to provide more authentic experience for end users.
+
+\paragraph{Advanced - Mappers}
+Implementing additional Cartridge mappers other than the basic NROM mapper\cite{MPPR}. This would allow the emulator to run a larger pool of games.
+
+\paragraph{Advanced - Multiple Platform}
+Due to the nature of the project design, see below, support for other systems could be more easily implemented due to the modular approach which was used to develop the emulator. Therefore for instance Windows and Android could be easily supported by the emulator which would further boost the user experience.
+
+\paragraph{Advanced - State Save}
+Allowing the user to make a snapshot of the current CPU PPU and RAM state and be able to load it back at later point in case if the user would like to continue the game right from the place where they saved it.
+
+\paragraph{Advanced - Online Multiplayer}
+The NES system supports two-player local multiplayer, as the system provides hardware to connect two controllers, by default which could be extended over network therefore players could play two player games with the comfort of their homes.
 
 
 \chapter{Project Design}

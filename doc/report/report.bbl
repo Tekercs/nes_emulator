@@ -107,6 +107,36 @@
       \verb https://uk.ign.com/articles/2011/09/21/ten-facts-about-the-great-video-game-crash-of-83
       \endverb
     \endentry
+    \entry{MPPR}{online}{}
+      \name{author}{1}{}{%
+        {{hash=9baefc8622f42771d579c26aefa733c0}{%
+           family={wiki},
+           familyi={w\bibinitperiod},
+           given={Mapper\bibnamedelimb -\bibnamedelima Nesdev},
+           giveni={M\bibinitperiod\bibinitdelim \bibinithyphendelim \bibinithyphendelim \bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+      }
+      \strng{namehash}{9baefc8622f42771d579c26aefa733c0}
+      \strng{fullhash}{9baefc8622f42771d579c26aefa733c0}
+      \strng{bibnamehash}{9baefc8622f42771d579c26aefa733c0}
+      \strng{authorbibnamehash}{9baefc8622f42771d579c26aefa733c0}
+      \strng{authornamehash}{9baefc8622f42771d579c26aefa733c0}
+      \strng{authorfullhash}{9baefc8622f42771d579c26aefa733c0}
+      \field{sortinit}{w}
+      \field{sortinithash}{ecb89ff85896a47dc313960773ac311d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{7}
+      \field{month}{3}
+      \field{title}{TEN FACTS ABOUT THE GREAT VIDEO GAME CRASH OF '83}
+      \field{year}{2019}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://wiki.nesdev.com/w/index.php/Mapper
+      \endverb
+      \verb{url}
+      \verb https://wiki.nesdev.com/w/index.php/Mapper
+      \endverb
+    \endentry
     \entry{HIST}{online}{}
       \name{author}{1}{}{%
         {{hash=9c677286866aad38f8e9b660f5411814}{%
