@@ -40,46 +40,56 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {paragraph}{Advanced - Online Multiplayer}{5}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {3}Project Design}{6}
+\contentsline {chapter}{\numberline {3}Project Execution}{6}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {4}Specification and implementation}{7}
+\contentsline {section}{\numberline {3.1}Design}{6}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.1}RAM}{8}
+\contentsline {paragraph}{ }{6}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1.1}Specification}{8}
+\contentsline {paragraph}{ }{6}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1.2}Implementation}{8}
+\contentsline {section}{\numberline {3.2}Tools}{7}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1.3}Testing}{8}
+\contentsline {section}{\numberline {3.3}Management}{7}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.2}Cartridge (ROM)}{8}
+\contentsline {chapter}{\numberline {4}Specification and implementation}{8}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.1}Specification}{8}
+\contentsline {section}{\numberline {4.1}RAM}{9}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.2}Implementation}{8}
+\contentsline {subsection}{\numberline {4.1.1}Specification}{9}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.3}Testing}{8}
+\contentsline {subsection}{\numberline {4.1.2}Implementation}{9}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.3}CPU}{8}
+\contentsline {subsection}{\numberline {4.1.3}Testing}{9}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.3.1}Specification}{8}
+\contentsline {section}{\numberline {4.2}Cartridge (ROM)}{9}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.3.2}Implementation}{8}
+\contentsline {subsection}{\numberline {4.2.1}Specification}{9}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.3.3}Testing}{8}
+\contentsline {subsection}{\numberline {4.2.2}Implementation}{9}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.4}PPU}{8}
+\contentsline {subsection}{\numberline {4.2.3}Testing}{9}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.4.1}Specification}{8}
+\contentsline {section}{\numberline {4.3}CPU}{9}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.4.2}Implementation}{8}
+\contentsline {subsection}{\numberline {4.3.1}Specification}{9}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.4.3}Testing}{8}
+\contentsline {subsection}{\numberline {4.3.2}Implementation}{9}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Evaluation}{9}
+\contentsline {subsection}{\numberline {4.3.3}Testing}{9}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.1}Performance and Precision}{9}
+\contentsline {section}{\numberline {4.4}PPU}{9}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.2}Game Performance}{9}
+\contentsline {subsection}{\numberline {4.4.1}Specification}{9}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {6}Conclusions}{10}
+\contentsline {subsection}{\numberline {4.4.2}Implementation}{9}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.4.3}Testing}{9}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {5}Evaluation}{10}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.1}Performance and Precision}{10}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.2}Game Performance}{10}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {6}Conclusions}{11}

@@ -83,8 +83,36 @@ Allowing the user to make a snapshot of the current CPU PPU and RAM state and be
 \paragraph{Advanced - Online Multiplayer}
 The NES system supports two-player local multiplayer, as the system provides hardware to connect two controllers, by default which could be extended over network therefore players could play two player games with the comfort of their homes.
 
+\chapter{Project Execution}
 
-\chapter{Project Design}
+\section{Design}
+
+\paragraph{ }
+Due to the fact that the NES gaming console's hardware could easily be divided up to 5 distinct, loosely coupled module it was clear that the best way is to design the implementation around these modules:
+\begin{enumerate}
+	\item Ram
+	\item CPU
+	\item PPU
+	\item Controller
+	\item Cartridge / Mapper
+\end{enumerate}
+
+This thanks to the fact that the system gives control over all of these pieces by wiring them in to given memory slots and using CPU instructions to perform read and write instructions on them to trigger given actions on them, all of this without letting the actual CPU Hardware know that it is accessing anything else. Therefore when the system could been implemented module by module in a careful order. Due to this modular separations the it was easy  and straightforward to build each module easily by separating them up to smaller task and gradually build each module.
+\paragraph{ }
+Besides the separation of the emulator code to modules, the GUI, Graphical User Interface,  is also separated from the actual emulator logic. This behaviour is implemented by compiling the NES emu logic into a shared objects, dynamic library for Windows users, and linked it with the GUI implementation. This decoupling has numerous advantages over shipping the whole application as a single executable.
+\\ 
+Due to this separation the emulator logic became more easy to test on its own. 
+\\ 
+The when a new patch is ready for the applications only part of the project needs to be recompiled and updated. Which makes easier to implement a versioning and updating system.
+\\ 
+The GUI implementation can be changed without affecting any of the core solution therefore it is easier to port it to different platforms and devices.
+
+\section{Tools}
+
+
+\section{Management}
+
+
 
 \chapter{Specification and implementation}
 
