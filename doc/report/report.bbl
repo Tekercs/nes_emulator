@@ -19,6 +19,64 @@
 
 \refsection{0}
   \datalist[entry]{nty/global//global/global}
+    \entry{APID}{online}{}
+      \name{author}{1}{}{%
+        {{hash=027efb3074dc40d90676caa7b23afb33}{%
+           family={Bence},
+           familyi={B\bibinitperiod},
+           given={Sebestyén},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{027efb3074dc40d90676caa7b23afb33}
+      \strng{fullhash}{027efb3074dc40d90676caa7b23afb33}
+      \strng{bibnamehash}{027efb3074dc40d90676caa7b23afb33}
+      \strng{authorbibnamehash}{027efb3074dc40d90676caa7b23afb33}
+      \strng{authornamehash}{027efb3074dc40d90676caa7b23afb33}
+      \strng{authorfullhash}{027efb3074dc40d90676caa7b23afb33}
+      \field{extraname}{1}
+      \field{sortinit}{B}
+      \field{sortinithash}{276475738cc058478c1677046f857703}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{9}
+      \field{month}{3}
+      \field{title}{Nes Emulator API doc}
+      \field{year}{2019}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://tekercs.github.io/nes_emulator/doc/api/html/
+      \endverb
+      \verb{url}
+      \verb https://tekercs.github.io/nes_emulator/doc/api/html/
+      \endverb
+    \endentry
+    \entry{REPO}{online}{}
+      \name{author}{1}{}{%
+        {{hash=027efb3074dc40d90676caa7b23afb33}{%
+           family={Bence},
+           familyi={B\bibinitperiod},
+           given={Sebestyén},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{027efb3074dc40d90676caa7b23afb33}
+      \strng{fullhash}{027efb3074dc40d90676caa7b23afb33}
+      \strng{bibnamehash}{027efb3074dc40d90676caa7b23afb33}
+      \strng{authorbibnamehash}{027efb3074dc40d90676caa7b23afb33}
+      \strng{authornamehash}{027efb3074dc40d90676caa7b23afb33}
+      \strng{authorfullhash}{027efb3074dc40d90676caa7b23afb33}
+      \field{extraname}{2}
+      \field{sortinit}{B}
+      \field{sortinithash}{276475738cc058478c1677046f857703}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Project Repository}
+      \verb{urlraw}
+      \verb https://tekercs.github.io/nes_emulator
+      \endverb
+      \verb{url}
+      \verb https://tekercs.github.io/nes_emulator
+      \endverb
+    \endentry
     \entry{ZELD}{online}{}
       \name{author}{1}{}{%
         {{hash=1514fc67c04816dfd822d338077f0d5d}{%
@@ -137,6 +195,31 @@
       \verb https://wiki.nesdev.com/w/index.php/Mapper
       \endverb
     \endentry
+    \entry{EWAR}{online}{}
+      \name{author}{1}{}{%
+        {{hash=9c677286866aad38f8e9b660f5411814}{%
+           family={Wikipedia},
+           familyi={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{9c677286866aad38f8e9b660f5411814}
+      \strng{fullhash}{9c677286866aad38f8e9b660f5411814}
+      \strng{bibnamehash}{9c677286866aad38f8e9b660f5411814}
+      \strng{authorbibnamehash}{9c677286866aad38f8e9b660f5411814}
+      \strng{authornamehash}{9c677286866aad38f8e9b660f5411814}
+      \strng{authorfullhash}{9c677286866aad38f8e9b660f5411814}
+      \field{extraname}{1}
+      \field{sortinit}{W}
+      \field{sortinithash}{ecb89ff85896a47dc313960773ac311d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Editor War - Wikipedia}
+      \verb{urlraw}
+      \verb https://en.wikipedia.org/wiki/Editor_war
+      \endverb
+      \verb{url}
+      \verb https://en.wikipedia.org/wiki/Editor_war
+      \endverb
+    \endentry
     \entry{HIST}{online}{}
       \name{author}{1}{}{%
         {{hash=9c677286866aad38f8e9b660f5411814}{%
@@ -149,6 +232,7 @@
       \strng{authorbibnamehash}{9c677286866aad38f8e9b660f5411814}
       \strng{authornamehash}{9c677286866aad38f8e9b660f5411814}
       \strng{authorfullhash}{9c677286866aad38f8e9b660f5411814}
+      \field{extraname}{2}
       \field{sortinit}{W}
       \field{sortinithash}{ecb89ff85896a47dc313960773ac311d}
       \field{labelnamesource}{author}

@@ -50,46 +50,68 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3.2}Tools}{7}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.3}Management}{7}
+\contentsline {paragraph}{ }{7}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {4}Specification and implementation}{8}
+\contentsline {paragraph}{ }{7}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.1}RAM}{9}
+\contentsline {paragraph}{ }{7}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1.1}Specification}{9}
+\contentsline {paragraph}{ }{7}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1.2}Implementation}{9}
+\contentsline {section}{\numberline {3.3}Management}{8}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1.3}Testing}{9}
+\contentsline {paragraph}{ }{8}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.2}Cartridge (ROM)}{9}
+\contentsline {paragraph}{ }{8}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.1}Specification}{9}
+\contentsline {paragraph}{ }{8}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.2}Implementation}{9}
+\contentsline {paragraph}{ }{8}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.3}Testing}{9}
+\contentsline {paragraph}{ }{8}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.3}CPU}{9}
+\contentsline {paragraph}{ }{8}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.3.1}Specification}{9}
+\contentsline {paragraph}{ }{9}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.3.2}Implementation}{9}
+\contentsline {chapter}{\numberline {4}Specification and implementation}{10}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.3.3}Testing}{9}
+\contentsline {section}{\numberline {4.1}RAM}{11}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.4}PPU}{9}
+\contentsline {subsection}{\numberline {4.1.1}Specification}{11}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.4.1}Specification}{9}
+\contentsline {subsection}{\numberline {4.1.2}Implementation}{11}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.4.2}Implementation}{9}
+\contentsline {subsection}{\numberline {4.1.3}Testing}{11}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.4.3}Testing}{9}
+\contentsline {section}{\numberline {4.2}Cartridge (ROM)}{11}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Evaluation}{10}
+\contentsline {subsection}{\numberline {4.2.1}Specification}{11}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.1}Performance and Precision}{10}
+\contentsline {subsection}{\numberline {4.2.2}Implementation}{11}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.2}Game Performance}{10}
+\contentsline {subsection}{\numberline {4.2.3}Testing}{11}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {6}Conclusions}{11}
+\contentsline {section}{\numberline {4.3}CPU}{11}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.3.1}Specification}{11}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.3.2}Implementation}{11}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.3.3}Testing}{11}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.4}PPU}{11}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.4.1}Specification}{11}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.4.2}Implementation}{11}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.4.3}Testing}{11}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {5}Evaluation}{12}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.1}Performance and Precision}{12}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.2}Game Performance}{12}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {6}Conclusions}{13}
