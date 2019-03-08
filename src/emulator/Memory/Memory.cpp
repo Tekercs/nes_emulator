@@ -1,6 +1,6 @@
 #include <Memory/Memory.h>
 #include <cstring>
-#include <iostream>
+#include <iterator>
 #include <algorithm>
 
 using namespace std;
