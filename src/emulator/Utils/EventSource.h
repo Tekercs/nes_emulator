@@ -17,6 +17,6 @@ namespace Emulator::Utils
         EventSource& operator -= (Listener* listener);
 
         template<class T>
-        void operator() (std::initializer_list<T> args);
+        void operator() (T event);
     };
 }

@@ -15,7 +15,7 @@ EventSource& EventSource::operator -= (Listener* listener)
 }
 
 template <class T>
-void EventSource::operator() (std::initializer_list<T> args)
+void EventSource::operator() (T event)
 {
 
 }
