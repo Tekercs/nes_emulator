@@ -1,21 +1,22 @@
 #include "EventSource.h"
 
+#include <initializer_list>
+
 using namespace std;
 using namespace Emulator::Utils;
 
-
-EventSource& EventSource::operator += (Listener* listener)
+void EventSource::subscribe(Listener* listener)
 {
-    return *this;
+    this->listeners.insert(listener);
 }
 
-EventSource& EventSource::operator -= (Listener* listener)
+void EventSource::unsubscribe(Listener* listener)
 {
-    return *this;
+    this->listeners.erase(listener);
 }
 
-template <class T>
-void EventSource::operator() (T event)
+void EventSource::notifyListeners(initializer_list<string> parameters)
 {
-
+    for (auto listener : this->listeners)
+        listener->notify(parameters);
 }

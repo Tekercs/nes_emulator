@@ -9,14 +9,13 @@ namespace Emulator::Utils
 {
     class EventSource 
     {
-    private:
+    protected:
         std::set<Listener*> listeners;
 
     public:
-        EventSource& operator += (Listener* listener);
-        EventSource& operator -= (Listener* listener);
+        void subscribe(Listener* listener);
+        void unsubscribe(Listener* listener);
 
-        template<class T>
-        void operator() (T event);
+        void notifyListeners (std::initializer_list<std::string> parameters);
     };
 }

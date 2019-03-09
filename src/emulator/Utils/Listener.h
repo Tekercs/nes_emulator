@@ -1,14 +1,13 @@
 #pragma once
 
 #include <initializer_list>
+#include <string>
 
 namespace Emulator::Utils
 {
     class Listener
     {
-    public: 
-
-        template<class T>
-        void operator() (T event);
+    public:
+        virtual void notify(std::initializer_list<std::string> parameters) = 0;
     };
 } 
