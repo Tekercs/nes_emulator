@@ -2,7 +2,7 @@
 
 #include <cstdint>
 
-#define VRAM_SIZE 0x10000
+#define VRAM_SIZE 0x4000
 #define OAM_SIZE 256 
 
 #define PATTERN_0 0x0000
@@ -34,5 +34,11 @@ namespace Emulator::Ppu
 
     public: 
         VRam();
+
+        uint8_t readOAM(uint8_t address);
+        void writeOAM(uint8_t address, uint8_t value);
+
+        uint8_t readMemory(uint16_t address);
+        void writeMemory(uint16_t address, uint8_t value);
     };
 }

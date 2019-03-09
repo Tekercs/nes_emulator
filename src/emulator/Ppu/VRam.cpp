@@ -32,3 +32,25 @@ void VRam::generatePaletteRam()
     for (auto i = 0; i < PALETTE_TOTAL + 1; ++i)
         copy(begin(paletteRam), end(paletteRam), begin(this->memory) + PALETTE_STARTS + (PALETTE_SIZE * i) );
 }
+
+uint8_t VRam::readOAM(uint8_t address)
+{
+    return this->oam[address];
+}
+
+void VRam::writeOAM(uint8_t address, uint8_t value)
+{
+    this->oam[address] = value;
+}
+
+uint8_t VRam::readMemory(uint16_t address)
+{
+    // TODO exception when address too big
+
+    return *this->memory[address];
+}
+
+void VRam::writeMemory(uint16_t address, uint8_t value)
+{
+    *this->memory[address] = value;
+}
