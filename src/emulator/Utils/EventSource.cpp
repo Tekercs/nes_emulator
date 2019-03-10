@@ -17,6 +17,13 @@ void EventSource::unsubscribe(Listener* listener)
 
 void EventSource::notifyListeners(initializer_list<string> parameters)
 {
-    for (auto listener : this->listeners)
-        listener->notify(parameters);
+    if (!this->isTriggerBlocked)
+    {
+        this->isTriggerBlocked = true;
+
+        for (auto listener : this->listeners)
+            listener->notify(parameters);
+
+        this->isTriggerBlocked = false;
+    }
 }

@@ -11,6 +11,7 @@ namespace Emulator::Utils
     {
     protected:
         std::set<Listener*> listeners;
+        bool isTriggerBlocked = false;
 
     public:
         void subscribe(Listener* listener);
