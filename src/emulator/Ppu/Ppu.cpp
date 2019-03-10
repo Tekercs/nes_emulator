@@ -11,9 +11,12 @@ Ppu::Ppu(std::shared_ptr<VRam> vram, std::shared_ptr<Emulator::Memory::Memory> m
 {
     this->oamAccessor.adress = 0;
     this->oamAccessor.value = 0;
+
+    this->memory->subscribe(this);
 }
 
 void Ppu::notify(initializer_list<string> parameters)
 {
-    cout << "eddki" << endl;
+    auto param = parameters.begin();
+    cout << param << endl;
 }
