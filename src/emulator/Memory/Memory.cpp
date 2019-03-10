@@ -35,12 +35,14 @@ void Emulator::Memory::Memory::generateIORegisters()
 }
 
 
-uint8_t Emulator::Memory::Memory::getFrom(uint16_t address) const
+uint8_t Emulator::Memory::Memory::getFrom(uint16_t address)
 {
+    this->notifyListeners({"memread"});
     return *this->memory[address];
 }
 
 void Emulator::Memory::Memory::setAt(uint16_t address, uint8_t value)
 {
+    this->notifyListeners({"memwrite"});
     *this->memory[address] = value;
 }
