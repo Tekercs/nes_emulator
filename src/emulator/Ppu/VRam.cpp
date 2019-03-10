@@ -26,7 +26,7 @@ void VRam::generateNametable()
 
 void VRam::generatePaletteRam()
 {
-    uint8_t* paletteRam[NAME_SIZE * 4] = {};
+    uint8_t* paletteRam[PALETTE_SIZE] = {};
     generate(begin(paletteRam), end(paletteRam), []() { return new uint8_t(0); });
 
     for (auto i = 0; i < PALETTE_TOTAL + 1; ++i)
