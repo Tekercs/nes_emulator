@@ -1,6 +1,8 @@
 #pragma once
 #include <cstdint>
 
+#include <Utils/EventSource.h>
+
 #define MEMORY_SIZE         0x10000
 #define ZEROPAGE            0x0000
 #define STACK               0x0100
@@ -39,7 +41,7 @@ namespace Emulator::Memory
      * module including it's mirroring properties
      * based on the specification.
      */
-    class Memory
+    class Memory : public Emulator::Utils::EventSource 
     {
     private:
         /**
