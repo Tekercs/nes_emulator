@@ -49,4 +49,24 @@ SCENARIO("accessing vram via memory mappings")
             }
         }
     }
+
+    GIVEN("empty memory, a preset vram and a gpu")
+    {
+        shared_ptr<Memory> memory = make_shared<Memory>();
+        shared_ptr<VRam> vram = make_shared<VRam>();
+        vram->writeOAM(0x05, 0xAA);
+
+        Ppu ppu(vram, memory);
+
+        WHEN("writing to OAMADDR the given address")
+        {
+            memory->setAt(0x2003, 0x05);
+
+            THEN ("reading OAMDATA should return the data at the given OAM address from the vram")
+            {
+                REQUIRE((memory->getFrom(0x2004)) == 0xAA);
+            }
+        } 
+
+    }
 }
