@@ -42,10 +42,11 @@ SCENARIO("accessing vram via memory mappings")
                 REQUIRE((vram->readOAM(0x02) == 0x02));   
             }
 
-            THEN("write once more to the OAMADDR and check if owerriten")
+            THEN("write once more to the OAMADDR and check if the preivous one is unaffeceted and the new one is set")
             {
                 memory->setAt(0x2004, 0x06);
-                REQUIRE((vram->readOAM(0x02)) == 0x06);
+                REQUIRE((vram->readOAM(0x02)) == 0x02);
+                REQUIRE((vram->readOAM(0x03)) == 0x06);
             }
         }
     }

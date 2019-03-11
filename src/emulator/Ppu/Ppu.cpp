@@ -28,7 +28,8 @@ void Ppu::notify(initializer_list<string> parameters)
         {
             this->oamAccessor.value = static_cast<uint8_t>(convertHexStringToInt(*(parameters.begin() + 2)));
             this->vram->writeOAM(this->oamAccessor.adress, this->oamAccessor.value);
-            auto laci = "breakpoint";
+
+            ++this->oamAccessor.adress;
         }
 
     if (*parameters.begin() == "memread")
