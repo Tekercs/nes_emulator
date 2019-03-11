@@ -30,4 +30,11 @@ void Ppu::notify(initializer_list<string> parameters)
             this->vram->writeOAM(this->oamAccessor.adress, this->oamAccessor.value);
             auto laci = "breakpoint";
         }
+
+    if (*parameters.begin() == "memread")
+        if ((*(parameters.begin() + 1)) == "2004")
+        {
+            auto result = this->vram->readOAM(this->oamAccessor.adress);
+            this->memory->setAt(0x2004, result);
+        }
 }
