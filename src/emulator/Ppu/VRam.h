@@ -44,7 +44,7 @@ namespace Emulator::Ppu
 
     struct OAMAccessor
     {
-        uint8_t adress;
+        uint8_t address;
         uint8_t value;
     };
 }

@@ -10,7 +10,7 @@ Ppu::Ppu(std::shared_ptr<VRam> vram, std::shared_ptr<Emulator::Memory::Memory> m
 : memory(std::move(memory))
 , vram(std::move(vram))
 {
-    this->oamAccessor.adress = 0;
+    this->oamAccessor.address = 0;
     this->oamAccessor.value = 0;
 
     this->memory->subscribe(this);
@@ -20,16 +20,16 @@ void Ppu::notify(initializer_list<string> parameters)
 {
     if (*parameters.begin() == "memwrite")
         if ((*(parameters.begin() +1)) == "2003")
-            this->oamAccessor.adress = static_cast<uint8_t>(convertHexStringToInt(*(parameters.begin() + 2)));
+            this->oamAccessor.address = static_cast<uint8_t>(convertHexStringToInt(*(parameters.begin() + 2)));
 
 
     if (*parameters.begin() == "memwrite")
         if ((*(parameters.begin() +1)) == "2004")
         {
             this->oamAccessor.value = static_cast<uint8_t>(convertHexStringToInt(*(parameters.begin() + 2)));
-            this->vram->writeOAM(this->oamAccessor.adress, this->oamAccessor.value);
+            this->vram->writeOAM(this->oamAccessor.address, this->oamAccessor.value);
 
-            ++this->oamAccessor.adress;
+            ++this->oamAccessor.address;
         }
 
     if (*parameters.begin() == "memwrite")
@@ -39,15 +39,15 @@ void Ppu::notify(initializer_list<string> parameters)
 
             for (auto i = 0; i < OAM_SIZE; ++i)
             {
-                this->vram->writeOAM(this->oamAccessor.adress, this->memory->getFrom(memoryPrefix + i));
-                ++this->oamAccessor.adress;
+                this->vram->writeOAM(this->oamAccessor.address, this->memory->getFrom(memoryPrefix + i));
+                ++this->oamAccessor.address;
             }
         }
 
     if (*parameters.begin() == "memread")
         if ((*(parameters.begin() + 1)) == "2004")
         {
-            auto result = this->vram->readOAM(this->oamAccessor.adress);
+            auto result = this->vram->readOAM(this->oamAccessor.address);
             this->memory->setAt(0x2004, result);
         }
 }
