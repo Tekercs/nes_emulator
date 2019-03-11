@@ -27,7 +27,7 @@ namespace Emulator::Ppu
     {
     private:
         uint8_t* memory[VRAM_SIZE];
-        uint8_t oam[OAM_SIZE];
+        uint8_t* oam[OAM_SIZE];
 
         void generateNametable();
         void generatePaletteRam();
@@ -44,7 +44,7 @@ namespace Emulator::Ppu
 
     struct OAMAccessor
     {
-        uint16_t adress;
+        uint8_t adress;
         uint8_t value;
     };
 }

@@ -9,7 +9,7 @@ using namespace Emulator::Ppu;
 VRam::VRam()
 {
     generate(begin(this->memory), end(this->memory), []() { return new uint8_t(0); });
-    generate(begin(this->oam), end(this->oam), []() { return 0; });
+    generate(begin(this->oam), end(this->oam), []() { return new uint8_t(0); });
 
     this->generateNametable();
     this->generatePaletteRam();
@@ -35,17 +35,17 @@ void VRam::generatePaletteRam()
 
 uint8_t VRam::readOAM(uint8_t address)
 {
-    return this->oam[address];
+    return *this->oam[address];
 }
 
 void VRam::writeOAM(uint8_t address, uint8_t value)
 {
-    this->oam[address] = value;
+    *this->oam[address] = value;
 }
 
 uint8_t VRam::readMemory(uint16_t address)
 {
-    // TODO exception when address too big
+    // TODO exception when address tOo big
 
     return *this->memory[address];
 }
