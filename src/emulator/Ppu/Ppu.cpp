@@ -32,6 +32,18 @@ void Ppu::notify(initializer_list<string> parameters)
             ++this->oamAccessor.adress;
         }
 
+    if (*parameters.begin() == "memwrite")
+        if ((*(parameters.begin() + 1)) == "4014")
+        {
+            uint16_t memoryPrefix = (convertHexStringToInt((*(parameters.begin() + 2)))) << 8;
+
+            for (auto i = 0; i < OAM_SIZE; ++i)
+            {
+                this->vram->writeOAM(this->oamAccessor.adress, this->memory->getFrom(memoryPrefix + i));
+                ++this->oamAccessor.adress;
+            }
+        }
+
     if (*parameters.begin() == "memread")
         if ((*(parameters.begin() + 1)) == "2004")
         {

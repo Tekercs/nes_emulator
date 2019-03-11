@@ -70,4 +70,29 @@ SCENARIO("accessing vram via memory mappings")
         } 
 
     }
+
+    GIVEN ("an empty vram, and a preset memory, and a ppu")
+    {
+        shared_ptr<Memory> memory = make_shared<Memory>();
+        for(auto i = 0; i < 0x100; ++i)
+            memory->setAt((0x0000 + i), 0xAA);
+        for(auto i = 0; i < 0xcc; ++i)
+            memory->setAt((0x0000 + i), 0xBB);
+
+        shared_ptr<VRam> vram = make_shared<VRam>();
+        Ppu ppu(vram, memory);
+
+        WHEN("write to OAMDMA register and trigegr DMA")
+        {
+            memory->setAt(0x4014, 0x00);
+
+            THEN("data from 0x0200 to 0x02FF should be copied to OAM")
+            {
+                for (auto i = 0xCC; i < OAM_SIZE; ++i)
+                    REQUIRE(vram->readOAM(i) == 0xAA);
+                for (auto i = 0; i < 0xCC; ++i)
+                    REQUIRE(vram->readOAM(i) == 0xBB);
+            }
+        }
+    }
 }
