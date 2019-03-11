@@ -42,9 +42,4 @@ namespace Emulator::Ppu
         void writeMemory(uint16_t address, uint8_t value);
     };
 
-    struct OAMAccessor
-    {
-        uint8_t address;
-        uint8_t value;
-    };
 }

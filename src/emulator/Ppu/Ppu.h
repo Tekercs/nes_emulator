@@ -15,8 +15,8 @@ namespace Emulator::Ppu
     private: 
         std::shared_ptr<VRam> vram;
         std::shared_ptr<Emulator::Memory::Memory> memory;
-        struct OAMAccessor oamAccessor;
-    
+        uint8_t oamAddress;
+
     public:
         Ppu(std::shared_ptr<VRam> vram, std::shared_ptr<Emulator::Memory::Memory> memory);
 
