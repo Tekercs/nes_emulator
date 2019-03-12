@@ -45,12 +45,14 @@ void VRam::writeOAM(uint8_t address, uint8_t value)
 
 uint8_t VRam::readMemory(uint16_t address)
 {
-    // TODO exception when address tOo big
+    auto tempAddress = address % VRAM_SIZE;
 
-    return *this->memory[address];
+    return *this->memory[tempAddress];
 }
 
 void VRam::writeMemory(uint16_t address, uint8_t value)
 {
-    *this->memory[address] = value;
+    auto tempAddress = address % VRAM_SIZE;
+
+    *this->memory[tempAddress] = value;
 }

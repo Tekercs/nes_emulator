@@ -44,10 +44,11 @@ namespace Emulator::Ppu
 
     enum Status { HIGH_BYTE, LOW_BYTE };
 
-    struct MemoryAddress
+    struct MemoryAccessor
     {
         Status nextPart;
         uint16_t address;
+        uint8_t readBuffer;
     };
 
 }

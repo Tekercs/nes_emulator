@@ -11,7 +11,7 @@ Ppu::Ppu(std::shared_ptr<VRam> vram, std::shared_ptr<Emulator::Memory::Memory> m
 , vram(std::move(vram))
 {
     this->oamAddress = 0;
-    this->memoryAddress = {.nextPart = HIGH_BYTE, .address = 0};
+    this->memoryAddress = {.nextPart = HIGH_BYTE, .address = 0, .readBuffer = 0};
 
     this->memory->subscribe(this);
 
@@ -67,6 +67,28 @@ void Ppu::notify(initializer_list<string> parameters)
         {
             uint8_t data = convertHexStringToInt(*(parameters.begin() + 2));
             this->vram->writeMemory(this->memoryAddress.address, data);
+
+            this->memoryAddress.address += this->getVramAddressIncrement();
+        }
+
+    if (*parameters.begin() == "memread")
+        if ((*(parameters.begin() + 1)) == "2007")
+        {
+            uint8_t workingAddress = this->memoryAddress.address % VRAM_SIZE;
+
+            if (workingAddress < PALETTE_STARTS)
+            {
+                this->memory->setAt(0x2007, this->memoryAddress.readBuffer);
+                this->memoryAddress.readBuffer = this->vram->readMemory(workingAddress);
+            }
+            else
+            {
+                this->memory->setAt(0x2007, this->vram->readMemory(workingAddress));
+
+                uint8_t newAddress = VRAM_SIZE + (workingAddress - PALETTE_STARTS) % VRAM_SIZE;
+                this->memoryAddress.readBuffer = vram->readMemory(newAddress);
+            }
+
 
             this->memoryAddress.address += this->getVramAddressIncrement();
         }

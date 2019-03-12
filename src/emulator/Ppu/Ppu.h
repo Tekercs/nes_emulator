@@ -19,7 +19,7 @@ namespace Emulator::Ppu
         std::shared_ptr<VRam> vram;
         std::shared_ptr<Emulator::Memory::Memory> memory;
         uint8_t oamAddress;
-        struct MemoryAddress memoryAddress;
+        struct MemoryAccessor memoryAddress;
         uint8_t ppuControl;
 
         uint8_t getVramAddressIncrement();
