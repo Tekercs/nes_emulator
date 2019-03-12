@@ -42,4 +42,12 @@ namespace Emulator::Ppu
         void writeMemory(uint16_t address, uint8_t value);
     };
 
+    enum Status { HIGH_BYTE, LOW_BYTE };
+
+    struct MemoryAddress
+    {
+        Status nextPart;
+        uint16_t address;
+    };
+
 }

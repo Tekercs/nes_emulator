@@ -11,6 +11,7 @@ Ppu::Ppu(std::shared_ptr<VRam> vram, std::shared_ptr<Emulator::Memory::Memory> m
 , vram(std::move(vram))
 {
     this->oamAddress = 0;
+    this->memoryAddress = {.nextPart = HIGH_BYTE, .address = 0};
 
     this->memory->subscribe(this);
 }
@@ -40,6 +41,16 @@ void Ppu::notify(initializer_list<string> parameters)
                 this->vram->writeOAM(this->oamAddress, this->memory->getFrom(memoryPrefix + i));
                 ++this->oamAddress;
             }
+        }
+
+    if (*parameters.begin() == "memwrite")
+        if ((*(parameters.begin() + 1)) == "2006")
+        {
+            this->memoryAddress.address = (this->memoryAddress.nextPart == LOW_BYTE) 
+                ? (this->memoryAddress.address & 0xFF00) + convertHexStringToInt(*(parameters.begin() + 2))
+                : (this->memoryAddress.address & 0x00FF) + ((convertHexStringToInt(*(parameters.begin() + 2)) % 0x40) << 8);
+
+            this->memoryAddress.nextPart = (this->memoryAddress.nextPart == LOW_BYTE) ? HIGH_BYTE : LOW_BYTE;
         }
 
     if (*parameters.begin() == "memread")
