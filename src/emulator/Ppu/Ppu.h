@@ -10,6 +10,8 @@
 
 #define DEFAULT_PPUCNTRL 0x0000
 #define DEFAULT_MASKFLAGS 0x0000
+#define DEFAULT_STATUS 0x0000
+
 #define INCREMENT_BIT 0b00000100
 
 namespace Emulator::Ppu
@@ -23,10 +25,12 @@ namespace Emulator::Ppu
         struct MemoryAccessor memoryAddress;
         uint8_t controlFlags;
         uint8_t outputMaskFlags;
+        uint8_t statusFlags;
 
         uint8_t getVramAddressIncrement();
 
         void setOAMAddress(uint8_t address);
+        void writeStatusToMemory();
         void readOAM();
         void writeOAM(uint8_t data);
         void triggerDMA(uint8_t memoryPrefix);

@@ -17,6 +17,7 @@ Ppu::Ppu(std::shared_ptr<VRam> vram, std::shared_ptr<Emulator::Memory::Memory> m
 
     this->controlFlags = DEFAULT_PPUCNTRL;
     this->outputMaskFlags = DEFAULT_MASKFLAGS;
+    this->statusFlags = DEFAULT_STATUS;
 }
 
 uint8_t Ppu::getVramAddressIncrement()
@@ -80,6 +81,17 @@ void Ppu::notify(initializer_list<string> parameters)
         this->setOutputMaskFlags(convertHexStringToInt(*(parameters.begin() + 2)));
         return;
     }
+
+    if (*parameters.begin() == "memread" && (*(parameters.begin() + 1)) == "2002")
+    {
+        this->writeStatusToMemory();
+        return;
+    }
+}
+
+void Ppu::writeStatusToMemory()
+{
+    this->memory->setAt(0x2002, this->statusFlags);
 }
 
 void Ppu::setOutputMaskFlags(uint8_t maskFlags)
