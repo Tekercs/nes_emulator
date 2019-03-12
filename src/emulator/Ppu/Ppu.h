@@ -12,6 +12,8 @@
 #define DEFAULT_MASKFLAGS 0x0000
 #define DEFAULT_STATUS 0x0000
 
+#define VBLANK_FLAG 0b10000000
+
 #define INCREMENT_BIT 0b00000100
 
 namespace Emulator::Ppu

@@ -11,7 +11,7 @@
 
 #define NAME_0 0x2000
 #define NAME_1 0x2400
-#define NAME_2 0x2400
+#define NAME_2 0x2800
 #define NAME_3 0x2C00
 
 #define NAME_SIZE 0x0400

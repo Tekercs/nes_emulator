@@ -92,6 +92,15 @@ void Ppu::notify(initializer_list<string> parameters)
 void Ppu::writeStatusToMemory()
 {
     this->memory->setAt(0x2002, this->statusFlags);
+    this->statusFlags = this->statusFlags & 0b01111111;
+
+    switch (this->controlFlags & 0b00000011)
+    {
+        case 0: this->memoryAddress.address = NAME_0;
+        case 1: this->memoryAddress.address = NAME_1;
+        case 2: this->memoryAddress.address = NAME_2;
+        case 3: this->memoryAddress.address = NAME_3;
+    }
 }
 
 void Ppu::setOutputMaskFlags(uint8_t maskFlags)
