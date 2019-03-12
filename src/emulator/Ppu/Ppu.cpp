@@ -18,6 +18,11 @@ Ppu::Ppu(std::shared_ptr<VRam> vram, std::shared_ptr<Emulator::Memory::Memory> m
     this->ppuControl = DEFAULT_PPUCNTRL;
 }
 
+uint8_t Ppu::getVramAddressIncrement()
+{
+    return (this->ppuControl & INCREMENT_BIT)? 1 : 32;
+}
+
 void Ppu::notify(initializer_list<string> parameters)
 {
     // TODO concat param1 and param2  and write a switch statement for that
@@ -55,8 +60,6 @@ void Ppu::notify(initializer_list<string> parameters)
                 : (this->memoryAddress.address & 0x00FF) + ((convertHexStringToInt(*(parameters.begin() + 2)) % 0x40) << 8);
 
             this->memoryAddress.nextPart = (this->memoryAddress.nextPart == LOW_BYTE) ? HIGH_BYTE : LOW_BYTE;
-
-            // TODO need to increent the address here.
         }
 
     if (*parameters.begin() == "memwrite")

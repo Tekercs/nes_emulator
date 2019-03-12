@@ -9,6 +9,7 @@
 #include <Utils/Listener.h>
 
 #define DEFAULT_PPUCNTRL 0x0000
+#define INCREMENT_BIT 0b00000100
 
 namespace Emulator::Ppu
 {
@@ -20,6 +21,8 @@ namespace Emulator::Ppu
         uint8_t oamAddress;
         struct MemoryAddress memoryAddress;
         uint8_t ppuControl;
+
+        uint8_t getVramAddressIncrement();
 
     public:
         Ppu(std::shared_ptr<VRam> vram, std::shared_ptr<Emulator::Memory::Memory> memory);
