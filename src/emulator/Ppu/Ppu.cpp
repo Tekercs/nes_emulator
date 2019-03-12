@@ -14,10 +14,14 @@ Ppu::Ppu(std::shared_ptr<VRam> vram, std::shared_ptr<Emulator::Memory::Memory> m
     this->memoryAddress = {.nextPart = HIGH_BYTE, .address = 0};
 
     this->memory->subscribe(this);
+
+    this->ppuControl = DEFAULT_PPUCNTRL;
 }
 
 void Ppu::notify(initializer_list<string> parameters)
 {
+    // TODO concat param1 and param2  and write a switch statement for that
+
     if (*parameters.begin() == "memwrite")
         if ((*(parameters.begin() +1)) == "2003")
             this->oamAddress = static_cast<uint8_t>(convertHexStringToInt(*(parameters.begin() + 2)));
@@ -51,6 +55,14 @@ void Ppu::notify(initializer_list<string> parameters)
                 : (this->memoryAddress.address & 0x00FF) + ((convertHexStringToInt(*(parameters.begin() + 2)) % 0x40) << 8);
 
             this->memoryAddress.nextPart = (this->memoryAddress.nextPart == LOW_BYTE) ? HIGH_BYTE : LOW_BYTE;
+
+            // TODO need to increent the address here.
+        }
+
+    if (*parameters.begin() == "memwrite")
+        if ((*(parameters.begin() + 1)) == "2000")
+        {
+            this->ppuControl = convertHexStringToInt(*(parameters.begin() + 2));
         }
 
     if (*parameters.begin() == "memread")
