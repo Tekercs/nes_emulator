@@ -9,6 +9,7 @@
 #include <Utils/Listener.h>
 
 #define DEFAULT_PPUCNTRL 0x0000
+#define DEFAULT_MASKFLAGS 0x0000
 #define INCREMENT_BIT 0b00000100
 
 namespace Emulator::Ppu
@@ -21,6 +22,7 @@ namespace Emulator::Ppu
         uint8_t oamAddress;
         struct MemoryAccessor memoryAddress;
         uint8_t controlFlags;
+        uint8_t outputMaskFlags;
 
         uint8_t getVramAddressIncrement();
 
@@ -32,6 +34,7 @@ namespace Emulator::Ppu
         void writeMemory(uint8_t data);
         void setMemoryAddress(uint8_t addressPart);
         void updateControlFlags(uint8_t newValue);
+        void setOutputMaskFlags(uint8_t maskFlags);
 
     public:
         Ppu(std::shared_ptr<VRam> vram, std::shared_ptr<Emulator::Memory::Memory> memory);

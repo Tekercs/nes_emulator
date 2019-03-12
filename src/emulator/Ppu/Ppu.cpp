@@ -16,6 +16,7 @@ Ppu::Ppu(std::shared_ptr<VRam> vram, std::shared_ptr<Emulator::Memory::Memory> m
     this->memory->subscribe(this);
 
     this->controlFlags = DEFAULT_PPUCNTRL;
+    this->outputMaskFlags = DEFAULT_MASKFLAGS;
 }
 
 uint8_t Ppu::getVramAddressIncrement()
@@ -62,7 +63,6 @@ void Ppu::notify(initializer_list<string> parameters)
         return;
     }
 
-
     if (*parameters.begin() == "memwrite" && (*(parameters.begin() + 1)) == "2000")
     {
         this->updateControlFlags(convertHexStringToInt(*(parameters.begin() + 2)));
@@ -74,6 +74,17 @@ void Ppu::notify(initializer_list<string> parameters)
         this->readOAM();
         return;
     }
+
+    if (*parameters.begin() == "memwrite" && (*(parameters.begin() + 1)) == "2001")
+    {
+        this->setOutputMaskFlags(convertHexStringToInt(*(parameters.begin() + 2)));
+        return;
+    }
+}
+
+void Ppu::setOutputMaskFlags(uint8_t maskFlags)
+{
+    this->outputMaskFlags = maskFlags;
 }
 
 void Ppu::setOAMAddress(uint8_t address)
