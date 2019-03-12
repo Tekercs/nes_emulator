@@ -17,7 +17,7 @@ SCENARIO("accessing vram via memory mappings")
     GIVEN("empty memory, vram and inited PPU")
     {
         shared_ptr<Memory> memory = make_shared<Memory>();
-        shared_ptr<VRam> vram = make_shared<VRam>();
+        shared_ptr<VRam> vram = make_shared<VRam>(HORIZONTAL);
 
         Ppu ppu(vram, memory);
 
@@ -54,7 +54,7 @@ SCENARIO("accessing vram via memory mappings")
     GIVEN("empty memory, a preset vram and a gpu")
     {
         shared_ptr<Memory> memory = make_shared<Memory>();
-        shared_ptr<VRam> vram = make_shared<VRam>();
+        shared_ptr<VRam> vram = make_shared<VRam>(HORIZONTAL);
         vram->writeOAM(0x05, 0xAA);
 
         Ppu ppu(vram, memory);
@@ -79,7 +79,7 @@ SCENARIO("accessing vram via memory mappings")
         for(auto i = 0; i < 0xcc; ++i)
             memory->setAt((0x0000 + i), 0xBB);
 
-        shared_ptr<VRam> vram = make_shared<VRam>();
+        shared_ptr<VRam> vram = make_shared<VRam>(HORIZONTAL);
         Ppu ppu(vram, memory);
 
         WHEN("write to OAMDMA register and trigegr DMA")
@@ -99,7 +99,7 @@ SCENARIO("accessing vram via memory mappings")
     GIVEN("empty vram, ram and a ppu")
     {
         shared_ptr<Memory> memory = make_shared<Memory>();
-        shared_ptr<VRam> vram = make_shared<VRam>();
+        shared_ptr<VRam> vram = make_shared<VRam>(HORIZONTAL);
 
         Ppu ppu(vram, memory);
 

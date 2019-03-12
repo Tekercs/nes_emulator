@@ -6,19 +6,39 @@
 using namespace std;
 using namespace Emulator::Ppu;
 
-VRam::VRam()
+VRam::VRam(NametableMirroring mirroringType)
 {
     generate(begin(this->memory), end(this->memory), []() { return new uint8_t(0); });
     generate(begin(this->oam), end(this->oam), []() { return new uint8_t(0); });
 
-    this->generateNametable();
+    this->generateNametable(mirroringType);
     this->generatePaletteRam();
 }
 
-void VRam::generateNametable()
+void VRam::generateNametable(NametableMirroring mirroringType)
 {
+    uint8_t* nametable1[NAME_SIZE] = {};
+    uint8_t* nametable2[NAME_SIZE] = {};
+
+    generate(begin(nametable1), end(nametable1), []() { return new uint8_t(0); });
+    generate(begin(nametable1), end(nametable2), []() { return new uint8_t(0); });
+
     uint8_t* nametables[NAME_SIZE * 4] = {};
-    generate(begin(nametables), end(nametables), []() { return new uint8_t(0); });
+
+    if (mirroringType == HORIZONTAL)
+    {
+        copy(begin(nametable1), end(nametable1), begin(nametables));
+        copy(begin(nametable1), end(nametable1), begin(nametables) + NAME_SIZE);
+        copy(begin(nametable2), end(nametable2), begin(nametables) + (NAME_SIZE * 2));
+        copy(begin(nametable2), end(nametable2), begin(nametables) + (NAME_SIZE * 3));
+    }
+    else if (mirroringType == VERTICAL)
+    {
+        copy(begin(nametable1), end(nametable1), begin(nametables));
+        copy(begin(nametable2), end(nametable2), begin(nametables) + NAME_SIZE);
+        copy(begin(nametable1), end(nametable1), begin(nametables) + (NAME_SIZE * 2));
+        copy(begin(nametable2), end(nametable2), begin(nametables) + (NAME_SIZE * 3));
+    }
 
     copy(begin(nametables), end(nametables), begin(this->memory) + NAME_0);
     copy(begin(nametables), end(nametables), begin(this->memory) + NAME_MIRRORING_STARTS);

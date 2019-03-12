@@ -23,17 +23,19 @@
 
 namespace Emulator::Ppu
 {
+    enum NametableMirroring { VERTICAL = 1,  HORIZONTAL = 0};
+
     class VRam
     {
     private:
         uint8_t* memory[VRAM_SIZE];
         uint8_t* oam[OAM_SIZE];
 
-        void generateNametable();
+        void generateNametable(NametableMirroring mirroringType);
         void generatePaletteRam();
 
     public: 
-        VRam();
+        VRam(NametableMirroring mirroringType);
 
         uint8_t readOAM(uint8_t address);
         void writeOAM(uint8_t address, uint8_t value);
