@@ -9,7 +9,7 @@ using namespace Emulator::Ppu;
 VRam::VRam()
 {
     generate(begin(this->memory), end(this->memory), []() { return new uint8_t(0); });
-    generate(begin(this->oam), end(this->oam), []() { return 0; });
+    generate(begin(this->oam), end(this->oam), []() { return new uint8_t(0); });
 
     this->generateNametable();
     this->generatePaletteRam();
@@ -26,7 +26,7 @@ void VRam::generateNametable()
 
 void VRam::generatePaletteRam()
 {
-    uint8_t* paletteRam[NAME_SIZE * 4] = {};
+    uint8_t* paletteRam[PALETTE_SIZE] = {};
     generate(begin(paletteRam), end(paletteRam), []() { return new uint8_t(0); });
 
     for (auto i = 0; i < PALETTE_TOTAL + 1; ++i)
@@ -35,22 +35,24 @@ void VRam::generatePaletteRam()
 
 uint8_t VRam::readOAM(uint8_t address)
 {
-    return this->oam[address];
+    return *this->oam[address];
 }
 
 void VRam::writeOAM(uint8_t address, uint8_t value)
 {
-    this->oam[address] = value;
+    *this->oam[address] = value;
 }
 
 uint8_t VRam::readMemory(uint16_t address)
 {
-    // TODO exception when address too big
+    auto tempAddress = address % VRAM_SIZE;
 
-    return *this->memory[address];
+    return *this->memory[tempAddress];
 }
 
 void VRam::writeMemory(uint16_t address, uint8_t value)
 {
-    *this->memory[address] = value;
+    auto tempAddress = address % VRAM_SIZE;
+
+    *this->memory[tempAddress] = value;
 }

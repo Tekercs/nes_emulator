@@ -11,7 +11,7 @@
 
 #define NAME_0 0x2000
 #define NAME_1 0x2400
-#define NAME_2 0x2400
+#define NAME_2 0x2800
 #define NAME_3 0x2C00
 
 #define NAME_SIZE 0x0400
@@ -27,7 +27,7 @@ namespace Emulator::Ppu
     {
     private:
         uint8_t* memory[VRAM_SIZE];
-        uint8_t oam[OAM_SIZE];
+        uint8_t* oam[OAM_SIZE];
 
         void generateNametable();
         void generatePaletteRam();
@@ -41,4 +41,14 @@ namespace Emulator::Ppu
         uint8_t readMemory(uint16_t address);
         void writeMemory(uint16_t address, uint8_t value);
     };
+
+    enum Status { HIGH_BYTE, LOW_BYTE };
+
+    struct MemoryAccessor
+    {
+        Status nextPart;
+        uint16_t address;
+        uint8_t readBuffer;
+    };
+
 }

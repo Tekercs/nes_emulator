@@ -7,7 +7,7 @@ using namespace std;
 using namespace Emulator::Memory;
 using namespace Emulator::Cpu;
 
-std::string parseCurrentStateLog(const Emulator::Memory::Memory& memory, const Emulator::Cpu::Registers& registers)
+std::string parseCurrentStateLog(Emulator::Memory::Memory& memory, const Emulator::Cpu::Registers& registers)
 {
     stringstream sstream;
     sstream << uppercase << "0x" << setfill('0') << setw(4) << hex << (int)registers.getProgramCounter() << " ";
