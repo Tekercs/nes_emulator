@@ -20,9 +20,18 @@ namespace Emulator::Ppu
         std::shared_ptr<Emulator::Memory::Memory> memory;
         uint8_t oamAddress;
         struct MemoryAccessor memoryAddress;
-        uint8_t ppuControl;
+        uint8_t controlFlags;
 
         uint8_t getVramAddressIncrement();
+
+        void setOAMAddress(uint8_t address);
+        void readOAM();
+        void writeOAM(uint8_t data);
+        void triggerDMA(uint8_t memoryPrefix);
+        void readMemory();
+        void writeMemory(uint8_t data);
+        void setMemoryAddress(uint8_t addressPart);
+        void updateControlFlags(uint8_t newValue);
 
     public:
         Ppu(std::shared_ptr<VRam> vram, std::shared_ptr<Emulator::Memory::Memory> memory);

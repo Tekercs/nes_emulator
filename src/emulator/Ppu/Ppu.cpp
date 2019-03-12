@@ -15,94 +15,134 @@ Ppu::Ppu(std::shared_ptr<VRam> vram, std::shared_ptr<Emulator::Memory::Memory> m
 
     this->memory->subscribe(this);
 
-    this->ppuControl = DEFAULT_PPUCNTRL;
+    this->controlFlags = DEFAULT_PPUCNTRL;
 }
 
 uint8_t Ppu::getVramAddressIncrement()
 {
-    return (this->ppuControl & INCREMENT_BIT)? 1 : 32;
+    return (this->controlFlags & INCREMENT_BIT)? 1 : 32;
 }
 
 void Ppu::notify(initializer_list<string> parameters)
 {
-    // TODO concat param1 and param2  and write a switch statement for that
 
-    if (*parameters.begin() == "memwrite")
-        if ((*(parameters.begin() +1)) == "2003")
-            this->oamAddress = static_cast<uint8_t>(convertHexStringToInt(*(parameters.begin() + 2)));
+    if (*parameters.begin() == "memwrite" && (*(parameters.begin() +1)) == "2003")
+    {
+        this->setOAMAddress(convertHexStringToInt(*(parameters.begin() + 2)));
+        return;
+    }
 
+    if (*parameters.begin() == "memwrite" && (*(parameters.begin() +1)) == "2004")
+    {
+        this->writeOAM(convertHexStringToInt(*(parameters.begin() + 2)));
+        return;
+    }
 
-    if (*parameters.begin() == "memwrite")
-        if ((*(parameters.begin() +1)) == "2004")
-        {
-            this->vram->writeOAM(this->oamAddress, static_cast<uint8_t>(convertHexStringToInt(*(parameters.begin() + 2))));
+    if (*parameters.begin() == "memwrite" && (*(parameters.begin() + 1)) == "4014")
+    {
+        this->triggerDMA((convertHexStringToInt((*(parameters.begin() + 2)))) << 8);
+        return;
+    }
 
-            ++this->oamAddress;
-        }
+    if (*parameters.begin() == "memwrite" && (*(parameters.begin() + 1)) == "2006")
+    {
+        this->setMemoryAddress(convertHexStringToInt(*(parameters.begin() + 2)));
+        return;
+    }
 
-    if (*parameters.begin() == "memwrite")
-        if ((*(parameters.begin() + 1)) == "4014")
-        {
-            uint16_t memoryPrefix = (convertHexStringToInt((*(parameters.begin() + 2)))) << 8;
+    if (*parameters.begin() == "memwrite" && (*(parameters.begin() + 1)) == "2007")
+    {
+        this->writeMemory(convertHexStringToInt(*(parameters.begin() + 2)));
+        return;
+    }
 
-            for (auto i = 0; i < OAM_SIZE; ++i)
-            {
-                this->vram->writeOAM(this->oamAddress, this->memory->getFrom(memoryPrefix + i));
-                ++this->oamAddress;
-            }
-        }
-
-    if (*parameters.begin() == "memwrite")
-        if ((*(parameters.begin() + 1)) == "2006")
-        {
-            this->memoryAddress.address = (this->memoryAddress.nextPart == LOW_BYTE) 
-                ? (this->memoryAddress.address & 0xFF00) + convertHexStringToInt(*(parameters.begin() + 2))
-                : (this->memoryAddress.address & 0x00FF) + ((convertHexStringToInt(*(parameters.begin() + 2)) % 0x40) << 8);
-
-            this->memoryAddress.nextPart = (this->memoryAddress.nextPart == LOW_BYTE) ? HIGH_BYTE : LOW_BYTE;
-        }
-
-    if (*parameters.begin() == "memwrite")
-        if ((*(parameters.begin() + 1)) == "2007")
-        {
-            uint8_t data = convertHexStringToInt(*(parameters.begin() + 2));
-            this->vram->writeMemory(this->memoryAddress.address, data);
-
-            this->memoryAddress.address += this->getVramAddressIncrement();
-        }
-
-    if (*parameters.begin() == "memread")
-        if ((*(parameters.begin() + 1)) == "2007")
-        {
-            uint8_t workingAddress = this->memoryAddress.address % VRAM_SIZE;
-
-            if (workingAddress < PALETTE_STARTS)
-            {
-                this->memory->setAt(0x2007, this->memoryAddress.readBuffer);
-                this->memoryAddress.readBuffer = this->vram->readMemory(workingAddress);
-            }
-            else
-            {
-                this->memory->setAt(0x2007, this->vram->readMemory(workingAddress));
-
-                uint8_t newAddress = VRAM_SIZE + (workingAddress - PALETTE_STARTS) % VRAM_SIZE;
-                this->memoryAddress.readBuffer = vram->readMemory(newAddress);
-            }
+    if (*parameters.begin() == "memread" && (*(parameters.begin() + 1)) == "2007")
+    {
+        this->readMemory();
+        return;
+    }
 
 
-            this->memoryAddress.address += this->getVramAddressIncrement();
-        }
+    if (*parameters.begin() == "memwrite" && (*(parameters.begin() + 1)) == "2000")
+    {
+        this->updateControlFlags(convertHexStringToInt(*(parameters.begin() + 2)));
+        return;
+    }
 
-    if (*parameters.begin() == "memwrite")
-        if ((*(parameters.begin() + 1)) == "2000")
-        {
-            this->ppuControl = convertHexStringToInt(*(parameters.begin() + 2));
-        }
+    if (*parameters.begin() == "memread" && (*(parameters.begin() + 1)) == "2004")
+    {
+        this->readOAM();
+        return;
+    }
+}
 
-    if (*parameters.begin() == "memread")
-        if ((*(parameters.begin() + 1)) == "2004")
-        {
-            auto result = this->vram->readOAM(this->oamAddress);
-            this->memory->setAt(0x2004, result);
-        }
+void Ppu::setOAMAddress(uint8_t address)
+{
+    this->oamAddress = address;
+}
+
+void Ppu::writeOAM(uint8_t data)
+{
+    this->vram->writeOAM(this->oamAddress, data);
+
+    ++this->oamAddress;
+}
+
+
+void Ppu::triggerDMA(uint8_t memoryPrefix)
+{
+    for (auto i = 0; i < OAM_SIZE; ++i)
+    {
+        this->vram->writeOAM(this->oamAddress, this->memory->getFrom(memoryPrefix + i));
+        ++this->oamAddress;
+    }
+}
+
+
+void Ppu::setMemoryAddress(uint8_t addressPart)
+{
+    this->memoryAddress.address = (this->memoryAddress.nextPart == LOW_BYTE)
+        ? (this->memoryAddress.address & 0xFF00) + addressPart
+        : (this->memoryAddress.address & 0x00FF) + ((addressPart % 0x40) << 8);
+
+    this->memoryAddress.nextPart = (this->memoryAddress.nextPart == LOW_BYTE) ? HIGH_BYTE : LOW_BYTE;
+}
+
+
+void Ppu::writeMemory(uint8_t data)
+{
+    this->vram->writeMemory(this->memoryAddress.address, data);
+
+    this->memoryAddress.address += this->getVramAddressIncrement();
+}
+
+void Ppu::readMemory()
+{
+    uint8_t workingAddress = this->memoryAddress.address % VRAM_SIZE;
+
+    if (workingAddress < PALETTE_STARTS)
+    {
+        this->memory->setAt(0x2007, this->memoryAddress.readBuffer);
+        this->memoryAddress.readBuffer = this->vram->readMemory(workingAddress);
+    }
+    else
+    {
+        this->memory->setAt(0x2007, this->vram->readMemory(workingAddress));
+
+        uint8_t newAddress = VRAM_SIZE + (workingAddress - PALETTE_STARTS) % VRAM_SIZE;
+        this->memoryAddress.readBuffer = vram->readMemory(newAddress);
+    }
+
+    this->memoryAddress.address += this->getVramAddressIncrement();
+}
+
+void Ppu::updateControlFlags(uint8_t newValue)
+{
+    this->controlFlags = newValue;
+}
+
+void Ppu::readOAM()
+{
+    auto result = this->vram->readOAM(this->oamAddress);
+    this->memory->setAt(0x2004, result);
 }
