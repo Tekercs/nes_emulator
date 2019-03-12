@@ -63,6 +63,15 @@ void Ppu::notify(initializer_list<string> parameters)
         }
 
     if (*parameters.begin() == "memwrite")
+        if ((*(parameters.begin() + 1)) == "2007")
+        {
+            uint8_t data = convertHexStringToInt(*(parameters.begin() + 2));
+            this->vram->writeMemory(this->memoryAddress.address, data);
+
+            this->memoryAddress.address += this->getVramAddressIncrement();
+        }
+
+    if (*parameters.begin() == "memwrite")
         if ((*(parameters.begin() + 1)) == "2000")
         {
             this->ppuControl = convertHexStringToInt(*(parameters.begin() + 2));

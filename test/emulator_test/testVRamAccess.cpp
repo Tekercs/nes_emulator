@@ -95,4 +95,26 @@ SCENARIO("accessing vram via memory mappings")
             }
         }
     }
+
+    GIVEN("empty vram, ram and a ppu")
+    {
+        shared_ptr<Memory> memory = make_shared<Memory>();
+        shared_ptr<VRam> vram = make_shared<VRam>();
+
+        Ppu ppu(vram, memory);
+
+        WHEN("writing to PPUADDR register and PPUDATA")
+        {
+            memory->setAt(0x2006, 0x21);
+            memory->setAt(0x2006, 0x08);
+
+            memory->setAt(0x2007, 0xAA);
+
+
+            THEN("data is set in the vram")
+            {
+                REQUIRE(vram->readMemory(0x2108) == 0xAA);
+            }
+        }
+    }
 }
