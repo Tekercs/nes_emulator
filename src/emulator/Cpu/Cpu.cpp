@@ -42,456 +42,607 @@ void Cpu::executeInstruction(uint8_t opcode)
     {
         case 0x69:
             this->ADC(this->immediateAddressing());
+            this->notifyListeners({"cyclepassed", "2"});
             break;
         case 0x65:
             this->ADC(this->zeroPageValueAddressing());
+            this->notifyListeners({"cyclepassed", "2"});
             break;
         case 0x75:
             this->ADC(this->zeroPageXValueAddressing());
+            this->notifyListeners({"cyclepassed", "4"});
             break;
         case 0x6D:
             this->ADC(this->absoluteValueAddressing());
+            this->notifyListeners({"cyclepassed", "4"});
             break;
         case 0x7D:
             this->ADC(this->absoluteXValueAddressing());
+            this->notifyListeners({"cyclepassed", "4"});
             break;
         case 0x79:
             this->ADC(this->absoluteYValueAddressing());
+            this->notifyListeners({"cyclepassed", "4"});
             break;
         case 0x61:
             this->ADC(this->indexedIndirectValue());
+            this->notifyListeners({"cyclepassed", "6"});
             break;
         case 0x71:
             this->ADC(this->indirectIndexedValue());
+            this->notifyListeners({"cyclepassed", "5"});
             break;
         case 0x29:
             this->AND(this->immediateAddressing());
+            this->notifyListeners({"cyclepassed", "2"});
             break;
         case 0x25:
             this->AND(this->zeroPageValueAddressing());
+            this->notifyListeners({"cyclepassed", "3"});
             break;
         case 0x35:
             this->AND(this->zeroPageXValueAddressing());
+            this->notifyListeners({"cyclepassed", "3"});
             break;
         case 0x2D:
             this->AND(this->absoluteValueAddressing());
+            this->notifyListeners({"cyclepassed", "4"});
             break;
         case 0x3D:
             this->AND(this->absoluteXValueAddressing());
+            this->notifyListeners({"cyclepassed", "4"});
             break;
         case 0x39:
             this->AND(this->absoluteYValueAddressing());
+            this->notifyListeners({"cyclepassed", "4"});
             break;
         case 0x21:
             this->AND(this->indexedIndirectValue());
+            this->notifyListeners({"cyclepassed", "6"});
             break;
         case 0x31:
             this->AND(this->indirectIndexedValue());
+            this->notifyListeners({"cyclepassed", "5"});
             break;
         case 0x0A:
             this->ASLAccumulator();
+            this->notifyListeners({"cyclepassed", "2"});
             break;
         case 0x06:
             this->ASL(this->zeroPageAddressing());
+            this->notifyListeners({"cyclepassed", "5"});
             break;
         case 0x16:
             this->ASL(this->zeroPageXAddressing());
+            this->notifyListeners({"cyclepassed", "6"});
             break;
         case 0x0E:
             this->ASL(this->absoluteLocationAddressing());
+            this->notifyListeners({"cyclepassed", "6"});
             break;
         case 0x1E:
             this->ASL(this->absoluteXLocationAddressing());
+            this->notifyListeners({"cyclepassed", "7"});
             break;
         case 0x90:
             this->BCC(this->immediateAddressing());
+            this->notifyListeners({"cyclepassed", "2"});
             break;
         case 0xB0:
             this->BCS(this->immediateAddressing());
+            this->notifyListeners({"cyclepassed", "2"});
             break;
         case 0xF0:
             this->BEQ(this->immediateAddressing());
+            this->notifyListeners({"cyclepassed", "2"});
             break;
         case 0x24:
             this->BIT(this->zeroPageValueAddressing());
+            this->notifyListeners({"cyclepassed", "2"});
             break;
         case 0x2C:
             this->BIT(this->absoluteValueAddressing());
+            this->notifyListeners({"cyclepassed", "3"});
             break;
         case 0x30:
             this->BMI(this->immediateAddressing());
+            this->notifyListeners({"cyclepassed", "2"});
             break;
         case 0xD0:
             this->BNE(this->immediateAddressing());
+            this->notifyListeners({"cyclepassed", "2"});
             break;
         case 0x10:
             this->BPL(this->immediateAddressing());
+            this->notifyListeners({"cyclepassed", "2"});
             break;
         case 0x50:
             this->BVC(this->immediateAddressing());
+            this->notifyListeners({"cyclepassed", "2"});
             break;
         case 0x70:
             this->BVS(this->immediateAddressing());
+            this->notifyListeners({"cyclepassed", "2"});
             break;
         case 0xC6:
             this->DEC(this->zeroPageAddressing());
+            this->notifyListeners({"cyclepassed", "5"});
             break;
         case 0xD6:
             this->DEC(this->zeroPageXAddressing());
+            this->notifyListeners({"cyclepassed", "6"});
             break;
         case 0xCE:
             this->DEC(this->absoluteLocationAddressing());
+            this->notifyListeners({"cyclepassed", "6"});
             break;
         case 0xDE:
             this->DEC(this->absoluteXLocationAddressing());
+            this->notifyListeners({"cyclepassed", "7"});
             break;
         case 0xCA:
             this->DEX();
+            this->notifyListeners({"cyclepassed", "2"});
             break;
         case 0x88:
             this->DEY();
+            this->notifyListeners({"cyclepassed", "2"});
             break;
         case 0xE6:
             this->INC(this->zeroPageAddressing());
+            this->notifyListeners({"cyclepassed", "5"});
             break;
         case 0xF6:
             this->INC(this->zeroPageXAddressing());
+            this->notifyListeners({"cyclepassed", "6"});
             break;
         case 0xEE:
             this->INC(this->absoluteLocationAddressing());
+            this->notifyListeners({"cyclepassed", "6"});
             break;
         case 0xFE:
             this->INC(this->absoluteXLocationAddressing());
+            this->notifyListeners({"cyclepassed", "7"});
             break;
         case 0xE8:
             this->INX();
+            this->notifyListeners({"cyclepassed", "2"});
             break;
         case 0xC8:
             this->INY();
+            this->notifyListeners({"cyclepassed", "2"});
             break;
         case 0xA9:
             this->LDA(this->immediateAddressing());
+            this->notifyListeners({"cyclepassed", "2"});
             break;
         case 0xA5:
             this->LDA(this->zeroPageValueAddressing());
+            this->notifyListeners({"cyclepassed", "3"});
             break;
         case 0xB5:
             this->LDA(this->zeroPageXValueAddressing());
+            this->notifyListeners({"cyclepassed", "4"});
             break;
         case 0xAD:
             this->LDA(this->absoluteValueAddressing());
+            this->notifyListeners({"cyclepassed", "4"});
             break;
         case 0xBD:
             this->LDA(this->absoluteXValueAddressing());
+            this->notifyListeners({"cyclepassed", "4"});
             break;
         case 0xB9:
             this->LDA(this->absoluteYValueAddressing());
+            this->notifyListeners({"cyclepassed", "4"});
             break;
         case 0xA1:
             this->LDA(this->indexedIndirectValue());
+            this->notifyListeners({"cyclepassed", "6"});
             break;
         case 0xB1:
             this->LDA(this->indirectIndexedValue());
+            this->notifyListeners({"cyclepassed", "5"});
             break;
         case 0xA2:
             this->LDX(this->immediateAddressing());
+            this->notifyListeners({"cyclepassed", "2"});
             break;
         case 0xA6:
             this->LDX(this->zeroPageValueAddressing());
+            this->notifyListeners({"cyclepassed", "3"});
             break;
         case 0xB6:
             this->LDX(this->zeroPageYValueAddressing());
+            this->notifyListeners({"cyclepassed", "4"});
             break;
         case 0xAE:
             this->LDX(this->absoluteValueAddressing());
+            this->notifyListeners({"cyclepassed", "4"});
             break;
         case 0xBE:
             this->LDX(this->absoluteYValueAddressing());
+            this->notifyListeners({"cyclepassed", "4"});
             break;
         case 0xA0:
             this->LDY(this->immediateAddressing());
+            this->notifyListeners({"cyclepassed", "2"});
             break;
         case 0xA4:
             this->LDY(this->zeroPageValueAddressing());
+            this->notifyListeners({"cyclepassed", "3"});
             break;
         case 0xB4:
             this->LDY(this->zeroPageXValueAddressing());
+            this->notifyListeners({"cyclepassed", "4"});
             break;
         case 0xAC:
             this->LDY(this->absoluteValueAddressing());
+            this->notifyListeners({"cyclepassed", "4"});
             break;
         case 0xBC:
             this->LDY(this->absoluteXValueAddressing());
+            this->notifyListeners({"cyclepassed", "4"});
             break;
         case 0x48:
             this->PHA();
+            this->notifyListeners({"cyclepassed", "3"});
             break;
         case 0x68:
             this->PLA();
+            this->notifyListeners({"cyclepassed", "4"});
             break;
         case 0x08:
             this->PHP();
+            this->notifyListeners({"cyclepassed", "3"});
             break;
         case 0x28:
             this->PLP();
+            this->notifyListeners({"cyclepassed", "4"});
             break;
         case 0x38:
             this->SEC();
+            this->notifyListeners({"cyclepassed", "2"});
             break;
         case 0xF8:
             this->SED();
+            this->notifyListeners({"cyclepassed", "2"});
             break;
         case 0x78:
             this->SEI();
+            this->notifyListeners({"cyclepassed", "2"});
             break;
         case 0x18:
             this->CLC();
+            this->notifyListeners({"cyclepassed", "2"});
             break;
         case 0xD8:
             this->CLD();
+            this->notifyListeners({"cyclepassed", "2"});
             break;
         case 0x58:
             this->CLI();
+            this->notifyListeners({"cyclepassed", "2"});
             break;
         case 0xB8:
             this->CLV();
+            this->notifyListeners({"cyclepassed", "2"});
             break;
         case 0xAA:
             this->TAX();
+            this->notifyListeners({"cyclepassed", "2"});
             break;
         case 0xA8:
             this->TAY();
+            this->notifyListeners({"cyclepassed", "2"});
             break;
         case 0xBA:
             this->TSX();
+            this->notifyListeners({"cyclepassed", "2"});
             break;
         case 0x8A:
             this->TXA();
+            this->notifyListeners({"cyclepassed", "2"});
             break;
         case 0x9A:
             this->TXS();
+            this->notifyListeners({"cyclepassed", "2"});
             break;
         case 0x98:
             this->TYA();
+            this->notifyListeners({"cyclepassed", "2"});
             break;
         case 0x4C:
             this->JMP(this->absoluteLocationAddressing());
+            this->notifyListeners({"cyclepassed", "3"});
             break;
         case 0x6C:
             this->JMP(this->indirectAddress());
+            this->notifyListeners({"cyclepassed", "5"});
             break;
         case 0xE9:
             this->SBC(this->immediateAddressing());
+            this->notifyListeners({"cyclepassed", "2"});
             break;
         case 0xE5:
             this->SBC(this->zeroPageValueAddressing());
+            this->notifyListeners({"cyclepassed", "3"});
             break;
         case 0xF5:
             this->SBC(this->zeroPageXValueAddressing());
+            this->notifyListeners({"cyclepassed", "4"});
             break;
         case 0xED:
             this->SBC(this->absoluteValueAddressing());
+            this->notifyListeners({"cyclepassed", "4"});
             break;
         case 0xFD:
             this->SBC(this->absoluteXValueAddressing());
+            this->notifyListeners({"cyclepassed", "4"});
             break;
         case 0xF9:
             this->SBC(this->absoluteYValueAddressing());
+            this->notifyListeners({"cyclepassed", "4"});
             break;
         case 0xE1:
             this->SBC(this->indexedIndirectValue());
+            this->notifyListeners({"cyclepassed", "6"});
             break;
         case 0xF1:
             this->SBC(this->indirectIndexedValue());
+            this->notifyListeners({"cyclepassed", "5"});
             break;
         case 0x85:
             this->STA(this->zeroPageAddressing());
+            this->notifyListeners({"cyclepassed", "3"});
             break;
         case 0x95:
             this->STA(this->zeroPageXAddressing());
+            this->notifyListeners({"cyclepassed", "4"});
             break;
         case 0x8D:
             this->STA(this->absoluteLocationAddressing());
+            this->notifyListeners({"cyclepassed", "4"});
             break;
         case 0x9D:
             this->STA(this->absoluteXLocationAddressing());
+            this->notifyListeners({"cyclepassed", "5"});
             break;
         case 0x99:
             this->STA(this->absoluteYLocationAddressing());
+            this->notifyListeners({"cyclepassed", "5"});
             break;
         case 0x81:
             this->STA(this->indexedIndirectAddress());
+            this->notifyListeners({"cyclepassed", "6"});
             break;
         case 0x91:
             this->STA(this->indirectIndexedAddress());
+            this->notifyListeners({"cyclepassed", "6"});
             break;
         case 0x86:
             this->STX(this->zeroPageAddressing());
+            this->notifyListeners({"cyclepassed", "3"});
             break;
         case 0x96:
             this->STX(this->zeroPageYAddressing());
+            this->notifyListeners({"cyclepassed", "4"});
             break;
         case 0x8E:
             this->STX(this->absoluteLocationAddressing());
+            this->notifyListeners({"cyclepassed", "4"});
             break;
         case 0x84:
             this->STY(this->zeroPageAddressing());
+            this->notifyListeners({"cyclepassed", "3"});
             break;
         case 0x94:
             this->STY(this->zeroPageXAddressing());
+            this->notifyListeners({"cyclepassed", "4"});
             break;
         case 0x8C:
             this->STY(this->absoluteLocationAddressing());
+            this->notifyListeners({"cyclepassed", "4"});
             break;
         case 0xEA:
             this->NOP();
+            this->notifyListeners({"cyclepassed", "2"});
             break;
         case 0x2A:
             this->ROLAccumulator();
+            this->notifyListeners({"cyclepassed", "2"});
             break;
         case 0x26:
             this->ROL(this->zeroPageAddressing());
+            this->notifyListeners({"cyclepassed", "5"});
             break;
         case 0x36:
             this->ROL(this->zeroPageXAddressing());
+            this->notifyListeners({"cyclepassed", "6"});
             break;
         case 0x2E:
             this->ROL(this->absoluteLocationAddressing());
+            this->notifyListeners({"cyclepassed", "6"});
             break;
         case 0x3E:
             this->ROL(this->absoluteXLocationAddressing());
+            this->notifyListeners({"cyclepassed", "7"});
             break;
         case 0x6A:
             this->RORAccumulator();
+            this->notifyListeners({"cyclepassed", "2"});
             break;
         case 0x66:
             this->ROR(this->zeroPageAddressing());
+            this->notifyListeners({"cyclepassed", "5"});
             break;
         case 0x76:
             this->ROR(this->zeroPageXAddressing());
+            this->notifyListeners({"cyclepassed", "6"});
             break;
         case 0x6E:
             this->ROR(this->absoluteLocationAddressing());
+            this->notifyListeners({"cyclepassed", "6"});
             break;
         case 0x7E:
             this->ROR(this->absoluteXLocationAddressing());
+            this->notifyListeners({"cyclepassed", "7"});
             break;
         case 0x4A:
             this->LSRAccumulator();
+            this->notifyListeners({"cyclepassed", "2"});
             break;
         case 0x46:
             this->LSR(this->zeroPageAddressing());
+            this->notifyListeners({"cyclepassed", "5"});
             break;
         case 0x56:
             this->LSR(this->zeroPageXAddressing());
+            this->notifyListeners({"cyclepassed", "6"});
             break;
         case 0x4E:
             this->LSR(this->absoluteLocationAddressing());
+            this->notifyListeners({"cyclepassed", "6"});
             break;
         case 0x5E:
             this->LSR(this->absoluteXLocationAddressing());
+            this->notifyListeners({"cyclepassed", "7"});
             break;
         case 0xC9:
             this->CMP(this->immediateAddressing());
+            this->notifyListeners({"cyclepassed", "2"});
             break;
         case 0xC5:
             this->CMP(this->zeroPageValueAddressing());
+            this->notifyListeners({"cyclepassed", "3"});
             break;
         case 0xD5:
             this->CMP(this->zeroPageXValueAddressing());
+            this->notifyListeners({"cyclepassed", "4"});
             break;
         case 0xCD:
             this->CMP(this->absoluteValueAddressing());
+            this->notifyListeners({"cyclepassed", "4"});
             break;
         case 0xDD:
             this->CMP(this->absoluteXValueAddressing());
+            this->notifyListeners({"cyclepassed", "4"});
             break;
         case 0xD9:
             this->CMP(this->absoluteYValueAddressing());
+            this->notifyListeners({"cyclepassed", "4"});
             break;
         case 0xC1:
             this->CMP(this->indexedIndirectValue());
+            this->notifyListeners({"cyclepassed", "6"});
             break;
         case 0xD1:
             this->CMP(this->indirectIndexedValue());
+            this->notifyListeners({"cyclepassed", "5"});
             break;
         case 0xE0:
             this->CPX(this->immediateAddressing());
+            this->notifyListeners({"cyclepassed", "2"});
             break;
         case 0xE4:
             this->CPX(this->zeroPageValueAddressing());
+            this->notifyListeners({"cyclepassed", "3"});
             break;
         case 0xEC:
             this->CPX(this->absoluteValueAddressing());
+            this->notifyListeners({"cyclepassed", "4"});
             break;
         case 0xC0:
             this->CPY(this->immediateAddressing());
+            this->notifyListeners({"cyclepassed", "2"});
             break;
         case 0xC4:
             this->CPY(this->zeroPageValueAddressing());
+            this->notifyListeners({"cyclepassed", "3"});
             break;
         case 0xCC:
             this->CPY(this->absoluteValueAddressing());
+            this->notifyListeners({"cyclepassed", "4"});
             break;
         case 0x49:
             this->EOR(this->immediateAddressing());
+            this->notifyListeners({"cyclepassed", "2"});
             break;
         case 0x45:
             this->EOR(this->zeroPageValueAddressing());
+            this->notifyListeners({"cyclepassed", "3"});
             break;
         case 0x55:
             this->EOR(this->zeroPageXValueAddressing());
+            this->notifyListeners({"cyclepassed", "4"});
             break;
         case 0x4D:
             this->EOR(this->absoluteValueAddressing());
+            this->notifyListeners({"cyclepassed", "4"});
             break;
         case 0x5D:
             this->EOR(this->absoluteXValueAddressing());
+            this->notifyListeners({"cyclepassed", "4"});
             break;
         case 0x59:
             this->EOR(this->absoluteYValueAddressing());
+            this->notifyListeners({"cyclepassed", "2"});
             break;
         case 0x41:
             this->EOR(this->indexedIndirectValue());
+            this->notifyListeners({"cyclepassed", "6"});
             break;
         case 0x51:
             this->EOR(this->indirectIndexedValue());
+            this->notifyListeners({"cyclepassed", "5"});
             break;
         case 0x09:
             this->ORA(this->immediateAddressing());
+            this->notifyListeners({"cyclepassed", "2"});
             break;
         case 0x05:
             this->ORA(this->zeroPageValueAddressing());
+            this->notifyListeners({"cyclepassed", "3"});
             break;
         case 0x15:
             this->ORA(this->zeroPageXValueAddressing());
+            this->notifyListeners({"cyclepassed", "4"});
             break;
         case 0x0D:
             this->ORA(this->absoluteValueAddressing());
+            this->notifyListeners({"cyclepassed", "4"});
             break;
         case 0x1D:
             this->ORA(this->absoluteXValueAddressing());
+            this->notifyListeners({"cyclepassed", "4"});
             break;
         case 0x19:
             this->ORA(this->absoluteYValueAddressing());
+            this->notifyListeners({"cyclepassed", "4"});
             break;
         case 0x01:
             this->ORA(this->indexedIndirectValue());
+            this->notifyListeners({"cyclepassed", "2"});
             break;
         case 0x11:
             this->ORA(this->indirectIndexedValue());
+            this->notifyListeners({"cyclepassed", "5"});
             break;
         case 0x20:
             this->JSR(this->absoluteLocationAddressing());
+            this->notifyListeners({"cyclepassed", "6"});
             break;
         case 0x60:
             this->RTS();
+            this->notifyListeners({"cyclepassed", "6"});
             break;
         case 0x40:
             this->RTI();
+            this->notifyListeners({"cyclepassed", "6"});
             break;
         case 0x00:
             this->BRK();
+            this->notifyListeners({"cyclepassed", "7"});
             break;
     }
 }

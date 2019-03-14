@@ -7,6 +7,7 @@
 
 #include <Memory/Memory.h>
 #include <Cpu/Registers.h>
+#include <Utils/EventSource.h>
 
 #define STACK_POINTER              0x0100
 
@@ -16,7 +17,7 @@
 // TODO valoszinuleg a registereket kilehetne szedni kulon classba
 namespace Emulator::Cpu
 {
-    class Cpu
+    class Cpu : public Utils::EventSource
     {
     private:
         std::shared_ptr<Emulator::Memory::Memory> memory;
