@@ -1,4 +1,4 @@
-add_executable(ui main.cpp)
+add_executable(ui main.cpp GameWindow.cpp GameWindow.h)
 
 find_package(SDL2 REQUIRED)
 find_package(SDL2)
