@@ -16,12 +16,27 @@ Ui::GameWindow::GameWindow(uint8_t scaling) : scaling(scaling)
 
 void Ui::GameWindow::colorPixel(Ui::Cords cords, Ui::Color color)
 {
+    SDL_Rect rect = {
+            .x = cords.horizontal * this->scaling,
+            .y = cords.vertical * this->scaling,
+            .w = MAX_HORIZONTAL * this->scaling,
+            .h = this->scaling
+    };
+    SDL_SetRenderDrawColor(this->renderer,
+            color.red,
+            color.green,
+            color.blue,
+            color.alpha);
 
+    SDL_RenderPresent(this->renderer);
 }
 
 void Ui::GameWindow::clearScreen()
 {
+    SDL_SetRenderDrawColor(this->renderer, 0, 0, 0, 0);
+    SDL_RenderClear(this->renderer);
 
+    SDL_RenderPresent(this->renderer);
 }
 
 Ui::GameWindow::~GameWindow()
