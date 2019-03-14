@@ -19,6 +19,9 @@
 #define PRG_LOWER           0x8000
 #define PRG_UPPER           0xC000
 
+#define RESET_UPPER         0xFFFD
+#define RESET_LOWER         0xFFFC
+
 /**
  * @namespace Emulator
  *
