@@ -3,10 +3,6 @@
 
 int main()
 {
-    SDL_Init(SDL_INIT_EVERYTHING);
-    auto window = SDL_CreateWindow("first sdl", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 400, 400, SDL_WINDOW_SHOWN);
-    auto renderer = SDL_CreateRenderer(window, -1, 0);
-
     SDL_Rect rect = {.x = 0, .y = 0, .w = 100, .h = 200};
     SDL_RenderPresent(renderer);
 
@@ -27,9 +23,7 @@ int main()
         SDL_RenderPresent(renderer);
     } while (!quit);
 
-    SDL_DestroyRenderer(renderer);
-    SDL_DestroyWindow(window);
-    SDL_Quit();
+
 
     return 0;
 }

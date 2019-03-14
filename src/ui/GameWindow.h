@@ -25,9 +25,11 @@ namespace Ui
     private:
         SDL_Window* window;
         SDL_Renderer* renderer;
+        uint8_t scaling;
 
     public:
         explicit GameWindow(uint8_t scaling);
+        ~GameWindow();
 
         void colorPixel(Cords cords, Color color);
         void clearScreen();
