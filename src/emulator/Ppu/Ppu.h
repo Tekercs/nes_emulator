@@ -46,5 +46,7 @@ namespace Emulator::Ppu
         Ppu(std::shared_ptr<VRam> vram, std::shared_ptr<Emulator::Memory::Memory> memory);
 
         void notify(std::initializer_list<std::string> parameters) override;
+
+        void operator++();
     };
 }

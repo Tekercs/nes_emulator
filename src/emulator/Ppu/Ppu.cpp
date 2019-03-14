@@ -1,5 +1,7 @@
 #include "Ppu.h"
 
+#include <iostream>
+
 #include <Utils/Converters.h>
 
 using namespace std;
@@ -87,6 +89,20 @@ void Ppu::notify(initializer_list<string> parameters)
         this->writeStatusToMemory();
         return;
     }
+
+    if (*parameters.begin() == "cyclepassed")
+    {
+        auto cyclesPassed = convertHexStringToInt(*(parameters.begin() +1));
+        for (uint8_t i = 0; i < cyclesPassed; ++i)
+            ++(*this);
+
+        return;
+    }
+}
+
+void Ppu::operator++()
+{
+    std::cout << "cycle passed" << std::endl;
 }
 
 void Ppu::writeStatusToMemory()

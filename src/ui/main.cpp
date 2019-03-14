@@ -29,6 +29,7 @@ int main()
 
     Cpu cpu(memory, registers);
     Ppu ppu(vram, memory);
+    cpu.subscribe(&ppu);
 
     Cartridge cartridge("/home/bence/Desktop/ballon_fight.nes");
     auto mapper = createMapper(cartridge, *memory.get(), *vram.get());
