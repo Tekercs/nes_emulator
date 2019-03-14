@@ -12,6 +12,8 @@ Ui::GameWindow::GameWindow(uint8_t scaling) : scaling(scaling)
             , MAX_VERTICAL * this->scaling
             , SDL_WINDOW_SHOWN);
     this->renderer = SDL_CreateRenderer(window, -1, 0);
+
+    this->clearScreen();
 }
 
 void Ui::GameWindow::colorPixel(Ui::Cords cords, Ui::Color color)
@@ -19,7 +21,7 @@ void Ui::GameWindow::colorPixel(Ui::Cords cords, Ui::Color color)
     SDL_Rect rect = {
             .x = cords.horizontal * this->scaling,
             .y = cords.vertical * this->scaling,
-            .w = MAX_HORIZONTAL * this->scaling,
+            .w = this->scaling,
             .h = this->scaling
     };
     SDL_SetRenderDrawColor(this->renderer,
@@ -27,6 +29,7 @@ void Ui::GameWindow::colorPixel(Ui::Cords cords, Ui::Color color)
             color.green,
             color.blue,
             color.alpha);
+    SDL_RenderFillRect(this->renderer, &rect);
 
     SDL_RenderPresent(this->renderer);
 }

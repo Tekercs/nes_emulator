@@ -1,29 +1,17 @@
 #include <iostream>
 #include <SDL2/SDL.h>
 
+#include <GameWindow.h>
+
+using namespace std;
+using namespace Ui;
+
 int main()
 {
-    SDL_Rect rect = {.x = 0, .y = 0, .w = 100, .h = 200};
-    SDL_RenderPresent(renderer);
+    GameWindow gameWindow(4);
+    gameWindow.colorPixel({.horizontal = 1, .vertical = 2}, {.red = 255, .green = 255, .blue = 0, .alpha = 0});
 
-    SDL_Event event;
-    auto quit = false;
-    do
-    {
-        SDL_PollEvent(&event);
-
-        quit = (event.type == SDL_QUIT);
-
-        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
-        SDL_RenderClear(renderer);
-
-        SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
-        SDL_RenderFillRect(renderer, &rect);
-
-        SDL_RenderPresent(renderer);
-    } while (!quit);
-
-
+    SDL_Delay(5000);
 
     return 0;
 }
