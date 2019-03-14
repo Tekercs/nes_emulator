@@ -34,8 +34,8 @@ namespace Emulator::Ppu
         void generateNametable(NametableMirroring mirroringType);
         void generatePaletteRam();
 
-    public: 
-        VRam(NametableMirroring mirroringType);
+    public:
+        explicit VRam(NametableMirroring mirroringType);
 
         uint8_t readOAM(uint8_t address);
         void writeOAM(uint8_t address, uint8_t value);
