@@ -94,13 +94,15 @@ void Ppu::writeStatusToMemory()
     this->memory->setAt(0x2002, this->statusFlags);
     this->statusFlags = this->statusFlags & 0b01111111;
 
-    switch (this->controlFlags & 0b00000011)
-    {
-        case 0: this->memoryAddress.address = NAME_0;
-        case 1: this->memoryAddress.address = NAME_1;
-        case 2: this->memoryAddress.address = NAME_2;
-        case 3: this->memoryAddress.address = NAME_3;
-    }
+    this->memoryAddress.nextPart = HIGH_BYTE,
+    this->memoryAddress.address = this->getBaseNametableAddress();
+}
+
+uint16_t Ppu::getBaseNametableAddress()
+{
+    auto defaultNametableBits = this->controlFlags & BASE_NAMETABLE_BITS;
+
+    return NAME_0 + (defaultNametableBits & NAME_SIZE);
 }
 
 void Ppu::setOutputMaskFlags(uint8_t maskFlags)

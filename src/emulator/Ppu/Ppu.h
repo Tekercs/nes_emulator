@@ -14,6 +14,8 @@
 
 #define VBLANK_FLAG 0b10000000
 
+#define BASE_NAMETABLE_BITS 0b00000011
+
 #define INCREMENT_BIT 0b00000100
 
 namespace Emulator::Ppu
@@ -41,6 +43,8 @@ namespace Emulator::Ppu
         void setMemoryAddress(uint8_t addressPart);
         void updateControlFlags(uint8_t newValue);
         void setOutputMaskFlags(uint8_t maskFlags);
+
+        uint16_t getBaseNametableAddress();
 
     public:
         Ppu(std::shared_ptr<VRam> vram, std::shared_ptr<Emulator::Memory::Memory> memory);
