@@ -9,6 +9,8 @@
 #include <Rom/Mapper.h>
 #include <Cpu/Cpu.h>
 #include <Cpu/Registers.h>
+#include <Ppu/Ppu.h>
+#include <Ppu/VRam.h>
 
 #include "helpers/TestCpuHelpers.h"
 
@@ -16,6 +18,7 @@ using namespace std;
 using namespace Emulator::Cpu;
 using namespace Emulator::Memory;
 using namespace Emulator::ROM;
+using namespace Emulator::Ppu;
 
 #define PATH_NESTEST "test/emulator_test/test_roms/kevtris/nestest.nes"
 #define PATH_NESTEST_LOG "test/emulator_test/test_roms/kevtris/nestest.log"
@@ -26,13 +29,15 @@ SCENARIO("nestest.nes by kevtris")
     {
         shared_ptr<Memory> memory = make_shared<Memory>();
         shared_ptr<Registers> registers = make_shared<Registers>();
+        shared_ptr<VRam> vram = make_shared<VRam>(HORIZONTAL);
+
         registers->setProgramCounter(0xC000);
         registers->setStatusFlags(0x24);
 
         Cpu cpu(memory, registers);
 
         Cartridge cartridge(PATH_NESTEST);
-        auto mapper = createMapper(cartridge, *memory.get());
+        auto mapper = createMapper(cartridge, *memory.get(), *vram.get());
         mapper->map();
 
         ifstream logFile(PATH_NESTEST_LOG);

@@ -5,6 +5,7 @@
 #include <Rom/Cartridge.h>
 #include <Memory/Memory.h>
 #include <Cpu/Cpu.h>
+#include <Ppu/VRam.h>
 
 #define MAPPER_NROM 0
 
@@ -15,13 +16,14 @@ namespace Emulator::ROM
     protected:
         const Cartridge& cartridge;
         Memory::Memory& memory;
+        Ppu::VRam& vram;
 
     public:
-        Mapper(const Cartridge& cartridge, Memory::Memory& memory);
+        Mapper(const Cartridge& cartridge, Memory::Memory& memory, Ppu::VRam& vram);
 
         virtual void map() = 0;
 
     };
 
-    std::shared_ptr<Mapper> createMapper(const Cartridge& cartridge, Memory::Memory& memory);
+    std::shared_ptr<Mapper> createMapper(const Cartridge &cartridge, Memory::Memory &memory, Ppu::VRam &vram);
 }
