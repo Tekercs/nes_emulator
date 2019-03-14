@@ -15,14 +15,13 @@ namespace Emulator::ROM
     protected:
         const Cartridge& cartridge;
         Memory::Memory& memory;
-        Cpu::Cpu& cpu;
 
     public:
-        Mapper(const Cartridge& cartridge, Memory::Memory& memory, Cpu::Cpu& cpu);
+        Mapper(const Cartridge& cartridge, Memory::Memory& memory);
 
         virtual void map() = 0;
 
     };
 
-    std::shared_ptr<Mapper> createMapper(const Cartridge& cartridge, Memory::Memory& memory, Cpu::Cpu& cpu);
+    std::shared_ptr<Mapper> createMapper(const Cartridge& cartridge, Memory::Memory& memory);
 }

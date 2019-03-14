@@ -7,7 +7,7 @@ namespace Emulator::ROM
     class MapperNrom : public Mapper
     {
     public:
-        MapperNrom(const Cartridge& cartridge, Memory::Memory& memory, Cpu::Cpu& cpu);
+        MapperNrom(const Cartridge& cartridge, Memory::Memory& memory);
 
         void map() override;
 

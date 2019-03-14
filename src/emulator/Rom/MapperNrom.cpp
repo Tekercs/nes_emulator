@@ -8,9 +8,8 @@ using namespace Emulator::Cpu;
 using namespace Emulator::Memory;
 
 MapperNrom::MapperNrom(const Cartridge& cartridge,
-                       Emulator::Memory::Memory& memory,
-                       Emulator::Cpu::Cpu& cpu)
-                       : Mapper(cartridge, memory, cpu) {}
+                       Emulator::Memory::Memory& memory)
+                       : Mapper(cartridge, memory) {}
 
 void MapperNrom::map()
 {

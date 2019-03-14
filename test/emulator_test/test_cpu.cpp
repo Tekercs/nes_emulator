@@ -32,7 +32,7 @@ SCENARIO("nestest.nes by kevtris")
         Cpu cpu(memory, registers);
 
         Cartridge cartridge(PATH_NESTEST);
-        auto mapper = createMapper(cartridge, *memory.get(), cpu);
+        auto mapper = createMapper(cartridge, *memory.get());
         mapper->map();
 
         ifstream logFile(PATH_NESTEST_LOG);
