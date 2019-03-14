@@ -29,70 +29,80 @@ uint8_t Ppu::getVramAddressIncrement()
 
 void Ppu::notify(initializer_list<string> parameters)
 {
+    std::string eventName = *parameters.begin();
+    std::string param1 = "";
+    std::string param2 = "";
+    if (parameters.size() > 1)
+        param1 = *(parameters.begin() + 1);
 
-    if (*parameters.begin() == "memwrite" && (*(parameters.begin() +1)) == "2003")
+    std::cout << eventName << "/" << param1 << "/" << param2 << std::endl;
+
+    if (parameters.size() > 2)
+        param2 = *(parameters.begin() + 2);
+
+    if (eventName == "memwrite" && (param1) == "2003")
     {
-        this->setOAMAddress(convertHexStringToInt(*(parameters.begin() + 2)));
+        this->setOAMAddress(convertHexStringToInt(param2));
         return;
     }
 
-    if (*parameters.begin() == "memwrite" && (*(parameters.begin() +1)) == "2004")
+    if (eventName == "memwrite" && (param1) == "2004")
     {
-        this->writeOAM(convertHexStringToInt(*(parameters.begin() + 2)));
+        this->writeOAM(convertHexStringToInt(param2));
         return;
     }
 
-    if (*parameters.begin() == "memwrite" && (*(parameters.begin() + 1)) == "4014")
+    if (eventName == "memwrite" && (param1) == "4014")
     {
-        this->triggerDMA((convertHexStringToInt((*(parameters.begin() + 2)))) << 8);
+        this->triggerDMA((convertHexStringToInt((param2))) << 8);
         return;
     }
 
-    if (*parameters.begin() == "memwrite" && (*(parameters.begin() + 1)) == "2006")
+    if (eventName == "memwrite" && (param1) == "2006")
     {
-        this->setMemoryAddress(convertHexStringToInt(*(parameters.begin() + 2)));
+        this->setMemoryAddress(convertHexStringToInt(param2));
         return;
     }
 
-    if (*parameters.begin() == "memwrite" && (*(parameters.begin() + 1)) == "2007")
+    if (eventName == "memwrite" && (param1) == "2007")
     {
-        this->writeMemory(convertHexStringToInt(*(parameters.begin() + 2)));
+        this->writeMemory(convertHexStringToInt(param2));
         return;
     }
 
-    if (*parameters.begin() == "memread" && (*(parameters.begin() + 1)) == "2007")
+    if (eventName == "memread" && (param1) == "2007")
     {
         this->readMemory();
         return;
     }
 
-    if (*parameters.begin() == "memwrite" && (*(parameters.begin() + 1)) == "2000")
+    if (eventName == "memwrite" && (param1) == "2000")
     {
-        this->updateControlFlags(convertHexStringToInt(*(parameters.begin() + 2)));
+        this->updateControlFlags(convertHexStringToInt(param2));
         return;
     }
 
-    if (*parameters.begin() == "memread" && (*(parameters.begin() + 1)) == "2004")
+    if (eventName == "memread" && (param1) == "2004")
     {
         this->readOAM();
         return;
     }
 
-    if (*parameters.begin() == "memwrite" && (*(parameters.begin() + 1)) == "2001")
+    if (eventName == "memwrite" && (param1) == "2001")
     {
-        this->setOutputMaskFlags(convertHexStringToInt(*(parameters.begin() + 2)));
+        this->setOutputMaskFlags(convertHexStringToInt(param2));
         return;
     }
 
-    if (*parameters.begin() == "memread" && (*(parameters.begin() + 1)) == "2002")
+    if (eventName == "memread" && (param1) == "2002")
     {
         this->writeStatusToMemory();
         return;
     }
 
-    if (*parameters.begin() == "cyclepassed")
+    if (eventName == "cyclepassed")
     {
-        auto cyclesPassed = convertHexStringToInt(*(parameters.begin() +1));
+        auto cyclesPassed = convertHexStringToInt(param1);
         for (uint8_t i = 0; i < cyclesPassed; ++i)
             ++(*this);
 
