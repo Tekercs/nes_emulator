@@ -8,13 +8,19 @@
 #include <Memory/Memory.h>
 #include <Utils/Listener.h>
 
-#define DEFAULT_PPUCNTRL 0x0000
+#define DEFAULT_PPUCNTRL  0x0000
 #define DEFAULT_MASKFLAGS 0x0000
-#define DEFAULT_STATUS 0x0000
+#define DEFAULT_STATUS    0x0000
 
-#define VBLANK_FLAG 0b10000000
+#define VBLANK_FLAG       0b10000000
 
-#define INCREMENT_BIT 0b00000100
+#define RENDER_FINISH     81840
+#define VBLANK_STARTS     82181
+#define SCANLINE_CYCLES   341
+#define WARMUP_CYCLES     88974
+#define MAX_CYCLE         89001
+
+#define INCREMENT_BIT     0b00000100
 
 namespace Emulator::Ppu
 {
@@ -28,9 +34,12 @@ namespace Emulator::Ppu
         uint8_t controlFlags;
         uint8_t outputMaskFlags;
         uint8_t statusFlags;
+        uint32_t cycleCounter;
+        uint32_t warmupCycles;
 
         uint8_t getVramAddressIncrement();
 
+        void setVblankFLag();
         void setOAMAddress(uint8_t address);
         void writeStatusToMemory();
         void readOAM();

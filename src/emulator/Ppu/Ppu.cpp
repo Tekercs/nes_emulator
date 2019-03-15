@@ -1,7 +1,5 @@
 #include "Ppu.h"
 
-#include <iostream>
-
 #include <Utils/Converters.h>
 
 using namespace std;
@@ -11,15 +9,15 @@ using namespace Emulator::Utils;
 Ppu::Ppu(std::shared_ptr<VRam> vram, std::shared_ptr<Emulator::Memory::Memory> memory)
 : memory(std::move(memory))
 , vram(std::move(vram))
+, warmupCycles(WARMUP_CYCLES)
+, cycleCounter(0)
+, oamAddress(0)
+, memoryAddress({.nextPart = HIGH_BYTE, .address = 0, .readBuffer = 0})
+, controlFlags(DEFAULT_PPUCNTRL)
+, statusFlags(DEFAULT_STATUS)
+, outputMaskFlags(DEFAULT_MASKFLAGS)
 {
-    this->oamAddress = 0;
-    this->memoryAddress = {.nextPart = HIGH_BYTE, .address = 0, .readBuffer = 0};
-
     this->memory->subscribe(this);
-
-    this->controlFlags = DEFAULT_PPUCNTRL;
-    this->outputMaskFlags = DEFAULT_MASKFLAGS;
-    this->statusFlags = DEFAULT_STATUS;
 }
 
 uint8_t Ppu::getVramAddressIncrement()
@@ -34,8 +32,6 @@ void Ppu::notify(initializer_list<string> parameters)
     std::string param2 = "";
     if (parameters.size() > 1)
         param1 = *(parameters.begin() + 1);
-
-    std::cout << eventName << "/" << param1 << "/" << param2 << std::endl;
 
     if (parameters.size() > 2)
         param2 = *(parameters.begin() + 2);
@@ -103,7 +99,7 @@ void Ppu::notify(initializer_list<string> parameters)
     if (eventName == "cyclepassed")
     {
         auto cyclesPassed = convertHexStringToInt(param1);
-        for (uint8_t i = 0; i < cyclesPassed; ++i)
+        for (uint8_t i = 0; i < cyclesPassed * 3; ++i)
             ++(*this);
 
         return;
@@ -112,7 +108,25 @@ void Ppu::notify(initializer_list<string> parameters)
 
 void Ppu::operator++()
 {
-    std::cout << "cycle passed" << std::endl;
+    if (this->warmupCycles == 0)
+    {
+        if (this->cycleCounter == RENDER_FINISH)
+        {
+            // TODO render the whole screen
+        }
+        else if (this->cycleCounter == VBLANK_STARTS)
+            this->setVblankFLag();
+
+    }
+    else
+        --this->warmupCycles;
+
+    this->cycleCounter = (this->cycleCounter +1) % MAX_CYCLE;
+}
+
+void Ppu::setVblankFLag()
+{
+    this->statusFlags |= VBLANK_FLAG;
 }
 
 void Ppu::writeStatusToMemory()
