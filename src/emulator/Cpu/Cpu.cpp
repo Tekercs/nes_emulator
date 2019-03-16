@@ -1399,9 +1399,8 @@ uint8_t Cpu::indirectIndexedValue()
 
 void Cpu::operator++()
 {
-    // TODO handle NMI here
     if (this->nmi)
-        this->executeNMI();
+        this->NMI();
 
     uint8_t opcode = this->memory->getFrom(this->registers->getProgramCounter());
     executeInstruction(opcode);
@@ -1415,10 +1414,18 @@ void Cpu::notify(std::initializer_list<std::string> parameters)
         this->nmi = true;
 }
 
-void Cpu::executeNMI()
+void Cpu::NMI()
 {
     this->nmi = false;
 
-    uint16_t programCounter = (this->memory->getFrom(NMI_UPPER) << 8) + this->memory->getFrom(NMI_LOWER);
-    this->registers->setProgramCounter(programCounter);
+    uint8_t highByte = this->registers->getProgramCounter() >> 8;
+    uint8_t lowByte = this->registers->getProgramCounter();
+
+    this->pushStack(highByte);
+    this->pushStack(lowByte);
+    this->pushStack(this->registers->getStatusFlags());
+
+    uint16_t address = (this->memory->getFrom(NMI_UPPER) << 8) + this->memory->getFrom(NMI_LOWER);
+
+    this->registers->setProgramCounter(address);
 }

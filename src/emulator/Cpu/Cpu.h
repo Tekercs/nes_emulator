@@ -25,7 +25,7 @@ namespace Emulator::Cpu
         bool nmi;
 
         void executeInstruction(uint8_t opcode);
-        void executeNMI();
+        void NMI();
 
         uint8_t pullStack();
         void pushStack(uint8_t value);

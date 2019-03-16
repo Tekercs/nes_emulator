@@ -40,7 +40,10 @@ namespace Emulator::Ppu
 
         uint8_t getVramAddressIncrement();
 
-        void setVblankFLag();
+        void setVblankStatusFLag();
+        void unsetVblankStatusFlag();
+        bool isVblankEnabled();
+
         void setOAMAddress(uint8_t address);
         void writeStatusToMemory();
         void readOAM();

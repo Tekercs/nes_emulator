@@ -38,7 +38,7 @@ void Ppu::notify(initializer_list<string> parameters)
     if (parameters.size() > 2)
         param2 = *(parameters.begin() + 2);
 
-    std::cout << eventName << "/" << param1 << "/" << param2 << std::endl;
+    //std::cout << eventName << "/" << param1 << "/" << param2 << std::endl;
 
     if (eventName == "memwrite" && (param1) == "2003")
     {
@@ -114,13 +114,15 @@ void Ppu::operator++()
 {
     if (this->warmupCycles == 0)
     {
+        if (this->cycleCounter == 0)
+            this->unsetVblankStatusFlag();
+
         if (this->cycleCounter == RENDER_FINISH)
         {
             // TODO render the whole screen
         }
-        else if (this->cycleCounter == VBLANK_STARTS)
-            this->setVblankFLag();
-
+        else if (this->cycleCounter == VBLANK_STARTS && this->isVblankEnabled())
+            this->setVblankStatusFLag();
     }
     else
         --this->warmupCycles;
@@ -128,7 +130,7 @@ void Ppu::operator++()
     this->cycleCounter = (this->cycleCounter +1) % MAX_CYCLE;
 }
 
-void Ppu::setVblankFLag()
+void Ppu::setVblankStatusFLag()
 {
     this->statusFlags |= VBLANK_FLAG;
     this->notifyListeners({"nmiinterrupt"});
@@ -222,4 +224,14 @@ void Ppu::readOAM()
 {
     auto result = this->vram->readOAM(this->oamAddress);
     this->memory->setAt(0x2004, result);
+}
+
+bool Ppu::isVblankEnabled()
+{
+    return (this->controlFlags & VBLANK_FLAG) > 0;
+}
+
+void Ppu::unsetVblankStatusFlag()
+{
+    this->statusFlags &= ~(VBLANK_FLAG);
 }

@@ -30,8 +30,9 @@ int main()
     Cpu cpu(memory, registers);
     Ppu ppu(vram, memory);
     cpu.subscribe(&ppu);
+    ppu.subscribe(&cpu);
 
-    Cartridge cartridge("/home/bence/Desktop/ballon_fight.nes");
+    Cartridge cartridge("/home/bence/Workspace/nes_emulator/test/emulator_test/test_roms/kevtris/nestest.nes");
     auto mapper = createMapper(cartridge, *memory.get(), *vram.get());
     mapper->map();
 
