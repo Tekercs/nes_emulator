@@ -7,6 +7,7 @@
 #include <Ppu/VRam.h>
 #include <Memory/Memory.h>
 #include <Utils/Listener.h>
+#include <Utils/EventSource.h>
 
 #define DEFAULT_PPUCNTRL  0x0000
 #define DEFAULT_MASKFLAGS 0x0000
@@ -24,7 +25,7 @@
 
 namespace Emulator::Ppu
 {
-    class Ppu : public Emulator::Utils::Listener
+    class Ppu : public Emulator::Utils::Listener, public Emulator::Utils::EventSource
     {
     private: 
         std::shared_ptr<VRam> vram;

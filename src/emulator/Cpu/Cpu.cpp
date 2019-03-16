@@ -13,6 +13,7 @@ using namespace Emulator::Memory;
 Cpu::Cpu()
 : memory(make_shared<Memory::Memory>())
 , registers(make_shared<Registers>())
+, nmi(false)
 {}
 
 Cpu::Cpu(std::shared_ptr<Emulator::Memory::Memory> memory, std::shared_ptr<Emulator::Cpu::Registers> registers)
@@ -1398,6 +1399,26 @@ uint8_t Cpu::indirectIndexedValue()
 
 void Cpu::operator++()
 {
+    // TODO handle NMI here
+    if (this->nmi)
+        this->executeNMI();
+
     uint8_t opcode = this->memory->getFrom(this->registers->getProgramCounter());
     executeInstruction(opcode);
+}
+
+void Cpu::notify(std::initializer_list<std::string> parameters)
+{
+    auto eventName = *parameters.begin();
+
+    if (eventName == "nmiinterrupt")
+        this->nmi = true;
+}
+
+void Cpu::executeNMI()
+{
+    this->nmi = false;
+
+    uint16_t programCounter = (this->memory->getFrom(NMI_UPPER) << 8) + this->memory->getFrom(NMI_LOWER);
+    this->registers->setProgramCounter(programCounter);
 }

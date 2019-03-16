@@ -1,5 +1,6 @@
 #include "Ppu.h"
 
+#include <iostream>
 #include <Utils/Converters.h>
 
 using namespace std;
@@ -30,11 +31,14 @@ void Ppu::notify(initializer_list<string> parameters)
     std::string eventName = *parameters.begin();
     std::string param1 = "";
     std::string param2 = "";
+
     if (parameters.size() > 1)
         param1 = *(parameters.begin() + 1);
 
     if (parameters.size() > 2)
         param2 = *(parameters.begin() + 2);
+
+    std::cout << eventName << "/" << param1 << "/" << param2 << std::endl;
 
     if (eventName == "memwrite" && (param1) == "2003")
     {
@@ -127,6 +131,7 @@ void Ppu::operator++()
 void Ppu::setVblankFLag()
 {
     this->statusFlags |= VBLANK_FLAG;
+    this->notifyListeners({"nmiinterrupt"});
 }
 
 void Ppu::writeStatusToMemory()

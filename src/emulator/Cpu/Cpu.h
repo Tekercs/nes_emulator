@@ -8,22 +8,24 @@
 #include <Memory/Memory.h>
 #include <Cpu/Registers.h>
 #include <Utils/EventSource.h>
+#include <Utils/Listener.h>
 
 #define STACK_POINTER              0x0100
 
 #define IRQ_INTERRUPT_VECTOR_LOW   0xFFFE
 #define IRQ_INTERRUPT_VECTOR_HIGH  0xFFFF
 
-// TODO valoszinuleg a registereket kilehetne szedni kulon classba
 namespace Emulator::Cpu
 {
-    class Cpu : public Utils::EventSource
+    class Cpu : public Utils::EventSource, public Utils::Listener
     {
     private:
         std::shared_ptr<Emulator::Memory::Memory> memory;
         std::shared_ptr<Emulator::Cpu::Registers> registers;
+        bool nmi;
 
         void executeInstruction(uint8_t opcode);
+        void executeNMI();
 
         uint8_t pullStack();
         void pushStack(uint8_t value);
@@ -108,10 +110,15 @@ namespace Emulator::Cpu
         uint8_t indexedIndirectValue();
         uint8_t indirectIndexedValue();
 
+
+
     public:
         explicit Cpu();
         explicit Cpu(std::shared_ptr<Emulator::Memory::Memory> memory, std::shared_ptr<Emulator::Cpu::Registers> registers);
 
         void operator++();
+
+
+        void notify(std::initializer_list<std::string> parameters) override;
     };
 }
