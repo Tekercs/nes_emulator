@@ -17,9 +17,7 @@ Ppu::Ppu(std::shared_ptr<VRam> vram, std::shared_ptr<Emulator::Memory::Memory> m
 , controlFlags(DEFAULT_PPUCNTRL)
 , statusFlags(DEFAULT_STATUS)
 , outputMaskFlags(DEFAULT_MASKFLAGS)
-{
-    this->memory->subscribe(this);
-}
+{ }
 
 uint8_t Ppu::getVramAddressIncrement()
 {
@@ -121,19 +119,22 @@ void Ppu::operator++()
         {
             // TODO render the whole screen
         }
-        else if (this->cycleCounter == VBLANK_STARTS && this->isVblankEnabled())
+        else if (this->cycleCounter == VBLANK_STARTS)
             this->setVblankStatusFLag();
+
+        this->cycleCounter = (this->cycleCounter +1) % MAX_CYCLE;
     }
     else
         --this->warmupCycles;
 
-    this->cycleCounter = (this->cycleCounter +1) % MAX_CYCLE;
 }
 
 void Ppu::setVblankStatusFLag()
 {
     this->statusFlags |= VBLANK_FLAG;
-    this->notifyListeners({"nmiinterrupt"});
+
+    if (this->isVblankEnabled())
+        this->notifyListeners({"nmiinterrupt"});
 }
 
 void Ppu::writeStatusToMemory()

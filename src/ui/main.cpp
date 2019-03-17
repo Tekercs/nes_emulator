@@ -29,17 +29,19 @@ int main()
 
     Cpu cpu(memory, registers);
     Ppu ppu(vram, memory);
-    cpu.subscribe(&ppu);
-    ppu.subscribe(&cpu);
 
-    Cartridge cartridge("/home/bence/Workspace/nes_emulator/test/emulator_test/test_roms/kevtris/nestest.nes");
+    Cartridge cartridge("/home/bence/Workspace/nes_emulator/test/emulator_test/test_roms/rainwarrior/color_test.nes");
     auto mapper = createMapper(cartridge, *memory.get(), *vram.get());
     mapper->map();
 
-    registers->setProgramCounter((memory->getFrom(RESET_UPPER) << 8) + memory->getFrom(RESET_LOWER));
+    cpu.reset();
 
-    GameWindow gameWindow(4);
-    gameWindow.colorPixel({.horizontal = 1, .vertical = 2}, {.red = 255, .green = 255, .blue = 0, .alpha = 0});
+    cpu.subscribe(&ppu);
+    ppu.subscribe(&cpu);
+    memory.get()->subscribe(&ppu);
+
+    //GameWindow gameWindow(4);
+    //gameWindow.colorPixel({.horizontal = 1, .vertical = 2}, {.red = 255, .green = 255, .blue = 0, .alpha = 0});
 
     while(true)
         ++cpu;

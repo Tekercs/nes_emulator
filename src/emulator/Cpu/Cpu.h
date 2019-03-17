@@ -118,6 +118,7 @@ namespace Emulator::Cpu
 
         void operator++();
 
+        void reset();
 
         void notify(std::initializer_list<std::string> parameters) override;
     };

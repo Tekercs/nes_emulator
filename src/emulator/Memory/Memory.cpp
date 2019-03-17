@@ -47,6 +47,12 @@ uint8_t Memory::getFrom(uint16_t address)
 
 void Memory::setAt(uint16_t address, uint8_t value)
 {
+    if (address == 0x2000)
+    {
+        auto laci = 1;
+        auto laci2 = 2;
+    }
+
     this->notifyListeners({"memwrite", convertIntToHexString(address), convertIntToHexString(value)});
     *this->memory[address] = value;
 }

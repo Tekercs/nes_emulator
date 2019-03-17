@@ -19,6 +19,7 @@ Cpu::Cpu()
 Cpu::Cpu(std::shared_ptr<Emulator::Memory::Memory> memory, std::shared_ptr<Emulator::Cpu::Registers> registers)
 : memory(move(memory))
 , registers(move(registers))
+, nmi(false)
 { }
 
 uint8_t Cpu::pullStack()
@@ -1200,6 +1201,7 @@ void Cpu::RTS()
 
     this->registers->setProgramCounter((highByte << 8) + lowByte );
 
+
     this->registers->incrementProgramCounter();
 }
 
@@ -1219,6 +1221,9 @@ void Cpu::RTI()
 
 void Cpu::BRK()
 {
+    if (this->registers->isInterruptsDisabled())
+        return;
+
     uint8_t highByte = this->registers->getProgramCounter() >> 8;
     uint8_t lowByte = this->registers->getProgramCounter();
 
@@ -1416,8 +1421,6 @@ void Cpu::notify(std::initializer_list<std::string> parameters)
 
 void Cpu::NMI()
 {
-    this->nmi = false;
-
     uint8_t highByte = this->registers->getProgramCounter() >> 8;
     uint8_t lowByte = this->registers->getProgramCounter();
 
@@ -1428,4 +1431,14 @@ void Cpu::NMI()
     uint16_t address = (this->memory->getFrom(NMI_UPPER) << 8) + this->memory->getFrom(NMI_LOWER);
 
     this->registers->setProgramCounter(address);
+
+    this->nmi = false;
+}
+
+void Cpu::reset()
+{
+    uint16_t programCounter = (this->memory->getFrom(RESET_UPPER) << 8) + this->memory->getFrom(RESET_LOWER);
+
+    this->registers->setProgramCounter(programCounter);
+    this->registers->setStackPointerOffset(this->registers->getStackPointerOffset() - 3);
 }
