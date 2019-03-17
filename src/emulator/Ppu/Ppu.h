@@ -9,19 +9,22 @@
 #include <Utils/Listener.h>
 #include <Utils/EventSource.h>
 
-#define DEFAULT_PPUCNTRL  0x0000
-#define DEFAULT_MASKFLAGS 0x0000
-#define DEFAULT_STATUS    0x1010
+#define DEFAULT_PPUCNTRL   0x0000
+#define DEFAULT_MASKFLAGS  0x0000
+#define DEFAULT_STATUS     0x1010
 
-#define VBLANK_FLAG       0b10000000
+#define VBLANK_FLAG        0b10000000
 
-#define RENDER_FINISH     81840
-#define VBLANK_STARTS     82181
-#define SCANLINE_CYCLES   341
-#define WARMUP_CYCLES     88974
-#define MAX_CYCLE         89001
+#define RENDER_FINISH      81840
+#define VBLANK_STARTS      82181
+#define SCANLINE_CYCLES    341
+#define WARMUP_CYCLES      88974
+#define MAX_CYCLE          89001
+#define PALETTE_BACKGROUND 0b00010000
 
-#define INCREMENT_BIT     0b00000100
+#define BASE_NAMETABLE     0b00000011
+
+#define INCREMENT_BIT      0b00000100
 
 namespace Emulator::Ppu
 {
@@ -43,6 +46,10 @@ namespace Emulator::Ppu
         void setVblankStatusFLag();
         void unsetVblankStatusFlag();
         bool isVblankEnabled();
+
+        void renderBackground();
+        uint16_t getBackgroundPatternAddress();
+        uint16_t getBaseNametableAddress();
 
         void setOAMAddress(uint8_t address);
         void writeStatusToMemory();

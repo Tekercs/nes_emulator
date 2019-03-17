@@ -117,7 +117,7 @@ void Ppu::operator++()
 
         if (this->cycleCounter == RENDER_FINISH)
         {
-            // TODO render the whole screen
+            this->renderBackground();
         }
         else if (this->cycleCounter == VBLANK_STARTS)
             this->setVblankStatusFLag();
@@ -235,4 +235,22 @@ bool Ppu::isVblankEnabled()
 void Ppu::unsetVblankStatusFlag()
 {
     this->statusFlags &= ~(VBLANK_FLAG);
+}
+
+void Ppu::renderBackground()
+{
+
+}
+
+uint16_t Ppu::getBackgroundPatternAddress()
+{
+    auto patternAddressFlag = this->controlFlags & PALETTE_BACKGROUND;
+
+    return (patternAddressFlag == 0) ? 0x0000 : 0x1000 ;
+}
+
+uint16_t Ppu::getBaseNametableAddress()
+{
+    uint16_t baseNumber = this->controlFlags & BASE_NAMETABLE;
+    return ((NAME_SIZE * baseNumber) + 0x2000);
 }
