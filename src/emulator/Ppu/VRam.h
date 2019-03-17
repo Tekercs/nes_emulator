@@ -2,24 +2,26 @@
 
 #include <cstdint>
 
-#define VRAM_SIZE 0x4000
-#define OAM_SIZE 256 
+#define VRAM_SIZE             0x4000
+#define OAM_SIZE              256
 
-#define PATTERN_0 0x0000
-#define PATTERN_1 0x1000
-#define PATTERN_SIZE 0x1000
+#define PATTERN_0             0x0000
+#define PATTERN_1             0x1000
+#define PATTERN_SIZE          0x1000
 
-#define NAME_0 0x2000
-#define NAME_1 0x2400
-#define NAME_2 0x2800
-#define NAME_3 0x2C00
+#define NAME_0                0x2000
+#define NAME_1                0x2400
+#define NAME_2                0x2800
+#define NAME_3                0x2C00
 
-#define NAME_SIZE 0x0400
+#define NAME_SIZE             0x0400
 #define NAME_MIRRORING_STARTS 0x3000
+#define NAME_PATTER_SIZE      0x03c0
+#define NAME_ATTRIBUTE_SIZE   64
 
-#define PALETTE_STARTS 0x3F00
-#define PALETTE_SIZE 0x20
-#define PALETTE_TOTAL 8
+#define PALETTE_STARTS        0x3F00
+#define PALETTE_SIZE          0x20
+#define PALETTE_TOTAL         8
 
 namespace Emulator::Ppu
 {

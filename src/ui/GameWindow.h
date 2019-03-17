@@ -2,25 +2,13 @@
 
 #include <SDL2/SDL.h>
 
+#include <Ppu/Ppu.h>
+
 #define MAX_HORIZONTAL 256
 #define MAX_VERTICAL   240
 
 namespace Ui
 {
-    struct Cords
-    {
-        uint16_t horizontal;
-        uint16_t vertical;
-    };
-
-    struct Color
-    {
-        uint8_t red;
-        uint8_t green;
-        uint8_t blue;
-        uint8_t alpha;
-    };
-
     class GameWindow
     {
     private:
@@ -32,7 +20,7 @@ namespace Ui
         explicit GameWindow(uint8_t scaling);
         ~GameWindow();
 
-        void colorPixel(Cords cords, Color color);
+        void colorPixel(Emulator::Ppu::Cords cords, Emulator::Ppu::Color color);
         void clearScreen();
     };
 }

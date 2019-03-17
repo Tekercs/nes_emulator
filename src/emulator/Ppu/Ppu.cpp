@@ -239,7 +239,15 @@ void Ppu::unsetVblankStatusFlag()
 
 void Ppu::renderBackground()
 {
+    uint16_t baseNametable = this->getBaseNametableAddress();
+    uint16_t basePattern = this->getBackgroundPatternAddress();
+    for (auto i = 0; i < NAME_SIZE; ++i)
+    {
+        // TODO each nametable entry handle
+        uint8_t nametableEntry = this->vram->readMemory(baseNametable + i);
+        uint16_t patternStart = basePattern + (nametableEntry << 4) + 0;
 
+    }
 }
 
 uint16_t Ppu::getBackgroundPatternAddress()

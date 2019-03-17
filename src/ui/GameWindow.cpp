@@ -2,7 +2,10 @@
 
 #include <SDL2/SDL.h>
 
-Ui::GameWindow::GameWindow(uint8_t scaling) : scaling(scaling)
+using namespace Ui;
+using namespace Emulator::Ppu;
+
+GameWindow::GameWindow(uint8_t scaling) : scaling(scaling)
 {
     SDL_Init(SDL_INIT_EVERYTHING);
     this->window = SDL_CreateWindow("first sdl"
@@ -16,7 +19,7 @@ Ui::GameWindow::GameWindow(uint8_t scaling) : scaling(scaling)
     this->clearScreen();
 }
 
-void Ui::GameWindow::colorPixel(Ui::Cords cords, Ui::Color color)
+void GameWindow::colorPixel(Cords cords, Color color)
 {
     SDL_Rect rect = {
             .x = cords.horizontal * this->scaling,
@@ -34,7 +37,7 @@ void Ui::GameWindow::colorPixel(Ui::Cords cords, Ui::Color color)
     SDL_RenderPresent(this->renderer);
 }
 
-void Ui::GameWindow::clearScreen()
+void GameWindow::clearScreen()
 {
     SDL_SetRenderDrawColor(this->renderer, 0, 0, 0, 0);
     SDL_RenderClear(this->renderer);
@@ -42,7 +45,7 @@ void Ui::GameWindow::clearScreen()
     SDL_RenderPresent(this->renderer);
 }
 
-Ui::GameWindow::~GameWindow()
+GameWindow::~GameWindow()
 {
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);

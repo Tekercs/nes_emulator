@@ -28,6 +28,20 @@
 
 namespace Emulator::Ppu
 {
+    struct Cords
+    {
+        uint16_t horizontal;
+        uint16_t vertical;
+    };
+
+    struct Color
+    {
+        uint8_t red;
+        uint8_t green;
+        uint8_t blue;
+        uint8_t alpha;
+    };
+
     class Ppu : public Emulator::Utils::Listener, public Emulator::Utils::EventSource
     {
     private: 
