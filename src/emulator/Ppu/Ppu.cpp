@@ -1,6 +1,5 @@
 #include "Ppu.h"
 
-#include <iostream>
 #include <Utils/Converters.h>
 
 using namespace std;
@@ -17,7 +16,9 @@ Ppu::Ppu(std::shared_ptr<VRam> vram, std::shared_ptr<Emulator::Memory::Memory> m
 , controlFlags(DEFAULT_PPUCNTRL)
 , statusFlags(DEFAULT_STATUS)
 , outputMaskFlags(DEFAULT_MASKFLAGS)
-{ }
+{
+    this->drawCallback = [](Cords cords, Color color) { };
+}
 
 uint8_t Ppu::getVramAddressIncrement()
 {
@@ -35,8 +36,6 @@ void Ppu::notify(initializer_list<string> parameters)
 
     if (parameters.size() > 2)
         param2 = *(parameters.begin() + 2);
-
-    //std::cout << eventName << "/" << param1 << "/" << param2 << std::endl;
 
     if (eventName == "memwrite" && (param1) == "2003")
     {
@@ -247,6 +246,10 @@ void Ppu::renderBackground()
         uint8_t nametableEntry = this->vram->readMemory(baseNametable + i);
         uint16_t patternStart = basePattern + (nametableEntry << 4) + 0;
 
+        Cords cords = {.horizontal = 10, .vertical = 10};
+        Color color = {.red = 255, .green = 125, .blue = 255};
+
+        this->drawCallback(cords, color);
     }
 }
 
@@ -261,4 +264,9 @@ uint16_t Ppu::getBaseNametableAddress()
 {
     uint16_t baseNumber = this->controlFlags & BASE_NAMETABLE;
     return ((NAME_SIZE * baseNumber) + 0x2000);
+}
+
+void Ppu::setDrawCallback(std::function<void(Cords, Color)> callback)
+{
+    this->drawCallback = callback;
 }

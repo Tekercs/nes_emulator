@@ -3,6 +3,7 @@
 #include <memory>
 #include <initializer_list>
 #include <string>
+#include <functional>
 
 #include <Ppu/VRam.h>
 #include <Memory/Memory.h>
@@ -54,6 +55,7 @@ namespace Emulator::Ppu
         uint8_t statusFlags;
         uint32_t cycleCounter;
         uint32_t warmupCycles;
+        std::function<void(Cords, Color)> drawCallback;
 
         uint8_t getVramAddressIncrement();
 
@@ -64,6 +66,7 @@ namespace Emulator::Ppu
         void renderBackground();
         uint16_t getBackgroundPatternAddress();
         uint16_t getBaseNametableAddress();
+
 
         void setOAMAddress(uint8_t address);
         void writeStatusToMemory();
@@ -80,6 +83,8 @@ namespace Emulator::Ppu
         Ppu(std::shared_ptr<VRam> vram, std::shared_ptr<Emulator::Memory::Memory> memory);
 
         void notify(std::initializer_list<std::string> parameters) override;
+
+        void setDrawCallback(std::function<void(Cords, Color)> callback);
 
         void operator++();
     };
