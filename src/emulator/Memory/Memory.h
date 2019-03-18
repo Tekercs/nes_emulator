@@ -21,8 +21,8 @@
 
 #define RESET_UPPER         0xFFFD
 #define RESET_LOWER         0xFFFC
-#define NMI_UPPER           0xFFFA
-#define NMI_LOWER           0xFFFB
+#define NMI_UPPER           0xFFFB
+#define NMI_LOWER           0xFFFA
 
 /**
  * @namespace Emulator
