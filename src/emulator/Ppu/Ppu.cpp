@@ -274,14 +274,25 @@ void Ppu::renderBackground()
 {
     uint16_t baseNametable = this->getBaseNametableAddress();
     uint16_t basePattern = this->getBackgroundPatternAddress();
-    for (auto k = 0; k < NAME_SIZE; ++k)
+    for (auto n = 0; n < NAME_SIZE; ++n)
     {
         Cords position = {.horizontal = 0, .vertical = 0};
-        position.horizontal = k % 32 * 8;
-        position.vertical = k / 32 * 8;
+        position.horizontal = n % 32 * 8;
+        position.vertical = n / 32 * 8;
 
-        uint8_t nametableEntry = this->vram->readMemory(baseNametable + k);
+        uint8_t nametableEntry = this->vram->readMemory(baseNametable + n);
         uint16_t patternStart = basePattern + (nametableEntry << 4) + 0;
+
+        uint16_t attributeEntryAddress = (n/32/4*8)+(n%32/4) + BASE_NAMETABLE + NAME_SIZE;
+        uint8_t attributeEntry = this->vram->readMemory(attributeEntryAddress);
+
+        uint8_t verticalPos = ((((n /32) /4) %4) < 2) ? 0 : 2;
+        uint8_t horizontalPos = ((((n %32) /4) %4) < 2) ? 0 : 4;
+        uint8_t shiftValue = verticalPos + horizontalPos;
+
+        uint8_t palettIndex = ((attributeEntry & (0b11  << shiftValue)) >> shiftValue);
+
+        uint16_t colorBase = PALETTE_STARTS + (0 << 4) + (palettIndex << 2);
 
         for (uint8_t i = 0; i <= 0x7; ++i)
         {
@@ -291,8 +302,7 @@ void Ppu::renderBackground()
             for (uint j = 0; j < 8; ++j)
             {
                 const uint8_t colorIndex = (((upper & (0b1 << j)) >> j) << 1) + (lower & (0b1 << j) >> j);
-                //const uint8_t color = (colorIndex != 0) ? this->vram->readMemory(colorBase + colorIndex) : this->vram->readMemory(UNIVERSAL_BG_COLOR);
-                const uint8_t color = this->vram->readMemory(UNIVERSAL_BG_COLOR);
+                const uint8_t color = (colorIndex != 0) ? this->vram->readMemory(colorBase + colorIndex) : this->vram->readMemory(UNIVERSAL_BG_COLOR);
 
                 Color pixelColor = colors[color];
                 Cords pixelPosition = {.horizontal = 0, .vertical = 0};
