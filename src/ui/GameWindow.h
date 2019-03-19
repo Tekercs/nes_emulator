@@ -3,6 +3,7 @@
 #include <SDL2/SDL.h>
 
 #include <Ppu/Ppu.h>
+#include <Ppu/ColorPalette.h>
 
 #define MAX_HORIZONTAL 256
 #define MAX_VERTICAL   240
