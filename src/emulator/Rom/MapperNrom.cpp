@@ -20,7 +20,7 @@ void MapperNrom::map()
     }
 
     auto chrRomSize = this->cartridge.calcCHRRomSize();
-    for (auto i = 0; i < PATTERN_SIZE*2; ++i)
-        this->vram.writeMemory(PATTERN_0  + i, this->cartridge.getChrRom()[i]);
+    for (uint16_t i = 0; i < chrRomSize; ++i)
+        this->vram.writeMemory(PATTERN_0 + i, cartridge.getChrRom()[i]);
 
 }
