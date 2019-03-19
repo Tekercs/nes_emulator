@@ -23,6 +23,8 @@
 #define PALETTE_SIZE          0x20
 #define PALETTE_TOTAL         8
 
+#define UNIVERSAL_BG_COLOR    0x3F00
+
 namespace Emulator::Ppu
 {
     enum NametableMirroring { VERTICAL = 1,  HORIZONTAL = 0};

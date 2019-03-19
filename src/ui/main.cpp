@@ -40,8 +40,7 @@ int main()
     ppu.subscribe(&cpu);
     memory.get()->subscribe(&ppu);
 
-    GameWindow gameWindow(4);
-    gameWindow.colorPixel({.horizontal = 1, .vertical = 2}, {.red = 255, .green = 255, .blue = 0, .alpha = 0});
+    GameWindow gameWindow(2);
 
     ppu.setDrawCallback([&](Cords cords, Color color) {
         gameWindow.colorPixel(cords, color);
@@ -50,7 +49,6 @@ int main()
     while(true)
         ++cpu;
 
-    SDL_Delay(5000);
 
     return 0;
 }
