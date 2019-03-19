@@ -1,6 +1,7 @@
 #include <memory>
 #include <SDL2/SDL.h>
-#include <iostream>
+#include <chrono>
+#include <thread>
 
 #include <GameWindow.h>
 
@@ -19,6 +20,8 @@ using namespace Emulator::Cpu;
 using namespace Emulator::ROM;
 using namespace Emulator::Ppu;
 using namespace Emulator::Memory;
+using namespace std::chrono;
+using namespace std::this_thread;
 
 int main()
 {
@@ -34,7 +37,9 @@ int main()
     Cpu cpu(memory, registers);
     Ppu ppu(vram, memory, gameWindow);
 
-    Cartridge cartridge("/home/bence/Workspace/nes_emulator/test/emulator_test/test_roms/rainwarrior/color_test.nes");
+    Cartridge cartridge("/home/bence/Desktop/ballon_fight.nes");
+    //Cartridge cartridge("/home/bence/Workspace/nes_emulator/test/emulator_test/test_roms/rainwarrior/color_test.nes");
+    //Cartridge cartridge("/home/bence/Workspace/nes_emulator/test/emulator_test/test_roms/kevtris/nestest.nes");
     auto mapper = createMapper(cartridge, *memory.get(), *vram.get());
     mapper->map();
 
@@ -46,7 +51,10 @@ int main()
 
 
     while(true)
+    {
         ++cpu;
+        sleep_for(nanoseconds(6));
+    }
 
 
     return 0;
