@@ -2,14 +2,16 @@
 
 #include <Utils/Converters.h>
 #include <Ppu/ColorPalette.h>
+#include <iostream>
 
 using namespace std;
 using namespace Emulator::Ppu;
 using namespace Emulator::Utils;
 
-Ppu::Ppu(std::shared_ptr<VRam> vram, std::shared_ptr<Emulator::Memory::Memory> memory)
-: memory(std::move(memory))
-, vram(std::move(vram))
+Ppu::Ppu(shared_ptr<VRam> vram, shared_ptr<Emulator::Memory::Memory> memory, shared_ptr<Renderer> renderer)
+: memory(move(memory))
+, vram(move(vram))
+, renderer(move(renderer))
 , warmupCycles(WARMUP_CYCLES)
 , cycleCounter(0)
 , oamAddress(0)
@@ -17,9 +19,7 @@ Ppu::Ppu(std::shared_ptr<VRam> vram, std::shared_ptr<Emulator::Memory::Memory> m
 , controlFlags(DEFAULT_PPUCNTRL)
 , statusFlags(DEFAULT_STATUS)
 , outputMaskFlags(DEFAULT_MASKFLAGS)
-{
-    this->drawCallback = [](Cords cords, Color color) { };
-}
+{ }
 
 uint8_t Ppu::getVramAddressIncrement()
 {
@@ -117,8 +117,9 @@ void Ppu::operator++()
 
         if (this->cycleCounter == RENDER_FINISH)
         {
-            //this->renderBackground();
+            this->renderBackground();
             this->renderSprites();
+            this->renderer->drawScreen();
         }
         else if (this->cycleCounter == VBLANK_STARTS)
             this->setVblankStatusFLag();
@@ -243,10 +244,10 @@ void Ppu::renderSprites()
     const uint16_t patternAddressBase = this->getSpritePatternAddress();
     for (uint16_t k = 0; k < OAM_SIZE; k += 4)
     {
-        Cords position = { .horizontal = this->vram->readOAM(k+3), .vertical = this->vram->readOAM(k) };
-        const uint8_t spriteAttribute = this->vram->readOAM(k+2);
+        Cords position = { .horizontal = this->vram->readOAM(this->oamAddress + k +3), .vertical = this->vram->readOAM(this->oamAddress + k) };
+        const uint8_t spriteAttribute = this->vram->readOAM(this->oamAddress + k+2);
         const uint16_t colorBase = PALETTE_STARTS + (1 << 4) + ((spriteAttribute & SPRITE_ATTRIBUTE_COLOR) << 2);
-        const uint8_t patternIndex = (this->vram->readOAM(k+1)) << 4;
+        const uint8_t patternIndex = (this->vram->readOAM(this->oamAddress + k+1)) << 4;
 
         for (uint8_t i = 0; i <= 0x7; ++i)
         {
@@ -260,12 +261,11 @@ void Ppu::renderSprites()
 
                 Color pixelColor = colors[color];
                 Cords pixelPosition = {.horizontal = 0, .vertical = 0};
-                pixelPosition.vertical = position.vertical + i;
-                pixelPosition.horizontal = position.horizontal + j;
+                pixelPosition.vertical = position.vertical + i -1;
+                pixelPosition.horizontal = position.horizontal + (7 - j);
 
-                this->drawCallback(pixelPosition ,pixelColor);
+                this->renderer->colorPixel(pixelPosition, pixelColor);
             }
-
         }
     }
 }
@@ -274,16 +274,34 @@ void Ppu::renderBackground()
 {
     uint16_t baseNametable = this->getBaseNametableAddress();
     uint16_t basePattern = this->getBackgroundPatternAddress();
-    for (auto i = 0; i < NAME_SIZE; ++i)
+    for (auto k = 0; k < NAME_SIZE; ++k)
     {
-        // TODO each nametable entry handle
-        uint8_t nametableEntry = this->vram->readMemory(baseNametable + i);
+        Cords position = {.horizontal = 0, .vertical = 0};
+        position.horizontal = k % 32 * 8;
+        position.vertical = k / 32 * 8;
+
+        uint8_t nametableEntry = this->vram->readMemory(baseNametable + k);
         uint16_t patternStart = basePattern + (nametableEntry << 4) + 0;
 
-        Cords cords = {.horizontal = 10, .vertical = 10};
-        Color color = {.red = 255, .green = 125, .blue = 255};
+        for (uint8_t i = 0; i <= 0x7; ++i)
+        {
+            const uint8_t lower = this->vram->readMemory(patternStart + i);
+            const uint8_t upper = this->vram->readMemory(patternStart + i + 0x8);
 
-        this->drawCallback(cords, color);
+            for (uint j = 0; j < 8; ++j)
+            {
+                const uint8_t colorIndex = (((upper & (0b1 << j)) >> j) << 1) + (lower & (0b1 << j) >> j);
+                //const uint8_t color = (colorIndex != 0) ? this->vram->readMemory(colorBase + colorIndex) : this->vram->readMemory(UNIVERSAL_BG_COLOR);
+                const uint8_t color = this->vram->readMemory(UNIVERSAL_BG_COLOR);
+
+                Color pixelColor = colors[color];
+                Cords pixelPosition = {.horizontal = 0, .vertical = 0};
+                pixelPosition.vertical = position.vertical + i;
+                pixelPosition.horizontal = position.horizontal + (7 - j);
+
+                this->renderer->colorPixel(pixelPosition, pixelColor);
+            }
+        }
     }
 }
 
@@ -291,11 +309,6 @@ uint16_t Ppu::getBaseNametableAddress()
 {
     uint16_t baseNumber = this->controlFlags & BASE_NAMETABLE;
     return ((NAME_SIZE * baseNumber) + 0x2000);
-}
-
-void Ppu::setDrawCallback(std::function<void(Cords, Color)> callback)
-{
-    this->drawCallback = callback;
 }
 
 uint16_t Ppu::getBackgroundPatternAddress()

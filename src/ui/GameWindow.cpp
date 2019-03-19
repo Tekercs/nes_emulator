@@ -34,7 +34,6 @@ void GameWindow::colorPixel(Cords cords, Color color)
             color.alpha);
     SDL_RenderFillRect(this->renderer, &rect);
 
-    SDL_RenderPresent(this->renderer);
 }
 
 void GameWindow::clearScreen()
@@ -50,4 +49,9 @@ GameWindow::~GameWindow()
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
+}
+
+void GameWindow::drawScreen()
+{
+    SDL_RenderPresent(this->renderer);
 }

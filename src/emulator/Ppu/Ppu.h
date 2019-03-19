@@ -10,10 +10,11 @@
 #include <Utils/Listener.h>
 #include <Utils/EventSource.h>
 #include <Ppu/ColorPalette.h>
+#include <Ppu/Renderer.h>
 
-#define DEFAULT_PPUCNTRL       0x0000
-#define DEFAULT_MASKFLAGS      0x0000
-#define DEFAULT_STATUS         0x1010
+#define DEFAULT_PPUCNTRL       0b00000000
+#define DEFAULT_MASKFLAGS      0b00000000
+#define DEFAULT_STATUS         0b10100000
 
 #define VBLANK_FLAG            0b10000000
 
@@ -32,13 +33,6 @@
 
 namespace Emulator::Ppu
 {
-    struct Cords
-    {
-        uint16_t horizontal;
-        uint16_t vertical;
-    };
-
-
     class Ppu : public Emulator::Utils::Listener, public Emulator::Utils::EventSource
     {
     private: 
@@ -51,7 +45,7 @@ namespace Emulator::Ppu
         uint8_t statusFlags;
         uint32_t cycleCounter;
         uint32_t warmupCycles;
-        std::function<void(Cords, Color)> drawCallback;
+        std::shared_ptr<Renderer> renderer;
 
         uint8_t getVramAddressIncrement();
 
@@ -79,11 +73,9 @@ namespace Emulator::Ppu
         void setOutputMaskFlags(uint8_t maskFlags);
 
     public:
-        Ppu(std::shared_ptr<VRam> vram, std::shared_ptr<Emulator::Memory::Memory> memory);
+        Ppu(std::shared_ptr<VRam> vram, std::shared_ptr<Emulator::Memory::Memory> memory, std::shared_ptr<Renderer> renderer);
 
         void notify(std::initializer_list<std::string> parameters) override;
-
-        void setDrawCallback(std::function<void(Cords, Color)> callback);
 
         void operator++();
     };
