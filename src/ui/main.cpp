@@ -34,14 +34,14 @@ int main()
 
     shared_ptr<GameWindow> gameWindow = make_shared<GameWindow>(2);
 
-    Cpu cpu(memory, registers);
-    Ppu ppu(vram, memory, gameWindow);
-
-    Cartridge cartridge("/home/bence/Desktop/ballon_fight.nes");
-    //Cartridge cartridge("/home/bence/Workspace/nes_emulator/test/emulator_test/test_roms/rainwarrior/color_test.nes");
+    //Cartridge cartridge("/home/bence/Desktop/ballon_fight.nes");
+    Cartridge cartridge("/home/bence/Workspace/nes_emulator/test/emulator_test/test_roms/rainwarrior/color_test.nes");
     //Cartridge cartridge("/home/bence/Workspace/nes_emulator/test/emulator_test/test_roms/kevtris/nestest.nes");
     auto mapper = createMapper(cartridge, *memory.get(), *vram.get());
     mapper->map();
+
+    Cpu cpu(memory, registers);
+    Ppu ppu(vram, memory, gameWindow);
 
     cpu.reset();
 
@@ -53,7 +53,7 @@ int main()
     while(true)
     {
         ++cpu;
-        sleep_for(nanoseconds(6));
+        //sleep_for(nanoseconds(1));
     }
 
 
