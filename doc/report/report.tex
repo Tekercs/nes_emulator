@@ -1,5 +1,5 @@
 \documentclass[]{report}
-\usepackage[backend=biber]{biblatex}
+\usepackage[style=authoryear]{biblatex}
 \addbibresource{references.tex}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -20,7 +20,7 @@
 \chapter{Introduction}
 
 \paragraph{}
-The Nintendo Entertainment System, frequently called NES, is an home gaming console developed by the Japanese company called Nintendo Company, Limited.  Through it's lifetime the from the earl '80s up until the end of the '90s a lot of good quality titles were released to the platform and a wide range of audience were reached. Due to this quality of games and  popularity which the NES gained at it's peak time people even nowadays like to pick up some of the most famous, or personal favourite titles and play through them. Sadly, due to the rapid evolution computing the current hardware are not compatible with the old games developed for the NES platform the old and still working consoles are really hard to get a hands on. Yet the gaming community still keeps alive these games and the way it is mostly done by using emulators.
+The Nintendo Entertainment System, frequently called NES, is an home gaming console developed by the Japanese company called Nintendo Company, Limited.  Through it's lifetime the from the earl '80s up until the end of the '90s a lot of good quality titles were released to the platform and a wide range of audience were reached. Due to this quality of games and  popularity which the NES gained at it's peak time people even nowadays like to pick up some of the most famous, or personal favourite titles and play through them. Sadly, due to the rapid evolution computing the current hardware are not compatible with the old games developed for the NES platform also the old and still working consoles are really hard to get a hands on. Yet the gaming community still keeps alive these games and the way it is mostly done by using emulators.
 
 \paragraph{ }
 To solve the compatibility issue with the modern hardware, without actually buying or refurbishing one, the community started to creating so called emulators. Which are a special kind of software, it's purpose is to provide a virtual simulated environment of a given old or very specific hardware, such as the NES for instance, on top of a given system, like PC or any other gaming console. This projects goal is to produce an emulator like this which, by simulating the NES hardware behaviour, provides a way to run the games without any need of the modification of the old games code. Therefore, unlike porting the actual game, the user has access to an authentic experience. On the other hand, emulation is more resource dependent than a ported game, but less time consuming than porting every single game.
@@ -28,11 +28,11 @@ To solve the compatibility issue with the modern hardware, without actually buyi
 \section{History}
 
 \paragraph{ }
- This console was the second console of which was created by the Nitnedo Co. Ltd. and the first which was planned to be sold worldwide. \cite{HIST}
+ This console was the second console of which was created by the Nitnedo Co. Ltd. and the first which was planned to be sold worldwide (\cite{HIST}).
 The gaming console was first released in Japan in 1983. The Japanese version was called Famicon and had a bright red toy-like design, unlike the version which was released worldwide.
 The homeland release was followed by the USA and parts of Europe in 1986 and later in 1987 Australia and the rest of Europe.
 \paragraph{ }
-However, these releases were concerning for Nintendo as '83 was also the year of the great video game crash happened in North America.\cite{CRSH}. But it turned out the perfect opportunity for the console. As the hugely saturated gaming console market shrunk down, most of the competitors get bankrupt, Nintendo rebranded their console and released it as Nintendo Entertainment System worldwide.
+However, these releases were concerning for Nintendo as '83 was also the year of the great video game crash happened in North America (\cite{CRSH}). But it turned out the perfect opportunity for the console. As the hugely saturated gaming console market shrunk down, most of the competitors get bankrupt, Nintendo rebranded their console and released it as Nintendo Entertainment System worldwide.
 \paragraph{ }
  It was a huge success not just because the competitors fall out but also due to two important principle which Nintendo following since then. One of them is unlike other consoles before only certified games could be released to the platform, which meant degradation in quantity and increase in the quality of the games. The other principle was that the actual hardware built from not bleeding edge components therefore making it cheap, more easily accessible.
 
@@ -40,12 +40,12 @@ However, these releases were concerning for Nintendo as '83 was also the year of
 \paragraph{ }
 The NES hardware itself can be divided up to five big different part. 
 \paragraph{ }
-The console main chip was manufactured by Richo, which contains the CPU (Central Processing Unit) and the APU (Audio Processing Unit) \cite{CPU}.  
+The console main chip was manufactured by Richo, which contains the CPU (Central Processing Unit) and the APU (Audio Processing Unit) (\cite{CPU}).  
 The processor itself is an 8-bit MOS Technology 6502 with a little difference that the decimal mode is not presented. 
 \paragraph{ }
 The PPU (Pixel Processing Unit), which was also shipped by Richo, is technically a primitive graphics card which is used by the system to colour and render the graphics pixel by pixel to the Television screens.
 \paragraph{ }
-The Cartrdige which meant to provide the necessary binary code of the games and also the graphics data for the system. Also gave an opportunity to the developers to implement their own cartridge builds and use it to extend the console's capabilities one great example for that is the first The Legend of Zelda game. The game's cartridge also contains a battery powered RAM extension for players to save their game state \cite{ZELD}.
+The Cartrdige which meant to provide the necessary binary code of the games and also the graphics data for the system. Also gave an opportunity to the developers to implement their own cartridge builds and use it to extend the console's capabilities one great example for that is the first The Legend of Zelda game. The game's cartridge also contains a battery powered RAM extension for players to save their game state (\cite{ZELD}).
 \paragraph{ }
 Two 8 button, these buttons are up, down, left, right, select, start, A, B, controller provided the interface for user input to the system. The NES controller was the first controller which introduced the single button plus symbol shaped DPAD. Each Nintendo system was brought some revolutionary design idea to the world of gaming console controllers.
 \paragraph{ }
@@ -114,18 +114,18 @@ The GUI implementation can be changed without affecting any of the core solution
 
 \section{Tools}
 \paragraph{ }
-The project is written in the latest standard of C++. The reason behind the choice of C++ was that the language itself really stable and mature and proven to be a great tool to develop clean, stable, high performant software solutions and also providing low-level solutions for given sets of problems such as pointers. Compared to C, the true system level programming language, C++ provides a more readable code on exchange for minimal performance loss.
+The project is written in the latest standard of C++ 17 \cite{CPPV}. The reason behind the choice of C++ was that the language itself really stable and mature and proven to be a great tool to develop clean, stable, high performant software solutions and also providing low-level solutions for given sets of problems such as pointers. Compared to C, the true system level programming language, C++ provides a more readable code on exchange for minimal performance loss.
 
 \paragraph{ }
-For source code compiling the GCC version 8.2.1 toolchain is used through the Ninja build system. And these are configured with CMake to which provides a cross-platform build tool configuring interface. Also, it provides an opportunity for developers to use their own preferred IDE, Integrated Development Environment, therefore boost their productivity and prevent editor wars \cite{EWAR}.
+For source code compiling the GCC version 8.2.1 toolchain is used through the Ninja build system. And these are configured with CMake to which provides a cross-platform build tool configuring interface. Also, it provides an opportunity for developers to use their own preferred IDE, Integrated Development Environment, therefore boost their productivity.
 
 \paragraph{ }
-The project documentation consists of two parts the report itself (this document) and the API doc \cite{APID}.
+The project documentation consists of two parts the report itself (this document) and the API doc (\cite{APID}).
 \\
 The report was created with LaTeX. On the other hand, the API documentation was generated with Doxygen from the annotated C++ Header files of the source code.
 
 \paragraph{ }
-The source code along with the build system configuration and the documentation is version controlled with GIT and stored in a main  Github repository \cite{REPO}.
+The source code along with the build system configuration and the documentation is version controlled with GIT and stored in a main  Github repository (\cite{REPO}).
 As the project meant to be published as an open source project it is publicly available. Although, under the time of the project during the course of the project it was also publicly available the repository was strictly available for editing for the project owner (Sebestyén Bence) and the project supervisor (Robert Atkey).
 \\
 The project repository is also linked to a CI, Continuous Integration, the system called Travis CI. Which mostly used to provide security against merging any proposed changes which are not passing the build state or failing any of the automated tests which were supplied with the source code. The CI system build and testing are triggered every time when a pull request for a change against the main repository is set up and blocking any merge until the errors within the proposed changes are not fixed.
@@ -168,7 +168,6 @@ Testing was carried out in two phases. Depending on the given issue, manual test
 The API documentation were created after the given task was finished and updated with Doxygen.
 \\
 Meanwhile, the report itself was uprated in larger chunks because this way there was always a bigger portion of the system was available therefore it was easier to position the actual chunk to the whole project.
-
 
 \chapter{Specification and implementation}
 
@@ -213,5 +212,7 @@ Meanwhile, the report itself was uprated in larger chunks because this way there
 \chapter{Conclusions}
 
 \printbibliography
+
+
 
 \end{document}          

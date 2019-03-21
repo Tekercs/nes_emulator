@@ -18,14 +18,15 @@
 
 
 \refsection{0}
-  \datalist[entry]{nty/global//global/global}
+  \datalist[entry]{nyt/global//global/global}
     \entry{APID}{online}{}
       \name{author}{1}{}{%
-        {{hash=027efb3074dc40d90676caa7b23afb33}{%
+        {{uniquename=0,uniquepart=base,hash=027efb3074dc40d90676caa7b23afb33}{%
            family={Bence},
            familyi={B\bibinitperiod},
            given={Sebestyén},
-           giveni={S\bibinitperiod}}}%
+           giveni={S\bibinitperiod},
+           givenun=0}}%
       }
       \strng{namehash}{027efb3074dc40d90676caa7b23afb33}
       \strng{fullhash}{027efb3074dc40d90676caa7b23afb33}
@@ -36,6 +37,8 @@
       \field{extraname}{1}
       \field{sortinit}{B}
       \field{sortinithash}{276475738cc058478c1677046f857703}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{day}{9}
@@ -52,11 +55,12 @@
     \endentry
     \entry{REPO}{online}{}
       \name{author}{1}{}{%
-        {{hash=027efb3074dc40d90676caa7b23afb33}{%
+        {{uniquename=0,uniquepart=base,hash=027efb3074dc40d90676caa7b23afb33}{%
            family={Bence},
            familyi={B\bibinitperiod},
            given={Sebestyén},
-           giveni={S\bibinitperiod}}}%
+           giveni={S\bibinitperiod},
+           givenun=0}}%
       }
       \strng{namehash}{027efb3074dc40d90676caa7b23afb33}
       \strng{fullhash}{027efb3074dc40d90676caa7b23afb33}
@@ -67,6 +71,7 @@
       \field{extraname}{2}
       \field{sortinit}{B}
       \field{sortinithash}{276475738cc058478c1677046f857703}
+      \field{labeldatesource}{nodate}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Project Repository}
@@ -77,13 +82,44 @@
       \verb https://tekercs.github.io/nes_emulator
       \endverb
     \endentry
+    \entry{CPPV}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=ccb2e96d41753ca525a50baa0f70c147}{%
+           family={cppreference.com},
+           familyi={c\bibinitperiod}}}%
+      }
+      \strng{namehash}{ccb2e96d41753ca525a50baa0f70c147}
+      \strng{fullhash}{ccb2e96d41753ca525a50baa0f70c147}
+      \strng{bibnamehash}{ccb2e96d41753ca525a50baa0f70c147}
+      \strng{authorbibnamehash}{ccb2e96d41753ca525a50baa0f70c147}
+      \strng{authornamehash}{ccb2e96d41753ca525a50baa0f70c147}
+      \strng{authorfullhash}{ccb2e96d41753ca525a50baa0f70c147}
+      \field{sortinit}{c}
+      \field{sortinithash}{963e9d84a3da2344e8833203de5aed05}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{16}
+      \field{month}{3}
+      \field{title}{C++ 17 - Feature set}
+      \field{year}{2019}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://en.cppreference.com/w/cpp/compiler_support
+      \endverb
+      \verb{url}
+      \verb https://en.cppreference.com/w/cpp/compiler_support
+      \endverb
+    \endentry
     \entry{ZELD}{online}{}
       \name{author}{1}{}{%
-        {{hash=1514fc67c04816dfd822d338077f0d5d}{%
+        {{uniquename=0,uniquepart=base,hash=1514fc67c04816dfd822d338077f0d5d}{%
            family={Gerstmann},
            familyi={G\bibinitperiod},
            given={Jeff},
-           giveni={J\bibinitperiod}}}%
+           giveni={J\bibinitperiod},
+           givenun=0}}%
       }
       \strng{namehash}{1514fc67c04816dfd822d338077f0d5d}
       \strng{fullhash}{1514fc67c04816dfd822d338077f0d5d}
@@ -93,6 +129,8 @@
       \strng{authorfullhash}{1514fc67c04816dfd822d338077f0d5d}
       \field{sortinit}{G}
       \field{sortinithash}{5e8d2bf9d38de41b1528bd307546008f}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{day}{22}
@@ -109,7 +147,7 @@
     \endentry
     \entry{CPU}{online}{}
       \name{author}{1}{}{%
-        {{hash=ab0748bdfbd23a354ccb0b1bd5ce56b6}{%
+        {{uniquename=0,uniquepart=base,hash=ab0748bdfbd23a354ccb0b1bd5ce56b6}{%
            family={NesDev},
            familyi={N\bibinitperiod}}}%
       }
@@ -121,6 +159,8 @@
       \strng{authorfullhash}{ab0748bdfbd23a354ccb0b1bd5ce56b6}
       \field{sortinit}{N}
       \field{sortinithash}{f7242c3ed3dc50029fca1be76c497c7c}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{day}{7}
@@ -137,11 +177,12 @@
     \endentry
     \entry{CRSH}{online}{}
       \name{author}{1}{}{%
-        {{hash=2e57afd7c84b3e0dc289d904b95c30be}{%
+        {{uniquename=0,uniquepart=base,hash=2e57afd7c84b3e0dc289d904b95c30be}{%
            family={Oxford},
            familyi={O\bibinitperiod},
            given={Nadia},
-           giveni={N\bibinitperiod}}}%
+           giveni={N\bibinitperiod},
+           givenun=0}}%
       }
       \strng{namehash}{2e57afd7c84b3e0dc289d904b95c30be}
       \strng{fullhash}{2e57afd7c84b3e0dc289d904b95c30be}
@@ -151,6 +192,8 @@
       \strng{authorfullhash}{2e57afd7c84b3e0dc289d904b95c30be}
       \field{sortinit}{O}
       \field{sortinithash}{dad3efd0836470093a7b4a7bb756eb8c}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{day}{21}
@@ -167,11 +210,12 @@
     \endentry
     \entry{MPPR}{online}{}
       \name{author}{1}{}{%
-        {{hash=9baefc8622f42771d579c26aefa733c0}{%
+        {{uniquename=0,uniquepart=base,hash=9baefc8622f42771d579c26aefa733c0}{%
            family={wiki},
            familyi={w\bibinitperiod},
            given={Mapper\bibnamedelimb -\bibnamedelima Nesdev},
-           giveni={M\bibinitperiod\bibinitdelim \bibinithyphendelim \bibinithyphendelim \bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+           giveni={M\bibinitperiod\bibinitdelim \bibinithyphendelim \bibinithyphendelim \bibinitperiod\bibinitdelim N\bibinitperiod},
+           givenun=0}}%
       }
       \strng{namehash}{9baefc8622f42771d579c26aefa733c0}
       \strng{fullhash}{9baefc8622f42771d579c26aefa733c0}
@@ -181,6 +225,8 @@
       \strng{authorfullhash}{9baefc8622f42771d579c26aefa733c0}
       \field{sortinit}{w}
       \field{sortinithash}{ecb89ff85896a47dc313960773ac311d}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{day}{7}
@@ -195,9 +241,9 @@
       \verb https://wiki.nesdev.com/w/index.php/Mapper
       \endverb
     \endentry
-    \entry{EWAR}{online}{}
+    \entry{HIST}{online}{}
       \name{author}{1}{}{%
-        {{hash=9c677286866aad38f8e9b660f5411814}{%
+        {{uniquename=0,uniquepart=base,hash=9c677286866aad38f8e9b660f5411814}{%
            family={Wikipedia},
            familyi={W\bibinitperiod}}}%
       }
@@ -210,31 +256,8 @@
       \field{extraname}{1}
       \field{sortinit}{W}
       \field{sortinithash}{ecb89ff85896a47dc313960773ac311d}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{Editor War - Wikipedia}
-      \verb{urlraw}
-      \verb https://en.wikipedia.org/wiki/Editor_war
-      \endverb
-      \verb{url}
-      \verb https://en.wikipedia.org/wiki/Editor_war
-      \endverb
-    \endentry
-    \entry{HIST}{online}{}
-      \name{author}{1}{}{%
-        {{hash=9c677286866aad38f8e9b660f5411814}{%
-           family={Wikipedia},
-           familyi={W\bibinitperiod}}}%
-      }
-      \strng{namehash}{9c677286866aad38f8e9b660f5411814}
-      \strng{fullhash}{9c677286866aad38f8e9b660f5411814}
-      \strng{bibnamehash}{9c677286866aad38f8e9b660f5411814}
-      \strng{authorbibnamehash}{9c677286866aad38f8e9b660f5411814}
-      \strng{authornamehash}{9c677286866aad38f8e9b660f5411814}
-      \strng{authorfullhash}{9c677286866aad38f8e9b660f5411814}
-      \field{extraname}{2}
-      \field{sortinit}{W}
-      \field{sortinithash}{ecb89ff85896a47dc313960773ac311d}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{day}{7}
@@ -247,6 +270,32 @@
       \endverb
       \verb{url}
       \verb https://en.wikipedia.org/wiki/Nintendo_Entertainment_System
+      \endverb
+    \endentry
+    \entry{EWAR}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=9c677286866aad38f8e9b660f5411814}{%
+           family={Wikipedia},
+           familyi={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{9c677286866aad38f8e9b660f5411814}
+      \strng{fullhash}{9c677286866aad38f8e9b660f5411814}
+      \strng{bibnamehash}{9c677286866aad38f8e9b660f5411814}
+      \strng{authorbibnamehash}{9c677286866aad38f8e9b660f5411814}
+      \strng{authornamehash}{9c677286866aad38f8e9b660f5411814}
+      \strng{authorfullhash}{9c677286866aad38f8e9b660f5411814}
+      \field{extraname}{2}
+      \field{sortinit}{W}
+      \field{sortinithash}{ecb89ff85896a47dc313960773ac311d}
+      \field{labeldatesource}{nodate}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Editor War - Wikipedia}
+      \verb{urlraw}
+      \verb https://en.wikipedia.org/wiki/Editor_war
+      \endverb
+      \verb{url}
+      \verb https://en.wikipedia.org/wiki/Editor_war
       \endverb
     \endentry
   \enddatalist
