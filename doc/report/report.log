@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2019.2.10)  21 MAR 2019 12:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2019.2.10)  21 MAR 2019 13:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -312,29 +312,59 @@ File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 \Gin@req@height=\dimen103
 \Gin@req@width=\dimen104
 )
+(/usr/share/texmf-dist/tex/latex/caption/subcaption.sty
+Package: subcaption 2018/05/01 v1.1-162 Sub-captions (AR)
+
+(/usr/share/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2018/10/06 v3.3-154 Customizing captions (AR)
+
+(/usr/share/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2018/09/12 v1.8c caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 64.
+\captionmargin=\dimen105
+\captionmargin@=\dimen106
+\captionwidth=\dimen107
+\caption@tempdima=\dimen108
+\caption@indent=\dimen109
+\caption@parindent=\dimen110
+\caption@hangindent=\dimen111
+)
+\c@caption@flags=\count278
+\c@ContinuedFloat=\count279
+)
+\c@subfigure=\count280
+\c@subtable=\count281
+)
 Package biblatex Info: Trying to load language 'english'...
 Package biblatex Info: ... file 'english.lbx' found.
 
 (/usr/share/texmf-dist/tex/latex/biblatex/lbx/english.lbx
 File: english.lbx 2018/11/02 v3.12 biblatex localization (PK/MW)
 )
-\@quotelevel=\count278
-\@quotereset=\count279
- (./report.aux)
+\@quotelevel=\count282
+\@quotereset=\count283
+ (./report.aux
+
+LaTeX Warning: Label `fig:my-label' multiply defined.
+
+
+LaTeX Warning: Label `fig:my-label' multiply defined.
+
+)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
 Package biblatex Info: Input encoding 'utf8' detected.
 Package biblatex Info: Automatic encoding selection.
 (biblatex)             Assuming data encoding 'utf8'.
@@ -342,22 +372,21 @@ Package biblatex Info: Automatic encoding selection.
 
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'report.bbl' found.
-
-(./report.bbl)
-Package biblatex Info: Reference section=0 on input line 13.
-Package biblatex Info: Reference segment=0 on input line 13.
+ (./report.bbl)
+Package biblatex Info: Reference section=0 on input line 14.
+Package biblatex Info: Reference segment=0 on input line 14.
  (/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count280
-\scratchdimen=\dimen105
+\scratchcounter=\count284
+\scratchdimen=\dimen112
 \scratchbox=\box26
-\nofMPsegments=\count281
-\nofMParguments=\count282
+\nofMPsegments=\count285
+\nofMParguments=\count286
 \everyMPshowfont=\toks17
-\MPscratchCnt=\count283
-\MPscratchDim=\dimen106
-\MPnumerator=\count284
-\makeMPintoPDFobject=\count285
+\MPscratchCnt=\count287
+\MPscratchDim=\dimen113
+\MPnumerator=\count288
+\makeMPintoPDFobject=\count289
 \everyMPtoPDFconversion=\toks18
 ) (/usr/share/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
@@ -379,12 +408,14 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 14.
+(Font)              <12> on input line 15.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 14.
+(Font)              <8> on input line 15.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 14.
+(Font)              <6> on input line 15.
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./report.toc
@@ -403,7 +434,24 @@ Chapter 1.
 [2
 
 
-] [3] [4]
+]
+<images/famicon.jpg, id=19, 1454.43375pt x 776.9025pt>
+File: images/famicon.jpg Graphic file (type jpg)
+<use images/famicon.jpg>
+Package pdftex.def Info: images/famicon.jpg  used on input line 43.
+(pdftex.def)             Requested size: 137.9979pt x 73.71165pt.
+<images/nes.jpg, id=20, 5580.85pt x 3031.325pt>
+File: images/nes.jpg Graphic file (type jpg)
+<use images/nes.jpg>
+Package pdftex.def Info: images/nes.jpg  used on input line 49.
+(pdftex.def)             Requested size: 137.9979pt x 74.93185pt.
+ [3 <./images/famicon.jpg> <./images/nes.jpg>]
+<images/nes-controller.jpg, id=25, 1120.185pt x 813.0375pt>
+File: images/nes-controller.jpg Graphic file (type jpg)
+<use images/nes-controller.jpg>
+Package pdftex.def Info: images/nes-controller.jpg  used on input line 77.
+(pdftex.def)             Requested size: 345.0pt x 250.40143pt.
+ [4 <./images/nes-controller.jpg>]
 Chapter 2.
 [5
 
@@ -411,7 +459,13 @@ Chapter 2.
 Chapter 3.
 [7
 
-] [8] [9] [10]
+] [8] [9]
+<images/github_project.png, id=45, 1495.5875pt x 733.74126pt>
+File: images/github_project.png Graphic file (type png)
+<use images/github_project.png>
+Package pdftex.def Info: images/github_project.png  used on input line 206.
+(pdftex.def)             Requested size: 345.0pt x 169.26076pt.
+ [10 <./images/github_project.png>]
 Chapter 4.
 [11
 
@@ -428,12 +482,12 @@ Chapter 6.
 [14
 
 ]
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 220.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 252.
 
  (/usr/share/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-Overfull \hbox (7.93611pt too wide) in paragraph at lines 221--221
+Overfull \hbox (7.93611pt too wide) in paragraph at lines 253--253
 [][][]\T1/cmr/m/n/10 (n.d.). \T1/cmr/m/it/10 Project Repos-i-tory\T1/cmr/m/n/10
  . \T1/cmr/m/sc/10 url\T1/cmr/m/n/10 : $\T1/cmtt/m/n/10 https : / / tekercs . g
 ithub . io / nes _ emulator$\T1/cmr/m/n/10 . 
@@ -443,35 +497,35 @@ ithub . io / nes _ emulator$\T1/cmr/m/n/10 .
 
 ] [16] (./report.aux)
 
-Package biblatex Warning: Please rerun LaTeX.
-(biblatex)                Page breaks have changed.
+LaTeX Warning: There were multiply-defined labels.
 
 Package logreq Info: Writing requests to 'report.run.xml'.
 \openout1 = `report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 8434 strings out of 492639
- 149346 string characters out of 6135497
- 564726 words of memory out of 5000000
- 12253 multiletter control sequences out of 15000+600000
- 16534 words of font info for 37 fonts, out of 8000000 for 9000
+ 9628 strings out of 492639
+ 170718 string characters out of 6135497
+ 586495 words of memory out of 5000000
+ 13430 multiletter control sequences out of 15000+600000
+ 17299 words of font info for 38 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,6n,45p,868b,1206s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,7n,45p,868b,1206s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/t
 exmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/share/texmf-dist/fonts
 /type1/public/cm-super/sfbx1200.pfb></usr/share/texmf-dist/fonts/type1/public/c
 m-super/sfbx1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx207
 4.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/sha
 re/texmf-dist/fonts/type1/public/cm-super/sfcc1000.pfb></usr/share/texmf-dist/f
-onts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf-dist/fonts/type1/publ
-ic/cm-super/sfrm1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfr
-m1728.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr
-/share/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on report.pdf (17 pages, 220721 bytes).
+onts/type1/public/cm-super/sfrm0900.pfb></usr/share/texmf-dist/fonts/type1/publ
+ic/cm-super/sfrm1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfr
+m1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr
+/share/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/share/texmf-di
+st/fonts/type1/public/cm-super/sftt1000.pfb>
+Output written on report.pdf (17 pages, 7698028 bytes).
 PDF statistics:
- 104 PDF objects out of 1000 (max. 8388607)
- 73 compressed objects within 1 object stream
+ 112 PDF objects out of 1000 (max. 8388607)
+ 76 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

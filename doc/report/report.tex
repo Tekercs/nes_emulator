@@ -4,6 +4,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{graphicx}
+\usepackage{subcaption}
 \graphicspath{images}
 
 % Title Page
@@ -35,6 +36,24 @@ The homeland release was followed by the USA and parts of Europe in 1986 and lat
 However, these releases were concerning for Nintendo as '83 was also the year of the great video game crash happened in North America (\cite{CRSH}). But it turned out the perfect opportunity for the console. As the hugely saturated gaming console market shrunk down, most of the competitors get bankrupt, Nintendo rebranded their console and released it as Nintendo Entertainment System worldwide.
 \paragraph{ }
  It was a huge success not just because the competitors fall out but also due to two important principle which Nintendo following since then. One of them is unlike other consoles before only certified games could be released to the platform, which meant degradation in quantity and increase in the quality of the games. The other principle was that the actual hardware built from not bleeding edge components therefore making it cheap, more easily accessible.
+ 
+\begin{figure}[!htb]
+	\centering
+	\begin{subfigure}[b]{0.4\textwidth}
+		\includegraphics[width=\textwidth]{images/famicon.jpg}
+		\caption{Famicon}
+		\label{fig:1}
+	\end{subfigure}
+	%
+	\begin{subfigure}[b]{0.4\textwidth}
+		\includegraphics[width=\textwidth]{images/nes.jpg}
+		\caption{NES}
+		\label{fig:2}
+	\end{subfigure}
+	\caption{\label{fig:my-label} The console design}
+\end{figure}
+
+
 
 \section{Background}
 \paragraph{ }
@@ -52,6 +71,13 @@ Two 8 button, these buttons are up, down, left, right, select, start, A, B, cont
 The RAM (Random Access Memory) is the central piece of the hardware which not only holds data but trough memory mapping it also connects all the other pieces to the CPU. Therefore the developers can control the full hardware behaviours trough with specific read and write operations to certain memory slots.
 \paragraph{ }
 In this project, these core parts of the hardware will be emulated on x86-64 machines. As a result, provide an application which is able to run those games which were developed for the original NES system.
+
+\begin{figure}[!htb]
+	\center{\includegraphics[width=\textwidth]
+		{images/nes-controller.jpg}}
+	\caption{\label{fig:my-label} NES controller}
+\end{figure}
+
 
 
 \chapter{Project Goal}
@@ -174,6 +200,12 @@ Testing was carried out in two phases. Depending on the given issue, manual test
 The API documentation were created after the given task was finished and updated with Doxygen.
 \\
 Meanwhile, the report itself was uprated in larger chunks because this way there was always a bigger portion of the system was available therefore it was easier to position the actual chunk to the whole project.
+
+\begin{figure}[!htb]
+\center{\includegraphics[width=\textwidth]
+	{images/github_project.png}}
+\caption{\label{fig:my-label} Github project page}
+\end{figure}
 
 \chapter{Specification and implementation}
 
