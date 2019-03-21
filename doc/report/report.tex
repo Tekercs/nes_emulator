@@ -5,7 +5,17 @@
 \usepackage[T1]{fontenc}
 \usepackage{graphicx}
 \usepackage{subcaption}
+\usepackage{hyperref}
 \graphicspath{images}
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=cyan,
+}
+
+\urlstyle{same}
 
 % Title Page
 \title{NES Emulator}
@@ -24,7 +34,7 @@
 The Nintendo Entertainment System, frequently called NES, is an home gaming console developed by the Japanese company called Nintendo Company, Limited.  Through it's lifetime the from the earl '80s up until the end of the '90s a lot of good quality titles were released to the platform and a wide range of audience were reached. Due to this quality of games and  popularity which the NES gained at it's peak time people even nowadays like to pick up some of the most famous, or personal favourite titles and play through them. Sadly, due to the rapid evolution computing the current hardware are not compatible with the old games developed for the NES platform also the old and still working consoles are really hard to get a hands on. Yet the gaming community still keeps alive these games and the way it is mostly done by using emulators.
 
 \paragraph{ }
-To solve the compatibility issue with the modern hardware, without actually buying or refurbishing one, the community started to creating so called emulators. Which are a special kind of software, it's purpose is to provide a virtual simulated environment of a given old or very specific hardware, such as the NES for instance, on top of a given system, like PC or any other gaming console. This projects goal is to produce an emulator like this which, by simulating the NES hardware behaviour, provides a way to run the games without any need of the modification of the old games code. Therefore, unlike porting the actual game, the user has access to an authentic experience. On the other hand, emulation is more resource dependent than a ported game, but less time consuming than porting every single game.
+To solve the compatibility issue with the modern hardware, without actually buying or refurbishing one, the community started to creating so called emulators. Which are a special kind of software, it's purpose is to provide a virtual emulator environment of a given old or very specific hardware, such as the NES for instance, on top of a given system, like PC or any other gaming console. This projects goal is to produce an emulator like this which, by emulating the NES hardware behaviour, provides a way to run the games without any need of the modification of the old games code. Therefore, unlike porting the actual game, the user has access to an authentic experience. On the other hand, emulation is more resource dependent than a ported game, but less time consuming than porting every single game.
 
 \section{History}
 
@@ -186,7 +196,7 @@ The development life cycle contains multiple stages which are built upon each ot
 Every small task went through a planning phase which mostly consisted idea how to actually code down the given task and how it is going to be fitting into the whole project current state meanwhile thinking about to keep as much space as possible for later new features and improvements.
 
 \paragraph{ }
-Prototyping itself was kinda more flexible, compared to the planning, it was different from task to task, some sort of prototype was also developed outside the project source to prove concepts of the planning, but the difference was that it was not always done to every single subtask. Sometimes it involved a whole module, sometimes it just has done for two tasks together.
+Prototyping itself was more flexible, compared to the planning, it was different from task to task, some sort of prototype was also developed outside the project source to prove concepts of the planning, but the difference was that it was not always done to every single subtask. Sometimes it involved a whole module, sometimes it just has done for two tasks together.
 \\
 The main goal here was to test the result of the planning in an actual working context and see if the result is clean, stable and extendable enough to be implemented in the actual project.
 
@@ -209,9 +219,140 @@ Meanwhile, the report itself was uprated in larger chunks because this way there
 
 \chapter{Specification and implementation}
 
+\section{CPU}
+
+
+
+\subsection{Specification}
+
+
+
+\paragraph{ }
+The NES CPU was the RP2A03/RP2A07 chip, a modified version of the MOS 6502 (\cite{6502}) microprocessor, manufactured by Ricoh (\cite{RCHO}). This chip was an 8-bit little-endian microprocessor running on 1,79/1,66 MHz, the European / Australian version (PAL) was running on a lover clock speed.
+\\
+The CPU contains 6 registers from that 3 are more general purpose  and 3 are special purpose (\cite{REGS}).
+\begin{enumerate}
+	\item Accumulator
+	\item X index
+	\item Y index
+	\item Status flags
+	\item Stack  pointer
+	\item Program counter
+\end{enumerate}
+
+All of these registers are 8-bit long registers except the Program counter which is 16-bit long due to the memory address bus size, see below (\cite{REG2}). Most of the work was done on the Accumulator, X and Y index registers
+as the most of the arithmetic and load/store instructions were implemented for these. Also the result of these operations were visible on the Status flags as well. 
+\\
+The Status flags was an 8-bit register where each bit, except the 5th bit, are representing a different state of the CPU. 
+\paragraph{Negative Flag, 7th bit}
+This flag is changed whenever the last CPU instruction's result is negative or not. The reason why this flag is important is the CPU's instructions on its own can not determine if the given 8-bit value which it is working with at the moment is negative or positive. Therefore this flag is used to tell the programmer about the result and give the control to their hand to handle the result in way as it is good for them. By ignoring the flag the result can be treated as an 8-bit long unsigned value or, with the value of the flag kept in mind, as an signed 8-bit value.
+\paragraph{Overflow flag, 6th bit}
+The value of this flag determined by the sign flag of the result of the previously executed instruction is invalid or not.
+
+\paragraph{Break flag, 4th bit}
+Whenever the programmer decides that they want to force out an interrupt from the CPU by executing the BRK, Break, command this flag is set. Therefore the CPU know that after finishing the instruction an IRQ interrupt should be handled.
+
+\paragraph{Decimal Mode, 3rd bit}
+Decimal mode flag can be toggled by two CPU instruction, but has no effect on the system due to the fact that the custom modified chip which is used by the emulator is not implementing this binary-coded decimal mode.
+
+\paragraph{Interrupt Disable, 2nd bit}
+This flag also connected to the chips interrupt handling. As if this flag is set, then the microprocessor will ignore al the IRQs. 
+
+\paragraph{Zero Flag, 1st bit}
+Whenever an arithmetic operation's result are zero this flag is set. It is important not just for arithmetic but control-flow instructions using it as well for their checks whenever the processor should branch or not.
+
+\paragraph{Carry flag, 0th bit}
+The flag is set by either its designed instruction, or any other arithmetic, shifting or rotating instruction which result did not fin in the 8-bit size.
+This is important to provide support for operations on larger values than 8-bit. One of the reasons is the fact that the memory's address bus is 16-bit. 
+
+\paragraph{ }
+Along the register the other main capability defining aspect of the chip is it's instruction set. Due to its 8-bit nature of the microprocessor the number of available instructions are 256. Although not every opcode is implemented officially (\cite{INST}). The 151 instruction which actually implemented are technically 56 instructions with different addressing modes (\cite{ADDR}). Each instructions has its execution time measured in CPU cycles, which depends on the addressing mode and the length of the instruction itself. Usually the instruction are a 1 - 3 byte long, the 1st byte specifies the instruction and it's addressing mode and the optimal 2nd and 3rd are used to specify the operands of the instruction. For example:
+\\
+\\
+TXA instruction is 1 byte long.
+\\
+STY \$01 is 2 byte long 
+\\
+STY \$20AA is 3 byte long
+\\
+\\
+Important to notice that the Indirect jump instruction, JMP (opcode: \$6C), contains a bug. When ever the indirect instruction parameter points to \$xxFF, where x is any hexadecimal number, the instruction fetches the low-byte from \$xxFF then the high-byte from \$xx00 instead of \$(xx+1)00. This is an important bug because there are games which heavily rely on the the behaviour of this instruction.
+
+\paragraph{ }
+As it seen above on the STY example the same instruction could behave differently this is due to the different addressing mode. Each instruction has its own set of addressing modes,  these are all the possible ones: 
+
+\begin{enumerate}
+	\item Implicit
+	\item Accumulator
+	\item Immediate
+	\item Zero Page
+	\item Zero Page,X
+	\item Zero Page,Y
+	\item Relative
+	\item Absolute
+	\item Absolute,X
+	\item Absolute,Y
+	\item Indirect
+	\item Indexed Indirect
+	\item Indirect Indexed
+\end{enumerate}
+
+\iffalse
+maybe describe each addressing mode
+\fi
+
+\subsection{Implementation}
+When it came to implement the processor emulation it was carried out in multiple stages.
+\paragraph{Registers}
+First of all the register emulation had to be implemented first, as all of the CPU instructions accessing at least one of the registers. Each of the registers is emulated by a \textbf{\textit{uint8\_t}} typed variable, or  \textbf{\textit{uint16\_t}} for the program counter, wrapped in a class called  \textbf{\textit{Registers}} (\cite{DREG}) with the necessary accessors functions implemented within. This separation from the actual CPU logic is the result of the break up of the big classes for testing and readability purposes.
+
+\paragraph{Instructions and Addressing modes}
+The first thing to start with instruction implementation is to separate the logic of the addressing mode and the core instruction itself.
+\\
+ For instance, the ADC instruction has 8 different addressing mode. Each of them specifies the way how the instruction obtains the 8 bit value which then will be then just added to the accumulator along with the carry. 
+ With this separation there were only need for 51 core instruction implementation and separately 13 addressing mode instead of the total 151 instruction. 
+\\
+Each of the instruction and addressing mode implementation received it's own function (\cite{DCPU}) to make the code as easy to read/understand and debug as it is possible.
+
+\paragraph{Memory accessing}
+As some of the instructions are accessing the main memory of the system for either reading or writing. Therefore  the  \textbf{\textit{Cpu}} class also receives a smart pointer to a \textbf{\textit{Memory}} object, for implementation details see below.
+
+\paragraph{CPU Cycle}
+The CPU Cycle emulation was implemented with a different approach. As there is no straight correlation between the cycle and anything else, other than the fact that the PPU itself roughly working on 3X as much cycle rate, the possibility is open to implement it to check for interrupts and  execute a single instruction in each step instead of just a single cycle (an instruction usually executed through several CPU cycles 2 - 7 cycle/instruction). 
+\\
+Due to the computational power difference between the NES and the today's average PC this approach does not prevent emulator to work with 100\% cycle accuracy. As even the most complex instruction can be easily executed within the necessary time frame even with the fact that the emulator running on the top of the normal system. This of course could cause issues within an emulator if the emulator's target platform would be stronger such as an Xbox 360, PS 4 or Nintendo Wii.
+\\
+The instruction execution implementation is consist of a mapping of the 8-bit opcode of the instruction to a paired function call for the core implementation and the addressing mode. This mapping is implemented with a switch statement which readability wise is not the best option due to it has 151 case but that is nearly the best way performance wise.
+\\
+Although, if it is needed there is room for further performance increase. By monitoring the emulator through different games it is possible to find the most used instructions. With this information in hand, the most used instructions could be lifted out from the switch statement and implemented with an if-elseif structure, in order the most used ones checked first and the least used one checked last from the selected set of instructions. By doing that, the compiler could actually provide further optimization on this part of the implementation.
+
+
+\subsection{Testing}
+\paragraph{ }
+The testing of the CPU was carried out by using a test cartridge developed by Kevin Horton (\cite{NEST}). As his test ROM is an all inclusive test when it comes for CPU and its instruction's behaviour.
+\\
+The test carried out by implementing a helper logging function for the CPU implementation. A state log was generated based on the upcoming instruction to be executed and the current state of the registers. Then this log was compared in every processor cycle with a log which was provided along with the test ROM. 
+As the invalid opcodes was no implemented in the project those tests were skipped.
+\\
+Testing these type of software happens to be challenging. Even the fact that a pre-written testing ROM were used] to identify if any bug left in the system, finding the actual source of the problem was proved to be challenging. Mostly to follow trough instruction by instruction the executed operations to see which instruction's resulted faulty execution. Besides it is time-consuming and requires the tester to maintain the track of the execution in real time with the software as the problem source from time to time can even happening in a completely different execution step compared to where the bug were actually found.
+\\
+The most effective bug findings were the result of using a debugger tool and next to it a pen and paper approach.
+\paragraph{ }
+Also along the implementation phase when it came to implement the instructions and the addressing modes.
+Each of them after implementation were tested manually as well. Due to the fact that the testing ROM mentioned above was only usable after the whole CPU emulation completed.
+
+\begin{figure}[h]
+	\center{\includegraphics[width=\textwidth]
+		{images/instruction_map.png}}
+	\caption{\label{fig:my-label} MOS 6502 instruction map}
+\end{figure}
+
+
 \section{RAM}
 
 \subsection{Specification}
+
+
 
 \subsection{Implementation}
 
@@ -225,17 +366,13 @@ Meanwhile, the report itself was uprated in larger chunks because this way there
 
 \subsection{Testing}
 
-\section{CPU}
 
-\subsection{Specification}
-
-\subsection{Implementation}
-
-\subsection{Testing}
 
 \section{PPU}
 
 \subsection{Specification}
+
+
 
 \subsection{Implementation}
 

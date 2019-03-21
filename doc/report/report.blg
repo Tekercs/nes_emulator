@@ -1,15 +1,15 @@
 [0] Config.pm:304> INFO - This is Biber 2.12
 [0] Config.pm:307> INFO - Logfile is 'report.blg'
-[17] biber:315> INFO - === Thu Mar 21, 2019, 12:36:35
-[31] Biber.pm:371> INFO - Reading 'report.bcf'
-[74] Biber.pm:889> INFO - Found 17 citekeys in bib section 0
-[83] Biber.pm:4093> INFO - Processing section 0
-[90] Biber.pm:4254> INFO - Looking for bibtex format file 'references.tex' for section 0
-[91] bibtex.pm:1523> INFO - LaTeX decoding ...
-[98] bibtex.pm:1340> INFO - Found BibTeX data source 'references.tex'
-[156] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[156] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[156] Biber.pm:3921> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
-[156] Biber.pm:3927> INFO - No sort tailoring available for locale 'en-US'
-[168] bbl.pm:636> INFO - Writing 'report.bbl' with encoding 'UTF-8'
-[174] bbl.pm:739> INFO - Output to report.bbl
+[18] biber:315> INFO - === Thu Mar 21, 2019, 17:20:57
+[34] Biber.pm:371> INFO - Reading 'report.bcf'
+[79] Biber.pm:889> INFO - Found 26 citekeys in bib section 0
+[90] Biber.pm:4093> INFO - Processing section 0
+[98] Biber.pm:4254> INFO - Looking for bibtex format file 'references.tex' for section 0
+[99] bibtex.pm:1523> INFO - LaTeX decoding ...
+[112] bibtex.pm:1340> INFO - Found BibTeX data source 'references.tex'
+[200] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[200] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[200] Biber.pm:3921> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
+[200] Biber.pm:3927> INFO - No sort tailoring available for locale 'en-US'
+[217] bbl.pm:636> INFO - Writing 'report.bbl' with encoding 'UTF-8'
+[228] bbl.pm:739> INFO - Output to report.bbl

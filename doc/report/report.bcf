@@ -2013,6 +2013,15 @@
     <bcf:citekey order="15">DOXY</bcf:citekey>
     <bcf:citekey order="16">REPO</bcf:citekey>
     <bcf:citekey order="17">TRAV</bcf:citekey>
+    <bcf:citekey order="18">6502</bcf:citekey>
+    <bcf:citekey order="19">RCHO</bcf:citekey>
+    <bcf:citekey order="20">REGS</bcf:citekey>
+    <bcf:citekey order="21">REG2</bcf:citekey>
+    <bcf:citekey order="22">INST</bcf:citekey>
+    <bcf:citekey order="23">ADDR</bcf:citekey>
+    <bcf:citekey order="24">DREG</bcf:citekey>
+    <bcf:citekey order="25">DCPU</bcf:citekey>
+    <bcf:citekey order="26">NEST</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nyt">
