@@ -93,18 +93,19 @@ The NES system supports two-player local multiplayer, as the system provides har
 \section{Design}
 
 \paragraph{ }
-Due to the fact that the NES gaming console's hardware could easily be divided up to 5 distinct, loosely coupled module, it was clear that the best way is to design the implementation around these modules:
+Due to the fact that the NES gaming console's hardware could easily be divided up to 6 distinct, loosely coupled module, it was clear that the best way is to design the implementation around these modules:
 \begin{enumerate}
 	\item Ram
 	\item CPU
 	\item PPU
 	\item Controller
 	\item Cartridge / Mapper
+	\item APU
 \end{enumerate}
 
 This thanks to the fact that the system gives control over all of these pieces by wiring them into given memory slots and using CPU instructions to perform read and write instructions on them to trigger given actions on them, all of this without letting the actual CPU Hardware know that it is accessing anything else. Therefore when the system could be implemented module by module in careful order. Due to this modular separations, it was easy and straightforward to build each module easily by separating them up to smaller task and gradually build each module.
 \paragraph{ }
-Besides the separation of the emulator code to modules, the GUI, Graphical User Interface,  is also separated from the actual emulator logic. This behaviour is implemented by compiling the NES emu logic into a shared object, dynamic library for Windows users, and linked it with the GUI implementation. This decoupling has numerous advantages over shipping the whole application as a single executable.
+Besides the separation of the emulator code to modules, the GUI, Graphical User Interface,  is also separated from the actual emulator logic. This behaviour is implemented by compiling the NES emulator logic into a shared object, dynamic library for Windows users, and linked it with the GUI implementation. This decoupling has numerous advantages over shipping the whole application as a single executable.
 \\ 
 Due to this separation, the emulator logic became easier to test on its own. 
 \\ 
@@ -114,28 +115,33 @@ The GUI implementation can be changed without affecting any of the core solution
 
 \section{Tools}
 \paragraph{ }
-The project is written in the latest standard of C++ 17 \cite{CPPV}. The reason behind the choice of C++ was that the language itself really stable and mature and proven to be a great tool to develop clean, stable, high performant software solutions and also providing low-level solutions for given sets of problems such as pointers. Compared to C, the true system level programming language, C++ provides a more readable code on exchange for minimal performance loss.
+The project is written in the latest standard of C++ 17 (\cite{CPPV}). The reason behind the choice of C++ was that the language itself really stable and mature and proven to be a great tool to develop clean, stable, high performant software solutions and also providing low-level solutions for given sets of problems such as pointers. Compared to C, a system level programming language, C++ provides a more readable code on exchange for minimal performance loss thanks to it's rich standard library and object oriented programming capabilities.
 
 \paragraph{ }
-For source code compiling the GCC version 8.2.1 toolchain is used through the Ninja build system. And these are configured with CMake to which provides a cross-platform build tool configuring interface. Also, it provides an opportunity for developers to use their own preferred IDE, Integrated Development Environment, therefore boost their productivity.
+On the top of C++ a small number, namely two, of external libraries were used to develop the project.
+Catch2 (\cite{CTCH}) was used to carry out the automated tests which were written for the project in a BDD (\cite{BDDT}) style.
+The other one is SDL (\cite{SDL2})
+
+\paragraph{ }
+For source code compiling the GCC (\cite{GCCV}) version 8.2.1 toolchain is used through the MAKE (\cite{MAKE}) build system. And these are configured with CMake (\cite{CMKE}) to which provides a cross-platform build tool configuring interface. Also, it provides an opportunity for developers to use their own preferred IDE, Integrated Development Environment, therefore boost their productivity.
 
 \paragraph{ }
 The project documentation consists of two parts the report itself (this document) and the API doc (\cite{APID}).
 \\
-The report was created with LaTeX. On the other hand, the API documentation was generated with Doxygen from the annotated C++ Header files of the source code.
+The report was created with LaTeX (\cite{LATX}). On the other hand, the API documentation was generated with Doxygen (\cite{DOXY}) from the annotated C++ Header files of the source code.
 
 \paragraph{ }
 The source code along with the build system configuration and the documentation is version controlled with GIT and stored in a main  Github repository (\cite{REPO}).
 As the project meant to be published as an open source project it is publicly available. Although, under the time of the project during the course of the project it was also publicly available the repository was strictly available for editing for the project owner (Sebestyén Bence) and the project supervisor (Robert Atkey).
 \\
-The project repository is also linked to a CI, Continuous Integration, the system called Travis CI. Which mostly used to provide security against merging any proposed changes which are not passing the build state or failing any of the automated tests which were supplied with the source code. The CI system build and testing are triggered every time when a pull request for a change against the main repository is set up and blocking any merge until the errors within the proposed changes are not fixed.
+The project repository is also linked to a CI, Continuous Integration, the system called Travis CI (\cite{TRAV}). Which mostly used to provide security against merging any proposed changes which are not passing the build state or failing any of the automated tests which were supplied with the source code. The CI system build and testing are triggered every time when a pull request for a change against the main repository is set up and blocking any merge until the errors within the proposed changes are not fixed.
 
 
 
 \section{Management}
 
 \paragraph{ }
-The development cycle managed through GitHub project page. For every task regarding the project execution, there was an issue upend. These issues were labelled up based on which development cycle, see below, it was accomplished, and added to the given project milestone based on which module it was belonged to.
+The development cycle managed through GitHub project page. For every task regarding the project execution, there was an issue opened. These issues were labelled up based on which development cycle, see below, it was accomplished, and added to the given project milestone based on which module it was belonged to.
 \\
 This provided a great oversight over the project's evolution and also a faster more stable development cycle due to the small subtasks.
 
@@ -212,7 +218,5 @@ Meanwhile, the report itself was uprated in larger chunks because this way there
 \chapter{Conclusions}
 
 \printbibliography
-
-
 
 \end{document}          

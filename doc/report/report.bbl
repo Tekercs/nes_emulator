@@ -82,6 +82,36 @@
       \verb https://tekercs.github.io/nes_emulator
       \endverb
     \endentry
+    \entry{CMKE}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=df49adab93b9e0c10c64f72458b31971}{%
+           family={CMake},
+           familyi={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{df49adab93b9e0c10c64f72458b31971}
+      \strng{fullhash}{df49adab93b9e0c10c64f72458b31971}
+      \strng{bibnamehash}{df49adab93b9e0c10c64f72458b31971}
+      \strng{authorbibnamehash}{df49adab93b9e0c10c64f72458b31971}
+      \strng{authornamehash}{df49adab93b9e0c10c64f72458b31971}
+      \strng{authorfullhash}{df49adab93b9e0c10c64f72458b31971}
+      \field{sortinit}{C}
+      \field{sortinithash}{963e9d84a3da2344e8833203de5aed05}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{21}
+      \field{month}{3}
+      \field{title}{CMake}
+      \field{year}{2019}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://cmake.org/
+      \endverb
+      \verb{url}
+      \verb https://cmake.org/
+      \endverb
+    \endentry
     \entry{CPPV}{online}{}
       \name{author}{1}{}{%
         {{uniquename=0,uniquepart=base,hash=ccb2e96d41753ca525a50baa0f70c147}{%
@@ -110,6 +140,36 @@
       \endverb
       \verb{url}
       \verb https://en.cppreference.com/w/cpp/compiler_support
+      \endverb
+    \endentry
+    \entry{GCCV}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=6676d03052a0fb449f719dcca22f6f8e}{%
+           family={GCC-Team},
+           familyi={G\bibinithyphendelim T\bibinitperiod}}}%
+      }
+      \strng{namehash}{6676d03052a0fb449f719dcca22f6f8e}
+      \strng{fullhash}{6676d03052a0fb449f719dcca22f6f8e}
+      \strng{bibnamehash}{6676d03052a0fb449f719dcca22f6f8e}
+      \strng{authorbibnamehash}{6676d03052a0fb449f719dcca22f6f8e}
+      \strng{authornamehash}{6676d03052a0fb449f719dcca22f6f8e}
+      \strng{authorfullhash}{6676d03052a0fb449f719dcca22f6f8e}
+      \field{sortinit}{G}
+      \field{sortinithash}{5e8d2bf9d38de41b1528bd307546008f}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{22}
+      \field{month}{2}
+      \field{title}{GCC, the GNU Compiler Collection - GNU Project - Free Software Foundation (FSF)}
+      \field{year}{2019}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://gcc.gnu.org/
+      \endverb
+      \verb{url}
+      \verb https://gcc.gnu.org/
       \endverb
     \endentry
     \entry{ZELD}{online}{}
@@ -143,6 +203,202 @@
       \endverb
       \verb{url}
       \verb https://www.gamespot.com/reviews/the-legend-of-zelda-review/1900-6162256/
+      \endverb
+    \endentry
+    \entry{MAKE}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=b7e89d55aa08a289aa48277386e6ff1d}{%
+           family={GNU},
+           familyi={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{b7e89d55aa08a289aa48277386e6ff1d}
+      \strng{fullhash}{b7e89d55aa08a289aa48277386e6ff1d}
+      \strng{bibnamehash}{b7e89d55aa08a289aa48277386e6ff1d}
+      \strng{authorbibnamehash}{b7e89d55aa08a289aa48277386e6ff1d}
+      \strng{authornamehash}{b7e89d55aa08a289aa48277386e6ff1d}
+      \strng{authorfullhash}{b7e89d55aa08a289aa48277386e6ff1d}
+      \field{sortinit}{G}
+      \field{sortinithash}{5e8d2bf9d38de41b1528bd307546008f}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{20}
+      \field{month}{5}
+      \field{title}{Make - GNU Project - Free Software Foundation}
+      \field{year}{2016}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://gcc.gnu.org/
+      \endverb
+      \verb{url}
+      \verb https://gcc.gnu.org/
+      \endverb
+    \endentry
+    \entry{DOXY}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=9f78d72e7ebcabbe9d57ae933f96b4e6}{%
+           family={Heesch},
+           familyi={H\bibinitperiod},
+           given={Dimitri},
+           giveni={D\bibinitperiod},
+           givenun=0,
+           prefix={van},
+           prefixi={v\bibinitperiod},
+           prefixun=0}}%
+      }
+      \strng{namehash}{9f78d72e7ebcabbe9d57ae933f96b4e6}
+      \strng{fullhash}{9f78d72e7ebcabbe9d57ae933f96b4e6}
+      \strng{bibnamehash}{9f78d72e7ebcabbe9d57ae933f96b4e6}
+      \strng{authorbibnamehash}{9f78d72e7ebcabbe9d57ae933f96b4e6}
+      \strng{authornamehash}{9f78d72e7ebcabbe9d57ae933f96b4e6}
+      \strng{authorfullhash}{9f78d72e7ebcabbe9d57ae933f96b4e6}
+      \field{sortinit}{H}
+      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{19}
+      \field{month}{3}
+      \field{title}{Doxygen: Main Page}
+      \field{year}{2019}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb http://www.doxygen.nl/index.html
+      \endverb
+      \verb{url}
+      \verb http://www.doxygen.nl/index.html
+      \endverb
+    \endentry
+    \entry{BDDT}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=40db3b3fb823530c8a313e60d377f557}{%
+           family={Holmes},
+           familyi={H\bibinitperiod},
+           given={Richard},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{40db3b3fb823530c8a313e60d377f557}
+      \strng{fullhash}{40db3b3fb823530c8a313e60d377f557}
+      \strng{bibnamehash}{40db3b3fb823530c8a313e60d377f557}
+      \strng{authorbibnamehash}{40db3b3fb823530c8a313e60d377f557}
+      \strng{authornamehash}{40db3b3fb823530c8a313e60d377f557}
+      \strng{authorfullhash}{40db3b3fb823530c8a313e60d377f557}
+      \field{sortinit}{H}
+      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{6}
+      \field{month}{11}
+      \field{title}{Writing BDD Test Scenarios - Department of Product}
+      \field{year}{2017}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://www.departmentofproduct.com/blog/writing-bdd-test-scenarios/
+      \endverb
+      \verb{url}
+      \verb https://www.departmentofproduct.com/blog/writing-bdd-test-scenarios/
+      \endverb
+    \endentry
+    \entry{CTCH}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=0d2f3e57e559997a4fc5dede3fc0bd57}{%
+           family={Hořeňovský},
+           familyi={H\bibinitperiod},
+           given={Martin},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{0d2f3e57e559997a4fc5dede3fc0bd57}
+      \strng{fullhash}{0d2f3e57e559997a4fc5dede3fc0bd57}
+      \strng{bibnamehash}{0d2f3e57e559997a4fc5dede3fc0bd57}
+      \strng{authorbibnamehash}{0d2f3e57e559997a4fc5dede3fc0bd57}
+      \strng{authornamehash}{0d2f3e57e559997a4fc5dede3fc0bd57}
+      \strng{authorfullhash}{0d2f3e57e559997a4fc5dede3fc0bd57}
+      \field{sortinit}{H}
+      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{21}
+      \field{month}{3}
+      \field{title}{Travis CI - Test and Deploy Your Code with Confidence}
+      \field{year}{2019}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://github.com/catchorg/Catch2
+      \endverb
+      \verb{url}
+      \verb https://github.com/catchorg/Catch2
+      \endverb
+    \endentry
+    \entry{LATX}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=a59c90450a56b04640a06b7f08f566e4}{%
+           family={LaTeX3-Team},
+           familyi={L\bibinithyphendelim T\bibinitperiod}}}%
+      }
+      \strng{namehash}{a59c90450a56b04640a06b7f08f566e4}
+      \strng{fullhash}{a59c90450a56b04640a06b7f08f566e4}
+      \strng{bibnamehash}{a59c90450a56b04640a06b7f08f566e4}
+      \strng{authorbibnamehash}{a59c90450a56b04640a06b7f08f566e4}
+      \strng{authornamehash}{a59c90450a56b04640a06b7f08f566e4}
+      \strng{authorfullhash}{a59c90450a56b04640a06b7f08f566e4}
+      \field{extraname}{1}
+      \field{sortinit}{L}
+      \field{sortinithash}{2c7981aaabc885868aba60f0c09ee20f}
+      \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{21}
+      \field{month}{3}
+      \field{title}{LaTeX - A document preparation system}
+      \field{year}{2019}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://www.latex-project.org/
+      \endverb
+      \verb{url}
+      \verb https://www.latex-project.org/
+      \endverb
+    \endentry
+    \entry{TRAV}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=a59c90450a56b04640a06b7f08f566e4}{%
+           family={LaTeX3-Team},
+           familyi={L\bibinithyphendelim T\bibinitperiod}}}%
+      }
+      \strng{namehash}{a59c90450a56b04640a06b7f08f566e4}
+      \strng{fullhash}{a59c90450a56b04640a06b7f08f566e4}
+      \strng{bibnamehash}{a59c90450a56b04640a06b7f08f566e4}
+      \strng{authorbibnamehash}{a59c90450a56b04640a06b7f08f566e4}
+      \strng{authornamehash}{a59c90450a56b04640a06b7f08f566e4}
+      \strng{authorfullhash}{a59c90450a56b04640a06b7f08f566e4}
+      \field{extraname}{2}
+      \field{sortinit}{L}
+      \field{sortinithash}{2c7981aaabc885868aba60f0c09ee20f}
+      \field{extradate}{2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{21}
+      \field{month}{3}
+      \field{title}{Travis CI - Test and Deploy Your Code with Confidence}
+      \field{year}{2019}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://travis-ci.org/
+      \endverb
+      \verb{url}
+      \verb https://travis-ci.org/
       \endverb
     \endentry
     \entry{CPU}{online}{}
@@ -208,6 +464,36 @@
       \verb https://uk.ign.com/articles/2011/09/21/ten-facts-about-the-great-video-game-crash-of-83
       \endverb
     \endentry
+    \entry{SDL2}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=2320cc88dc435ddbb381c8b30b85e8a9}{%
+           family={SDL2},
+           familyi={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{2320cc88dc435ddbb381c8b30b85e8a9}
+      \strng{fullhash}{2320cc88dc435ddbb381c8b30b85e8a9}
+      \strng{bibnamehash}{2320cc88dc435ddbb381c8b30b85e8a9}
+      \strng{authorbibnamehash}{2320cc88dc435ddbb381c8b30b85e8a9}
+      \strng{authornamehash}{2320cc88dc435ddbb381c8b30b85e8a9}
+      \strng{authorfullhash}{2320cc88dc435ddbb381c8b30b85e8a9}
+      \field{sortinit}{S}
+      \field{sortinithash}{322b1d5276f2f6c1bccdcd15920dbee6}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{21}
+      \field{month}{3}
+      \field{title}{Simple DirectMedia Layer - Homepage}
+      \field{year}{2019}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://www.libsdl.org/index.php
+      \endverb
+      \verb{url}
+      \verb https://www.libsdl.org/index.php
+      \endverb
+    \endentry
     \entry{MPPR}{online}{}
       \name{author}{1}{}{%
         {{uniquename=0,uniquepart=base,hash=9baefc8622f42771d579c26aefa733c0}{%
@@ -253,7 +539,6 @@
       \strng{authorbibnamehash}{9c677286866aad38f8e9b660f5411814}
       \strng{authornamehash}{9c677286866aad38f8e9b660f5411814}
       \strng{authorfullhash}{9c677286866aad38f8e9b660f5411814}
-      \field{extraname}{1}
       \field{sortinit}{W}
       \field{sortinithash}{ecb89ff85896a47dc313960773ac311d}
       \field{extradatescope}{labelyear}
@@ -270,32 +555,6 @@
       \endverb
       \verb{url}
       \verb https://en.wikipedia.org/wiki/Nintendo_Entertainment_System
-      \endverb
-    \endentry
-    \entry{EWAR}{online}{}
-      \name{author}{1}{}{%
-        {{uniquename=0,uniquepart=base,hash=9c677286866aad38f8e9b660f5411814}{%
-           family={Wikipedia},
-           familyi={W\bibinitperiod}}}%
-      }
-      \strng{namehash}{9c677286866aad38f8e9b660f5411814}
-      \strng{fullhash}{9c677286866aad38f8e9b660f5411814}
-      \strng{bibnamehash}{9c677286866aad38f8e9b660f5411814}
-      \strng{authorbibnamehash}{9c677286866aad38f8e9b660f5411814}
-      \strng{authornamehash}{9c677286866aad38f8e9b660f5411814}
-      \strng{authorfullhash}{9c677286866aad38f8e9b660f5411814}
-      \field{extraname}{2}
-      \field{sortinit}{W}
-      \field{sortinithash}{ecb89ff85896a47dc313960773ac311d}
-      \field{labeldatesource}{nodate}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{Editor War - Wikipedia}
-      \verb{urlraw}
-      \verb https://en.wikipedia.org/wiki/Editor_war
-      \endverb
-      \verb{url}
-      \verb https://en.wikipedia.org/wiki/Editor_war
       \endverb
     \endentry
   \enddatalist

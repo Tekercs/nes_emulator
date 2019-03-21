@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2019.2.10)  21 MAR 2019 11:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2019.2.10)  21 MAR 2019 12:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -428,12 +428,12 @@ Chapter 6.
 [14
 
 ]
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 214.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 220.
 
  (/usr/share/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-Overfull \hbox (7.93611pt too wide) in paragraph at lines 215--215
+Overfull \hbox (7.93611pt too wide) in paragraph at lines 221--221
 [][][]\T1/cmr/m/n/10 (n.d.). \T1/cmr/m/it/10 Project Repos-i-tory\T1/cmr/m/n/10
  . \T1/cmr/m/sc/10 url\T1/cmr/m/n/10 : $\T1/cmtt/m/n/10 https : / / tekercs . g
 ithub . io / nes _ emulator$\T1/cmr/m/n/10 . 
@@ -441,19 +441,23 @@ ithub . io / nes _ emulator$\T1/cmr/m/n/10 .
 
 [15
 
-] (./report.aux)
+] [16] (./report.aux)
+
+Package biblatex Warning: Please rerun LaTeX.
+(biblatex)                Page breaks have changed.
+
 Package logreq Info: Writing requests to 'report.run.xml'.
 \openout1 = `report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 8402 strings out of 492639
- 148573 string characters out of 6135497
- 562394 words of memory out of 5000000
- 12221 multiletter control sequences out of 15000+600000
+ 8434 strings out of 492639
+ 149346 string characters out of 6135497
+ 564726 words of memory out of 5000000
+ 12253 multiletter control sequences out of 15000+600000
  16534 words of font info for 37 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,6n,45p,868b,1201s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,6n,45p,868b,1206s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/t
 exmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/share/texmf-dist/fonts
 /type1/public/cm-super/sfbx1200.pfb></usr/share/texmf-dist/fonts/type1/public/c
@@ -464,10 +468,10 @@ onts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf-dist/fonts/type1/publ
 ic/cm-super/sfrm1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfr
 m1728.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr
 /share/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on report.pdf (16 pages, 215954 bytes).
+Output written on report.pdf (17 pages, 220721 bytes).
 PDF statistics:
- 101 PDF objects out of 1000 (max. 8388607)
- 71 compressed objects within 1 object stream
+ 104 PDF objects out of 1000 (max. 8388607)
+ 73 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

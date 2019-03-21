@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2019.2.10)  21 MAR 2019 11:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2019.2.10)  21 MAR 2019 11:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -259,7 +259,7 @@ return to the right one by typing `I}' or `I$' or `I\par'.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.53 
+l.60 
      
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -267,7 +267,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.53 
+l.60 
      
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -278,7 +278,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.53 
+l.60 
      
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -289,12 +289,12 @@ my insertion and my current dilemma will both disappear.
 Missing character: There is no è in font cmex10!
 Missing character: There is no è in font cmex10!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 1--53
+Overfull \hbox (20.0pt too wide) in paragraph at lines 1--60
 []
  []
 
 
-Overfull \hbox (6158.96457pt too wide) in paragraph at lines 1--53
+Overfull \hbox (7094.65848pt too wide) in paragraph at lines 1--60
 []\OML/cmm/m/it/10 upport; \/cmr/m/n/10 @\OML/cmm/m/it/10 online[]\/cmr/m/n/10 
 @\OML/cmm/m/it/10 online[]\/cmr/m/n/10 @\OML/cmm/m/it/10 online[]\/cmr/m/n/10 @
 \OML/cmm/m/it/10 online[]\/cmr/m/n/10 @\OML/cmm/m/it/10 online[]\/cmr/m/n/10 @\
@@ -311,7 +311,7 @@ OML/cmm/m/it/10 online[]$
 Here is how much of TeX's memory you used:
  16 strings out of 492639
  240 string characters out of 6135497
- 61637 words of memory out of 5000000
+ 62790 words of memory out of 5000000
  4004 multiletter control sequences out of 15000+600000
  3640 words of font info for 14 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
