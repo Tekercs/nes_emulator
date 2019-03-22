@@ -213,6 +213,39 @@
       \verb https://en.cppreference.com/w/cpp/compiler_support
       \endverb
     \endentry
+    \entry{NSPF}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=48fef4eab17045e30a7cdd8d68dd460d}{%
+           family={Diskin},
+           familyi={D\bibinitperiod},
+           given={Patrick},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{48fef4eab17045e30a7cdd8d68dd460d}
+      \strng{fullhash}{48fef4eab17045e30a7cdd8d68dd460d}
+      \strng{bibnamehash}{48fef4eab17045e30a7cdd8d68dd460d}
+      \strng{authorbibnamehash}{48fef4eab17045e30a7cdd8d68dd460d}
+      \strng{authornamehash}{48fef4eab17045e30a7cdd8d68dd460d}
+      \strng{authorfullhash}{48fef4eab17045e30a7cdd8d68dd460d}
+      \field{sortinit}{D}
+      \field{sortinithash}{2ef1bd9a78cc71eb74d7231c635177b8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{1}
+      \field{month}{8}
+      \field{title}{Nintendo Entertainment System Documentation}
+      \field{year}{2004}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb http://www.nesdev.com/NESDoc.pdf
+      \endverb
+      \verb{url}
+      \verb http://www.nesdev.com/NESDoc.pdf
+      \endverb
+    \endentry
     \entry{GCCV}{online}{}
       \name{author}{1}{}{%
         {{uniquename=0,uniquepart=base,hash=6676d03052a0fb449f719dcca22f6f8e}{%
@@ -763,6 +796,39 @@
       \endverb
       \verb{url}
       \verb https://www.libsdl.org/index.php
+      \endverb
+    \endentry
+    \entry{TALK}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=0daac9c4f23c734c851c17aff7924d9d}{%
+           family={Steil},
+           familyi={S\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{0daac9c4f23c734c851c17aff7924d9d}
+      \strng{fullhash}{0daac9c4f23c734c851c17aff7924d9d}
+      \strng{bibnamehash}{0daac9c4f23c734c851c17aff7924d9d}
+      \strng{authorbibnamehash}{0daac9c4f23c734c851c17aff7924d9d}
+      \strng{authornamehash}{0daac9c4f23c734c851c17aff7924d9d}
+      \strng{authorfullhash}{0daac9c4f23c734c851c17aff7924d9d}
+      \field{sortinit}{S}
+      \field{sortinithash}{322b1d5276f2f6c1bccdcd15920dbee6}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{27}
+      \field{month}{12}
+      \field{title}{Reverse Engineering the MOS 6502 CPU 3510 transistors in 60 minutes}
+      \field{year}{2010}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb http://mirror.fem-net.de/CCC/27C3/webm/27c3-4159-en-reverse_engineering_mos_6502.webm
+      \endverb
+      \verb{url}
+      \verb http://mirror.fem-net.de/CCC/27C3/webm/27c3-4159-en-reverse_engineering_mos_6502.webm
       \endverb
     \endentry
     \entry{MPPR}{online}{}

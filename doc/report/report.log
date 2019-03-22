@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2019.2.10)  21 MAR 2019 22:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2019.2.10)  22 MAR 2019 04:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -582,87 +582,108 @@ File: images/nes.jpg Graphic file (type jpg)
 Package pdftex.def Info: images/nes.jpg  used on input line 59.
 (pdftex.def)             Requested size: 137.9979pt x 74.93185pt.
  [3 <./images/famicon.jpg> <./images/nes.jpg>]
-<images/nes-controller.jpg, id=194, 1120.185pt x 813.0375pt>
+<images/nes-controller.jpg, id=189, 1120.185pt x 813.0375pt>
 File: images/nes-controller.jpg Graphic file (type jpg)
 <use images/nes-controller.jpg>
-Package pdftex.def Info: images/nes-controller.jpg  used on input line 87.
+Package pdftex.def Info: images/nes-controller.jpg  used on input line 88.
 (pdftex.def)             Requested size: 345.0pt x 250.40143pt.
- [4 <./images/nes-controller.jpg>]
+ [4
+
+] [5 <./images/nes-controller.jpg>]
 Chapter 2.
-[5
+[6
 
-] [6]
+
+] [7]
 Chapter 3.
-[7
+[8
 
-] [8] [9]
-<images/github_project.png, id=281, 1495.5875pt x 733.74126pt>
+] [9] [10]
+<images/github_project.png, id=285, 1495.5875pt x 733.74126pt>
 File: images/github_project.png Graphic file (type png)
 <use images/github_project.png>
-Package pdftex.def Info: images/github_project.png  used on input line 216.
+Package pdftex.def Info: images/github_project.png  used on input line 218.
 (pdftex.def)             Requested size: 345.0pt x 169.26076pt.
- [10 <./images/github_project.png>]
+ [11 <./images/github_project.png>]
 Chapter 4.
 
-Overfull \hbox (11.07971pt too wide) in paragraph at lines 231--234
+Overfull \hbox (11.07971pt too wide) in paragraph at lines 234--237
 \T1/cmr/m/n/10 6502 ([]Naberezny [][]2018[][]) mi-cro-pro-ces-sor, man-u-fac-tu
 red by Ri-coh ([]Wikipedia [][]2019b[][]).
  []
 
-[11
+[12
+
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 269--280
+Underfull \hbox (badness 10000) in paragraph at lines 272--283
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 269--280
+Underfull \hbox (badness 10000) in paragraph at lines 272--283
 
  []
 
-[12] [13] [14]
-<images/instruction_map.png, id=359, 1550.79375pt x 948.54375pt>
+[13] [14] [15]
+<images/instruction_map.png, id=363, 1550.79375pt x 948.54375pt>
 File: images/instruction_map.png Graphic file (type png)
 <use images/instruction_map.png>
-Package pdftex.def Info: images/instruction_map.png  used on input line 346.
+Package pdftex.def Info: images/instruction_map.png  used on input line 349.
 (pdftex.def)             Requested size: 345.0pt x 211.01051pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<images/memory_map.jpg, id=360, 327.47343pt x 476.53032pt>
+[16] [17 <./images/instruction_map.png>] [18
+
+]
+Overfull \hbox (0.12405pt too wide) in paragraph at lines 375--376
+ []\T1/cmr/bx/n/10 RAM[] \T1/cmr/m/n/10 The ac-tual RAM, which in func-tion-al-
+ity iden-ti-cal to the mod-ern RAMS,
+ []
+
+
+Overfull \hbox (10.51505pt too wide) in paragraph at lines 394--397
+\T1/cmr/m/n/10 other hard-ware parts was done via a lis-tener sys-tem. Which co
+n-sist an EventSource
+ []
+
+[19]
+<images/memory_map.jpg, id=396, 327.47343pt x 476.53032pt>
 File: images/memory_map.jpg Graphic file (type jpg)
 <use images/memory_map.jpg>
-Package pdftex.def Info: images/memory_map.jpg  used on input line 363.
+Package pdftex.def Info: images/memory_map.jpg  used on input line 406.
 (pdftex.def)             Requested size: 345.0pt x 502.03673pt.
-[15] [16 <./images/instruction_map.png>]
+ [20]
 
-LaTeX Warning: Text page 17 contains only floats.
+LaTeX Warning: Text page 21 contains only floats.
 
-[17 <./images/memory_map.jpg>]
+[21 <./images/memory_map.jpg>] [22
+
+]
 Chapter 5.
-[18
+[23
 
 ]
 Chapter 6.
-[19
+[24
 
 ]
-Overfull \hbox (2.15776pt too wide) in paragraph at lines 400--400
+Overfull \hbox (2.15776pt too wide) in paragraph at lines 440--440
 \T1/cmr/m/sc/10 url\T1/cmr/m/n/10 : [][]$https : / / tekercs . github . io / ne
 s _ emulator / doc / api / html / classEmulator _
  []
 
-[20
+[25
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 401.
- [21]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 401.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 441.
+ [26]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 441.
  (./report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 401.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 401.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 441.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 441.
 Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: 79F0FE80388493774305756672C195A7;1707.
 
@@ -674,13 +695,13 @@ Package logreq Info: Writing requests to 'report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 13307 strings out of 492639
- 226512 string characters out of 6135497
- 667264 words of memory out of 5000000
- 16907 multiletter control sequences out of 15000+600000
+ 13326 strings out of 492639
+ 226803 string characters out of 6135497
+ 667369 words of memory out of 5000000
+ 16913 multiletter control sequences out of 15000+600000
  17687 words of font info for 38 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,8n,45p,872b,1307s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 45i,8n,63p,872b,1307s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/t
 exmf-dist/fonts/type1/public/cm-super/sfbi1000.pfb></usr/share/texmf-dist/fonts
 /type1/public/cm-super/sfbx1000.pfb></usr/share/texmf-dist/fonts/type1/public/c
@@ -692,10 +713,10 @@ ic/cm-super/sfrm0900.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfr
 m1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr
 /share/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/share/texmf-di
 st/fonts/type1/public/cm-super/sfti1000.pfb>
-Output written on report.pdf (22 pages, 8715982 bytes).
+Output written on report.pdf (27 pages, 8723396 bytes).
 PDF statistics:
- 521 PDF objects out of 1000 (max. 8388607)
- 474 compressed objects within 5 object streams
- 165 named destinations out of 1000 (max. 500000)
+ 560 PDF objects out of 1000 (max. 8388607)
+ 505 compressed objects within 6 object streams
+ 178 named destinations out of 1000 (max. 500000)
  263 words of extra memory for PDF output out of 10000 (max. 10000000)
 

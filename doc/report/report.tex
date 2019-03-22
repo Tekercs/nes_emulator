@@ -62,6 +62,7 @@ However, these releases were concerning for Nintendo as '83 was also the year of
 	\end{subfigure}
 	\caption{\label{fig:my-label} The console design}
 \end{figure}
+\clearpage
 
 
 
@@ -87,6 +88,7 @@ In this project, these core parts of the hardware will be emulated on x86-64 mac
 		{images/nes-controller.jpg}}
 	\caption{\label{fig:my-label} NES controller}
 \end{figure}
+\clearpage
 
 
 
@@ -216,6 +218,7 @@ Meanwhile, the report itself was uprated in larger chunks because this way there
 	{images/github_project.png}}
 \caption{\label{fig:my-label} Github project page}
 \end{figure}
+\clearpage
 
 \chapter{Specification and implementation}
 
@@ -344,19 +347,66 @@ Each of them after implementation were tested manually as well. Due to the fact 
 \begin{figure}[h]
 	\center{\includegraphics[width=\textwidth]
 		{images/instruction_map.png}}
-	\caption{\label{fig:my-label} MOS 6502 instruction map}
+	\caption{\label{fig:my-label} MOS 6502 instruction map (\cite{TALK})}
 \end{figure}
+\clearpage
 
 
 \section{RAM}
 
 \subsection{Specification}
-
-
+\paragraph{ }
+The NES RAM, unlike RAMs nowadays, fulfils multiple purpose. One of them is providing a storage for the game program code, and the other one is to provide connection for the CPU to the other parts of the console.
+\paragraph{Storage}
+The console manufactured with a fix 64KB of RAM. This amount of storage was accessible trough a 16-bit address bus and a 8-bit data bus. The fact that the memory is addressed by 16-bit addresses the CPU required extra cycles to read and write from the RAM as it can only handle 8-bit values. This is where the different addressing modes for the instructions became effective useful to provide faster access to the RAM therefore increase performance.
+\\
+ Interestingly from the 64KB of RAM only 32KB were actually  available for the programmers to store their games' binaries. Also from this 32KB another 6 Byte comes down which are the necessary reset vectors reserved for the CPU to specify where to search for the first instruction after power-on/reset or where to jump to handle an interrupt. Other than that the developer have full access over this 32KB so called PRG ROM or Program Rom. It is separated up to two 16KB chunks as it is stored this way on the ROM Cartridges. The way how it is filled up is defined by the cartridge and it's mapper. There are tricks how to utilize more storage then 32KB but this needs a special Cartridge format, see below at section 4.3. 
+ 
+ \paragraph{Zero page}
+ On the other hand the memory has other parts which are still available for the programmer with a few restriction. Such as the Zero page. This is a special 256 Byte sized area at the very beginning of the RAM.
+ As this area's address space is 0x0000 - 0x00FF to access this we only need 8-bit long address therefore the accessing speed of this part of the ram is doubled compared to the rest of it. One of the main purpose of this Zero Page area is to provide additional fast storage for the CPU to carry out complex calculations as it is already mentioned above the NES' microprocessor only contains 3 general purpose registers from which 2, the X index and Y index, has only limited capabilities for arithmetic operations.
+ 
+ \paragraph{Stack}
+ This area located right after the zero page at the address from 0x0100 up to 0x2000 reserved for the stack operations which are carried out either by a subroutine/interrupt call or forced by the programmer with the necessary CPU instructions. Interestingly, unlike on the modern systems, stack overflow never happens. Instead the stack wraps around and starts overwriting itself. Of course this behaviour contains pros and cons. For example this type of stack provides more flexibility for the developers as they can exploit this behaviour, on the other hand , it could results loss if information and crash the program as the return form interrupt or subroutine  will put the microprocessor to a wrong address therefore causing memory corruption.
+ \\
+ Important to notice that as the stack is reside in the RAM the developers has read and even write access to these parts of the memory. Therefore the data stored here can be manipulated without any stack specific instruction and just treating it as a normal RAM. It is dangerous but widely used at more complex games which are heavily pushing the limits set up by the hardware.
+ 
+ \paragraph{RAM}
+ The actual RAM, which in functionality identical to the modern RAMS, are 1,5KB starting from address 0x0200. This is the amount of storage space given to the developers to use it freely for their games. Technically, there is no difference between this section and the Zero Page other than the fact that the Zero page accessing time can be two times faster therefore it is better to think about it as some sort of CPU registers for performance reasons. 
+ 
+ \paragraph{ }
+ The Zero page, Stack and RAM section together mirrored three times in the upcoming 6KB to fill the addressing space up to 0x2000. Which means whenever a memory accessing carried out on the address range of 0x0800 - 0x1FFF is equivalent to do it on 0x0000 - 0x07FF.
+ \\
+ The reason behind this type of memory mirroring is that when the hardware decoding the given address line a lot less pins on the chip are required to do that by limiting down the address space.
+ 
+ 
+ \paragraph{I/O Registers}
+ The following memory addresses starting from 0x2000 up until 0x0401F are specially mapped to other parts of the NES console. This way the system provides opportunity ot the CPU, along that to the developers, to control the other hardware parts by writing or reading values from these special locations.
+ \\
+ 0x2000 - 0x2007 address range are mapped to specific PPU, Pixel Processing Unit, Registers. Which can be used to query the current status of the PPU, control it's behaviour or even to copy data to it's VRAM. See Section 4.4 for more details.
+ This range of PPU memory mappings are also mirrored through the following address place from 0x2008 up to 0x3FFF.
+ \\
+ In the 0x4000 - 0x401f address range the APU and Controller mappings resides. As this project not implementing the Audio Processing Unit the only important registers are the 0x4016 and 0x4017. These memory mappings provides the possibility to query the two controller's input or change it's reading behaviours.
+ 
 
 \subsection{Implementation}
+\paragraph{ }
+The RAM implementations itself was done by using an array of 8-bit long unsigned integer pointers. Unsigned variables were used the fact, as it was mentioned above, that the CPU along with the whole system handles every value as an unsigned integer. The reason behind using an array of pointers instead of an array of values is th easily mimic the memory's mirroring behaviour. During the initialization of the RAM the same set of pointers were copied to the given parts of the array. With this when ever a given address was written every other address, the given element of the array, were updated as they all pointed to the same value.
+\\
+The above mentioned connections between given memory addresses and the other hardware parts was done via a listener system. Which consist an EventSource and a Listener. In this scenario the Memory is the event source and notifies all the subscribed components whenever a read or a write executed on the memory. Therefore the for instance the PPU can handle the reads and writes executed on it's mapped registers.
 
 \subsection{Testing}
+As the most part of the RAM is just reading and writing the given indexed value of the array the carried out tests were focusing on to make sure that the memory mirroring implemented properly.
+\\
+This was done buy executing a certain sets of reads and writes to evaluate that for each write and read all the necessary memory slots were properly updated.
+
+
+\begin{figure}[!htb]
+	\center{\includegraphics[width=\textwidth]
+		{images/memory_map.jpg}}
+	\caption{\label{fig:my-label} Memory map (\cite{NSPF})}
+\end{figure}
+\clearpage
 
 \section{Cartridge (ROM)}
 
@@ -378,7 +428,7 @@ Each of them after implementation were tested manually as well. Due to the fact 
 
 \subsection{Testing}
 
-\chapter{Evaluation}
+ \chapter{Evaluation}
 
 \section{Performance and Precision}
 
