@@ -3,9 +3,13 @@
 #include <fstream>
 #include <cmath>
 
-using namespace std;
+#include <Ppu/VRam.h>
 
-Emulator::ROM::Cartridge::Cartridge(const std::string &path)
+using namespace std;
+using namespace Emulator::ROM;
+using namespace Emulator::Ppu;
+
+Cartridge::Cartridge(const std::string &path)
 {
     ifstream input(path, ios::binary);
 
@@ -21,7 +25,7 @@ Emulator::ROM::Cartridge::Cartridge(const std::string &path)
     input.close();
 }
 
-void Emulator::ROM::Cartridge::readHeader(std::ifstream* file)
+void Cartridge::readHeader(std::ifstream* file)
 {
     file->seekg(HEADER_STARTS, ifstream::beg);
     istreambuf_iterator<char> iterator(*file);
@@ -33,12 +37,12 @@ void Emulator::ROM::Cartridge::readHeader(std::ifstream* file)
     }
 }
 
-void Emulator::ROM::Cartridge::parseHeader()
+void Cartridge::parseHeader()
 {
     this->isTrainerPresent = ((this->rawHeader[6] & 0x04 ) > 0);
 }
 
-void Emulator::ROM::Cartridge::readTrainer(std::ifstream* file)
+void Cartridge::readTrainer(std::ifstream* file)
 {
     if (this->isTrainerPresent)
     {
@@ -53,7 +57,7 @@ void Emulator::ROM::Cartridge::readTrainer(std::ifstream* file)
     }
 }
 
-void Emulator::ROM::Cartridge::readPRGRom(std::ifstream *file)
+void Cartridge::readPRGRom(std::ifstream *file)
 {
     auto prgRomPosition = 0 + HEADER_LENGTH;
     if (this->isTrainerPresent)
@@ -72,7 +76,7 @@ void Emulator::ROM::Cartridge::readPRGRom(std::ifstream *file)
 
 }
 
-uint32_t Emulator::ROM::Cartridge::calcPRGRomSize() const
+uint32_t Cartridge::calcPRGRomSize() const
 {
     uint16_t prgRomSize16KBBatch = 0;
     prgRomSize16KBBatch = this->rawHeader[9] & 0b00001111;
@@ -92,7 +96,7 @@ uint32_t Emulator::ROM::Cartridge::calcPRGRomSize() const
     }
 }
 
-void Emulator::ROM::Cartridge::readCHRRom(std::ifstream *file)
+void Cartridge::readCHRRom(std::ifstream *file)
 {
     auto chrRomPosition = 0 + HEADER_LENGTH + this->calcPRGRomSize();
     if (this->isTrainerPresent)
@@ -110,7 +114,7 @@ void Emulator::ROM::Cartridge::readCHRRom(std::ifstream *file)
     }
 }
 
-uint32_t Emulator::ROM::Cartridge::calcCHRRomSize() const
+uint32_t Cartridge::calcCHRRomSize() const
 {
     uint16_t chrRomSize8KByteBatch = 0;
     chrRomSize8KByteBatch = this->rawHeader[9] & 0b11110000;
@@ -130,7 +134,7 @@ uint32_t Emulator::ROM::Cartridge::calcCHRRomSize() const
     }
 }
 
-void Emulator::ROM::Cartridge::readMiscRom(std::ifstream *file)
+void Cartridge::readMiscRom(std::ifstream *file)
 {
     auto miscRomPosition = 0 + HEADER_LENGTH + this->calcPRGRomSize() + this->calcCHRRomSize();
     if (this->isTrainerPresent)
@@ -151,42 +155,42 @@ void Emulator::ROM::Cartridge::readMiscRom(std::ifstream *file)
     }
 }
 
-const uint8_t* Emulator::ROM::Cartridge::getRawHeader() const
+const uint8_t* Cartridge::getRawHeader() const
 {
     return this->rawHeader;
 }
 
-const uint8_t* Emulator::ROM::Cartridge::getMiscRom() const
+const uint8_t* Cartridge::getMiscRom() const
 {
     return this->miscRom;
 }
 
-const uint8_t* Emulator::ROM::Cartridge::getPrgRom() const
+const uint8_t* Cartridge::getPrgRom() const
 {
     return this->prgRom;
 }
 
-const uint8_t* Emulator::ROM::Cartridge::getChrRom() const
+const uint8_t* Cartridge::getChrRom() const
 {
     return this->chrRom;
 }
 
-const uint8_t* Emulator::ROM::Cartridge::getTrainer() const
+const uint8_t* Cartridge::getTrainer() const
 {
     return this->trainer;
 }
 
-uint32_t Emulator::ROM::Cartridge::getMiscRomSize() const
+uint32_t Cartridge::getMiscRomSize() const
 {
     return this->miscRomSize;
 }
 
-bool Emulator::ROM::Cartridge::trainerExists() const
+bool Cartridge::trainerExists() const
 {
     return this->isTrainerPresent;
 }
 
-uint8_t Emulator::ROM::Cartridge::getMapperNumber() const
+uint8_t Cartridge::getMapperNumber() const
 {
     uint8_t mapperNumber = 0x00;
 
@@ -194,5 +198,10 @@ uint8_t Emulator::ROM::Cartridge::getMapperNumber() const
     mapperNumber += this->rawHeader[6] & 0b00001111;
 
     return mapperNumber;
+}
+
+Emulator::Ppu::NametableMirroring Cartridge::getNametableMirroring()
+{
+    return ((this->rawHeader[6] & NAMETABLE_MIRRORING_BIT) == VERTICAL) ? VERTICAL : HORIZONTAL;
 }
 

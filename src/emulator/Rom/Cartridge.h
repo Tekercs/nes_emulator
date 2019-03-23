@@ -2,9 +2,13 @@
 
 #include <string>
 
+#include <Ppu/VRam.h>
+
 #define HEADER_STARTS 0
 #define HEADER_LENGTH 16
 #define TRAINER_LENGTH 512
+
+#define NAMETABLE_MIRRORING_BIT 0b00000001
 
 /**
  * @namespace Emulator::ROM
@@ -275,5 +279,14 @@ namespace Emulator::ROM
          * @return
          */
         uint8_t getMapperNumber() const;
+
+        /**
+         * @brief Parse the nametable mirroring information out from the header
+         *
+         * @details Fetching the mapper number from rawHeader byte 6 and 7.
+         *
+         * @return Emulator::Ppu::NametableMirroring enum based on the parsed value.
+         */
+        Ppu::NametableMirroring getNametableMirroring();
     };
 }
