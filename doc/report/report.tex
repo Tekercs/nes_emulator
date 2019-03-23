@@ -207,7 +207,7 @@ Through the implementation, the actual result of the planning and prototyping we
 
 \paragraph{ }
 Testing was carried out in two phases. Depending on the given issue, manual testing was carried out on task and a subtask level if it was needed and also automated BDT, Behaviour Driven Testing, where implemented for every module to test their provided functionality. And these automated tests were executed with the CI as well.
-
+%
 \paragraph{ }
 The API documentation were created after the given task was finished and updated with Doxygen.
 \\
@@ -224,11 +224,7 @@ Meanwhile, the report itself was uprated in larger chunks because this way there
 
 \section{CPU}
 
-
-
 \subsection{Specification}
-
-
 
 \paragraph{ }
 The NES CPU was the RP2A03/RP2A07 chip, a modified version of the MOS 6502 (\cite{6502}) microprocessor, manufactured by Ricoh (\cite{RCHO}). This chip was an 8-bit little-endian microprocessor running on 1,79/1,66 MHz, the European / Australian version (PAL) was running on a lover clock speed.
@@ -356,7 +352,7 @@ Each of them after implementation were tested manually as well. Due to the fact 
 
 \subsection{Specification}
 \paragraph{ }
-The NES RAM, unlike RAMs nowadays, fulfils multiple purpose. One of them is providing a storage for the game program code, and the other one is to provide connection for the CPU to the other parts of the console.
+The NES RAM (\cite{NSRM}), unlike RAMs nowadays, fulfils multiple purpose. One of them is providing a storage for the game program code, and the other one is to provide connection for the CPU to the other parts of the console.
 \paragraph{Storage}
 The console manufactured with a fix 64KB of RAM. This amount of storage was accessible trough a 16-bit address bus and a 8-bit data bus. The fact that the memory is addressed by 16-bit addresses the CPU required extra cycles to read and write from the RAM as it can only handle 8-bit values. This is where the different addressing modes for the instructions became effective useful to provide faster access to the RAM therefore increase performance.
 \\
@@ -398,7 +394,7 @@ The above mentioned connections between given memory addresses and the other har
 \subsection{Testing}
 As the most part of the RAM is just reading and writing the given indexed value of the array the carried out tests were focusing on to make sure that the memory mirroring implemented properly.
 \\
-This was done buy executing a certain sets of reads and writes to evaluate that for each write and read all the necessary memory slots were properly updated.
+This was done by executing a certain sets of reads and writes to evaluate that for each write and read all the necessary memory slots were properly updated.
 
 
 \begin{figure}[!htb]
@@ -411,18 +407,146 @@ This was done buy executing a certain sets of reads and writes to evaluate that 
 \section{Cartridge (ROM)}
 
 \subsection{Specification}
+The cartridge is a very special part of the NES console ecosystem. As the hardware does not contains any storage capacity on it own, it was solved by distributing the games and the necessary programs on Cartridges. These Cartridges usually contained the program data and the sprite pattern data, for more details about the sprite data see section 4.4. Whenever one of these connected to the console then the data is loaded up from the Cartridge to the RAM and the VRAM.
+\paragraph{ }
+The console itself does not know where to put the data which was hold on the cartridge because they, unlike modern ROMS like DVDs and Blu-rays, came in a different layouts. To handle these differences the cartridges contains some extra special circuits called mappers (\cite{MPPR}). The mappers provides a great potential to the developers to not just deliver the necessary data of the game but to even extend the console capabilities. By design the console itself provides space for 8KB of sprite data and 32KB for program data. Just like the very first cartridges to the console, see Figure 4.3, came with an 8KB CHR ROM (sprite data) and either 16KB or 32KB PRG ROM (program codes). When the cartridge only contained 16KB of PRG ROM than the memory was filled up by copying the data twice after each other. These were the so called NROM (\cite{NROM}) mapped cartridges.
+\paragraph{ }
+Of course there were cartridges which designed to be more complex such us the MMC5 (\cite{MMC5})). One of the most famous game shipped with this type of Cartridge was the Castlevania III: Dracula's Curse.
+The MMC5 itself was capable to ship 1MB of PRG ROM and 1MB CHR ROM which is truly extended the possibilities what a developer could achieve. But that is not everything, the cartridge also provided, along the huge storage capacity, 128KB of extra RAM for the system, extra sound channels for audio, extra interrupts on each scan-line instead of only at the VBlank. 
+\\
+This greatly extendable possibility through different Cartridges was one of the reason why this system was so successful and could live up until the late 90's.
+
+\paragraph{ }
+As these cartridges were designed to specially for the NES console a new file format was designed to hold a digitalized version of these cartridges. This format called iNes (\cite{INES}) or the later extended version the NES2.0 (\cite{INS2}). These formats considered by the de facto standard format for storing and distributing these old games. And also to use for emulator developers.
+The usual structure of such file is the following:
+
+\paragraph{Header section}
+The first 16 byte, which from the first 3 byte is "NES<EOF>" string, is the header section. These bytes are either flags which provides some information how the console different parts meant to be configured up. Or providing details about the actual ROM file by defining what type of binary data represented within the file and what size of the given parts are.
+
+\paragraph{Training Area}
+Right after the header section, if presented, coming the training area. This is a special, fix 512 byte long sequence which used for providing extra code for compatibility reasons. This either for some special hardware inside the Cartridge or to provide helpers to run a game which was originally developed for a different gaming console but it was ported to the NES system.
+
+\paragraph{PRG-ROM}
+The upcoming part after the training area is the PRG-ROM. This section contains essentially the game logic itself. It is coming on 16KB batches and even if it is not filling up the last batch it has to be padded out to be the right size. This is required mainly for compatibility reasons, to mimic the actual PRG-ROM chip behaviour form the physical cartridges.
+
+\paragraph{CHR-ROM}
+The CHR-ROM is very similar with the PRG-ROM in behaviour within the iNes format. The difference comes form the batch sizes, as it is only 8KB rather than being 16KB. The format itself does not put restriction on the developer what they can put in here, but the mapper usually loads the data found here to the VRAM's Pattern table.
+
+\paragraph{Miscellaneous ROM}
+The remaining bytes in the file belongs to the Misc ROM. This is rarely used by special types of the console and mapper to provide some extra executable code or audio data.
 
 \subsection{Implementation}
+\paragraph{ }
+The implementation of this piece of hardware was separated to two parts. First the iNes format parser and 
+secondly the mapper implementation itself.
+\paragraph{Parser}
+Once the binary file was opend for reading purposes the first thing which has to be done is to read the first 16 byte. These bytes are the so called header of the file. The header includes important information about the cartridge. Such as how big are the PRG and CHR ROMs or is there any training area presented or which mapper meant to be used with this ROM. Once these details are carefully extracted from the header, all the necessary information available for the parser to identify what each byte represents. Knowing that, the separate portions of the file can be parsed and presented as a well structured object () which could be used by the mapper.
+\paragraph{Mapper}
+As there is a large pool of mappers (\cite{MPPR}) which are used in the NES system, due to time limitation and project scope only the NROM mapper was implemented.But the actual implementation was carried out in mind of the code has to be easily extendable with other mapper implementation. That leaded to the current implementation which consists an abstract Mapper class and a helper method to create a concrete mapper object based on the parsed Cartridge.
 
 \subsection{Testing}
+\paragraph{ }
+The testing of the parser was implemented in a rather simple way which consisted multiple steps.
+First of all a NES ROM was selected as the target of the test, due to the nature of the test it could be any valid iNes binary file. Then the selected file was parsed by the our emulator. 
+\\
+Based on the result of the parsing the source file was replicated then checked of the source binary file is exactly the same as the replica. 
+\paragraph{ }
+This theoretically supposed to be enough but as new logic introduce, namely the file replication from the parsed format, another step was required to verify it to be 100\% right. In the next step the the file which was the result of the replication was also parsed and checked if it is equal with the previously parsed object from the origin test file.  
 
-
+\begin{figure}[!htb]
+	\center{\includegraphics[width=\textwidth]
+		{images/nrom_cartridge.png}}
+	\caption{\label{fig:my-label} NROM cartrdige (\cite{ROM1})}
+\end{figure}
+\clearpage
 
 \section{PPU}
 
 \subsection{Specification}
+\paragraph{ }
+The PPU (\cite{NDPP}), Pixel Processing Unit, is one of the most complex part of the NES system, form an emulator development perspective. Compared to it's time it was a really advanced chip. Just like the CPU it was also manufactured by Ricoh and had two different version the RP2C02 and the RP2C07 for PAL regions. The chip itself contained 16KB dedicated VRam which was used to store the screen and sprite graphics. In terms of speed the PPU runs 5,36MHz, this results that meanwhile a CPU does 1 cycle the PPU executes 3 of them. And as the name show these cycles is used to draw the screen pixel by pixel with a 60FPS, Frames Per Second, based on the settings of the chip and the content of it's dedicated ram. Both of these are accessible and modifiable through memory mapped register for the CPU, therefore to the developers as well.
+
+\paragraph{ }
+The PPU contains 9 registers which are mapped to a given address of the main memory of the system. Each of these registers can be read, write or  both to control the behaviour of the PPU (\cite{PPRG}). Whenever any of these accessing happens it goes through a special latch. This latch is capable to hold data temporarily when ever a read or a write happens. It is most useful when larger 16-bit numbers are transferred between the CPU and the PPU as both chip handles only 8-bit values.
+
+\paragraph{PPUCTRL}
+This register mapped to the main memory at 0x2000. It can be used by writing an 8-bit value to the address where  each bits has it's own effect on the PPU.
+\\
+Bit 0 and 1 can be used to select which nametable out of the four meant to be the main one.
+\\
+Bit 2 sets elopment perspective. Compared to it's time it was a really advanced chip. Just like the CPU it was also manufactured by Ricoh and had two different version the RP2C02 and the RP2C07 for PAL regions. The chip itself contained 16KB dedicated VRam which was used to store the screen and sprite graphics. In terms of speed the PPU runs 5,36MHz, this results that meanwhile a CPU does 1 cycle the PPU executes 3 of them. And as the name show these cycles is used to draw the screen pixel by pixel based on the settings of the chip and the content of it's dedicated ram. Both of these are accessible and modifiable through memory mapped register for the CPU, therefore to the developers as well.
+
+\paragraph{ }how the memory address pointer incremented after each data writing. This is mostly used for nametables, as it is provided an option to fill them line by line or column by column.
+\\
+Bit 3 provided an option to select which pattern table used to supply the graphics details for sprite rendering.
+\\
+Bit 4's behaviour is the same as bit 3's, the difference is that this bit set the source palett table for the background evaluation.
+\\
+Bit 5 was the flag which used to toggle between 8x8 and 8x16 sprite size.
+\\
+Bit 6 is meant to be used to change the behovior of the EXT pin on the PPU chip but due to tits formation when it set it can damage the board therefore its highly discouraged to set this flag.
+\\
+Bit 7 is the NMI flag. When this flag is set and the PPU reaches the VBlank state it generates an NMI interrupt in the CPU.
+
+\paragraph{PPUMASK}
+The register which is mapped to the 0x2001 memory address is responsible for masking options. The register is write-only. With these writes the way how the PPU colors the pixels can be changed.
+\\
+Bit 0 is used to toggle greyscale colour rendering.
+\\
+Bit 1 can be used to toggle the rendering of the background for the first column of the screen (8 pixel on the left side of the screen).
+\\
+Bit 2 identical with bit 1 except it used for the sprites.
+\\
+Bit 3 is the flag which toggle when ever the background should be rendered or not.
+\\
+Bit 4 is again identical with bit 3 but it toggles the sprite rendering.
+\\
+Bit 5, 6 and 7 used to make the Red, Green and Blue colour  displayed stronger.
+
+\paragraph{PPUSTATUS}
+This is a read only register, at memory location 0x2002, used to report back events which generated meanwhile the screen is rendered. Also reading this register has a side effect on the above mentioned latch which is used for communication between the CPU and the PPU and also on itself. Namely after every read Bit 7 became 0 and the address latch is set back to the default nametable address which is set by the control flag.
+\\
+Bit 5 is set when in a single scanline more than eight sprite meant to be rendered.
+\\
+Bit 6 is set when any of the non transparent part of a rendered sprite overlaps with a non transparent part of the background.
+\\
+Bit 7 is set when the PPU reached the VBlank state.
+
+\paragraph{OAMADDR}
+This write-only register used to specify the OAM, Object Attribute Memory, address. This address fulfils multiple purpose. One is to provide and address which specify the data which should be red or overwritten by the OAMDATA registers. The other is to set which byte is the first byte used in the OAM ram when the sprites are rendered on the screen. This register is mapped to 0x2003.
+
+\paragraph{OAMDATA}
+This register used to either retrieve data or set it in the OAM memory. Both of these functionality can be achieved with the corresponding read or write to the 0x2004 memory location. To carry out both functionality the OAMADDR register's value used as an address. Important to notice as this register modifies the sprite data it is highly discouraged to write to it meanwhile the screen is under rendering to prevent rendering errors.
+
+\paragraph{OAMDMA}
+OAMDMA register is used to trigger a DMA, Direct Memory Access, by writing an 8-bit value to the 0x4016 memory address. This 8 bit value will be used than as the high byte for accessing the memory and filling up the OAM memory by coping the values from 0x\#\#00 - 0x\#\#FF memory location where the \#\# is the 8-bit value above mentioned. Meanwhile DMA is carried out by the PPU, the both the data and address bus of the main memory is occupied therefore the CPU is unable to fetch the next instruction and carry on until the DMA is not finished. Due to this and the fact that the PPU works 3 times faster than the CPU this is the preferred way to populate the OAM memory due to performance reasons.
+
+\paragraph{PPUSCROLL}
+PPUSCROLL register used to modify the background rendering starting point, which is set by the PPUCONTROL register, by adding a certain offset to it. This offset can be specified by two writing to this register at memory location 0x2005. At the first write the X offset will be set and on the second write the Y offset will be set. It is highly recommended to execute a PPUSTATUS read before this operation to make sure the base address is pointing to the right place and no garbage value left behind by any previous operations.
+
+\paragraph{PPUADDR}
+To set the value of this register two writes necessary to the 0x2006 address, as the VRam, just like the main memory, working with 16-bit addresses. Important to notice that the first the upper 8-bit, and with the second writing the lower 8-bit can be set.
+
+\paragraph{PPUDATA}
+Right after the PPUADDR at 0x2007 this register responsible to writing data or return the data from the VRam address specified by the previously mentioned register. After each write/read the PPUADDR register will be incremented based on the settings specified in the PPUCONTROL. Along with the address increment there is another hidden behaviour. Every read for this register is buffered, which means to read the right value after changing the address register two reads has to be performed and with the second read the right value will be returned.
+
+\paragraph{ } 
+The PPU's own dedicated VRam. Even though the 16-bit addressing let the system address up to 64KB,  in reality it only uses 16KB due to cost efficiency in my when the hardware was assembled.
+Therefore each access which targets address 0x4000 or above will be mapped down to an appropriate address.
+\\
+The VRam is separated up to multiple section. Each of these combined together producing the screen which is displayed on the television screen.
+
+\paragraph{Pattern Table}
 
 
+\paragraph{ }
+Along this there is a separate 256 Byte area called OAM, Object Attribute Memory, where the sprites attributes are stored. This provides enough storage for 64 different sprite as each sprite attribute is 4 byte. 
+\\
+The 1st byte and the 4th byte specifies the Y and the X coordinate of the sprite on the screen. The 2nd byte gives the index of which patten meant to be used to render the given sprite. Closely related to that the 3rd byte provides some flags which can change the behaviour of the rendering for the specific sprite only. 
+\\
+With the bit 0 and 1 the colour palette for the sprite can be set. Bit 7 and 6 provides capability to draw the sprite vertically and/or horizontally flipped, this is a very usefully capability of the PPU which could save up a huge amount of palette RAM. For example the big mario character instead of using 6 different pattern it can be made using only 3. by using a flipped version of the chest and leg part.
+\\
+ Also, with bit 5 we can set the rendering priority of the sprite. Which could result that the sprite will be rendered behind non-transparent background elements.
 
 \subsection{Implementation}
 

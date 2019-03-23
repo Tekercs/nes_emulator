@@ -246,6 +246,76 @@
       \verb http://www.nesdev.com/NESDoc.pdf
       \endverb
     \endentry
+    \entry{INES}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=958ea28affba3915f025b317b4782816}{%
+           family={Fayzullin},
+           familyi={F\bibinitperiod},
+           given={Marat},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{958ea28affba3915f025b317b4782816}
+      \strng{fullhash}{958ea28affba3915f025b317b4782816}
+      \strng{bibnamehash}{958ea28affba3915f025b317b4782816}
+      \strng{authorbibnamehash}{958ea28affba3915f025b317b4782816}
+      \strng{authornamehash}{958ea28affba3915f025b317b4782816}
+      \strng{authorfullhash}{958ea28affba3915f025b317b4782816}
+      \field{extraname}{1}
+      \field{sortinit}{F}
+      \field{sortinithash}{669c706c6f1fbf3b5a83d26f1d9e9e72}
+      \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{24}
+      \field{month}{1}
+      \field{title}{Nintendo Entertainment System Architecture}
+      \field{year}{2005}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb http://fms.komkon.org/EMUL8/NES.html#LABM
+      \endverb
+      \verb{url}
+      \verb http://fms.komkon.org/EMUL8/NES.html#LABM
+      \endverb
+    \endentry
+    \entry{PPRG}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=958ea28affba3915f025b317b4782816}{%
+           family={Fayzullin},
+           familyi={F\bibinitperiod},
+           given={Marat},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{958ea28affba3915f025b317b4782816}
+      \strng{fullhash}{958ea28affba3915f025b317b4782816}
+      \strng{bibnamehash}{958ea28affba3915f025b317b4782816}
+      \strng{authorbibnamehash}{958ea28affba3915f025b317b4782816}
+      \strng{authornamehash}{958ea28affba3915f025b317b4782816}
+      \strng{authorfullhash}{958ea28affba3915f025b317b4782816}
+      \field{extraname}{2}
+      \field{sortinit}{F}
+      \field{sortinithash}{669c706c6f1fbf3b5a83d26f1d9e9e72}
+      \field{extradate}{2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{24}
+      \field{month}{1}
+      \field{title}{Nintendo Entertainment System Architecture}
+      \field{year}{2005}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb http://fms.komkon.org/EMUL8/NES.html#LABM
+      \endverb
+      \verb{url}
+      \verb http://fms.komkon.org/EMUL8/NES.html#LABM
+      \endverb
+    \endentry
     \entry{GCCV}{online}{}
       \name{author}{1}{}{%
         {{uniquename=0,uniquepart=base,hash=6676d03052a0fb449f719dcca22f6f8e}{%
@@ -441,6 +511,39 @@
       \verb https://github.com/catchorg/Catch2
       \endverb
     \endentry
+    \entry{INS2}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=600b82c7dad9e6f6edb8b1e854d3326f}{%
+           family={Horrton},
+           familyi={H\bibinitperiod},
+           given={Kevin},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{600b82c7dad9e6f6edb8b1e854d3326f}
+      \strng{fullhash}{600b82c7dad9e6f6edb8b1e854d3326f}
+      \strng{bibnamehash}{600b82c7dad9e6f6edb8b1e854d3326f}
+      \strng{authorbibnamehash}{600b82c7dad9e6f6edb8b1e854d3326f}
+      \strng{authornamehash}{600b82c7dad9e6f6edb8b1e854d3326f}
+      \strng{authorfullhash}{600b82c7dad9e6f6edb8b1e854d3326f}
+      \field{sortinit}{H}
+      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{18}
+      \field{month}{9}
+      \field{title}{Nintendo Entertainment System Architecture}
+      \field{year}{2006}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb http://forums.nesdev.com/viewtopic.php?p=17727#p17727
+      \endverb
+      \verb{url}
+      \verb http://forums.nesdev.com/viewtopic.php?p=17727#p17727
+      \endverb
+    \endentry
     \entry{NEST}{online}{}
       \name{author}{1}{}{%
         {{uniquename=0,uniquepart=base,hash=b5ed83356e21649332bedcc941f21df9}{%
@@ -576,6 +679,39 @@
       \endverb
       \verb{url}
       \verb http://obelisk.me.uk/6502/reference.html
+      \endverb
+    \endentry
+    \entry{ROM1}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=c32549872433237391c3549319d03345}{%
+           family={Joudrey},
+           familyi={J\bibinitperiod},
+           given={Christian},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{c32549872433237391c3549319d03345}
+      \strng{fullhash}{c32549872433237391c3549319d03345}
+      \strng{bibnamehash}{c32549872433237391c3549319d03345}
+      \strng{authorbibnamehash}{c32549872433237391c3549319d03345}
+      \strng{authornamehash}{c32549872433237391c3549319d03345}
+      \strng{authorfullhash}{c32549872433237391c3549319d03345}
+      \field{sortinit}{J}
+      \field{sortinithash}{fce5f8d0bd05e8d93f3dbe21c78897ca}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{4}
+      \field{month}{5}
+      \field{title}{!!Con 2017: Writing NES Games! with Assembly!!}
+      \field{year}{2017}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://www.youtube.com/watch?v=IbS7uEsHV_A
+      \endverb
+      \verb{url}
+      \verb https://www.youtube.com/watch?v=IbS7uEsHV_A
       \endverb
     \endentry
     \entry{LATX}{online}{}
@@ -717,6 +853,7 @@
       \strng{authorbibnamehash}{321b73e14af2458949f81e7b3046d578}
       \strng{authornamehash}{321b73e14af2458949f81e7b3046d578}
       \strng{authorfullhash}{321b73e14af2458949f81e7b3046d578}
+      \field{extraname}{1}
       \field{sortinit}{N}
       \field{sortinithash}{f7242c3ed3dc50029fca1be76c497c7c}
       \field{extradatescope}{labelyear}
@@ -733,6 +870,132 @@
       \endverb
       \verb{url}
       \verb https://wiki.nesdev.com/w/index.php/CPU_registers
+      \endverb
+    \endentry
+    \entry{NSRM}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=321b73e14af2458949f81e7b3046d578}{%
+           family={NESDEV-Wiki},
+           familyi={N\bibinithyphendelim W\bibinitperiod}}}%
+      }
+      \strng{namehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{fullhash}{321b73e14af2458949f81e7b3046d578}
+      \strng{bibnamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authorbibnamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authornamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authorfullhash}{321b73e14af2458949f81e7b3046d578}
+      \field{extraname}{2}
+      \field{sortinit}{N}
+      \field{sortinithash}{f7242c3ed3dc50029fca1be76c497c7c}
+      \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{8}
+      \field{month}{7}
+      \field{title}{CPU memory map - Nesdev wiki}
+      \field{year}{2016}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://wiki.nesdev.com/w/index.php/CPU_memory_map
+      \endverb
+      \verb{url}
+      \verb https://wiki.nesdev.com/w/index.php/CPU_memory_map
+      \endverb
+    \endentry
+    \entry{NROM}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=321b73e14af2458949f81e7b3046d578}{%
+           family={NESDEV-Wiki},
+           familyi={N\bibinithyphendelim W\bibinitperiod}}}%
+      }
+      \strng{namehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{fullhash}{321b73e14af2458949f81e7b3046d578}
+      \strng{bibnamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authorbibnamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authornamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authorfullhash}{321b73e14af2458949f81e7b3046d578}
+      \field{extraname}{3}
+      \field{sortinit}{N}
+      \field{sortinithash}{f7242c3ed3dc50029fca1be76c497c7c}
+      \field{extradate}{2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{14}
+      \field{month}{10}
+      \field{title}{NROM - Nesdev wiki}
+      \field{year}{2016}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://wiki.nesdev.com/w/index.php/NROM
+      \endverb
+      \verb{url}
+      \verb https://wiki.nesdev.com/w/index.php/NROM
+      \endverb
+    \endentry
+    \entry{NDPP}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=321b73e14af2458949f81e7b3046d578}{%
+           family={NESDEV-Wiki},
+           familyi={N\bibinithyphendelim W\bibinitperiod}}}%
+      }
+      \strng{namehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{fullhash}{321b73e14af2458949f81e7b3046d578}
+      \strng{bibnamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authorbibnamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authornamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authorfullhash}{321b73e14af2458949f81e7b3046d578}
+      \field{extraname}{4}
+      \field{sortinit}{N}
+      \field{sortinithash}{f7242c3ed3dc50029fca1be76c497c7c}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{15}
+      \field{month}{12}
+      \field{title}{PPU - Nesdev wiki}
+      \field{year}{2018}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://wiki.nesdev.com/w/index.php/PPU
+      \endverb
+      \verb{url}
+      \verb https://wiki.nesdev.com/w/index.php/PPU
+      \endverb
+    \endentry
+    \entry{MMC5}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=321b73e14af2458949f81e7b3046d578}{%
+           family={NESDEV-Wiki},
+           familyi={N\bibinithyphendelim W\bibinitperiod}}}%
+      }
+      \strng{namehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{fullhash}{321b73e14af2458949f81e7b3046d578}
+      \strng{bibnamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authorbibnamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authornamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authorfullhash}{321b73e14af2458949f81e7b3046d578}
+      \field{extraname}{5}
+      \field{sortinit}{N}
+      \field{sortinithash}{f7242c3ed3dc50029fca1be76c497c7c}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{19}
+      \field{month}{2}
+      \field{title}{MMC5 - Nesdev wiki}
+      \field{year}{2019}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://wiki.nesdev.com/w/index.php/MMC5
+      \endverb
+      \verb{url}
+      \verb https://wiki.nesdev.com/w/index.php/MMC5
       \endverb
     \endentry
     \entry{CRSH}{online}{}
