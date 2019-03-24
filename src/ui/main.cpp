@@ -52,7 +52,6 @@ int main(int argc, char *argv[])
     {
         gameWindow->pollEvent();
         ++cpu;
-        //sleep_for(nanoseconds(1));
     }
 
     return 0;
