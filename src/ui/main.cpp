@@ -23,10 +23,9 @@ using namespace Emulator::Memory;
 using namespace std::chrono;
 using namespace std::this_thread;
 
-int main()
+int main(int argc, char *argv[])
 {
-    Cartridge cartridge("/home/bence/Workspace/nes_emulator/test/emulator_test/test_roms/rainwarrior/color_test.nes");
-    //Cartridge cartridge("/home/bence/Workspace/nes_emulator/test/emulator_test/test_roms/kevtris/nestest.nes");
+    Cartridge cartridge(argv[1]);
 
     shared_ptr<VRam> vram = make_shared<VRam>(cartridge.getNametableMirroring());
     shared_ptr<Memory> memory = make_shared<Memory>();
