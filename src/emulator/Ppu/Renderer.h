@@ -15,5 +15,6 @@ namespace Emulator::Ppu
     public:
         virtual void colorPixel(Cords cords, Color color) = 0;
         virtual void drawScreen() = 0;
+        virtual void clearScreen(Color color) = 0;
     };
 }

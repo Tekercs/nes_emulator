@@ -29,6 +29,6 @@ namespace Ui
 
         void drawScreen() override;
 
-        void clearScreen();
+        void clearScreen(Emulator::Ppu::Color color) override;
     };
 }

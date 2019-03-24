@@ -16,7 +16,7 @@ GameWindow::GameWindow(uint8_t scaling) : scaling(scaling)
             , SDL_WINDOW_SHOWN);
     this->renderer = SDL_CreateRenderer(window, -1, 0);
 
-    this->clearScreen();
+    this->clearScreen({.red = 0, .green = 0, .blue = 0, .alpha = 0});
 }
 
 void GameWindow::colorPixel(Cords cords, Color color)
@@ -36,12 +36,14 @@ void GameWindow::colorPixel(Cords cords, Color color)
 
 }
 
-void GameWindow::clearScreen()
+void GameWindow::clearScreen(Color color)
 {
-    SDL_SetRenderDrawColor(this->renderer, 0, 0, 0, 0);
+    SDL_SetRenderDrawColor(this->renderer,
+            color.red,
+            color.green,
+            color.blue,
+            color.alpha);
     SDL_RenderClear(this->renderer);
-
-    SDL_RenderPresent(this->renderer);
 }
 
 GameWindow::~GameWindow()
