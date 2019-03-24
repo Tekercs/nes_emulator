@@ -1,35 +1,55 @@
-#include <iostream>
+#include <memory>
 #include <SDL2/SDL.h>
+#include <chrono>
+#include <thread>
 
-int main()
+#include <GameWindow.h>
+
+#include <Ppu/VRam.h>
+#include <Ppu/Ppu.h>
+#include <Memory/Memory.h>
+#include <Cpu/Registers.h>
+#include <Cpu/Cpu.h>
+#include <Rom/Cartridge.h>
+#include <Rom/Mapper.h>
+#include <Utils/Converters.h>
+
+using namespace std;
+using namespace Ui;
+using namespace Emulator::Cpu;
+using namespace Emulator::ROM;
+using namespace Emulator::Ppu;
+using namespace Emulator::Memory;
+using namespace std::chrono;
+using namespace std::this_thread;
+
+int main(int argc, char *argv[])
 {
-    SDL_Init(SDL_INIT_EVERYTHING);
-    auto window = SDL_CreateWindow("first sdl", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 400, 400, SDL_WINDOW_SHOWN);
-    auto renderer = SDL_CreateRenderer(window, -1, 0);
+    Cartridge cartridge(argv[1]);
 
-    SDL_Rect rect = {.x = 0, .y = 0, .w = 100, .h = 200};
-    SDL_RenderPresent(renderer);
+    shared_ptr<VRam> vram = make_shared<VRam>(cartridge.getNametableMirroring());
+    shared_ptr<Memory> memory = make_shared<Memory>();
+    shared_ptr<Registers> registers = make_shared<Registers>();
 
-    SDL_Event event;
-    auto quit = false;
-    do
+    shared_ptr<GameWindow> gameWindow = make_shared<GameWindow>(2);
+
+    Cpu cpu(memory, registers);
+    Ppu ppu(vram, memory, gameWindow);
+
+    auto mapper = createMapper(cartridge, *memory.get(), *vram.get());
+    mapper->map();
+
+    cpu.reset();
+
+    cpu.subscribe(&ppu);
+    ppu.subscribe(&cpu);
+    memory.get()->subscribe(&ppu);
+
+    while(true)
     {
-        SDL_PollEvent(&event);
-
-        quit = (event.type == SDL_QUIT);
-
-        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
-        SDL_RenderClear(renderer);
-
-        SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
-        SDL_RenderFillRect(renderer, &rect);
-
-        SDL_RenderPresent(renderer);
-    } while (!quit);
-
-    SDL_DestroyRenderer(renderer);
-    SDL_DestroyWindow(window);
-    SDL_Quit();
+        ++cpu;
+        sleep_for(nanoseconds(1));
+    }
 
     return 0;
 }

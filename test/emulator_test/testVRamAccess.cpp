@@ -7,6 +7,9 @@
 #include <Ppu/VRam.h>
 #include <Ppu/Ppu.h>
 #include <Memory/Memory.h>
+#include <Ppu/Renderer.h>
+
+#include "helpers/DummyRenderer.h"
 
 using namespace std;
 using namespace Emulator::Ppu;
@@ -18,8 +21,10 @@ SCENARIO("accessing vram via memory mappings")
     {
         shared_ptr<Memory> memory = make_shared<Memory>();
         shared_ptr<VRam> vram = make_shared<VRam>(HORIZONTAL);
+        shared_ptr<DummyRenderer> renderer = make_shared<DummyRenderer>();
 
-        Ppu ppu(vram, memory);
+        Ppu ppu(vram, memory, renderer);
+        memory->subscribe(&ppu);
 
         WHEN("writing OAMADDR and OAMDATA")
         {
@@ -53,11 +58,13 @@ SCENARIO("accessing vram via memory mappings")
 
     GIVEN("empty memory, a preset vram and a gpu")
     {
+        shared_ptr<DummyRenderer> renderer = make_shared<DummyRenderer>();
         shared_ptr<Memory> memory = make_shared<Memory>();
         shared_ptr<VRam> vram = make_shared<VRam>(HORIZONTAL);
         vram->writeOAM(0x05, 0xAA);
 
-        Ppu ppu(vram, memory);
+        Ppu ppu(vram, memory, renderer);
+        memory->subscribe(&ppu);
 
         WHEN("writing to OAMADDR the given address")
         {
@@ -73,6 +80,7 @@ SCENARIO("accessing vram via memory mappings")
 
     GIVEN ("an empty vram, and a preset memory, and a ppu")
     {
+        shared_ptr<DummyRenderer> renderer = make_shared<DummyRenderer>();
         shared_ptr<Memory> memory = make_shared<Memory>();
         for(auto i = 0; i < 0x100; ++i)
             memory->setAt((0x0000 + i), 0xAA);
@@ -80,7 +88,8 @@ SCENARIO("accessing vram via memory mappings")
             memory->setAt((0x0000 + i), 0xBB);
 
         shared_ptr<VRam> vram = make_shared<VRam>(HORIZONTAL);
-        Ppu ppu(vram, memory);
+        Ppu ppu(vram, memory, renderer);
+        memory->subscribe(&ppu);
 
         WHEN("write to OAMDMA register and trigegr DMA")
         {
@@ -98,10 +107,12 @@ SCENARIO("accessing vram via memory mappings")
 
     GIVEN("empty vram, ram and a ppu")
     {
+        shared_ptr<DummyRenderer> renderer = make_shared<DummyRenderer>();
         shared_ptr<Memory> memory = make_shared<Memory>();
         shared_ptr<VRam> vram = make_shared<VRam>(HORIZONTAL);
 
-        Ppu ppu(vram, memory);
+        Ppu ppu(vram, memory, renderer);
+        memory->subscribe(&ppu);
 
         WHEN("writing to PPUADDR register and PPUDATA")
         {

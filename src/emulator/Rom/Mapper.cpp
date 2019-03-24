@@ -8,24 +8,25 @@ using namespace std;
 using namespace Emulator::Cpu;
 using namespace Emulator::Memory;
 using namespace Emulator::ROM;
+using namespace Emulator::Ppu;
 
 Mapper::Mapper(const Cartridge &cartridge
         , Emulator::Memory::Memory &memory
-        , Emulator::Cpu::Cpu &cpu)
-: cpu(cpu)
-, cartridge(cartridge)
+        , Emulator::Ppu::VRam &vram)
+: cartridge(cartridge)
 , memory(memory)
+, vram(vram)
 { }
 
 shared_ptr<Mapper> Emulator::ROM::createMapper(const Cartridge &cartridge
         , Emulator::Memory::Memory &memory
-        , Emulator::Cpu::Cpu &cpu)
+        , VRam &vram)
 {
     auto laci = cartridge.getMapperNumber();
 
     switch (cartridge.getMapperNumber())
     {
-        case MAPPER_NROM: return make_shared<MapperNrom>(cartridge, memory, cpu);
+        case MAPPER_NROM: return make_shared<MapperNrom>(cartridge, memory,  vram);
         default:break;
     }
 }
