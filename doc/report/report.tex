@@ -536,8 +536,31 @@ Therefore each access which targets address 0x4000 or above will be mapped down 
 \\
 The VRam is separated up to multiple section. Each of these combined together producing the screen which is displayed on the television screen.
 
-\paragraph{Pattern Table}
+\paragraph{Pattern Table} 
+The pattern table \cite{PTRN} is a 4KB section inside the VRam. It is occupying the 0x0000 - 0x0FFF and 0x1000 - 0x1FFF address space as there is two of them.  These pattern tables is used to store sprite patterns.  Each of these sprite patterns describes an 8x8 pixel blocks. A sprite pattern consist of 16 Bytes which used to describe which colour meant to be used to draw each of the pixels within this block. The colours used by the PPU to draw these pixels are aligned in colour . Each of these pallets contained 3 different colours and background colour, therefore 2 bits was required for each pixel to identify which colour needed to be used. That is why the 16 Byte was utilized in a certain way. The first 8 byte sets the low bit of the colour by storing each 8 wide line information as a byte from top to bottom. The second 8 byte works in a similar fashion but it provides high bit of the colour.
+\\
+The above described structure also well represented in the actual addressing as well. Whenever a byte in the pattern table addressed the top 4 bit sets which pattern table are meant to be used it could be ether 1 or 0. The next 8 bit used to identify which pattern are targeted. Meanwhile the least significant 4 bit of the address used to identify the number of the pixel rows, 0x0 - 0x7 low bit rows, 0x8 - 0xF high bit rows.
 
+\paragraph{Name Table}
+The name table (\cite{NMTB}) is the part of the VRam where the background is stored. One of the name tables hold enough information to cover the whole screen. To do this, a single name table is 960 bytes long which is enough to fill the while screen with 8x8 pixel blocks, where each block is represented by a single byte. The byte was needed to store the pattern index for colouring the block. Inside the memory the name table bytes are aligned by row by row starting with the byte of the top leftmost 8x8 pixel block. Although to provide scrolling functionality more than one was needed. 
+\\
+The PPU designed to be able to handle four of them to provide proper vertical and horizontal scrolling functionality at the same time. To do this the PPU used the four name table as they are ordered in a 2x2 manner and a 1x1 name table sized portion was selected from this to be drawn on the screen.
+The four name table can be found in the memory each starting at the given addresses: 0x2000, 0x2400, 0x2800, 0x2C00.
+\\
+ But as the system was not shipped enough VRam just for two name table the other two were just mirrors. The way how the mirroring executed is specified by the cartridges. There is two way how the PPU on its own can implement the mirroring. Either vertical, when the top 2x1 name table is equals the bottom 2x1 name table or horizontal, when the left 1x2 name table are mirrored to the right 1x2 name table section. In these cases background scrolling only works in one direction.
+ \\
+On the other hand, games like the Super Mario Brothers 3 implements scrolling on both direction at the same time. This was achieved by shipping extra ram for the PPU inside the Cartridge. These extra ram then used to provide enough space to use 4 different name table at the same time.
+
+
+\paragraph{Attribute Table}
+Right after each name table in the memory there is a 64 byte long attribute table (\cite{ATRT}). This section of the memory hold data that provides information about which colour palette used for each 8x8 pixel block described in the name table. As the size of this section not enough to cover each name table entry one by one, a more compressed structure is used.
+\\
+Each 8-bit entry, that contains 4 different 2-bit long pattern table index, refers to a 4x4 block of name table entries. The 4 index is divided up between the included pixel blocks by following the convention that the least significant 2 bit refers to the top-left 2x2 block, within the 4x4 target, the next 2 bit specifies the top-right section, the 4th and 5th bit belongs to the bottom-left one and the 2 most significant bit describes the bottom-right 2x2 name table entry block.
+\\
+Although, this solution is storage efficient it comes with certain drawbacks. Mainly it reduces how many colours can be displayed on the background per frame as each colour colour palette is referenced by multiple adjacent nameable entry. Also due to this grouping, when screen-scrolling involved the side of the screen can suffer from colour glitch, this can especially noticed at the right side of the screen while playing Super Mario Brothers 3.
+
+\paragraph{Palette Table}
+Lacikam
 
 \paragraph{ }
 Along this there is a separate 256 Byte area called OAM, Object Attribute Memory, where the sprites attributes are stored. This provides enough storage for 64 different sprite as each sprite attribute is 4 byte. 
@@ -547,6 +570,13 @@ The 1st byte and the 4th byte specifies the Y and the X coordinate of the sprite
 With the bit 0 and 1 the colour palette for the sprite can be set. Bit 7 and 6 provides capability to draw the sprite vertically and/or horizontally flipped, this is a very usefully capability of the PPU which could save up a huge amount of palette RAM. For example the big mario character instead of using 6 different pattern it can be made using only 3. by using a flipped version of the chest and leg part.
 \\
  Also, with bit 5 we can set the rendering priority of the sprite. Which could result that the sprite will be rendered behind non-transparent background elements.
+ 
+ \begin{figure}[!htb]
+ 	\center{\includegraphics[width=\textwidth]
+ 		{images/pattern_example.png}}
+ 	\caption{\label{fig:my-label} Pattern table example (\cite{PTRN})}
+ \end{figure}
+ \clearpage
 
 \subsection{Implementation}
 

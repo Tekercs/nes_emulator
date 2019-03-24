@@ -214,16 +214,22 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {paragraph}{Pattern Table}{27}{section*.91}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{ }{28}{section*.92}
+\contentsline {paragraph}{Name Table}{28}{section*.92}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.4.2}Implementation}{28}{subsection.4.4.2}
+\contentsline {paragraph}{Attribute Table}{28}{section*.93}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.4.3}Testing}{28}{subsection.4.4.3}
+\contentsline {paragraph}{Palette Table}{29}{section*.94}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Evaluation}{29}{chapter.5}
+\contentsline {paragraph}{ }{29}{section*.95}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.1}Performance and Precision}{29}{section.5.1}
+\contentsline {subsection}{\numberline {4.4.2}Implementation}{31}{subsection.4.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.2}Game Performance}{29}{section.5.2}
+\contentsline {subsection}{\numberline {4.4.3}Testing}{31}{subsection.4.4.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {6}Conclusions}{30}{chapter.6}
+\contentsline {chapter}{\numberline {5}Evaluation}{32}{chapter.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.1}Performance and Precision}{32}{section.5.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.2}Game Performance}{32}{section.5.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {6}Conclusions}{33}{chapter.6}

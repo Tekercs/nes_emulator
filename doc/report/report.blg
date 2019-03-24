@@ -1,18 +1,18 @@
 [0] Config.pm:304> INFO - This is Biber 2.12
 [0] Config.pm:307> INFO - Logfile is 'report.blg'
-[17] biber:315> INFO - === Sat Mar 23, 2019, 01:02:56
-[31] Biber.pm:371> INFO - Reading 'report.bcf'
-[77] Biber.pm:889> INFO - Found 36 citekeys in bib section 0
-[95] Biber.pm:4093> INFO - Processing section 0
-[102] Biber.pm:4254> INFO - Looking for bibtex format file 'references.tex' for section 0
-[103] bibtex.pm:1523> INFO - LaTeX decoding ...
-[120] bibtex.pm:1340> INFO - Found BibTeX data source 'references.tex'
-[122] Utils.pm:193> WARN - Duplicate entry key: 'MPPR' in file 'references.tex', skipping ...
-[122] Utils.pm:193> WARN - Duplicate entry key: 'INES' in file 'references.tex', skipping ...
-[237] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[237] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[237] Biber.pm:3921> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
-[237] Biber.pm:3927> INFO - No sort tailoring available for locale 'en-US'
-[258] bbl.pm:636> INFO - Writing 'report.bbl' with encoding 'UTF-8'
-[270] bbl.pm:739> INFO - Output to report.bbl
-[270] Biber.pm:110> INFO - WARNINGS: 2
+[18] biber:315> INFO - === Sat Mar 23, 2019, 22:53:22
+[33] Biber.pm:371> INFO - Reading 'report.bcf'
+[79] Biber.pm:889> INFO - Found 39 citekeys in bib section 0
+[88] Biber.pm:4093> INFO - Processing section 0
+[96] Biber.pm:4254> INFO - Looking for bibtex format file 'references.tex' for section 0
+[97] bibtex.pm:1523> INFO - LaTeX decoding ...
+[116] bibtex.pm:1340> INFO - Found BibTeX data source 'references.tex'
+[118] Utils.pm:193> WARN - Duplicate entry key: 'MPPR' in file 'references.tex', skipping ...
+[118] Utils.pm:193> WARN - Duplicate entry key: 'INES' in file 'references.tex', skipping ...
+[248] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[248] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[248] Biber.pm:3921> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
+[248] Biber.pm:3927> INFO - No sort tailoring available for locale 'en-US'
+[272] bbl.pm:636> INFO - Writing 'report.bbl' with encoding 'UTF-8'
+[286] bbl.pm:739> INFO - Output to report.bbl
+[286] Biber.pm:110> INFO - WARNINGS: 2

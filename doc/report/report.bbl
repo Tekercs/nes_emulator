@@ -856,6 +856,7 @@
       \field{extraname}{1}
       \field{sortinit}{N}
       \field{sortinithash}{f7242c3ed3dc50029fca1be76c497c7c}
+      \field{extradate}{1}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
@@ -872,7 +873,7 @@
       \verb https://wiki.nesdev.com/w/index.php/CPU_registers
       \endverb
     \endentry
-    \entry{NSRM}{online}{}
+    \entry{PTRN}{online}{}
       \name{author}{1}{}{%
         {{uniquename=0,uniquepart=base,hash=321b73e14af2458949f81e7b3046d578}{%
            family={NESDEV-Wiki},
@@ -885,6 +886,38 @@
       \strng{authornamehash}{321b73e14af2458949f81e7b3046d578}
       \strng{authorfullhash}{321b73e14af2458949f81e7b3046d578}
       \field{extraname}{2}
+      \field{sortinit}{N}
+      \field{sortinithash}{f7242c3ed3dc50029fca1be76c497c7c}
+      \field{extradate}{2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{17}
+      \field{month}{10}
+      \field{title}{PPU Pattern Tables - Nesdev wiki}
+      \field{year}{2015}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://wiki.nesdev.com/w/index.php/PPU_pattern_tables
+      \endverb
+      \verb{url}
+      \verb https://wiki.nesdev.com/w/index.php/PPU_pattern_tables
+      \endverb
+    \endentry
+    \entry{NSRM}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=321b73e14af2458949f81e7b3046d578}{%
+           family={NESDEV-Wiki},
+           familyi={N\bibinithyphendelim W\bibinitperiod}}}%
+      }
+      \strng{namehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{fullhash}{321b73e14af2458949f81e7b3046d578}
+      \strng{bibnamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authorbibnamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authornamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authorfullhash}{321b73e14af2458949f81e7b3046d578}
+      \field{extraname}{3}
       \field{sortinit}{N}
       \field{sortinithash}{f7242c3ed3dc50029fca1be76c497c7c}
       \field{extradate}{1}
@@ -916,7 +949,7 @@
       \strng{authorbibnamehash}{321b73e14af2458949f81e7b3046d578}
       \strng{authornamehash}{321b73e14af2458949f81e7b3046d578}
       \strng{authorfullhash}{321b73e14af2458949f81e7b3046d578}
-      \field{extraname}{3}
+      \field{extraname}{4}
       \field{sortinit}{N}
       \field{sortinithash}{f7242c3ed3dc50029fca1be76c497c7c}
       \field{extradate}{2}
@@ -948,7 +981,7 @@
       \strng{authorbibnamehash}{321b73e14af2458949f81e7b3046d578}
       \strng{authornamehash}{321b73e14af2458949f81e7b3046d578}
       \strng{authorfullhash}{321b73e14af2458949f81e7b3046d578}
-      \field{extraname}{4}
+      \field{extraname}{5}
       \field{sortinit}{N}
       \field{sortinithash}{f7242c3ed3dc50029fca1be76c497c7c}
       \field{extradatescope}{labelyear}
@@ -979,9 +1012,10 @@
       \strng{authorbibnamehash}{321b73e14af2458949f81e7b3046d578}
       \strng{authornamehash}{321b73e14af2458949f81e7b3046d578}
       \strng{authorfullhash}{321b73e14af2458949f81e7b3046d578}
-      \field{extraname}{5}
+      \field{extraname}{6}
       \field{sortinit}{N}
       \field{sortinithash}{f7242c3ed3dc50029fca1be76c497c7c}
+      \field{extradate}{1}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
@@ -996,6 +1030,70 @@
       \endverb
       \verb{url}
       \verb https://wiki.nesdev.com/w/index.php/MMC5
+      \endverb
+    \endentry
+    \entry{NMTB}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=321b73e14af2458949f81e7b3046d578}{%
+           family={NESDEV-Wiki},
+           familyi={N\bibinithyphendelim W\bibinitperiod}}}%
+      }
+      \strng{namehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{fullhash}{321b73e14af2458949f81e7b3046d578}
+      \strng{bibnamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authorbibnamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authornamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authorfullhash}{321b73e14af2458949f81e7b3046d578}
+      \field{extraname}{7}
+      \field{sortinit}{N}
+      \field{sortinithash}{f7242c3ed3dc50029fca1be76c497c7c}
+      \field{extradate}{2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{29}
+      \field{month}{1}
+      \field{title}{PPU nametables - Nesdev wiki}
+      \field{year}{2019}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://wiki.nesdev.com/w/index.php/PPU_nametables
+      \endverb
+      \verb{url}
+      \verb https://wiki.nesdev.com/w/index.php/PPU_nametables
+      \endverb
+    \endentry
+    \entry{ATRT}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=321b73e14af2458949f81e7b3046d578}{%
+           family={NESDEV-Wiki},
+           familyi={N\bibinithyphendelim W\bibinitperiod}}}%
+      }
+      \strng{namehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{fullhash}{321b73e14af2458949f81e7b3046d578}
+      \strng{bibnamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authorbibnamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authornamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authorfullhash}{321b73e14af2458949f81e7b3046d578}
+      \field{extraname}{8}
+      \field{sortinit}{N}
+      \field{sortinithash}{f7242c3ed3dc50029fca1be76c497c7c}
+      \field{extradate}{3}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{15}
+      \field{month}{12}
+      \field{title}{PPU nametables - Nesdev wiki}
+      \field{year}{2019}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://wiki.nesdev.com/w/index.php/PPU_attribute_tables
+      \endverb
+      \verb{url}
+      \verb https://wiki.nesdev.com/w/index.php/PPU_attribute_tables
       \endverb
     \endentry
     \entry{CRSH}{online}{}
