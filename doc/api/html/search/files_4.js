@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['outline_2emd',['outline.md',['../outline_8md.html',1,'']]]
+  ['init_2emd',['init.md',['../init_8md.html',1,'']]]
 ];
