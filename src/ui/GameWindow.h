@@ -1,10 +1,12 @@
 #pragma once
 
+#include <memory>
 #include <SDL2/SDL.h>
 
 #include <Ppu/Ppu.h>
 #include <Ppu/ColorPalette.h>
 #include <Utils/Listener.h>
+#include <Utils/Controller.h>
 #include <Ppu/Renderer.h>
 
 #define MAX_HORIZONTAL 256
@@ -15,13 +17,14 @@ namespace Ui
     class GameWindow : public Emulator::Ppu::Renderer
     {
     private:
+        std::shared_ptr<Emulator::Utils::Controller> controller;
         SDL_Window* window;
         SDL_Renderer* renderer;
         uint8_t scaling;
 
 
     public:
-        explicit GameWindow(uint8_t scaling);
+        explicit GameWindow(uint8_t scaling, std::shared_ptr<Emulator::Utils::Controller> controller);
         ~GameWindow();
 
 

@@ -2,10 +2,16 @@
 
 #include <SDL2/SDL.h>
 
+#include <Utils/Controller.h>
+
+using namespace std;
 using namespace Ui;
 using namespace Emulator::Ppu;
+using namespace Emulator::Utils;
 
-GameWindow::GameWindow(uint8_t scaling) : scaling(scaling)
+GameWindow::GameWindow(uint8_t scaling, shared_ptr<Controller> controller)
+: scaling(scaling)
+, controller(move(controller))
 {
     SDL_Init(SDL_INIT_EVERYTHING);
     this->window = SDL_CreateWindow("first sdl"
