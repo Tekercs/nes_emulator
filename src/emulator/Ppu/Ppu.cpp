@@ -117,7 +117,9 @@ void Ppu::operator++()
 
         if (this->cycleCounter == RENDER_FINISH)
         {
-            this->renderBackground();
+            Color backgroundColor = colors[this->vram->readMemory(UNIVERSAL_BG_COLOR)];
+            this->renderer->clearScreen(backgroundColor);
+            //this->renderBackground();
             this->renderSprites();
             this->renderer->drawScreen();
         }
@@ -185,7 +187,8 @@ void Ppu::setMemoryAddress(uint8_t addressPart)
 {
     this->memoryAddress.address = (this->memoryAddress.nextPart == LOW_BYTE)
         ? (this->memoryAddress.address & 0xFF00) + addressPart
-        : (this->memoryAddress.address & 0x00FF) + ((addressPart % 0x40) << 8);
+        : (this->memoryAddress.address & 0x00FF) + ((addressPart) << 8);
+    //: (this->memoryAddress.address & 0x00FF) + ((addressPart % 0x40) << 8);
 
     this->memoryAddress.nextPart = (this->memoryAddress.nextPart == LOW_BYTE) ? HIGH_BYTE : LOW_BYTE;
 }
@@ -244,10 +247,10 @@ void Ppu::renderSprites()
     const uint16_t patternAddressBase = this->getSpritePatternAddress();
     for (uint16_t k = 0; k < OAM_SIZE; k += 4)
     {
-        Cords position = { .horizontal = this->vram->readOAM(this->oamAddress + k +3), .vertical = this->vram->readOAM(this->oamAddress + k) };
+        Cords position = { .horizontal = this->vram->readOAM(this->oamAddress + k + 3), .vertical = this->vram->readOAM(this->oamAddress + k) };
         const uint8_t spriteAttribute = this->vram->readOAM(this->oamAddress + k+2);
         const uint16_t colorBase = PALETTE_STARTS + (1 << 4) + ((spriteAttribute & SPRITE_ATTRIBUTE_COLOR) << 2);
-        const uint8_t patternIndex = (this->vram->readOAM(this->oamAddress + k+1)) << 4;
+        const uint16_t patternIndex = (this->vram->readOAM(this->oamAddress + k+1)) << 4;
 
         for (uint8_t i = 0; i <= 0x7; ++i)
         {
@@ -259,12 +262,25 @@ void Ppu::renderSprites()
                 const uint8_t colorIndex = (((upper & (0b1 << j)) >> j) << 1) + (lower & (0b1 << j) >> j);
                 const uint8_t color = (colorIndex != 0) ? this->vram->readMemory(colorBase + colorIndex) : this->vram->readMemory(UNIVERSAL_BG_COLOR);
 
-                Color pixelColor = colors[color];
-                Cords pixelPosition = {.horizontal = 0, .vertical = 0};
-                pixelPosition.vertical = position.vertical + i -1;
-                pixelPosition.horizontal = position.horizontal + (7 - j);
+                Color pixelColor;
+                if (colorIndex == 0)
+                    pixelColor = { .red = 0, .green = 0, .blue = 0, .alpha = 0 };
+                else if (colorIndex == 1)
+                    pixelColor = { .red = 9, .green = 9, .blue = 255, .alpha = 0 };
+                else if (colorIndex == 2)
+                    pixelColor = { .red = 0, .green = 255, .blue = 0, .alpha = 0 };
+                else if (colorIndex == 3)
+                    pixelColor = { .red = 255, .green = 0, .blue = 0, .alpha = 0 };
 
-                this->renderer->colorPixel(pixelPosition, pixelColor);
+                if (colorIndex != 0)
+                {
+                    Cords pixelPosition = {.horizontal = 0, .vertical = 0};
+                    pixelPosition.vertical = position.vertical + i;
+                    pixelPosition.horizontal = position.horizontal + (7 - j);
+
+                    this->renderer->colorPixel(pixelPosition, pixelColor);
+                }
+
             }
         }
     }
@@ -276,6 +292,7 @@ void Ppu::renderBackground()
     uint16_t basePattern = this->getBackgroundPatternAddress();
     for (auto n = 0; n < NAME_SIZE; ++n)
     {
+        //this->memoryAddress.address = baseNametable + n;
         Cords position = {.horizontal = 0, .vertical = 0};
         position.horizontal = n % 32 * 8;
         position.vertical = n / 32 * 8;
@@ -286,8 +303,8 @@ void Ppu::renderBackground()
         uint16_t attributeEntryAddress = (n/32/4*8)+(n%32/4) + BASE_NAMETABLE + NAME_SIZE;
         uint8_t attributeEntry = this->vram->readMemory(attributeEntryAddress);
 
-        uint8_t verticalPos = ((((n /32) /4) %4) < 2) ? 0 : 2;
-        uint8_t horizontalPos = ((((n %32) /4) %4) < 2) ? 0 : 4;
+        uint8_t verticalPos = ((((n /32) /4) %4) < 2) ? 0 : 4;
+        uint8_t horizontalPos = ((((n %32) /4) %4) < 2) ? 0 : 2;
         uint8_t shiftValue = verticalPos + horizontalPos;
 
         uint8_t palettIndex = ((attributeEntry & (0b11  << shiftValue)) >> shiftValue);
@@ -302,14 +319,18 @@ void Ppu::renderBackground()
             for (uint j = 0; j < 8; ++j)
             {
                 const uint8_t colorIndex = (((upper & (0b1 << j)) >> j) << 1) + (lower & (0b1 << j) >> j);
-                const uint8_t color = (colorIndex != 0) ? this->vram->readMemory(colorBase + colorIndex) : this->vram->readMemory(UNIVERSAL_BG_COLOR);
 
-                Color pixelColor = colors[color];
-                Cords pixelPosition = {.horizontal = 0, .vertical = 0};
-                pixelPosition.vertical = position.vertical + i;
-                pixelPosition.horizontal = position.horizontal + (7 - j);
+                if (colorIndex != 0)
+                {
+                    Color pixelColor = colors[this->vram->readMemory(colorBase + colorIndex)];
 
-                this->renderer->colorPixel(pixelPosition, pixelColor);
+                    Cords pixelPosition = {.horizontal = 0, .vertical = 0};
+                    pixelPosition.vertical = position.vertical + i;
+                    pixelPosition.horizontal = position.horizontal + (7 - j);
+
+                    this->renderer->colorPixel(pixelPosition, pixelColor);
+                }
+
             }
         }
     }
