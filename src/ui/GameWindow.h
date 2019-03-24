@@ -23,6 +23,8 @@ namespace Ui
         uint8_t scaling;
 
 
+        Emulator::Utils::Button convertSDLKeyToEmulatorKey(SDL_Keycode sdlKeycode);
+
     public:
         explicit GameWindow(uint8_t scaling, std::shared_ptr<Emulator::Utils::Controller> controller);
         ~GameWindow();
@@ -33,5 +35,7 @@ namespace Ui
         void drawScreen() override;
 
         void clearScreen(Emulator::Ppu::Color color) override;
+
+        void pollEvent();
     };
 }

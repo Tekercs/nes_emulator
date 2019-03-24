@@ -63,3 +63,56 @@ void GameWindow::drawScreen()
 {
     SDL_RenderPresent(this->renderer);
 }
+
+void GameWindow::pollEvent()
+{
+    SDL_Event event;
+    SDL_PollEvent(&event);
+
+    switch (event.type)
+    {
+        case SDL_KEYDOWN:
+            this->controller->press(this->convertSDLKeyToEmulatorKey(event.key.keysym.sym));
+            break;
+
+        case SDL_KEYUP:
+            this->controller->release(this->convertSDLKeyToEmulatorKey(event.key.keysym.sym));
+            break;
+
+        default:
+            break;
+    }
+
+}
+
+Emulator::Utils::Button GameWindow::convertSDLKeyToEmulatorKey(SDL_Keycode sdlKeycode)
+{
+    switch(sdlKeycode)
+    {
+        case SDLK_UP:
+            return UP;
+
+        case SDLK_DOWN:
+            return DOWN;
+
+        case SDLK_LEFT:
+            return LEFT;
+
+        case SDLK_RIGHT:
+            return RIGHT;
+
+        case SDLK_a:
+            return A;
+
+        case SDLK_b:
+            return B;
+
+        case SDLK_s:
+            return START;
+
+        case SDLK_SPACE:
+            return SELECT;
+    }
+
+    return START;
+}

@@ -49,6 +49,7 @@ int main(int argc, char *argv[])
 
     while(true)
     {
+        gameWindow->pollEvent();
         ++cpu;
         sleep_for(nanoseconds(1));
     }
