@@ -1,10 +1,12 @@
-//
-// Created by bence on 24/03/19.
-//
-
 #include "Controller.h"
 
-void Emulator::Utils::Controller::notify(std::initializer_list<std::string> parameters)
+using namespace Emulator::Utils;
+
+Controller::Controller()
+: pressedButtons(0)
+{ }
+
+void Controller::notify(std::initializer_list<std::string> parameters)
 {
     std::string eventName = *parameters.begin();
     std::string param1 = "";
@@ -13,4 +15,14 @@ void Emulator::Utils::Controller::notify(std::initializer_list<std::string> para
     {
         // handle controller access
     }
+}
+
+void Controller::press(Button button)
+{
+    this->pressedButtons = this->pressedButtons | (0b1 << button);
+}
+
+void Controller::release(Button button)
+{
+    this->pressedButtons = this->pressedButtons & (~(0b1 << button));
 }
