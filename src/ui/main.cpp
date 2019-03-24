@@ -25,23 +25,20 @@ using namespace std::this_thread;
 
 int main()
 {
+    Cartridge cartridge("/home/bence/Workspace/nes_emulator/test/emulator_test/test_roms/rainwarrior/color_test.nes");
+    //Cartridge cartridge("/home/bence/Workspace/nes_emulator/test/emulator_test/test_roms/kevtris/nestest.nes");
+
+    shared_ptr<VRam> vram = make_shared<VRam>(cartridge.getNametableMirroring());
     shared_ptr<Memory> memory = make_shared<Memory>();
     shared_ptr<Registers> registers = make_shared<Registers>();
-    shared_ptr<VRam> vram = make_shared<VRam>(HORIZONTAL);
-
-    registers->setProgramCounter(0xC000);
-    registers->setStatusFlags(0x24);
 
     shared_ptr<GameWindow> gameWindow = make_shared<GameWindow>(2);
 
-    //Cartridge cartridge("/home/bence/Desktop/ballon_fight.nes");
-    Cartridge cartridge("/home/bence/Workspace/nes_emulator/test/emulator_test/test_roms/rainwarrior/color_test.nes");
-    //Cartridge cartridge("/home/bence/Workspace/nes_emulator/test/emulator_test/test_roms/kevtris/nestest.nes");
-    auto mapper = createMapper(cartridge, *memory.get(), *vram.get());
-    mapper->map();
-
     Cpu cpu(memory, registers);
     Ppu ppu(vram, memory, gameWindow);
+
+    auto mapper = createMapper(cartridge, *memory.get(), *vram.get());
+    mapper->map();
 
     cpu.reset();
 
@@ -49,13 +46,11 @@ int main()
     ppu.subscribe(&cpu);
     memory.get()->subscribe(&ppu);
 
-
     while(true)
     {
         ++cpu;
-        //sleep_for(nanoseconds(1));
+        sleep_for(nanoseconds(1));
     }
-
 
     return 0;
 }
