@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['prgrom',['prgRom',['../classEmulator_1_1ROM_1_1Cartridge.html#ace196286959303845d2bbdfbf4e35c88',1,'Emulator::ROM::Cartridge']]],
-  ['programcounter',['programCounter',['../classEmulator_1_1Cpu_1_1Cpu.html#a10408cccab9d5e423014ed9f0fff91c4',1,'Emulator::Cpu::Cpu']]]
+  ['horizontal',['horizontal',['../structEmulator_1_1Ppu_1_1Cords.html#a345a25e3f5995c7d83f6cd06e7b0b06a',1,'Emulator::Ppu::Cords']]]
 ];

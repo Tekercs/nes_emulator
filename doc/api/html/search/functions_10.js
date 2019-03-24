@@ -1,9 +1,6 @@
 var searchData=
 [
-  ['zeropageaddressing',['zeroPageAddressing',['../classEmulator_1_1Cpu_1_1Cpu.html#aa48d0a9840cacf80d9c05d11d66faae6',1,'Emulator::Cpu::Cpu']]],
-  ['zeropagevalueaddressing',['zeroPageValueAddressing',['../classEmulator_1_1Cpu_1_1Cpu.html#a9f74c9cbc82094efa20e6872f31da0e5',1,'Emulator::Cpu::Cpu']]],
-  ['zeropagexaddressing',['zeroPageXAddressing',['../classEmulator_1_1Cpu_1_1Cpu.html#ab29c34b8d1b323ef68ecd3e8c90c1c13',1,'Emulator::Cpu::Cpu']]],
-  ['zeropagexvalueaddressing',['zeroPageXValueAddressing',['../classEmulator_1_1Cpu_1_1Cpu.html#a132c2f97b5db7b861b70370b1e56ed5e',1,'Emulator::Cpu::Cpu']]],
-  ['zeropageyaddressing',['zeroPageYAddressing',['../classEmulator_1_1Cpu_1_1Cpu.html#a8e2cf1445098a52e8413c5bd0645dd60',1,'Emulator::Cpu::Cpu']]],
-  ['zeropageyvalueaddressing',['zeroPageYValueAddressing',['../classEmulator_1_1Cpu_1_1Cpu.html#a274f6c9b6190d1252bb68ba7d93d60d1',1,'Emulator::Cpu::Cpu']]]
+  ['unsetvblankstatusflag',['unsetVblankStatusFlag',['../classEmulator_1_1Ppu_1_1Ppu.html#afc8ceb6e30a656cc37dd1ed1ea3615de',1,'Emulator::Ppu::Ppu']]],
+  ['unsubscribe',['unsubscribe',['../classEmulator_1_1Utils_1_1EventSource.html#aa58286dc5b8c5e5e5d53df6b35e8a3ad',1,'Emulator::Utils::EventSource']]],
+  ['updatecontrolflags',['updateControlFlags',['../classEmulator_1_1Ppu_1_1Ppu.html#a30bfba64bdd3d1c33984083cb65b3a65',1,'Emulator::Ppu::Ppu']]]
 ];
