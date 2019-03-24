@@ -119,7 +119,7 @@ void Ppu::operator++()
         {
             Color backgroundColor = colors[this->vram->readMemory(UNIVERSAL_BG_COLOR)];
             this->renderer->clearScreen(backgroundColor);
-            //this->renderBackground();
+            this->renderBackground();
             this->renderSprites();
             this->renderer->drawScreen();
         }
