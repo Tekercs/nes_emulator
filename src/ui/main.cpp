@@ -45,13 +45,14 @@ int main(int argc, char *argv[])
 
     cpu.subscribe(&ppu);
     ppu.subscribe(&cpu);
-    memory.get()->subscribe(&ppu);
+    memory->subscribe(&ppu);
+    memory->subscribe(controller.get());
 
     while(true)
     {
         gameWindow->pollEvent();
         ++cpu;
-        sleep_for(nanoseconds(1));
+        //sleep_for(nanoseconds(1));
     }
 
     return 0;
