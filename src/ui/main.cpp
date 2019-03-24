@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
     shared_ptr<VRam> vram = make_shared<VRam>(cartridge.getNametableMirroring());
     shared_ptr<Memory> memory = make_shared<Memory>();
     shared_ptr<Registers> registers = make_shared<Registers>();
-    shared_ptr<Controller> controller = make_shared<Controller>();
+    shared_ptr<Controller> controller = make_shared<Controller>(memory);
 
     shared_ptr<GameWindow> gameWindow = make_shared<GameWindow>(2, controller);
 

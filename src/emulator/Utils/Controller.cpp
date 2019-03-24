@@ -1,9 +1,16 @@
 #include "Controller.h"
 
-using namespace Emulator::Utils;
+#include <memory>
 
-Controller::Controller()
+#include <Memory/Memory.h>
+
+using namespace std;
+using namespace Emulator::Utils;
+using namespace Emulator::Memory;
+
+Controller::Controller(shared_ptr<Memory::Memory> memory)
 : pressedButtons(0)
+, memory(move(memory))
 { }
 
 void Controller::notify(std::initializer_list<std::string> parameters)

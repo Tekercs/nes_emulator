@@ -1,5 +1,8 @@
 #pragma once
 
+#include <memory>
+
+#include <Memory/Memory.h>
 #include <Utils/Listener.h>
 
 namespace Emulator::Utils
@@ -10,9 +13,10 @@ namespace Emulator::Utils
     {
     private:
         uint8_t pressedButtons;
+        std::shared_ptr<Emulator::Memory::Memory> memory;
 
     public:
-        Controller();
+        Controller(std::shared_ptr<Emulator::Memory::Memory> memory);
 
         void notify(std::initializer_list<std::string> parameters) override;
 
