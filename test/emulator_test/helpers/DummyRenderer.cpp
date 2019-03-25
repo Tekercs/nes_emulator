@@ -15,3 +15,8 @@ void DummyRenderer::drawScreen()
 {
     cout << "screen rendere" << endl;
 }
+
+void DummyRenderer::clearScreen(Color color)
+{
+    cout << "clear screen" << endl;
+}

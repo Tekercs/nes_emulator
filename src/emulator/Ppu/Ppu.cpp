@@ -21,9 +21,9 @@ Ppu::Ppu(shared_ptr<VRam> vram, shared_ptr<Emulator::Memory::Memory> memory, sha
 , outputMaskFlags(DEFAULT_MASKFLAGS)
 { }
 
-uint8_t Ppu::getVramAddressIncrement()
+void Ppu::vramAddressIncrement()
 {
-    return (this->controlFlags & INCREMENT_BIT)? 1 : 32;
+   this->memoryAddress.address++;
 }
 
 void Ppu::notify(initializer_list<string> parameters)
@@ -196,9 +196,12 @@ void Ppu::setMemoryAddress(uint8_t addressPart)
 
 void Ppu::writeMemory(uint8_t data)
 {
+    if (this->memoryAddress.address == 0x3f11)
+        auto laci =1;
+
     this->vram->writeMemory(this->memoryAddress.address, data);
 
-    this->memoryAddress.address += this->getVramAddressIncrement();
+    this->vramAddressIncrement();
 }
 
 void Ppu::readMemory()
@@ -218,7 +221,7 @@ void Ppu::readMemory()
         this->memoryAddress.readBuffer = vram->readMemory(newAddress);
     }
 
-    this->memoryAddress.address += this->getVramAddressIncrement();
+    this->vramAddressIncrement();
 }
 
 void Ppu::updateControlFlags(uint8_t newValue)
@@ -245,12 +248,14 @@ void Ppu::unsetVblankStatusFlag()
 void Ppu::renderSprites()
 {
     const uint16_t patternAddressBase = this->getSpritePatternAddress();
-    for (uint16_t k = 0; k < OAM_SIZE; k += 4)
+    for (uint16_t k = this->oamAddress; k <= OAM_SIZE-4; k += 4)
     {
-        Cords position = { .horizontal = this->vram->readOAM(this->oamAddress + k + 3), .vertical = this->vram->readOAM(this->oamAddress + k) };
-        const uint8_t spriteAttribute = this->vram->readOAM(this->oamAddress + k+2);
-        const uint16_t colorBase = PALETTE_STARTS + (1 << 4) + ((spriteAttribute & SPRITE_ATTRIBUTE_COLOR) << 2);
-        const uint16_t patternIndex = (this->vram->readOAM(this->oamAddress + k+1)) << 4;
+        Cords position = { .horizontal = this->vram->readOAM( k + 3), .vertical = this->vram->readOAM( k) };
+        const uint8_t spriteAttribute = this->vram->readOAM( k+2);
+        const uint16_t colorBase = PALETTE_STARTS_SPRITE + ((spriteAttribute & SPRITE_ATTRIBUTE_COLOR) << 2);
+        bool isFlippedVertical = (spriteAttribute & SPRITE_ATTRIBUTE_VERTICAL_FLIP);
+        bool isFlippedHorizontal = (spriteAttribute & SPRITE_ATTRIBUTE_HORIZONTAL_FLIP);
+        const uint16_t patternIndex = (this->vram->readOAM( k+1)) << 4;
 
         for (uint8_t i = 0; i <= 0x7; ++i)
         {
@@ -274,9 +279,10 @@ void Ppu::renderSprites()
 
                 if (colorIndex != 0)
                 {
+                    //pixelColor = colors[color];
                     Cords pixelPosition = {.horizontal = 0, .vertical = 0};
-                    pixelPosition.vertical = position.vertical + i;
-                    pixelPosition.horizontal = position.horizontal + (7 - j);
+                    pixelPosition.vertical = (isFlippedVertical) ? position.vertical + (7 - i)  : position.vertical + i;
+                    pixelPosition.horizontal = (isFlippedHorizontal) ? position.horizontal + j  : position.horizontal + (7-j);
 
                     this->renderer->colorPixel(pixelPosition, pixelColor);
                 }
@@ -323,6 +329,15 @@ void Ppu::renderBackground()
                 if (colorIndex != 0)
                 {
                     Color pixelColor = colors[this->vram->readMemory(colorBase + colorIndex)];
+
+                    if (colorIndex == 0)
+                        pixelColor = { .red = 0, .green = 0, .blue = 0, .alpha = 0 };
+                    else if (colorIndex == 1)
+                        pixelColor = { .red = 9, .green = 9, .blue = 255, .alpha = 0 };
+                    else if (colorIndex == 2)
+                        pixelColor = { .red = 0, .green = 255, .blue = 0, .alpha = 0 };
+                    else if (colorIndex == 3)
+                        pixelColor = { .red = 255, .green = 0, .blue = 0, .alpha = 0 };
 
                     Cords pixelPosition = {.horizontal = 0, .vertical = 0};
                     pixelPosition.vertical = position.vertical + i;

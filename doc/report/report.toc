@@ -1,0 +1,315 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{1}{section*.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{1}{section*.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{1}{section*.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {1}Introduction}{4}{chapter.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{}{4}{section*.7}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{4}{section*.8}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.1}History}{4}{section.1.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{4}{section*.9}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{5}{section*.10}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{5}{section*.11}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.2}Background}{6}{section.1.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{6}{section*.13}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{6}{section*.14}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{6}{section*.15}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{6}{section*.16}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{6}{section*.17}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{6}{section*.18}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{6}{section*.19}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {2}Project Goal}{8}{chapter.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{8}{section*.21}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Core - Minimal}{8}{section*.22}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Core - Full)}{8}{section*.23}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Advanced - Mappers}{9}{section*.24}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Advanced - Multiple Platform}{9}{section*.25}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Advanced - State Save}{9}{section*.26}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Advanced - Online Multiplayer}{9}{section*.27}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {3}Project Execution}{10}{chapter.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.1}Design}{10}{section.3.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{10}{section*.28}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{10}{section*.29}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.2}Tools}{11}{section.3.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{11}{section*.30}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{11}{section*.31}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{11}{section*.32}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{11}{section*.33}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{11}{section*.34}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.3}Management}{12}{section.3.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{12}{section*.35}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{12}{section*.36}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{12}{section*.37}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{12}{section*.38}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{12}{section*.39}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{13}{section*.40}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{13}{section*.41}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {4}Specification and implementation}{14}{chapter.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.1}CPU}{14}{section.4.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.1.1}Specification}{14}{subsection.4.1.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{14}{section*.43}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Negative Flag, 7th bit}{15}{section*.44}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Overflow flag, 6th bit}{15}{section*.45}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Break flag, 4th bit}{15}{section*.46}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Decimal Mode, 3rd bit}{15}{section*.47}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Interrupt Disable, 2nd bit}{15}{section*.48}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Zero Flag, 1st bit}{15}{section*.49}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Carry flag, 0th bit}{15}{section*.50}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{15}{section*.51}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{16}{section*.52}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Implicit}{16}{section*.53}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Accumulator}{16}{section*.54}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Immediate}{16}{section*.55}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Zero Page}{16}{section*.56}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Zero Page, X}{16}{section*.57}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Zero Page, Y}{16}{section*.58}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Relative}{16}{section*.59}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Absolute}{17}{section*.60}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Absolute, X}{17}{section*.61}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Absolute, Y}{17}{section*.62}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Indirect}{17}{section*.63}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Indexed Indirect}{17}{section*.64}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Indirect Indexed}{17}{section*.65}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.1.2}Implementation}{17}{subsection.4.1.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Registers}{17}{section*.66}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Instructions and Addressing modes}{17}{section*.67}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Memory accessing}{18}{section*.68}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{CPU Cycle}{18}{section*.69}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.1.3}Testing}{18}{subsection.4.1.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{18}{section*.70}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{19}{section*.71}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.2}RAM}{20}{section.4.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.2.1}Specification}{20}{subsection.4.2.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{20}{section*.73}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Storage}{20}{section*.74}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Zero page}{20}{section*.75}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Stack}{20}{section*.76}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{RAM}{21}{section*.77}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{21}{section*.78}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{I/O Registers}{21}{section*.79}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.2.2}Implementation}{21}{subsection.4.2.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{21}{section*.80}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.2.3}Testing}{22}{subsection.4.2.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.3}Cartridge (ROM)}{24}{section.4.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.3.1}Specification}{24}{subsection.4.3.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{24}{section*.82}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{24}{section*.83}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{24}{section*.84}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Header section}{24}{section*.85}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Training Area}{25}{section*.86}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{PRG-ROM}{25}{section*.87}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{CHR-ROM}{25}{section*.88}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Miscellaneous ROM}{25}{section*.89}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.3.2}Implementation}{25}{subsection.4.3.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{25}{section*.90}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Parser}{25}{section*.91}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Mapper}{25}{section*.92}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.3.3}Testing}{26}{subsection.4.3.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{26}{section*.93}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{26}{section*.94}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.4}PPU}{27}{section.4.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.4.1}Specification}{27}{subsection.4.4.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{27}{section*.96}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{27}{section*.97}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{PPUCTRL}{27}{section*.98}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{27}{section*.99}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{PPUMASK}{28}{section*.100}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{PPUSTATUS}{28}{section*.101}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{OAMADDR}{28}{section*.102}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{OAMDATA}{28}{section*.103}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{OAMDMA}{29}{section*.104}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{PPUSCROLL}{29}{section*.105}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{PPUADDR}{29}{section*.106}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{PPUDATA}{29}{section*.107}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{29}{section*.108}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Pattern Table}{30}{section*.109}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Name Table}{30}{section*.110}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Attribute Table}{31}{section*.111}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Palette Table}{31}{section*.112}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{OAM }{31}{section*.113}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{32}{section*.114}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{32}{section*.115}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{32}{section*.116}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{32}{section*.117}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.4.2}Implementation}{35}{subsection.4.4.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{35}{section*.119}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Memory handling}{35}{section*.120}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Rendering}{35}{section*.121}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.4.3}Testing}{36}{subsection.4.4.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{36}{section*.122}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{color\_test.nes}{36}{section*.123}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{vram\_access.nes}{36}{section*.124}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{sprite\_ram.nes}{36}{section*.125}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {5}Evaluation}{37}{chapter.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{37}{section*.126}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.1}Emulation Precision}{37}{section.5.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{37}{section*.127}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{37}{section*.128}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{37}{section*.129}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{38}{section*.130}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.2}Performance}{38}{section.5.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{38}{section*.131}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{38}{section*.132}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{39}{section*.133}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{39}{section*.134}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{39}{section*.135}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {6}Conclusions}{40}{chapter.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{40}{section*.138}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{40}{section*.139}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{40}{section*.140}

@@ -12,24 +12,26 @@
 #include <Ppu/ColorPalette.h>
 #include <Ppu/Renderer.h>
 
-#define DEFAULT_PPUCNTRL       0b00000000
-#define DEFAULT_MASKFLAGS      0b00000000
-#define DEFAULT_STATUS         0b10100000
+#define DEFAULT_PPUCNTRL                 0b00000000
+#define DEFAULT_MASKFLAGS                0b00000000
+#define DEFAULT_STATUS                   0b10100000
 
-#define VBLANK_FLAG            0b10000000
+#define VBLANK_FLAG                      0b10000000
 
-#define RENDER_FINISH          81840
-#define VBLANK_STARTS          82181
-#define SCANLINE_CYCLES        341
-#define WARMUP_CYCLES          88974
-#define MAX_CYCLE              89001
-#define PATTERN_BACKGROUND     0b00010000
-#define PATTERN_SPRITE         0b00001000
-#define SPRITE_ATTRIBUTE_COLOR 0b00000011
+#define RENDER_FINISH                    81840
+#define VBLANK_STARTS                    82181
+#define SCANLINE_CYCLES                  341
+#define WARMUP_CYCLES                    88974
+#define MAX_CYCLE                        89001
+#define PATTERN_BACKGROUND               0b00010000
+#define PATTERN_SPRITE                   0b00001000
+#define SPRITE_ATTRIBUTE_COLOR           0b00000011
+#define SPRITE_ATTRIBUTE_VERTICAL_FLIP   0b10000000
+#define SPRITE_ATTRIBUTE_HORIZONTAL_FLIP 0b01000000
 
-#define BASE_NAMETABLE         0b00000011
+#define BASE_NAMETABLE                   0b00000011
 
-#define INCREMENT_BIT          0b00000100
+#define INCREMENT_BIT                    0b00000100
 
 namespace Emulator::Ppu
 {
@@ -47,7 +49,7 @@ namespace Emulator::Ppu
         uint32_t warmupCycles;
         std::shared_ptr<Renderer> renderer;
 
-        uint8_t getVramAddressIncrement();
+        void vramAddressIncrement();
 
         void setVblankStatusFLag();
         void unsetVblankStatusFlag();

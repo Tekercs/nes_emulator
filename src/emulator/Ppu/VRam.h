@@ -20,6 +20,7 @@
 #define NAME_ATTRIBUTE_SIZE   64
 
 #define PALETTE_STARTS        0x3F00
+#define PALETTE_STARTS_SPRITE 0x3F10
 #define PALETTE_SIZE          0x20
 #define PALETTE_TOTAL         8
 

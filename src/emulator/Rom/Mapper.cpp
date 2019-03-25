@@ -22,8 +22,6 @@ shared_ptr<Mapper> Emulator::ROM::createMapper(const Cartridge &cartridge
         , Emulator::Memory::Memory &memory
         , VRam &vram)
 {
-    auto laci = cartridge.getMapperNumber();
-
     switch (cartridge.getMapperNumber())
     {
         case MAPPER_NROM: return make_shared<MapperNrom>(cartridge, memory,  vram);

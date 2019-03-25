@@ -8,4 +8,6 @@ public:
     void colorPixel(Emulator::Ppu::Cords cords, Emulator::Ppu::Color color) override;
 
     void drawScreen() override;
+
+    void clearScreen(Emulator::Ppu::Color color) override;
 };

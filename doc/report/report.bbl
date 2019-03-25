@@ -1,0 +1,1552 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.0 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nyt/global//global/global}
+    \entry{CMKE}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=df49adab93b9e0c10c64f72458b31971}{%
+           family={CMake},
+           familyi={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{df49adab93b9e0c10c64f72458b31971}
+      \strng{fullhash}{df49adab93b9e0c10c64f72458b31971}
+      \strng{bibnamehash}{df49adab93b9e0c10c64f72458b31971}
+      \strng{authorbibnamehash}{df49adab93b9e0c10c64f72458b31971}
+      \strng{authornamehash}{df49adab93b9e0c10c64f72458b31971}
+      \strng{authorfullhash}{df49adab93b9e0c10c64f72458b31971}
+      \field{sortinit}{C}
+      \field{sortinithash}{963e9d84a3da2344e8833203de5aed05}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{21}
+      \field{month}{3}
+      \field{title}{CMake}
+      \field{year}{2019}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://cmake.org/
+      \endverb
+      \verb{url}
+      \verb https://cmake.org/
+      \endverb
+    \endentry
+    \entry{CPPV}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=ccb2e96d41753ca525a50baa0f70c147}{%
+           family={cppreference.com},
+           familyi={c\bibinitperiod}}}%
+      }
+      \strng{namehash}{ccb2e96d41753ca525a50baa0f70c147}
+      \strng{fullhash}{ccb2e96d41753ca525a50baa0f70c147}
+      \strng{bibnamehash}{ccb2e96d41753ca525a50baa0f70c147}
+      \strng{authorbibnamehash}{ccb2e96d41753ca525a50baa0f70c147}
+      \strng{authornamehash}{ccb2e96d41753ca525a50baa0f70c147}
+      \strng{authorfullhash}{ccb2e96d41753ca525a50baa0f70c147}
+      \field{sortinit}{c}
+      \field{sortinithash}{963e9d84a3da2344e8833203de5aed05}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{16}
+      \field{month}{3}
+      \field{title}{C++ 17 - Feature set}
+      \field{year}{2019}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://en.cppreference.com/w/cpp/compiler_support
+      \endverb
+      \verb{url}
+      \verb https://en.cppreference.com/w/cpp/compiler_support
+      \endverb
+    \endentry
+    \entry{NSPF}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=48fef4eab17045e30a7cdd8d68dd460d}{%
+           family={Diskin},
+           familyi={D\bibinitperiod},
+           given={Patrick},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{48fef4eab17045e30a7cdd8d68dd460d}
+      \strng{fullhash}{48fef4eab17045e30a7cdd8d68dd460d}
+      \strng{bibnamehash}{48fef4eab17045e30a7cdd8d68dd460d}
+      \strng{authorbibnamehash}{48fef4eab17045e30a7cdd8d68dd460d}
+      \strng{authornamehash}{48fef4eab17045e30a7cdd8d68dd460d}
+      \strng{authorfullhash}{48fef4eab17045e30a7cdd8d68dd460d}
+      \field{sortinit}{D}
+      \field{sortinithash}{2ef1bd9a78cc71eb74d7231c635177b8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{1}
+      \field{month}{8}
+      \field{title}{Nintendo Entertainment System Documentation}
+      \field{year}{2004}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb http://www.nesdev.com/NESDoc.pdf
+      \endverb
+      \verb{url}
+      \verb http://www.nesdev.com/NESDoc.pdf
+      \endverb
+    \endentry
+    \entry{INES}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=958ea28affba3915f025b317b4782816}{%
+           family={Fayzullin},
+           familyi={F\bibinitperiod},
+           given={Marat},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{958ea28affba3915f025b317b4782816}
+      \strng{fullhash}{958ea28affba3915f025b317b4782816}
+      \strng{bibnamehash}{958ea28affba3915f025b317b4782816}
+      \strng{authorbibnamehash}{958ea28affba3915f025b317b4782816}
+      \strng{authornamehash}{958ea28affba3915f025b317b4782816}
+      \strng{authorfullhash}{958ea28affba3915f025b317b4782816}
+      \field{extraname}{1}
+      \field{sortinit}{F}
+      \field{sortinithash}{669c706c6f1fbf3b5a83d26f1d9e9e72}
+      \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{24}
+      \field{month}{1}
+      \field{title}{Nintendo Entertainment System Architecture}
+      \field{year}{2005}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb http://fms.komkon.org/EMUL8/NES.html#LABM
+      \endverb
+      \verb{url}
+      \verb http://fms.komkon.org/EMUL8/NES.html#LABM
+      \endverb
+    \endentry
+    \entry{PPRG}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=958ea28affba3915f025b317b4782816}{%
+           family={Fayzullin},
+           familyi={F\bibinitperiod},
+           given={Marat},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{958ea28affba3915f025b317b4782816}
+      \strng{fullhash}{958ea28affba3915f025b317b4782816}
+      \strng{bibnamehash}{958ea28affba3915f025b317b4782816}
+      \strng{authorbibnamehash}{958ea28affba3915f025b317b4782816}
+      \strng{authornamehash}{958ea28affba3915f025b317b4782816}
+      \strng{authorfullhash}{958ea28affba3915f025b317b4782816}
+      \field{extraname}{2}
+      \field{sortinit}{F}
+      \field{sortinithash}{669c706c6f1fbf3b5a83d26f1d9e9e72}
+      \field{extradate}{2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{24}
+      \field{month}{1}
+      \field{title}{Nintendo Entertainment System Architecture}
+      \field{year}{2005}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb http://fms.komkon.org/EMUL8/NES.html#LABM
+      \endverb
+      \verb{url}
+      \verb http://fms.komkon.org/EMUL8/NES.html#LABM
+      \endverb
+    \endentry
+    \entry{GCCV}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=6676d03052a0fb449f719dcca22f6f8e}{%
+           family={GCC-Team},
+           familyi={G\bibinithyphendelim T\bibinitperiod}}}%
+      }
+      \strng{namehash}{6676d03052a0fb449f719dcca22f6f8e}
+      \strng{fullhash}{6676d03052a0fb449f719dcca22f6f8e}
+      \strng{bibnamehash}{6676d03052a0fb449f719dcca22f6f8e}
+      \strng{authorbibnamehash}{6676d03052a0fb449f719dcca22f6f8e}
+      \strng{authornamehash}{6676d03052a0fb449f719dcca22f6f8e}
+      \strng{authorfullhash}{6676d03052a0fb449f719dcca22f6f8e}
+      \field{sortinit}{G}
+      \field{sortinithash}{5e8d2bf9d38de41b1528bd307546008f}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{22}
+      \field{month}{2}
+      \field{title}{GCC, the GNU Compiler Collection - GNU Project - Free Software Foundation (FSF)}
+      \field{year}{2019}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://gcc.gnu.org/
+      \endverb
+      \verb{url}
+      \verb https://gcc.gnu.org/
+      \endverb
+    \endentry
+    \entry{ZELD}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=1514fc67c04816dfd822d338077f0d5d}{%
+           family={Gerstmann},
+           familyi={G\bibinitperiod},
+           given={Jeff},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{1514fc67c04816dfd822d338077f0d5d}
+      \strng{fullhash}{1514fc67c04816dfd822d338077f0d5d}
+      \strng{bibnamehash}{1514fc67c04816dfd822d338077f0d5d}
+      \strng{authorbibnamehash}{1514fc67c04816dfd822d338077f0d5d}
+      \strng{authornamehash}{1514fc67c04816dfd822d338077f0d5d}
+      \strng{authorfullhash}{1514fc67c04816dfd822d338077f0d5d}
+      \field{sortinit}{G}
+      \field{sortinithash}{5e8d2bf9d38de41b1528bd307546008f}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{22}
+      \field{month}{11}
+      \field{title}{The Legend of Zelda Review}
+      \field{year}{2006}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://www.gamespot.com/reviews/the-legend-of-zelda-review/1900-6162256/
+      \endverb
+      \verb{url}
+      \verb https://www.gamespot.com/reviews/the-legend-of-zelda-review/1900-6162256/
+      \endverb
+    \endentry
+    \entry{MAKE}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=b7e89d55aa08a289aa48277386e6ff1d}{%
+           family={GNU},
+           familyi={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{b7e89d55aa08a289aa48277386e6ff1d}
+      \strng{fullhash}{b7e89d55aa08a289aa48277386e6ff1d}
+      \strng{bibnamehash}{b7e89d55aa08a289aa48277386e6ff1d}
+      \strng{authorbibnamehash}{b7e89d55aa08a289aa48277386e6ff1d}
+      \strng{authornamehash}{b7e89d55aa08a289aa48277386e6ff1d}
+      \strng{authorfullhash}{b7e89d55aa08a289aa48277386e6ff1d}
+      \field{sortinit}{G}
+      \field{sortinithash}{5e8d2bf9d38de41b1528bd307546008f}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{20}
+      \field{month}{5}
+      \field{title}{Make - GNU Project - Free Software Foundation}
+      \field{year}{2016}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://gcc.gnu.org/
+      \endverb
+      \verb{url}
+      \verb https://gcc.gnu.org/
+      \endverb
+    \endentry
+    \entry{BLGT}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=20c853ee1b0341082044396bbc313f68}{%
+           family={Green},
+           familyi={G\bibinitperiod},
+           given={Shay},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{20c853ee1b0341082044396bbc313f68}
+      \strng{fullhash}{20c853ee1b0341082044396bbc313f68}
+      \strng{bibnamehash}{20c853ee1b0341082044396bbc313f68}
+      \strng{authorbibnamehash}{20c853ee1b0341082044396bbc313f68}
+      \strng{authornamehash}{20c853ee1b0341082044396bbc313f68}
+      \strng{authorfullhash}{20c853ee1b0341082044396bbc313f68}
+      \field{sortinit}{G}
+      \field{sortinithash}{5e8d2bf9d38de41b1528bd307546008f}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{15}
+      \field{month}{9}
+      \field{title}{blargg\_ppu\_tests}
+      \field{year}{2005}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb http://blargg.8bitalley.com/misc/6502_asm_test.zip
+      \endverb
+      \verb{url}
+      \verb http://blargg.8bitalley.com/misc/6502_asm_test.zip
+      \endverb
+    \endentry
+    \entry{DOXY}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=9f78d72e7ebcabbe9d57ae933f96b4e6}{%
+           family={Heesch},
+           familyi={H\bibinitperiod},
+           given={Dimitri},
+           giveni={D\bibinitperiod},
+           givenun=0,
+           prefix={van},
+           prefixi={v\bibinitperiod},
+           prefixun=0}}%
+      }
+      \strng{namehash}{9f78d72e7ebcabbe9d57ae933f96b4e6}
+      \strng{fullhash}{9f78d72e7ebcabbe9d57ae933f96b4e6}
+      \strng{bibnamehash}{9f78d72e7ebcabbe9d57ae933f96b4e6}
+      \strng{authorbibnamehash}{9f78d72e7ebcabbe9d57ae933f96b4e6}
+      \strng{authornamehash}{9f78d72e7ebcabbe9d57ae933f96b4e6}
+      \strng{authorfullhash}{9f78d72e7ebcabbe9d57ae933f96b4e6}
+      \field{sortinit}{H}
+      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{19}
+      \field{month}{3}
+      \field{title}{Doxygen: Main Page}
+      \field{year}{2019}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb http://www.doxygen.nl/index.html
+      \endverb
+      \verb{url}
+      \verb http://www.doxygen.nl/index.html
+      \endverb
+    \endentry
+    \entry{BDDT}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=40db3b3fb823530c8a313e60d377f557}{%
+           family={Holmes},
+           familyi={H\bibinitperiod},
+           given={Richard},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{40db3b3fb823530c8a313e60d377f557}
+      \strng{fullhash}{40db3b3fb823530c8a313e60d377f557}
+      \strng{bibnamehash}{40db3b3fb823530c8a313e60d377f557}
+      \strng{authorbibnamehash}{40db3b3fb823530c8a313e60d377f557}
+      \strng{authornamehash}{40db3b3fb823530c8a313e60d377f557}
+      \strng{authorfullhash}{40db3b3fb823530c8a313e60d377f557}
+      \field{sortinit}{H}
+      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{6}
+      \field{month}{11}
+      \field{title}{Writing BDD Test Scenarios - Department of Product}
+      \field{year}{2017}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://www.departmentofproduct.com/blog/writing-bdd-test-scenarios/
+      \endverb
+      \verb{url}
+      \verb https://www.departmentofproduct.com/blog/writing-bdd-test-scenarios/
+      \endverb
+    \endentry
+    \entry{CTCH}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=0d2f3e57e559997a4fc5dede3fc0bd57}{%
+           family={Hořeňovský},
+           familyi={H\bibinitperiod},
+           given={Martin},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{0d2f3e57e559997a4fc5dede3fc0bd57}
+      \strng{fullhash}{0d2f3e57e559997a4fc5dede3fc0bd57}
+      \strng{bibnamehash}{0d2f3e57e559997a4fc5dede3fc0bd57}
+      \strng{authorbibnamehash}{0d2f3e57e559997a4fc5dede3fc0bd57}
+      \strng{authornamehash}{0d2f3e57e559997a4fc5dede3fc0bd57}
+      \strng{authorfullhash}{0d2f3e57e559997a4fc5dede3fc0bd57}
+      \field{sortinit}{H}
+      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{21}
+      \field{month}{3}
+      \field{title}{Travis CI - Test and Deploy Your Code with Confidence}
+      \field{year}{2019}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://github.com/catchorg/Catch2
+      \endverb
+      \verb{url}
+      \verb https://github.com/catchorg/Catch2
+      \endverb
+    \endentry
+    \entry{INS2}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=600b82c7dad9e6f6edb8b1e854d3326f}{%
+           family={Horrton},
+           familyi={H\bibinitperiod},
+           given={Kevin},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{600b82c7dad9e6f6edb8b1e854d3326f}
+      \strng{fullhash}{600b82c7dad9e6f6edb8b1e854d3326f}
+      \strng{bibnamehash}{600b82c7dad9e6f6edb8b1e854d3326f}
+      \strng{authorbibnamehash}{600b82c7dad9e6f6edb8b1e854d3326f}
+      \strng{authornamehash}{600b82c7dad9e6f6edb8b1e854d3326f}
+      \strng{authorfullhash}{600b82c7dad9e6f6edb8b1e854d3326f}
+      \field{sortinit}{H}
+      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{18}
+      \field{month}{9}
+      \field{title}{Nintendo Entertainment System Architecture}
+      \field{year}{2006}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb http://forums.nesdev.com/viewtopic.php?p=17727#p17727
+      \endverb
+      \verb{url}
+      \verb http://forums.nesdev.com/viewtopic.php?p=17727#p17727
+      \endverb
+    \endentry
+    \entry{NEST}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=b5ed83356e21649332bedcc941f21df9}{%
+           family={Horton},
+           familyi={H\bibinitperiod},
+           given={Kevin},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{b5ed83356e21649332bedcc941f21df9}
+      \strng{fullhash}{b5ed83356e21649332bedcc941f21df9}
+      \strng{bibnamehash}{b5ed83356e21649332bedcc941f21df9}
+      \strng{authorbibnamehash}{b5ed83356e21649332bedcc941f21df9}
+      \strng{authornamehash}{b5ed83356e21649332bedcc941f21df9}
+      \strng{authorfullhash}{b5ed83356e21649332bedcc941f21df9}
+      \field{sortinit}{H}
+      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{9}
+      \field{month}{6}
+      \field{title}{The ultimate NES CPU test ROM}
+      \field{year}{2004}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb http://www.qmtpro.com/~nes/misc/nestest.txt
+      \endverb
+      \verb{url}
+      \verb http://www.qmtpro.com/~nes/misc/nestest.txt
+      \endverb
+    \endentry
+    \entry{REG2}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=c884392b7182fbedf343f5b9e6893ca9}{%
+           family={Jacobs},
+           familyi={J\bibinitperiod},
+           given={Andrew},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{c884392b7182fbedf343f5b9e6893ca9}
+      \strng{fullhash}{c884392b7182fbedf343f5b9e6893ca9}
+      \strng{bibnamehash}{c884392b7182fbedf343f5b9e6893ca9}
+      \strng{authorbibnamehash}{c884392b7182fbedf343f5b9e6893ca9}
+      \strng{authornamehash}{c884392b7182fbedf343f5b9e6893ca9}
+      \strng{authorfullhash}{c884392b7182fbedf343f5b9e6893ca9}
+      \field{extraname}{1}
+      \field{sortinit}{J}
+      \field{sortinithash}{fce5f8d0bd05e8d93f3dbe21c78897ca}
+      \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{9}
+      \field{month}{8}
+      \field{title}{6502 Registers}
+      \field{year}{2003}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb http://obelisk.me.uk/6502/registers.html
+      \endverb
+      \verb{url}
+      \verb http://obelisk.me.uk/6502/registers.html
+      \endverb
+    \endentry
+    \entry{ADDR}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=c884392b7182fbedf343f5b9e6893ca9}{%
+           family={Jacobs},
+           familyi={J\bibinitperiod},
+           given={Andrew},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{c884392b7182fbedf343f5b9e6893ca9}
+      \strng{fullhash}{c884392b7182fbedf343f5b9e6893ca9}
+      \strng{bibnamehash}{c884392b7182fbedf343f5b9e6893ca9}
+      \strng{authorbibnamehash}{c884392b7182fbedf343f5b9e6893ca9}
+      \strng{authornamehash}{c884392b7182fbedf343f5b9e6893ca9}
+      \strng{authorfullhash}{c884392b7182fbedf343f5b9e6893ca9}
+      \field{extraname}{2}
+      \field{sortinit}{J}
+      \field{sortinithash}{fce5f8d0bd05e8d93f3dbe21c78897ca}
+      \field{extradate}{2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{28}
+      \field{month}{12}
+      \field{title}{CPU registers - Nesdev wiki}
+      \field{year}{2003}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb http://obelisk.me.uk/6502/addressing.html
+      \endverb
+      \verb{url}
+      \verb http://obelisk.me.uk/6502/addressing.html
+      \endverb
+    \endentry
+    \entry{INST}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=c884392b7182fbedf343f5b9e6893ca9}{%
+           family={Jacobs},
+           familyi={J\bibinitperiod},
+           given={Andrew},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{c884392b7182fbedf343f5b9e6893ca9}
+      \strng{fullhash}{c884392b7182fbedf343f5b9e6893ca9}
+      \strng{bibnamehash}{c884392b7182fbedf343f5b9e6893ca9}
+      \strng{authorbibnamehash}{c884392b7182fbedf343f5b9e6893ca9}
+      \strng{authornamehash}{c884392b7182fbedf343f5b9e6893ca9}
+      \strng{authorfullhash}{c884392b7182fbedf343f5b9e6893ca9}
+      \field{extraname}{3}
+      \field{sortinit}{J}
+      \field{sortinithash}{fce5f8d0bd05e8d93f3dbe21c78897ca}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{17}
+      \field{month}{2}
+      \field{title}{CPU registers - Nesdev wiki}
+      \field{year}{2008}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb http://obelisk.me.uk/6502/reference.html
+      \endverb
+      \verb{url}
+      \verb http://obelisk.me.uk/6502/reference.html
+      \endverb
+    \endentry
+    \entry{ROM1}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=c32549872433237391c3549319d03345}{%
+           family={Joudrey},
+           familyi={J\bibinitperiod},
+           given={Christian},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{c32549872433237391c3549319d03345}
+      \strng{fullhash}{c32549872433237391c3549319d03345}
+      \strng{bibnamehash}{c32549872433237391c3549319d03345}
+      \strng{authorbibnamehash}{c32549872433237391c3549319d03345}
+      \strng{authornamehash}{c32549872433237391c3549319d03345}
+      \strng{authorfullhash}{c32549872433237391c3549319d03345}
+      \field{sortinit}{J}
+      \field{sortinithash}{fce5f8d0bd05e8d93f3dbe21c78897ca}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{4}
+      \field{month}{5}
+      \field{title}{!!Con 2017: Writing NES Games! with Assembly!!}
+      \field{year}{2017}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://www.youtube.com/watch?v=IbS7uEsHV_A
+      \endverb
+      \verb{url}
+      \verb https://www.youtube.com/watch?v=IbS7uEsHV_A
+      \endverb
+    \endentry
+    \entry{LATX}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=a59c90450a56b04640a06b7f08f566e4}{%
+           family={LaTeX3-Team},
+           familyi={L\bibinithyphendelim T\bibinitperiod}}}%
+      }
+      \strng{namehash}{a59c90450a56b04640a06b7f08f566e4}
+      \strng{fullhash}{a59c90450a56b04640a06b7f08f566e4}
+      \strng{bibnamehash}{a59c90450a56b04640a06b7f08f566e4}
+      \strng{authorbibnamehash}{a59c90450a56b04640a06b7f08f566e4}
+      \strng{authornamehash}{a59c90450a56b04640a06b7f08f566e4}
+      \strng{authorfullhash}{a59c90450a56b04640a06b7f08f566e4}
+      \field{extraname}{1}
+      \field{sortinit}{L}
+      \field{sortinithash}{2c7981aaabc885868aba60f0c09ee20f}
+      \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{21}
+      \field{month}{3}
+      \field{title}{LaTeX - A document preparation system}
+      \field{year}{2019}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://www.latex-project.org/
+      \endverb
+      \verb{url}
+      \verb https://www.latex-project.org/
+      \endverb
+    \endentry
+    \entry{TRAV}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=a59c90450a56b04640a06b7f08f566e4}{%
+           family={LaTeX3-Team},
+           familyi={L\bibinithyphendelim T\bibinitperiod}}}%
+      }
+      \strng{namehash}{a59c90450a56b04640a06b7f08f566e4}
+      \strng{fullhash}{a59c90450a56b04640a06b7f08f566e4}
+      \strng{bibnamehash}{a59c90450a56b04640a06b7f08f566e4}
+      \strng{authorbibnamehash}{a59c90450a56b04640a06b7f08f566e4}
+      \strng{authornamehash}{a59c90450a56b04640a06b7f08f566e4}
+      \strng{authorfullhash}{a59c90450a56b04640a06b7f08f566e4}
+      \field{extraname}{2}
+      \field{sortinit}{L}
+      \field{sortinithash}{2c7981aaabc885868aba60f0c09ee20f}
+      \field{extradate}{2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{21}
+      \field{month}{3}
+      \field{title}{Travis CI - Test and Deploy Your Code with Confidence}
+      \field{year}{2019}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://travis-ci.org/
+      \endverb
+      \verb{url}
+      \verb https://travis-ci.org/
+      \endverb
+    \endentry
+    \entry{6502}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=7beaceafa6ab5281b2e801478f581f0a}{%
+           family={Naberezny},
+           familyi={N\bibinitperiod},
+           given={Mike},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{7beaceafa6ab5281b2e801478f581f0a}
+      \strng{fullhash}{7beaceafa6ab5281b2e801478f581f0a}
+      \strng{bibnamehash}{7beaceafa6ab5281b2e801478f581f0a}
+      \strng{authorbibnamehash}{7beaceafa6ab5281b2e801478f581f0a}
+      \strng{authornamehash}{7beaceafa6ab5281b2e801478f581f0a}
+      \strng{authorfullhash}{7beaceafa6ab5281b2e801478f581f0a}
+      \field{sortinit}{N}
+      \field{sortinithash}{f7242c3ed3dc50029fca1be76c497c7c}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{16}
+      \field{month}{10}
+      \field{title}{6502.org: The 6502 Microprocessor Resource}
+      \field{year}{2018}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb http://6502.org/
+      \endverb
+      \verb{url}
+      \verb http://6502.org/
+      \endverb
+    \endentry
+    \entry{CPU}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=ab0748bdfbd23a354ccb0b1bd5ce56b6}{%
+           family={NesDev},
+           familyi={N\bibinitperiod}}}%
+      }
+      \strng{namehash}{ab0748bdfbd23a354ccb0b1bd5ce56b6}
+      \strng{fullhash}{ab0748bdfbd23a354ccb0b1bd5ce56b6}
+      \strng{bibnamehash}{ab0748bdfbd23a354ccb0b1bd5ce56b6}
+      \strng{authorbibnamehash}{ab0748bdfbd23a354ccb0b1bd5ce56b6}
+      \strng{authornamehash}{ab0748bdfbd23a354ccb0b1bd5ce56b6}
+      \strng{authorfullhash}{ab0748bdfbd23a354ccb0b1bd5ce56b6}
+      \field{sortinit}{N}
+      \field{sortinithash}{f7242c3ed3dc50029fca1be76c497c7c}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{7}
+      \field{month}{3}
+      \field{title}{CPU - Nesdev wiki}
+      \field{year}{2019}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://wiki.nesdev.com/w/index.php/CPU
+      \endverb
+      \verb{url}
+      \verb https://wiki.nesdev.com/w/index.php/CPU
+      \endverb
+    \endentry
+    \entry{REGS}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=321b73e14af2458949f81e7b3046d578}{%
+           family={NESDEV-Wiki},
+           familyi={N\bibinithyphendelim W\bibinitperiod}}}%
+      }
+      \strng{namehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{fullhash}{321b73e14af2458949f81e7b3046d578}
+      \strng{bibnamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authorbibnamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authornamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authorfullhash}{321b73e14af2458949f81e7b3046d578}
+      \field{extraname}{1}
+      \field{sortinit}{N}
+      \field{sortinithash}{f7242c3ed3dc50029fca1be76c497c7c}
+      \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{20}
+      \field{month}{10}
+      \field{title}{CPU registers - Nesdev wiki}
+      \field{year}{2015}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://wiki.nesdev.com/w/index.php/CPU_registers
+      \endverb
+      \verb{url}
+      \verb https://wiki.nesdev.com/w/index.php/CPU_registers
+      \endverb
+    \endentry
+    \entry{PTRN}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=321b73e14af2458949f81e7b3046d578}{%
+           family={NESDEV-Wiki},
+           familyi={N\bibinithyphendelim W\bibinitperiod}}}%
+      }
+      \strng{namehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{fullhash}{321b73e14af2458949f81e7b3046d578}
+      \strng{bibnamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authorbibnamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authornamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authorfullhash}{321b73e14af2458949f81e7b3046d578}
+      \field{extraname}{2}
+      \field{sortinit}{N}
+      \field{sortinithash}{f7242c3ed3dc50029fca1be76c497c7c}
+      \field{extradate}{2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{17}
+      \field{month}{10}
+      \field{title}{PPU Pattern Tables - Nesdev wiki}
+      \field{year}{2015}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://wiki.nesdev.com/w/index.php/PPU_pattern_tables
+      \endverb
+      \verb{url}
+      \verb https://wiki.nesdev.com/w/index.php/PPU_pattern_tables
+      \endverb
+    \endentry
+    \entry{NSRM}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=321b73e14af2458949f81e7b3046d578}{%
+           family={NESDEV-Wiki},
+           familyi={N\bibinithyphendelim W\bibinitperiod}}}%
+      }
+      \strng{namehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{fullhash}{321b73e14af2458949f81e7b3046d578}
+      \strng{bibnamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authorbibnamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authornamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authorfullhash}{321b73e14af2458949f81e7b3046d578}
+      \field{extraname}{3}
+      \field{sortinit}{N}
+      \field{sortinithash}{f7242c3ed3dc50029fca1be76c497c7c}
+      \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{8}
+      \field{month}{7}
+      \field{title}{CPU memory map - Nesdev wiki}
+      \field{year}{2016}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://wiki.nesdev.com/w/index.php/CPU_memory_map
+      \endverb
+      \verb{url}
+      \verb https://wiki.nesdev.com/w/index.php/CPU_memory_map
+      \endverb
+    \endentry
+    \entry{NROM}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=321b73e14af2458949f81e7b3046d578}{%
+           family={NESDEV-Wiki},
+           familyi={N\bibinithyphendelim W\bibinitperiod}}}%
+      }
+      \strng{namehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{fullhash}{321b73e14af2458949f81e7b3046d578}
+      \strng{bibnamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authorbibnamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authornamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authorfullhash}{321b73e14af2458949f81e7b3046d578}
+      \field{extraname}{4}
+      \field{sortinit}{N}
+      \field{sortinithash}{f7242c3ed3dc50029fca1be76c497c7c}
+      \field{extradate}{2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{14}
+      \field{month}{10}
+      \field{title}{NROM - Nesdev wiki}
+      \field{year}{2016}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://wiki.nesdev.com/w/index.php/NROM
+      \endverb
+      \verb{url}
+      \verb https://wiki.nesdev.com/w/index.php/NROM
+      \endverb
+    \endentry
+    \entry{NDPP}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=321b73e14af2458949f81e7b3046d578}{%
+           family={NESDEV-Wiki},
+           familyi={N\bibinithyphendelim W\bibinitperiod}}}%
+      }
+      \strng{namehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{fullhash}{321b73e14af2458949f81e7b3046d578}
+      \strng{bibnamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authorbibnamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authornamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authorfullhash}{321b73e14af2458949f81e7b3046d578}
+      \field{extraname}{5}
+      \field{sortinit}{N}
+      \field{sortinithash}{f7242c3ed3dc50029fca1be76c497c7c}
+      \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{15}
+      \field{month}{12}
+      \field{title}{PPU - Nesdev wiki}
+      \field{year}{2018}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://wiki.nesdev.com/w/index.php/PPU
+      \endverb
+      \verb{url}
+      \verb https://wiki.nesdev.com/w/index.php/PPU
+      \endverb
+    \endentry
+    \entry{OAMT}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=321b73e14af2458949f81e7b3046d578}{%
+           family={NESDEV-Wiki},
+           familyi={N\bibinithyphendelim W\bibinitperiod}}}%
+      }
+      \strng{namehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{fullhash}{321b73e14af2458949f81e7b3046d578}
+      \strng{bibnamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authorbibnamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authornamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authorfullhash}{321b73e14af2458949f81e7b3046d578}
+      \field{extraname}{6}
+      \field{sortinit}{N}
+      \field{sortinithash}{f7242c3ed3dc50029fca1be76c497c7c}
+      \field{extradate}{2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{15}
+      \field{month}{12}
+      \field{title}{PPU OAM - Nesdev wiki}
+      \field{year}{2018}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://wiki.nesdev.com/w/index.php/PPU_OAM
+      \endverb
+      \verb{url}
+      \verb https://wiki.nesdev.com/w/index.php/PPU_OAM
+      \endverb
+    \endentry
+    \entry{PLTT}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=321b73e14af2458949f81e7b3046d578}{%
+           family={NESDEV-Wiki},
+           familyi={N\bibinithyphendelim W\bibinitperiod}}}%
+      }
+      \strng{namehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{fullhash}{321b73e14af2458949f81e7b3046d578}
+      \strng{bibnamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authorbibnamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authornamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authorfullhash}{321b73e14af2458949f81e7b3046d578}
+      \field{extraname}{7}
+      \field{sortinit}{N}
+      \field{sortinithash}{f7242c3ed3dc50029fca1be76c497c7c}
+      \field{extradate}{3}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{15}
+      \field{month}{12}
+      \field{title}{PPU palettes - Nesdev wiki}
+      \field{year}{2018}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://wiki.nesdev.com/w/index.php/PPU_palettes
+      \endverb
+      \verb{url}
+      \verb https://wiki.nesdev.com/w/index.php/PPU_palettes
+      \endverb
+    \endentry
+    \entry{TRIN}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=321b73e14af2458949f81e7b3046d578}{%
+           family={NESDEV-Wiki},
+           familyi={N\bibinithyphendelim W\bibinitperiod}}}%
+      }
+      \strng{namehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{fullhash}{321b73e14af2458949f81e7b3046d578}
+      \strng{bibnamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authorbibnamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authornamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authorfullhash}{321b73e14af2458949f81e7b3046d578}
+      \field{extraname}{8}
+      \field{sortinit}{N}
+      \field{sortinithash}{f7242c3ed3dc50029fca1be76c497c7c}
+      \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{8}
+      \field{month}{3}
+      \field{title}{Emulator tests - Nesdev wiki}
+      \field{year}{2019}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://wiki.nesdev.com/w/index.php/Emulator_tests
+      \endverb
+      \verb{url}
+      \verb https://wiki.nesdev.com/w/index.php/Emulator_tests
+      \endverb
+    \endentry
+    \entry{MMC5}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=321b73e14af2458949f81e7b3046d578}{%
+           family={NESDEV-Wiki},
+           familyi={N\bibinithyphendelim W\bibinitperiod}}}%
+      }
+      \strng{namehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{fullhash}{321b73e14af2458949f81e7b3046d578}
+      \strng{bibnamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authorbibnamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authornamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authorfullhash}{321b73e14af2458949f81e7b3046d578}
+      \field{extraname}{9}
+      \field{sortinit}{N}
+      \field{sortinithash}{f7242c3ed3dc50029fca1be76c497c7c}
+      \field{extradate}{2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{19}
+      \field{month}{2}
+      \field{title}{MMC5 - Nesdev wiki}
+      \field{year}{2019}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://wiki.nesdev.com/w/index.php/MMC5
+      \endverb
+      \verb{url}
+      \verb https://wiki.nesdev.com/w/index.php/MMC5
+      \endverb
+    \endentry
+    \entry{NMTB}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=321b73e14af2458949f81e7b3046d578}{%
+           family={NESDEV-Wiki},
+           familyi={N\bibinithyphendelim W\bibinitperiod}}}%
+      }
+      \strng{namehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{fullhash}{321b73e14af2458949f81e7b3046d578}
+      \strng{bibnamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authorbibnamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authornamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authorfullhash}{321b73e14af2458949f81e7b3046d578}
+      \field{extraname}{10}
+      \field{sortinit}{N}
+      \field{sortinithash}{f7242c3ed3dc50029fca1be76c497c7c}
+      \field{extradate}{3}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{29}
+      \field{month}{1}
+      \field{title}{PPU nametables - Nesdev wiki}
+      \field{year}{2019}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://wiki.nesdev.com/w/index.php/PPU_nametables
+      \endverb
+      \verb{url}
+      \verb https://wiki.nesdev.com/w/index.php/PPU_nametables
+      \endverb
+    \endentry
+    \entry{ATRT}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=321b73e14af2458949f81e7b3046d578}{%
+           family={NESDEV-Wiki},
+           familyi={N\bibinithyphendelim W\bibinitperiod}}}%
+      }
+      \strng{namehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{fullhash}{321b73e14af2458949f81e7b3046d578}
+      \strng{bibnamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authorbibnamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authornamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authorfullhash}{321b73e14af2458949f81e7b3046d578}
+      \field{extraname}{11}
+      \field{sortinit}{N}
+      \field{sortinithash}{f7242c3ed3dc50029fca1be76c497c7c}
+      \field{extradate}{4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{15}
+      \field{month}{12}
+      \field{title}{PPU nametables - Nesdev wiki}
+      \field{year}{2019}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://wiki.nesdev.com/w/index.php/PPU_attribute_tables
+      \endverb
+      \verb{url}
+      \verb https://wiki.nesdev.com/w/index.php/PPU_attribute_tables
+      \endverb
+    \endentry
+    \entry{BGEV}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=321b73e14af2458949f81e7b3046d578}{%
+           family={NESDEV-Wiki},
+           familyi={N\bibinithyphendelim W\bibinitperiod}}}%
+      }
+      \strng{namehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{fullhash}{321b73e14af2458949f81e7b3046d578}
+      \strng{bibnamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authorbibnamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authornamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authorfullhash}{321b73e14af2458949f81e7b3046d578}
+      \field{extraname}{12}
+      \field{sortinit}{N}
+      \field{sortinithash}{f7242c3ed3dc50029fca1be76c497c7c}
+      \field{extradate}{5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{22}
+      \field{month}{1}
+      \field{title}{PPU rendering - Nesdev wiki}
+      \field{year}{2019}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://wiki.nesdev.com/w/index.php/PPU_rendering
+      \endverb
+      \verb{url}
+      \verb https://wiki.nesdev.com/w/index.php/PPU_rendering
+      \endverb
+    \endentry
+    \entry{SRTE}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=321b73e14af2458949f81e7b3046d578}{%
+           family={NESDEV-Wiki},
+           familyi={N\bibinithyphendelim W\bibinitperiod}}}%
+      }
+      \strng{namehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{fullhash}{321b73e14af2458949f81e7b3046d578}
+      \strng{bibnamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authorbibnamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authornamehash}{321b73e14af2458949f81e7b3046d578}
+      \strng{authorfullhash}{321b73e14af2458949f81e7b3046d578}
+      \field{extraname}{13}
+      \field{sortinit}{N}
+      \field{sortinithash}{f7242c3ed3dc50029fca1be76c497c7c}
+      \field{extradate}{6}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{22}
+      \field{month}{1}
+      \field{title}{PPU sprite evaluation - Nesdev wiki}
+      \field{year}{2019}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://wiki.nesdev.com/w/index.php/PPU_sprite_evaluation
+      \endverb
+      \verb{url}
+      \verb https://wiki.nesdev.com/w/index.php/PPU_sprite_evaluation
+      \endverb
+    \endentry
+    \entry{CRSH}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=2e57afd7c84b3e0dc289d904b95c30be}{%
+           family={Oxford},
+           familyi={O\bibinitperiod},
+           given={Nadia},
+           giveni={N\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{2e57afd7c84b3e0dc289d904b95c30be}
+      \strng{fullhash}{2e57afd7c84b3e0dc289d904b95c30be}
+      \strng{bibnamehash}{2e57afd7c84b3e0dc289d904b95c30be}
+      \strng{authorbibnamehash}{2e57afd7c84b3e0dc289d904b95c30be}
+      \strng{authornamehash}{2e57afd7c84b3e0dc289d904b95c30be}
+      \strng{authorfullhash}{2e57afd7c84b3e0dc289d904b95c30be}
+      \field{sortinit}{O}
+      \field{sortinithash}{dad3efd0836470093a7b4a7bb756eb8c}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{21}
+      \field{month}{9}
+      \field{title}{TEN FACTS ABOUT THE GREAT VIDEO GAME CRASH OF '83}
+      \field{year}{2011}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://uk.ign.com/articles/2011/09/21/ten-facts-about-the-great-video-game-crash-of-83
+      \endverb
+      \verb{url}
+      \verb https://uk.ign.com/articles/2011/09/21/ten-facts-about-the-great-video-game-crash-of-83
+      \endverb
+    \endentry
+    \entry{SDL2}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=2320cc88dc435ddbb381c8b30b85e8a9}{%
+           family={SDL2},
+           familyi={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{2320cc88dc435ddbb381c8b30b85e8a9}
+      \strng{fullhash}{2320cc88dc435ddbb381c8b30b85e8a9}
+      \strng{bibnamehash}{2320cc88dc435ddbb381c8b30b85e8a9}
+      \strng{authorbibnamehash}{2320cc88dc435ddbb381c8b30b85e8a9}
+      \strng{authornamehash}{2320cc88dc435ddbb381c8b30b85e8a9}
+      \strng{authorfullhash}{2320cc88dc435ddbb381c8b30b85e8a9}
+      \field{sortinit}{S}
+      \field{sortinithash}{322b1d5276f2f6c1bccdcd15920dbee6}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{21}
+      \field{month}{3}
+      \field{title}{Simple DirectMedia Layer - Homepage}
+      \field{year}{2019}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://www.libsdl.org/index.php
+      \endverb
+      \verb{url}
+      \verb https://www.libsdl.org/index.php
+      \endverb
+    \endentry
+    \entry{APID}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=9428635450300f3e62250b284316e498}{%
+           family={Sebestyén},
+           familyi={S\bibinitperiod},
+           given={Bence},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{9428635450300f3e62250b284316e498}
+      \strng{fullhash}{9428635450300f3e62250b284316e498}
+      \strng{bibnamehash}{9428635450300f3e62250b284316e498}
+      \strng{authorbibnamehash}{9428635450300f3e62250b284316e498}
+      \strng{authornamehash}{9428635450300f3e62250b284316e498}
+      \strng{authorfullhash}{9428635450300f3e62250b284316e498}
+      \field{extraname}{1}
+      \field{sortinit}{S}
+      \field{sortinithash}{322b1d5276f2f6c1bccdcd15920dbee6}
+      \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{9}
+      \field{month}{3}
+      \field{title}{Nes Emulator API doc}
+      \field{year}{2019}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://tekercs.github.io/nes_emulator/doc/api/html/
+      \endverb
+      \verb{url}
+      \verb https://tekercs.github.io/nes_emulator/doc/api/html/
+      \endverb
+    \endentry
+    \entry{DCPU}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=9428635450300f3e62250b284316e498}{%
+           family={Sebestyén},
+           familyi={S\bibinitperiod},
+           given={Bence},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{9428635450300f3e62250b284316e498}
+      \strng{fullhash}{9428635450300f3e62250b284316e498}
+      \strng{bibnamehash}{9428635450300f3e62250b284316e498}
+      \strng{authorbibnamehash}{9428635450300f3e62250b284316e498}
+      \strng{authornamehash}{9428635450300f3e62250b284316e498}
+      \strng{authorfullhash}{9428635450300f3e62250b284316e498}
+      \field{extraname}{2}
+      \field{sortinit}{S}
+      \field{sortinithash}{322b1d5276f2f6c1bccdcd15920dbee6}
+      \field{extradate}{2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{25}
+      \field{month}{3}
+      \field{title}{NES emulator: Emulator::Cpu::Cpu Class Reference}
+      \field{year}{2019}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://tekercs.github.io/nes_emulator/doc/api/html/classEmulator_1_1Cpu_1_1Cpu.html
+      \endverb
+      \verb{url}
+      \verb https://tekercs.github.io/nes_emulator/doc/api/html/classEmulator_1_1Cpu_1_1Cpu.html
+      \endverb
+    \endentry
+    \entry{DREG}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=9428635450300f3e62250b284316e498}{%
+           family={Sebestyén},
+           familyi={S\bibinitperiod},
+           given={Bence},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{9428635450300f3e62250b284316e498}
+      \strng{fullhash}{9428635450300f3e62250b284316e498}
+      \strng{bibnamehash}{9428635450300f3e62250b284316e498}
+      \strng{authorbibnamehash}{9428635450300f3e62250b284316e498}
+      \strng{authornamehash}{9428635450300f3e62250b284316e498}
+      \strng{authorfullhash}{9428635450300f3e62250b284316e498}
+      \field{extraname}{3}
+      \field{sortinit}{S}
+      \field{sortinithash}{322b1d5276f2f6c1bccdcd15920dbee6}
+      \field{extradate}{3}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{25}
+      \field{month}{3}
+      \field{title}{NES emulator: Emulator::Cpu::Register Class Reference}
+      \field{year}{2019}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://tekercs.github.io/nes_emulator/doc/api/html/classEmulator_1_1Cpu_1_1Registers.html
+      \endverb
+      \verb{url}
+      \verb https://tekercs.github.io/nes_emulator/doc/api/html/classEmulator_1_1Cpu_1_1Registers.html
+      \endverb
+    \endentry
+    \entry{REPO}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=9428635450300f3e62250b284316e498}{%
+           family={Sebestyén},
+           familyi={S\bibinitperiod},
+           given={Bence},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{9428635450300f3e62250b284316e498}
+      \strng{fullhash}{9428635450300f3e62250b284316e498}
+      \strng{bibnamehash}{9428635450300f3e62250b284316e498}
+      \strng{authorbibnamehash}{9428635450300f3e62250b284316e498}
+      \strng{authornamehash}{9428635450300f3e62250b284316e498}
+      \strng{authorfullhash}{9428635450300f3e62250b284316e498}
+      \field{extraname}{4}
+      \field{sortinit}{S}
+      \field{sortinithash}{322b1d5276f2f6c1bccdcd15920dbee6}
+      \field{labeldatesource}{nodate}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Project Repository}
+      \verb{urlraw}
+      \verb https://tekercs.github.io/nes_emulator
+      \endverb
+      \verb{url}
+      \verb https://tekercs.github.io/nes_emulator
+      \endverb
+    \endentry
+    \entry{RNTS}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=6b44bafc019e830a09026f6ae0fcee8f}{%
+           family={Smith},
+           familyi={S\bibinitperiod},
+           given={Brad},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{6b44bafc019e830a09026f6ae0fcee8f}
+      \strng{fullhash}{6b44bafc019e830a09026f6ae0fcee8f}
+      \strng{bibnamehash}{6b44bafc019e830a09026f6ae0fcee8f}
+      \strng{authorbibnamehash}{6b44bafc019e830a09026f6ae0fcee8f}
+      \strng{authornamehash}{6b44bafc019e830a09026f6ae0fcee8f}
+      \strng{authorfullhash}{6b44bafc019e830a09026f6ae0fcee8f}
+      \field{sortinit}{S}
+      \field{sortinithash}{322b1d5276f2f6c1bccdcd15920dbee6}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{15}
+      \field{month}{9}
+      \field{title}{Another palette test}
+      \field{year}{2015}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb http://forums.nesdev.com/viewtopic.php?t=13264
+      \endverb
+      \verb{url}
+      \verb http://forums.nesdev.com/viewtopic.php?t=13264
+      \endverb
+    \endentry
+    \entry{TALK}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=0daac9c4f23c734c851c17aff7924d9d}{%
+           family={Steil},
+           familyi={S\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{0daac9c4f23c734c851c17aff7924d9d}
+      \strng{fullhash}{0daac9c4f23c734c851c17aff7924d9d}
+      \strng{bibnamehash}{0daac9c4f23c734c851c17aff7924d9d}
+      \strng{authorbibnamehash}{0daac9c4f23c734c851c17aff7924d9d}
+      \strng{authornamehash}{0daac9c4f23c734c851c17aff7924d9d}
+      \strng{authorfullhash}{0daac9c4f23c734c851c17aff7924d9d}
+      \field{sortinit}{S}
+      \field{sortinithash}{322b1d5276f2f6c1bccdcd15920dbee6}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{27}
+      \field{month}{12}
+      \field{title}{Reverse Engineering the MOS 6502 CPU 3510 transistors in 60 minutes}
+      \field{year}{2010}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb http://mirror.fem-net.de/CCC/27C3/webm/27c3-4159-en-reverse_engineering_mos_6502.webm
+      \endverb
+      \verb{url}
+      \verb http://mirror.fem-net.de/CCC/27C3/webm/27c3-4159-en-reverse_engineering_mos_6502.webm
+      \endverb
+    \endentry
+    \entry{PALT}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=4dd9686a7aa04991c5dcb21e9e65ce80}{%
+           family={Tepples},
+           familyi={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{4dd9686a7aa04991c5dcb21e9e65ce80}
+      \strng{fullhash}{4dd9686a7aa04991c5dcb21e9e65ce80}
+      \strng{bibnamehash}{4dd9686a7aa04991c5dcb21e9e65ce80}
+      \strng{authorbibnamehash}{4dd9686a7aa04991c5dcb21e9e65ce80}
+      \strng{authornamehash}{4dd9686a7aa04991c5dcb21e9e65ce80}
+      \strng{authorfullhash}{4dd9686a7aa04991c5dcb21e9e65ce80}
+      \field{sortinit}{T}
+      \field{sortinithash}{6f7aff9db9dcfeb7f95fd5bbd2f78df9}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{17}
+      \field{month}{9}
+      \field{title}{Savtool swatches}
+      \field{year}{2015}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://wiki.nesdev.com/w/images/5/59/Savtool-swatches.png
+      \endverb
+      \verb{url}
+      \verb https://wiki.nesdev.com/w/images/5/59/Savtool-swatches.png
+      \endverb
+    \endentry
+    \entry{MPPR}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=9baefc8622f42771d579c26aefa733c0}{%
+           family={wiki},
+           familyi={w\bibinitperiod},
+           given={Mapper\bibnamedelimb -\bibnamedelima Nesdev},
+           giveni={M\bibinitperiod\bibinitdelim \bibinithyphendelim \bibinithyphendelim \bibinitperiod\bibinitdelim N\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{9baefc8622f42771d579c26aefa733c0}
+      \strng{fullhash}{9baefc8622f42771d579c26aefa733c0}
+      \strng{bibnamehash}{9baefc8622f42771d579c26aefa733c0}
+      \strng{authorbibnamehash}{9baefc8622f42771d579c26aefa733c0}
+      \strng{authornamehash}{9baefc8622f42771d579c26aefa733c0}
+      \strng{authorfullhash}{9baefc8622f42771d579c26aefa733c0}
+      \field{sortinit}{w}
+      \field{sortinithash}{ecb89ff85896a47dc313960773ac311d}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{7}
+      \field{month}{3}
+      \field{title}{TEN FACTS ABOUT THE GREAT VIDEO GAME CRASH OF '83}
+      \field{year}{2019}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://wiki.nesdev.com/w/index.php/Mapper
+      \endverb
+      \verb{url}
+      \verb https://wiki.nesdev.com/w/index.php/Mapper
+      \endverb
+    \endentry
+    \entry{HIST}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=9c677286866aad38f8e9b660f5411814}{%
+           family={Wikipedia},
+           familyi={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{9c677286866aad38f8e9b660f5411814}
+      \strng{fullhash}{9c677286866aad38f8e9b660f5411814}
+      \strng{bibnamehash}{9c677286866aad38f8e9b660f5411814}
+      \strng{authorbibnamehash}{9c677286866aad38f8e9b660f5411814}
+      \strng{authornamehash}{9c677286866aad38f8e9b660f5411814}
+      \strng{authorfullhash}{9c677286866aad38f8e9b660f5411814}
+      \field{extraname}{1}
+      \field{sortinit}{W}
+      \field{sortinithash}{ecb89ff85896a47dc313960773ac311d}
+      \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{7}
+      \field{month}{3}
+      \field{title}{Nintendo Entertainment System - Wikipedia}
+      \field{year}{2019}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://en.wikipedia.org/wiki/Nintendo_Entertainment_System
+      \endverb
+      \verb{url}
+      \verb https://en.wikipedia.org/wiki/Nintendo_Entertainment_System
+      \endverb
+    \endentry
+    \entry{RCHO}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=9c677286866aad38f8e9b660f5411814}{%
+           family={Wikipedia},
+           familyi={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{9c677286866aad38f8e9b660f5411814}
+      \strng{fullhash}{9c677286866aad38f8e9b660f5411814}
+      \strng{bibnamehash}{9c677286866aad38f8e9b660f5411814}
+      \strng{authorbibnamehash}{9c677286866aad38f8e9b660f5411814}
+      \strng{authornamehash}{9c677286866aad38f8e9b660f5411814}
+      \strng{authorfullhash}{9c677286866aad38f8e9b660f5411814}
+      \field{extraname}{2}
+      \field{sortinit}{W}
+      \field{sortinithash}{ecb89ff85896a47dc313960773ac311d}
+      \field{extradate}{2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{8}
+      \field{month}{3}
+      \field{title}{Ricoh - Wikipedia}
+      \field{year}{2019}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://en.wikipedia.org/wiki/Ricoh
+      \endverb
+      \verb{url}
+      \verb https://en.wikipedia.org/wiki/Ricoh
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
