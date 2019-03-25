@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2019.2.10)  25 MAR 2019 07:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2019.2.10)  25 MAR 2019 10:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1732,6 +1732,29 @@ you forgot something else, as in `\hbox{$x}'. In such cases
 the way to recover is to insert both the forgotten and the
 deleted material, e.g., by typing `I$}'.
 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.297 
+      
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 225--297
+[]
+ []
+
+
+Overfull \hbox (7373.6897pt too wide) in paragraph at lines 225--297
+[]\OML/cmm/m/it/10 attern[]ables; ; \/cmr/m/n/10 @\OML/cmm/m/it/10 online[]; \/
+cmr/m/n/10 @\OML/cmm/m/it/10 online[]; \/cmr/m/n/10 @\OML/cmm/m/it/10 online[]\
+/cmr/m/n/10 @\OML/cmm/m/it/10 online[]; \/cmr/m/n/10 @\OML/cmm/m/it/10 online[]
+; \/cmr/m/n/10 @\OML/cmm/m/it/10 online[]; \/cmr/m/n/10 @\OML/cmm/m/it/10 onlin
+e[]; \/cmr/m/n/10 @\OML/cmm/m/it/10 online[]; \/cmr/m/n/10 @\OML/cmm/m/it/10 on
+line[]; \/cmr/m/n/10 @\OML/cmm/m/it/10 online[];$ 
+ []
+
 )
 ! Emergency stop.
 <*> references.tex
@@ -1742,7 +1765,7 @@ deleted material, e.g., by typing `I$}'.
 Here is how much of TeX's memory you used:
  19 strings out of 492639
  265 string characters out of 6135497
- 76069 words of memory out of 5000000
+ 78905 words of memory out of 5000000
  4007 multiletter control sequences out of 15000+600000
  3640 words of font info for 14 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191

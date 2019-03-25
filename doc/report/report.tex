@@ -25,9 +25,11 @@
 	
 \chapter*{Abstract}
 \paragraph{ }
-The video gaming industry growing and evolving faster than any other form of entertainment. And sometimes it is just nice to go back and see those revolutionary milestones which made the gaming what it is today. 
+The video gaming industry is growing and evolving faster than any other form of entertainment. And sometimes it is just nice to go back and see those revolutionary milestones which made the gaming what it is today. 
 \paragraph{ }
 Just like the Nintendo Entertainment System was. The goal of this project is to create an emulator for the NES system for either nostalgic reasons or maybe out of curiosity so we can live through the greatest gaming titles of the past on our PCs without the need to have the original hardware.
+\paragraph{ }
+The result of the project at the end was a working NES emulator which can run a few of the original launch titles of the console.
 
 \pagebreak
 
@@ -35,7 +37,7 @@ Just like the Nintendo Entertainment System was. The goal of this project is to 
 I would like to thank Dr Robert Atkey for supervising the project during the year. His support was truly valuable and helpful during the project's lifetime.
 \\
 \\
-I would also like to thank the Nesdev community to keeping alive this wonderful console and.
+I would also like to thank the Nesdev community to keeping alive this wonderful console with their support towards both game and emulator developers.
 \pagebreak
 
 
@@ -46,15 +48,15 @@ I would also like to thank the Nesdev community to keeping alive this wonderful 
 \chapter{Introduction}
 
 \paragraph{}
-The Nintendo Entertainment System, frequently called NES, is a home gaming console developed by the Japanese company called Nintendo.  Through its lifetime the from the early '80s up until the end of the '90s a lot of good quality titles were released to the platform and a wide range of audience was reached. Due to this quality of games and popularity which the NES gained at it's peak time people even nowadays like to pick up some of the most famous, or personal favourite titles and play through them. Sadly, due to the rapid evolution computing the current hardware are not compatible with the old games developed for the NES platform also the old and still working consoles are really hard to get a hands on. Yet the gaming community still keeps alive these games and the way it is mostly done by using emulators.
+The Nintendo Entertainment System, frequently called NES, is a home gaming console developed by the Japanese company called Nintendo.  Through its lifetime the from the early '80s up until the end of the '90s a lot of good quality titles were released to the platform and a wide range of audience was reached. Due to this quality of games and popularity which the NES gained at it's peak time people even nowadays like to pick up some of the most famous, or personal favourite titles and play through them. Sadly, due to the rapid evolution computing the current hardware are not compatible with old games developed for the NES platform also the old and still working consoles are really hard to get a hands on. Yet the gaming community still keeps alive these games and the way it is mostly done by using emulators.
 
 \paragraph{ }
-To solve the compatibility issue with the modern hardware, without actually buying or refurbishing one, the community started to creating so-called emulators. Which are a special kind of software, it's purpose is to provide a virtual emulator environment of a given old or very specific hardware, such as the NES for instance, on top of a given system, like PC or any other gaming console. The goal of This project is to produce an emulator like this which, by emulating the NES hardware behaviour, provides a way to run the games without any need of the modification of the old game's code. Therefore, unlike porting the actual game, the user has access to an authentic experience. On the other hand, emulation is more resource dependent than a ported game, but less time consuming than porting every single game.
+To solve the compatibility issue with the modern hardware, without actually buying or refurbishing one, the community started to creating so-called emulators. Which are a special kind of software, it's purpose is to provide a virtual emulator environment of a given old or very specific hardware, such as the NES for instance, on top of a given system, like PC or any other gaming console. The goal of this project is to produce an emulator like this which, by emulating the NES hardware behaviour, provides a way to run the games without any need of the modification of the old game's code. Therefore, unlike porting the actual game, the user has access to an authentic experience. On the other hand, emulation is more resource dependent than a ported game, but less time consuming than porting every single game.
 
 \section{History}
 
 \paragraph{ }
- This console was the second console of which was created by the Nitnedo Co. Ltd. and the first which was planned to be sold worldwide (\cite{HIST}).
+ This console was the second console of which was created by the Nintendo Co. Ltd. and the first which was planned to be sold worldwide (\cite{HIST}).
 The gaming console was first released in Japan in 1983. The Japanese version was called Famicon and had a bright red toy-like design, unlike the version which was released worldwide.
 The homeland release was followed by the USA and parts of Europe in 1986 and later in 1987 Australia and the rest of Europe.
 \paragraph{ }
@@ -295,25 +297,44 @@ Important to notice that the Indirect jump instruction, JMP (opcode: \$6C), cont
 \paragraph{ }
 As is seen above on the STY example the same instruction could behave differently this is due to the different addressing mode. Each instruction has its own set of addressing modes,  these are all the possible ones: 
 
-\begin{enumerate}
-	\item Implicit
-	\item Accumulator
-	\item Immediate
-	\item Zero Page
-	\item Zero Page,X
-	\item Zero Page,Y
-	\item Relative
-	\item Absolute
-	\item Absolute,X
-	\item Absolute,Y
-	\item Indirect
-	\item Indexed Indirect
-	\item Indirect Indexed
-\end{enumerate}
+\paragraph{Implicit}
+Instructions with Implicit addressing mode does not require any additional operand as the instruction itself contains every necessary information. E. g.: BRK
 
-\iffalse
-maybe describe each addressing mode
-\fi
+\paragraph{Accumulator}
+The Accumulator addressing mode is used to tell the CPU instruction to carry out its task on the accumulator. E.g.: LSR A
+
+\paragraph{Immediate}
+Immediate addressing mode used when an instruction invoked with an 8-bit constant operand. E.g.: LDA \#10.
+
+\paragraph{Zero Page}
+Similarly to the Immediate addressing mode Zero Page using an 8-bit constant operand as well, but in this case, it refers to a memory location starting with 0x00\#\#. E.g.: STA \$11.
+
+\paragraph{Zero Page, X}
+Works the same way as the Zero Page addressing but before the operand is used the content of the X index register will be added to it. Important to notice if the address after the addition cannot leave the zero Page address range, instead it wraps over. E.g.: STA \$11,X.
+
+\paragraph{Zero Page, Y}
+Identical with Zero Page, X, but instead of X it uses the Y index register. E.g.: STX \$11,Y.
+
+\paragraph{Relative}
+Relative addressing mode mostly used for branching instructions. The signed 8-bit constant operand is added together with the program counter. E.g.: BNE *+4.
+
+\paragraph{Absolute}
+Instructions with absolute addressing mode will receive a 16-bit long constant operand which used to identify the target memory location. E.g.: STA \$2001.
+
+\paragraph{Absolute, X}
+Similar behaviour with Absolute addressing mode, but in this case, the X register's content added to the 16-bit constant address. E.g.: STA \$2001, X.
+
+\paragraph{Absolute, Y}
+Similar behaviour with Absolute addressing mode, but in this case, the Y register's content added to the 16-bit constant address. E.g.: STA \$2001, Y.
+
+\paragraph{Indirect}
+When an instruction executed with Indirect addressing mode it will receive a 16-bit constant operand which is a memory address which points to the least significant byte of the real target address. E.g.: JMP \$1100.
+
+\paragraph{Indexed Indirect}
+It behaves just like the Indirect addressing mode but the operand of the instruction is a constant 8-bit  zero page address which is added together with the X index register before use. E.g:  LDA (\$40, X).
+
+\paragraph{Indirect Indexed}
+Instructions with this addressing mode will receive a constant 8-bit zero page address which points to the least significant byte of a 16-bit memory address. After it is loaded in the content of the Y register will be added to it. E.g: LDA (\$40), Y.
 
 \subsection{Implementation}
 When it comes to implementing the processor emulation it was carried out in multiple stages.
@@ -578,7 +599,7 @@ The palette table (\cite{PLTT}) holds the colour palette definitions which used 
 As the size indicates 8 colour palettes can fit in at the same time. From which the first 4, 0x3F00 - 0x3F0F, used to indicate the colours used for the background rendering and the second 4. used for the sprite rendering.
 
 \paragraph{OAM }
-Along with the VRAM sections described above, there is a separate 256 Byte area called OAM, Object Attribute Memory, where the sprites attributes are stored. This provides enough storage for 64 different sprites as each sprite attribute is 4 byte. 
+Along with the VRAM sections described above, there is a separate 256 Byte area called OAM, Object Attribute Memory, (\cite{OAMT}) where the sprites attributes are stored. This provides enough storage for 64 different sprites as each sprite attribute is 4 byte. 
 \\
 The 1st byte and the 4th byte specifies the Y and the X coordinate of the sprite on the screen. The 2nd byte gives the index of which pattern meant to be used to render the given sprite. Closely related to that the 3rd byte provides some flags which can change the behaviour of the rendering for the specific sprite only. 
 \\
@@ -613,9 +634,6 @@ Pixel evaluation for sprites is very similar to the background evaluation. The d
  	\center{\includegraphics[width=\textwidth]
  		{images/pattern_example.png}}
  	\caption{\label{fig:my-label} Pattern table example (\cite{PTRN})}
- 	\center{\includegraphics[width=\textwidth]
- 		{images/frame_timing.png}}
- 	\caption{\label{fig:my-label} PPU frame timing (\cite{PTRN})}
  	\center{\includegraphics[width=\textwidth]
  		{images/colour_palette.png}}
  	\caption{\label{fig:my-label} NES Colour palette (\cite{PALT})}

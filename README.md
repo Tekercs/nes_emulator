@@ -5,24 +5,20 @@ University of Strathclyde 4th year individual project.
 
 Bence Sebestyén
 
+## How to.
+0. git clone git@github.com:Tekercs/nes_emulator.git
+1. cd nes_emulator // or where ever it was cloned to
+2. mkdri build
+3. cd build
+4. cmake -DCMAKE_BUILD_TYPE=Checked ..
+5. make 
+6. ./src/ui/ui ~/Desktop/ballon_fight.nes
+
+SDL2 installation requried to run the program.
+Only tested on Arch Linux.
+
+
 ## API Doc
 For code documentation please visit the following github page:
 
 https://tekercs.github.io/nes_emulator/doc/api/html/
-
-## External Sources
-
-* https://www.youtube.com/watch?v=mnUXYl5B9Qs&t=2177s
-* http://www.nesdev.com/NESDoc.pdf
-* https://www.youtube.com/watch?v=D9ZbqnffS7c
-* http://yizhang82.me/nes-emu-overview
-* https://wiki.nesdev.com/w/index.php/NES_2.0
-* http://www.oxyron.de/html/opcodes02.html
-* https://wiki.nesdev.com/w/index.php/CPU_unofficial_opcodes
-* http://obelisk.me.uk/6502/reference.html
-* http://obelisk.me.uk/6502/addressing.html
-
-## Acknowledgement
-
-Test roms at test/emultor_test/test_roms/blargg created and owned
-by Blargg!
