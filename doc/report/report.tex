@@ -22,7 +22,15 @@
 \author{Sebestyén Bence}
 
 \begin{document}
-\maketitle
+	
+\chapter*{Abstract}
+lacikam
+\pagebreak
+
+\chapter*{Acknowledgments}
+pacikam
+\pagebreak
+
 
 \tableofcontents
 
@@ -472,11 +480,11 @@ The PPU contains 9 registers which are mapped to a given address of the main mem
 \paragraph{PPUCTRL}
 This register mapped to the main memory at 0x2000. It can be used by writing an 8-bit value to the address where  each bits has it's own effect on the PPU.
 \\
-Bit 0 and 1 can be used to select which nametable out of the four meant to be the main one.
+Bit 0 and 1 can be used to select which name table out of the four meant to be the main one.
 \\
 Bit 2 sets elopment perspective. Compared to it's time it was a really advanced chip. Just like the CPU it was also manufactured by Ricoh and had two different version the RP2C02 and the RP2C07 for PAL regions. The chip itself contained 16KB dedicated VRam which was used to store the screen and sprite graphics. In terms of speed the PPU runs 5,36MHz, this results that meanwhile a CPU does 1 cycle the PPU executes 3 of them. And as the name show these cycles is used to draw the screen pixel by pixel based on the settings of the chip and the content of it's dedicated ram. Both of these are accessible and modifiable through memory mapped register for the CPU, therefore to the developers as well.
 
-\paragraph{ }how the memory address pointer incremented after each data writing. This is mostly used for nametables, as it is provided an option to fill them line by line or column by column.
+\paragraph{ }how the memory address pointer incremented after each data writing. This is mostly used for name tables, as it is provided an option to fill them line by line or column by column.
 \\
 Bit 3 provided an option to select which pattern table used to supply the graphics details for sprite rendering.
 \\
@@ -489,7 +497,7 @@ Bit 6 is meant to be used to change the behovior of the EXT pin on the PPU chip 
 Bit 7 is the NMI flag. When this flag is set and the PPU reaches the VBlank state it generates an NMI interrupt in the CPU.
 
 \paragraph{PPUMASK}
-The register which is mapped to the 0x2001 memory address is responsible for masking options. The register is write-only. With these writes the way how the PPU colors the pixels can be changed.
+The register which is mapped to the 0x2001 memory address is responsible for masking options. The register is write-only. With these writes the way how the PPU colours the pixels can be changed.
 \\
 Bit 0 is used to toggle greyscale colour rendering.
 \\
@@ -504,9 +512,9 @@ Bit 4 is again identical with bit 3 but it toggles the sprite rendering.
 Bit 5, 6 and 7 used to make the Red, Green and Blue colour  displayed stronger.
 
 \paragraph{PPUSTATUS}
-This is a read only register, at memory location 0x2002, used to report back events which generated meanwhile the screen is rendered. Also reading this register has a side effect on the above mentioned latch which is used for communication between the CPU and the PPU and also on itself. Namely after every read Bit 7 became 0 and the address latch is set back to the default nametable address which is set by the control flag.
+This is a read only register, at memory location 0x2002, used to report back events which generated meanwhile the screen is rendered. Also reading this register has a side effect on the above mentioned latch which is used for communication between the CPU and the PPU and also on itself. Namely after every read Bit 7 became 0 and the address latch is set back to the default name table address which is set by the control flag.
 \\
-Bit 5 is set when in a single scanline more than eight sprite meant to be rendered.
+Bit 5 is set when in a single scan line more than eight sprite meant to be rendered.
 \\
 Bit 6 is set when any of the non transparent part of a rendered sprite overlaps with a non transparent part of the background.
 \\
@@ -534,7 +542,7 @@ Right after the PPUADDR at 0x2007 this register responsible to writing data or r
 The PPU's own dedicated VRam. Even though the 16-bit addressing let the system address up to 64KB,  in reality it only uses 16KB due to cost efficiency in my when the hardware was assembled.
 Therefore each access which targets address 0x4000 or above will be mapped down to an appropriate address.
 \\
-The VRam is separated up to multiple section. Each of these combined together producing the screen which is displayed on the television screen.
+The VRam is separated up to multiple section. Each of these combined together producing the picture which is displayed on the television screen.
 
 \paragraph{Pattern Table} 
 The pattern table \cite{PTRN} is a 4KB section inside the VRam. It is occupying the 0x0000 - 0x0FFF and 0x1000 - 0x1FFF address space as there is two of them.  These pattern tables is used to store sprite patterns.  Each of these sprite patterns describes an 8x8 pixel blocks. A sprite pattern consist of 16 Bytes which used to describe which colour meant to be used to draw each of the pixels within this block. The colours used by the PPU to draw these pixels are aligned in colour . Each of these pallets contained 3 different colours and background colour, therefore 2 bits was required for each pixel to identify which colour needed to be used. That is why the 16 Byte was utilized in a certain way. The first 8 byte sets the low bit of the colour by storing each 8 wide line information as a byte from top to bottom. The second 8 byte works in a similar fashion but it provides high bit of the colour.
@@ -560,29 +568,74 @@ Each 8-bit entry, that contains 4 different 2-bit long pattern table index, refe
 Although, this solution is storage efficient it comes with certain drawbacks. Mainly it reduces how many colours can be displayed on the background per frame as each colour colour palette is referenced by multiple adjacent nameable entry. Also due to this grouping, when screen-scrolling involved the side of the screen can suffer from colour glitch, this can especially noticed at the right side of the screen while playing Super Mario Brothers 3.
 
 \paragraph{Palette Table}
-Lacikam
+The palette table (\cite{PLTT}) holds the colour palette definitions which used for both background and sprite rendering. Each palette consist 4 different values which can be used to colour the given segment of the picture. In the VRam there is 32 Byte space available, starting from 0x3F00, to define these palettes. Each of them takes up 4 byte, where only 3 Byte represents a real colour index from the NES colour palette, meanwhile the first one is always mirrored to the background colour. 
+\\
+As the size indicates 8 colour palettes can fit in at the same time. From which the first 4, 0x3F00 - 0x3F0F, used to indicate the colours used for the background rendering and the second 4. used for the sprite rendering.
 
-\paragraph{ }
-Along this there is a separate 256 Byte area called OAM, Object Attribute Memory, where the sprites attributes are stored. This provides enough storage for 64 different sprite as each sprite attribute is 4 byte. 
+\paragraph{OAM }
+Along with the VRam sections described above, there is a separate 256 Byte area called OAM, Object Attribute Memory, where the sprites attributes are stored. This provides enough storage for 64 different sprite as each sprite attribute is 4 byte. 
 \\
 The 1st byte and the 4th byte specifies the Y and the X coordinate of the sprite on the screen. The 2nd byte gives the index of which patten meant to be used to render the given sprite. Closely related to that the 3rd byte provides some flags which can change the behaviour of the rendering for the specific sprite only. 
 \\
 With the bit 0 and 1 the colour palette for the sprite can be set. Bit 7 and 6 provides capability to draw the sprite vertically and/or horizontally flipped, this is a very usefully capability of the PPU which could save up a huge amount of palette RAM. For example the big mario character instead of using 6 different pattern it can be made using only 3. by using a flipped version of the chest and leg part.
 \\
  Also, with bit 5 we can set the rendering priority of the sprite. Which could result that the sprite will be rendered behind non-transparent background elements.
+
+\paragraph{ }
+Along with storing the necessary graphics data, the PPU most important task is to draw the screen.
  
  \begin{figure}[!htb]
  	\center{\includegraphics[width=\textwidth]
  		{images/pattern_example.png}}
  	\caption{\label{fig:my-label} Pattern table example (\cite{PTRN})}
+ 		\center{\includegraphics[width=\textwidth]
+ 		{images/frame_timing.png}}
+ 	\caption{\label{fig:my-label} PPU frame timing (\cite{PTRN})}
  \end{figure}
  \clearpage
 
 \subsection{Implementation}
+\paragraph{ }
+Unlike the real hardware in the current level of the implementation the PPU and the CPU executes their cycles after each other instead of running  parallel. As the microprocessor not working in a cycle based way but executing instructions after instruction to line up with this behaviour the CPU broadcasts how many cycle were required to execute the given instruction once its done. Then the PPU listens for these broadcasts and executes just enough PPU cycles as many would have been executed along the CPU. As it is not a cycle accurate approach during the planning phase it was kept in mind that later on the implementation should be able to easily refactored to concurrent execution.
+\\
+Of course this serial execution sequence has it's drawbacks on performance. But based on how fast even the low tier CPU-s nowadays it is hardly noticeable.
+\\
+As it above mentioned in the specification, the implementations is also separated to two different part, the memory handling and the rendering.
+
+\paragraph{Memory handling}
+The base concept of the implementations was exactly the same what was used at the main Memory.
+But instead of everything stored within a single array, in this case two was used. The reason behind this was that the OAM have a separate address space from the rest of the VRam. Therefore a separate set of accessors were defined for that. This design choice was also justified by the way how the PPU registers handlers the separately the OAM and the rest of the VRam.
+\\
+Along with the rest of the register of the PPU, the accessors for the VRam was connected to Memory events. The PPU holds a reference both memory and listening to Memory read and write events to trigger the necessary accessor calls or register modifications.
+
+\paragraph{Rendering}
+For rendering the plan was to build it the easiest way as possible and providing just enough feature to be able to run the simplest games which was released to the console. And later on once it is finished and working as it is intended then gradually build up toward the perfect cycle accurate rendering.
+\\
+The bare minimum implementation contained a basic background colour painting, background sprite evaluation, sprite drawing on top of the background with the possibility of horizontal and vertical flipping. And providing an interface for GUI implementation on top of that. Which in this case was implemented with SDL2 (\cite{SDL2}) , but as long as the necessary Renderer functions are provided SDL could be swapped out for any other UI library.
+\\
+To provide the necessary pixel informations for the UI a simple whole-screen rendering was implemented. This greatly reduced the complexity compared to the scan-line based one. Simply after enough PPU cycle passed, 74640 as there are 240 scan-lines and each of them takes 311 cycle, simple the whole screen evaluated and rendered out by following the given order. First the background painted on the while screen because every palette has the same background colour, therefore no need to handle it later. Then the background evaluated by going through the selected name table and rendered every 8x8 pixel block where a given colour was set. Once the background rendering finished the next step is the sprite rendering, which in some ways similar to the background except sprite direction flips and better position handling was used.
+Then in the next cycle, when the VBlank started, the NMI interrupt is triggered therefore the CPU has an opportunity to refresh the VRam with the new content.
+\\
+In it's current form rendering does not support scrolling behaviour, sprite hit check and any other more complex solutions as they are barely used in NROM games, which are the first goal to run.
 
 \subsection{Testing}
+\paragraph{ }
+Although amputated Behaviour Driven tests were developed for the PPU, they only covered minimal VRam access cases. Most of the memory access and rendering tests were carried out manually by using test Roms (\cite{TRIN}) developed by the community. Or using actual game titles and running them on the emulator and on a NES Classic Mini, and comparing the two outputs.
+\\
+As this part of the is by far more complex and heavily coupled together, it was important that the developer who wrote the emulator and the test is different. The reason behind this is that if the developer understanding on the system/ background knowledge is not precise the test could easily written to be false positive. Therefore a third-part test, which is widely recognised within the nes developer community, is used then this could be easily avoidable. Mainly the following test Roms were used: 
+
+\paragraph{color\_test.nes}
+Created by rainwarrior (\cite{RNTS}), this ROM provides a simple interface for testing colour palette rendering and the different masking behaviours of the PPU.
+
+\paragraph{vram\_access.nes}
+This test was created by Blargg (\cite{BLGT}), This heavily tests VRam accessing through the CPU.
+
+\paragraph{sprite\_ram.nes}
+This test was created by Blargg (\cite{BLGT}), the goal of this test is to verify if the system executes OAM read/write and DMA requests.
 
  \chapter{Evaluation}
+ \paragraph{ }
+ The project's evaluation 
 
 \section{Performance and Precision}
 

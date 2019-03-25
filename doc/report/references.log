@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2019.2.10)  23 MAR 2019 22:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2019.2.10)  25 MAR 2019 01:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -161,7 +161,7 @@ deleted material, e.g., by typing `I$}'.
 
 ! Extra }, or forgotten $.
 l.6 }
-     
+     ,
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
 you forgot something else, as in `\hbox{$x}'. In such cases
@@ -384,11 +384,11 @@ Overfull \hbox (20.0pt too wide) in paragraph at lines 1--96
  []
 
 
-Overfull \hbox (11340.45459pt too wide) in paragraph at lines 1--96
-[]\OML/cmm/m/it/10 upport; \/cmr/m/n/10 @\OML/cmm/m/it/10 online[]\/cmr/m/n/10 
-@\OML/cmm/m/it/10 online[]\/cmr/m/n/10 @\OML/cmm/m/it/10 online[]\/cmr/m/n/10 @
-\OML/cmm/m/it/10 online[]\/cmr/m/n/10 @\OML/cmm/m/it/10 online[]\/cmr/m/n/10 @\
-OML/cmm/m/it/10 online[]$ 
+Overfull \hbox (11409.89856pt too wide) in paragraph at lines 1--96
+[]\OML/cmm/m/it/10 upport; ; \/cmr/m/n/10 @\OML/cmm/m/it/10 online[]; \/cmr/m/n
+/10 @\OML/cmm/m/it/10 online[]; \/cmr/m/n/10 @\OML/cmm/m/it/10 online[]; \/cmr/
+m/n/10 @\OML/cmm/m/it/10 online[]; \/cmr/m/n/10 @\OML/cmm/m/it/10 online[]; \/c
+mr/m/n/10 @\OML/cmm/m/it/10 online[]$ 
  []
 
 
@@ -518,6 +518,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no h in font nullfont!
 Missing character: There is no p in font nullfont!
 Missing character: There is no , in font nullfont!
+Missing character: There is no , in font nullfont!
 Missing character: There is no @ in font nullfont!
 Missing character: There is no o in font nullfont!
 Missing character: There is no n in font nullfont!
@@ -633,6 +634,7 @@ Missing character: There is no r in font nullfont!
 Missing character: There is no g in font nullfont!
 Missing character: There is no / in font nullfont!
 Missing character: There is no , in font nullfont!
+Missing character: There is no , in font nullfont!
 Missing character: There is no @ in font nullfont!
 Missing character: There is no o in font nullfont!
 Missing character: There is no n in font nullfont!
@@ -739,6 +741,7 @@ Missing character: There is no i in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no o in font nullfont!
 Missing character: There is no h in font nullfont!
+Missing character: There is no , in font nullfont!
 Missing character: There is no , in font nullfont!
 Missing character: There is no @ in font nullfont!
 Missing character: There is no o in font nullfont!
@@ -879,7 +882,7 @@ deleted material, e.g., by typing `I$}'.
 
 ! Extra }, or forgotten $.
 l.120 }
-       
+       ,
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
 you forgot something else, as in `\hbox{$x}'. In such cases
@@ -900,9 +903,9 @@ Overfull \hbox (20.0pt too wide) in paragraph at lines 97--133
  []
 
 
-Overfull \hbox (1322.79298pt too wide) in paragraph at lines 97--133
-[]\OML/cmm/m/it/10 egisters; \/cmr/m/n/10 @\OML/cmm/m/it/10 online[]\/cmr/m/n/1
-0 @\OML/cmm/m/it/10 online[]$ 
+Overfull \hbox (1334.4596pt too wide) in paragraph at lines 97--133
+[]\OML/cmm/m/it/10 egisters; ; \/cmr/m/n/10 @\OML/cmm/m/it/10 online[]; \/cmr/m
+/n/10 @\OML/cmm/m/it/10 online[];$ 
  []
 
 
@@ -1041,6 +1044,7 @@ Missing character: There is no t in font nullfont!
 Missing character: There is no m in font nullfont!
 Missing character: There is no l in font nullfont!
 Missing character: There is no , in font nullfont!
+Missing character: There is no , in font nullfont!
 Missing character: There is no @ in font nullfont!
 Missing character: There is no o in font nullfont!
 Missing character: There is no n in font nullfont!
@@ -1165,6 +1169,7 @@ Missing character: There is no . in font nullfont!
 Missing character: There is no t in font nullfont!
 Missing character: There is no x in font nullfont!
 Missing character: There is no t in font nullfont!
+Missing character: There is no , in font nullfont!
 Missing character: There is no , in font nullfont!
 Missing character: There is no @ in font nullfont!
 Missing character: There is no o in font nullfont!
@@ -1333,7 +1338,7 @@ deleted material, e.g., by typing `I$}'.
 
 ! Extra }, or forgotten $.
 l.151 }
-       
+       ,
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
 you forgot something else, as in `\hbox{$x}'. In such cases
@@ -1447,9 +1452,9 @@ Overfull \hbox (4.44444pt too wide) in paragraph at lines 134--224
  []
 
 
-Overfull \hbox (10021.22011pt too wide) in paragraph at lines 134--224
+Overfull \hbox (10077.33084pt too wide) in paragraph at lines 134--224
 []\OML/cmm/m/it/10 mulator=doc=api=html=classEmulator[][]Cpu[][]Registers:html;
- \/cmr/m/n/10 @\OML/cmm/m/it/10 online[]$ 
+ ; \/cmr/m/n/10 @\OML/cmm/m/it/10 online[]$ 
  []
 
 
@@ -1575,6 +1580,7 @@ Missing character: There is no / in font nullfont!
 Missing character: There is no P in font nullfont!
 Missing character: There is no P in font nullfont!
 Missing character: There is no U in font nullfont!
+Missing character: There is no , in font nullfont!
 Missing character: There is no , in font nullfont!
 Missing character: There is no @ in font nullfont!
 Missing character: There is no o in font nullfont!
@@ -1719,7 +1725,7 @@ deleted material, e.g., by typing `I$}'.
 
 ! Extra }, or forgotten $.
 l.236 }
-       
+       ,
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
 you forgot something else, as in `\hbox{$x}'. In such cases
@@ -1736,7 +1742,7 @@ deleted material, e.g., by typing `I$}'.
 Here is how much of TeX's memory you used:
  18 strings out of 492639
  250 string characters out of 6135497
- 75037 words of memory out of 5000000
+ 75069 words of memory out of 5000000
  4006 multiletter control sequences out of 15000+600000
  3640 words of font info for 14 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
