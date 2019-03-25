@@ -48,11 +48,11 @@ int main(int argc, char *argv[])
     memory->subscribe(&ppu);
     memory->subscribe(controller.get());
 
-    while(true)
+    do
     {
         gameWindow->pollEvent();
         ++cpu;
-    }
+    }while(!gameWindow->isClosed());
 
     return 0;
 

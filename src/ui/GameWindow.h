@@ -21,6 +21,7 @@ namespace Ui
         SDL_Window* window;
         SDL_Renderer* renderer;
         uint8_t scaling;
+        bool close;
 
 
         Emulator::Utils::Button convertSDLKeyToEmulatorKey(SDL_Keycode sdlKeycode);
@@ -37,5 +38,8 @@ namespace Ui
         void clearScreen(Emulator::Ppu::Color color) override;
 
         void pollEvent();
+
+        bool isClosed();
+
     };
 }

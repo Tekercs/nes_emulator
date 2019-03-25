@@ -12,6 +12,7 @@ using namespace Emulator::Utils;
 GameWindow::GameWindow(uint8_t scaling, shared_ptr<Controller> controller)
 : scaling(scaling)
 , controller(move(controller))
+, close(false)
 {
     SDL_Init(SDL_INIT_EVERYTHING);
     this->window = SDL_CreateWindow("first sdl"
@@ -79,6 +80,9 @@ void GameWindow::pollEvent()
             this->controller->release(this->convertSDLKeyToEmulatorKey(event.key.keysym.sym));
             break;
 
+        case SDL_QUIT:
+            this->close = true;
+
         default:
             break;
     }
@@ -115,4 +119,9 @@ Emulator::Utils::Button GameWindow::convertSDLKeyToEmulatorKey(SDL_Keycode sdlKe
     }
 
     return START;
+}
+
+bool GameWindow::isClosed()
+{
+    return close;
 }
