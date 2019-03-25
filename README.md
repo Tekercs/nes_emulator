@@ -12,7 +12,7 @@ Bence Sebestyén
 3. cd build
 4. cmake -DCMAKE_BUILD_TYPE=Checked ..
 5. make 
-6. ./src/ui/ui ~/Desktop/ballon_fight.nes
+6. ./src/ui/ui <Path to .nes file> 
 
 SDL2 installation requried to run the program.
 Only tested on Arch Linux.
