@@ -642,11 +642,66 @@ This test was created by Blargg (\cite{BLGT}), the goal of this test is to verif
 
  \chapter{Evaluation}
  \paragraph{ }
- The project's evaluation 
+Emulators by nature can be evaluated by looking at two important aspect of the software. First of all, how accurately the system was emulated by the software. Which includes from the very basic components up until the most complex and edge-case behaviours even the bugs as well.
+\\
+Secondly, how well the emulator performs, as it is technically a "hardware" run on real hardware. It could put great strain on the target computer and provide bad experience for the users or even worse make it unable to run on most of the systems due to the high requirements.
 
-\section{Performance and Precision}
+\section{Emulation Precision}
+\paragraph{ }
+The main memory of the system is precisely emulated unlike the rest of the parts.
 
-\section{Game Performance}
+\paragraph{ }
+The processor is nearly at the perfect state. Compared to the specification all the behaviours are well implemented along even with the known bugs of the operations codes. On the other hand, the so called unofficial opcodes implementation are missing. These opcodes are never really meant to be used but some of them provides really interesting and useful behaviours which are used in some of the more complex games. Based on how rarely they are used it is not essential to have but it would greatly increase the user's experience by supporting more games. Unlike the unofficial opcodes, the cycle accurate CPU emulation would be a much needed feature which this emulator lacks at the moment. The current solution, the instruction based stepping, is not bad and it would be sufficient up to the mid-high tier quality games. But above that, the games are pushing the limits of the hardware and heavily relying on every small detail to push out quality gaming experience and this solution would not be sufficient for that.
+
+\paragraph{ } 
+The Cartridge handling has a strong and sable foundations. But, roughly more than 400 mappers exits for the NES system meanwhile this emulator only handles one, the most basic NROM mapper. As this type of Cartridge mostly contained the launch titles of the console, they barely tapped into the potential of the hardware itself and not even seeking about the wast ability of the NES to expand it's hardware with special Cartridges. Also the most memorable games are all developed on a more complex mappers and there is a high chance that the users will find no support for their most precious game within this emulator.
+
+\paragraph{ }
+Probably the biggest weak spot of the this emulator is the PPU implementation. As it is just barely emulated with enough precision to run the most basic games. Main issue here is the rendering precision. As without scan-line based rendering the system would not be able to render games which are contains split screens or using any special effect which requires a careful interactions with he PPU meanwhile it is rendering the scene. Also there is a missing specification implementation which is required by even the not so complex but more appealing titles the scrolling mechanism.
+\\
+Therefore at it's current immature state the PPU severely holding back the list of the supported games.
+
+\section{Performance}
+\paragraph{ }
+As the emulators, generally speaking, emulating a set of hardware on top of another hardware through a software the system requirements for these are quite high compared to a normal program. As there is a certain hardware specification which the emulator has to provide runtime even with great optimization it will consume at least as much resource as the target system has. Also the behaviour of the software itself sets up a barrier for optimization. Therefore the goal is to try to get the software's resource consumption as close to the original hardware spec. as it is possible without hurting the accuracy of the emulation.
+
+\paragraph{ }
+Due to the project timeline, there were no effort made yet to provide a more optimal solution regarding the system requirements of the emulator. Although the following measurements providing great starting point for the start of the optimization phase.  
+\\
+The system specification of the development machine which was also used for these measurements are the following: 
+\begin{itemize}
+	\item 16GB DDR4 2400MHz RAM
+	\item Intell i7-7700HQ, 6MB cache 28GHz (3,6 GHz on Turbo) 4 CORE 8 THREAD
+	\item NVIDIA GeForce GTX 1050 TI 4GB GDDR5 vram
+	\item 256GB SSD storage
+\end{itemize}
+\pagebreak
+The simulated hardware's specification:
+\begin{itemize}
+	\item 64KB Ram
+	\item Ricoh RP2A03 1,79MHz 1 CORE 1 THREAD
+	\item Ricoh RP2C02 ~5,37MHz 16KB + 64Byte vram
+	\item No data storage 
+\end{itemize}
+
+\paragraph{ }
+The following results which is represented on Figure 5.1 are mixed. In case of memory usage the ~50MB memory usage is a good level, of course this could been optimized further but it is a not a bad result.
+\paragraph{ }
+ On the other hand, the CPU usage, compared to how powerful the host systems CPU, is a terrible result. Using 100\% of a single CPU thread to emulate a system which is by on it's own a at least 1000x weaker in clock speed than the host is terrible. This is an issue which must be addressed. Possible solutions for this is to introduce a proper multithread CPU support and also further investigate what which parts of the application are poorly written in terms of CPU utilization.
+\paragraph{ }
+The application itself, without the SDL2 libraries, including the executable which contains the execution logic and the shared object file which contains the emulator logic together taking up 516KB space. As it shown in Figurer 5.2.
+
+ \begin{figure}[!htb]
+	\center{\includegraphics[width=\textwidth]
+		{images/resource_usage.png}}
+	\caption{\label{fig:my-label} Resource usage}
+\end{figure}
+\begin{figure}[!htb]
+	\center{\includegraphics[width=\textwidth]
+		{images/size_check.png}}
+	\caption{\label{fig:my-label} Resource usage}
+\end{figure}
+\clearpage
 
 \chapter{Conclusions}
 
