@@ -228,39 +228,37 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {paragraph}{ }{32}{section*.100}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.4.2}Implementation}{34}{subsection.4.4.2}
+\contentsline {paragraph}{ }{32}{section*.101}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{ }{34}{section*.102}
+\contentsline {paragraph}{ }{32}{section*.102}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Memory handling}{34}{section*.103}
+\contentsline {paragraph}{ }{32}{section*.103}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Rendering}{34}{section*.104}
-\defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.4.3}Testing}{35}{subsection.4.4.3}
+\contentsline {subsection}{\numberline {4.4.2}Implementation}{35}{subsection.4.4.2}
 \defcounter {refsection}{0}\relax 
 \contentsline {paragraph}{ }{35}{section*.105}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{color\_test.nes}{35}{section*.106}
+\contentsline {paragraph}{Memory handling}{35}{section*.106}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{vram\_access.nes}{35}{section*.107}
+\contentsline {paragraph}{Rendering}{35}{section*.107}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{sprite\_ram.nes}{35}{section*.108}
+\contentsline {subsection}{\numberline {4.4.3}Testing}{36}{subsection.4.4.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Evaluation}{36}{chapter.5}
+\contentsline {paragraph}{ }{36}{section*.108}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{ }{36}{section*.109}
+\contentsline {paragraph}{color\_test.nes}{36}{section*.109}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.1}Emulation Precision}{36}{section.5.1}
+\contentsline {paragraph}{vram\_access.nes}{36}{section*.110}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{ }{36}{section*.110}
+\contentsline {paragraph}{sprite\_ram.nes}{36}{section*.111}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{ }{36}{section*.111}
+\contentsline {chapter}{\numberline {5}Evaluation}{37}{chapter.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{ }{36}{section*.112}
+\contentsline {paragraph}{ }{37}{section*.112}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.1}Emulation Precision}{37}{section.5.1}
 \defcounter {refsection}{0}\relax 
 \contentsline {paragraph}{ }{37}{section*.113}
-\defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.2}Performance}{37}{section.5.2}
 \defcounter {refsection}{0}\relax 
 \contentsline {paragraph}{ }{37}{section*.114}
 \defcounter {refsection}{0}\relax 
@@ -268,14 +266,22 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {paragraph}{ }{38}{section*.116}
 \defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.2}Performance}{38}{section.5.2}
+\defcounter {refsection}{0}\relax 
 \contentsline {paragraph}{ }{38}{section*.117}
 \defcounter {refsection}{0}\relax 
 \contentsline {paragraph}{ }{38}{section*.118}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {6}Conclusions}{39}{chapter.6}
+\contentsline {paragraph}{ }{39}{section*.119}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{39}{section*.120}
 \defcounter {refsection}{0}\relax 
 \contentsline {paragraph}{ }{39}{section*.121}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{ }{39}{section*.122}
+\contentsline {chapter}{\numberline {6}Conclusions}{40}{chapter.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{ }{39}{section*.123}
+\contentsline {paragraph}{ }{40}{section*.124}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{40}{section*.125}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{ }{40}{section*.126}

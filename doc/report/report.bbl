@@ -1194,6 +1194,70 @@
       \verb https://wiki.nesdev.com/w/index.php/PPU_attribute_tables
       \endverb
     \endentry
+    \entry{BGEV}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=7fe56a1ebc7af79fccac893c88e4c67d}{%
+           family={NESDEV-wiki},
+           familyi={N\bibinithyphendelim w\bibinitperiod}}}%
+      }
+      \strng{namehash}{7fe56a1ebc7af79fccac893c88e4c67d}
+      \strng{fullhash}{7fe56a1ebc7af79fccac893c88e4c67d}
+      \strng{bibnamehash}{7fe56a1ebc7af79fccac893c88e4c67d}
+      \strng{authorbibnamehash}{7fe56a1ebc7af79fccac893c88e4c67d}
+      \strng{authornamehash}{7fe56a1ebc7af79fccac893c88e4c67d}
+      \strng{authorfullhash}{7fe56a1ebc7af79fccac893c88e4c67d}
+      \field{extraname}{1}
+      \field{sortinit}{N}
+      \field{sortinithash}{f7242c3ed3dc50029fca1be76c497c7c}
+      \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{22}
+      \field{month}{1}
+      \field{title}{PPU rendering - Nesdev wiki}
+      \field{year}{2019}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://wiki.nesdev.com/w/index.php/PPU_rendering
+      \endverb
+      \verb{url}
+      \verb https://wiki.nesdev.com/w/index.php/PPU_rendering
+      \endverb
+    \endentry
+    \entry{SRTE}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=7fe56a1ebc7af79fccac893c88e4c67d}{%
+           family={NESDEV-wiki},
+           familyi={N\bibinithyphendelim w\bibinitperiod}}}%
+      }
+      \strng{namehash}{7fe56a1ebc7af79fccac893c88e4c67d}
+      \strng{fullhash}{7fe56a1ebc7af79fccac893c88e4c67d}
+      \strng{bibnamehash}{7fe56a1ebc7af79fccac893c88e4c67d}
+      \strng{authorbibnamehash}{7fe56a1ebc7af79fccac893c88e4c67d}
+      \strng{authornamehash}{7fe56a1ebc7af79fccac893c88e4c67d}
+      \strng{authorfullhash}{7fe56a1ebc7af79fccac893c88e4c67d}
+      \field{extraname}{2}
+      \field{sortinit}{N}
+      \field{sortinithash}{f7242c3ed3dc50029fca1be76c497c7c}
+      \field{extradate}{2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{22}
+      \field{month}{1}
+      \field{title}{PPU sprite evaluation - Nesdev wiki}
+      \field{year}{2019}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://wiki.nesdev.com/w/index.php/PPU_sprite_evaluation
+      \endverb
+      \verb{url}
+      \verb https://wiki.nesdev.com/w/index.php/PPU_sprite_evaluation
+      \endverb
+    \endentry
     \entry{CRSH}{online}{}
       \name{author}{1}{}{%
         {{uniquename=0,uniquepart=base,hash=2e57afd7c84b3e0dc289d904b95c30be}{%
@@ -1321,6 +1385,36 @@
       \endverb
       \verb{url}
       \verb http://mirror.fem-net.de/CCC/27C3/webm/27c3-4159-en-reverse_engineering_mos_6502.webm
+      \endverb
+    \endentry
+    \entry{PALT}{online}{}
+      \name{author}{1}{}{%
+        {{uniquename=0,uniquepart=base,hash=4dd9686a7aa04991c5dcb21e9e65ce80}{%
+           family={Tepples},
+           familyi={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{4dd9686a7aa04991c5dcb21e9e65ce80}
+      \strng{fullhash}{4dd9686a7aa04991c5dcb21e9e65ce80}
+      \strng{bibnamehash}{4dd9686a7aa04991c5dcb21e9e65ce80}
+      \strng{authorbibnamehash}{4dd9686a7aa04991c5dcb21e9e65ce80}
+      \strng{authornamehash}{4dd9686a7aa04991c5dcb21e9e65ce80}
+      \strng{authorfullhash}{4dd9686a7aa04991c5dcb21e9e65ce80}
+      \field{sortinit}{T}
+      \field{sortinithash}{6f7aff9db9dcfeb7f95fd5bbd2f78df9}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{17}
+      \field{month}{9}
+      \field{title}{Savtool swatches}
+      \field{year}{2015}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://wiki.nesdev.com/w/images/5/59/Savtool-swatches.png
+      \endverb
+      \verb{url}
+      \verb https://wiki.nesdev.com/w/images/5/59/Savtool-swatches.png
       \endverb
     \endentry
     \entry{MPPR}{online}{}
